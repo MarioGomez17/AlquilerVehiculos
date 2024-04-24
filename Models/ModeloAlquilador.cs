@@ -37,7 +37,7 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception) {}
             finally
             {
                 ConexionBD.Close();
