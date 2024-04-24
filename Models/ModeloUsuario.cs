@@ -27,7 +27,6 @@ namespace ALQUILER_VEHICULOS.Models
         public ModeloUsuario TraerUsuario(string Correo, string Contrasena)
         {
             ModeloUsuario Usuario = new();
-
             string ConsultaSQL = "SELECT " +
                 "alquiler_vehiculos.usuario.Id_Usuario, " +
                 "alquiler_vehiculos.usuario.Nombre_Usuario, " +
@@ -46,6 +45,60 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
                 "WHERE alquiler_vehiculos.usuario.Correo_Usuario = '" + Correo + "' " +
                 "AND alquiler_vehiculos.usuario.Contrasena_Usuario =SHA('" + Contrasena + "') ";
+            MySqlConnection ConexionBD = ModeloConexion.Conect();
+            try
+            {
+                ConexionBD.Open();
+                MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
+                MySqlDataReader Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
+                {
+                    while (Lector.Read())
+                    {
+                        Usuario = new()
+                        {
+                            Id = Lector.GetInt32(0),
+                            Nombre = Lector.GetString(1),
+                            Apellido = Lector.GetString(2),
+                            TipoIdentificacion = Lector.GetString(3),
+                            SimboloTipoIdentificacion = Lector.GetString(4),
+                            NumeroIdentificacion = Lector.GetString(5),
+                            Telefono = Lector.GetString(6),
+                            Correo = Lector.GetString(7),
+                            Contrasena = Lector.GetString(8),
+                            Estado = Lector.GetString(9),
+                        };
+                    }
+                }
+            }
+            catch (Exception) { }
+            finally
+            {
+                ConexionBD.Close();
+            }
+            return Usuario;
+        }
+
+        public ModeloUsuario TraerUsuario(int Id_usuario)
+        {
+            ModeloUsuario Usuario = new();
+            string ConsultaSQL = "SELECT " +
+                "alquiler_vehiculos.usuario.Id_Usuario, " +
+                "alquiler_vehiculos.usuario.Nombre_Usuario, " +
+                "alquiler_vehiculos.usuario.Apellido_Usuario, " +
+                "alquiler_vehiculos.tipo_identificacion_usuario.Nombre_TipoIdentificacionUsuario, " +
+                "alquiler_vehiculos.tipo_identificacion_usuario.Simbolo_TipoIdentificacionUsuario, " +
+                "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " + 
+                "alquiler_vehiculos.usuario.Telefono_Usuario, " +
+                "alquiler_vehiculos.usuario.Correo_Usuario, " +
+                "alquiler_vehiculos.usuario.Contrasena_Usuario, " +
+                "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario " +
+                "FROM alquiler_vehiculos.usuario " +
+                "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
+                "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
+                "INNER JOIN alquiler_vehiculos.estado_usuario " +
+                "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
+                "alquiler_vehiculos.usuario.Id_Usuario = " + Id_usuario;
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
@@ -138,13 +191,13 @@ namespace ALQUILER_VEHICULOS.Models
         public bool RegistrarUsuario(string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
         {
             string ConsultaSQL = "INSERT INTO alquiler_vehiculos.usuario " +
-                "(Nombre_Usuario, " +
-                "Apellido_Usuario, " +
-                "TipoIdentificacion_Usuario, " +
-                "NumeroIdentificacion_Usuario, " +
-                "Telefono_Usuario, " +
-                "Correo_Usuario, " +
-                "Contrasena_Usuario) " +
+                "(alquiler_vehiculos.usuario.Nombre_Usuario, " +
+                "alquiler_vehiculos.usuario.Apellido_Usuario, " +
+                "alquiler_vehiculos.usuario.TipoIdentificacion_Usuario, " +
+                "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " +
+                "alquiler_vehiculos.usuario.Telefono_Usuario, " +
+                "alquiler_vehiculos.usuario.Correo_Usuario, " +
+                "alquiler_vehiculos.usuario.Contrasena_Usuario) " +
                 "VALUES (" +
                 "'" + Nombre + "', " +
                 "'" + Apellido + "', " +

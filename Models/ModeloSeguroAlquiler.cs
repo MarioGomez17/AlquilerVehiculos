@@ -45,5 +45,42 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return SegurosAlquiler;
         }
+        public ModeloSeguroAlquiler TraerSeguroAlquiler(int Id_Seguro)
+        {
+            ModeloSeguroAlquiler SeguroAlquiler = null;
+            string ConsultaSQL = "SELECT " +
+                "alquiler_vehiculos.seguro_alquiler.Id_SeguroAlquiler, " +
+                "alquiler_vehiculos.seguro_alquiler.Nombre_SeguroAlquiler, " +
+                "alquiler_vehiculos.seguro_alquiler.Precio_SeguroAlquiler " +
+                "FROM alquiler_vehiculos.seguro_alquiler " +
+                "WHERE alquiler_vehiculos.seguro_alquiler.Id_SeguroAlquiler = " + Id_Seguro + " " +
+                "ORDER BY alquiler_vehiculos.seguro_alquiler.Id_SeguroAlquiler ASC";
+            MySqlConnection ConexionBD = ModeloConexion.Conect();
+            try
+            {
+                ConexionBD.Open();
+                MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
+                MySqlDataReader Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
+                {
+                    while (Lector.Read())
+                    {
+                        SeguroAlquiler = new()
+                        {
+                            Id = Lector.GetInt32(0),
+                            NombreSeguroAlquiler = Lector.GetString(1),
+                            PrecioSeguroAlquiler = Lector.GetFloat(2)
+
+                        };
+                    }
+                }
+            }
+            catch (Exception) { }
+            finally
+            {
+                ConexionBD.Close();
+            }
+            return SeguroAlquiler;
+        }
     }
 }
