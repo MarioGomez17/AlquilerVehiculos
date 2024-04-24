@@ -57,6 +57,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.vehiculo.PrecioAlquilerDia_Vehiculo, " +
                 "alquiler_vehiculos.vehiculo.Foto_Vehiculo, " +
                 "alquiler_vehiculos.ciudad.Nombre_Ciudad, " +
+                "alquiler_vehiculos.departamento.Nombre_Departamento, " +
                 "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo, " +
                 "alquiler_vehiculos.linea_vehiculo.Nombre_LineaVehiculo, " +
                 "alquiler_vehiculos.tipo_combustible.Nombre_TipoCombustible, " +
@@ -67,6 +68,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.vehiculo.Clasificacion_Vehiculo = alquiler_vehiculos.clasificacion_vehiculo.Id_ClasificacionVehiculo " +
                 "INNER JOIN alquiler_vehiculos.ciudad " +
                 "ON alquiler_vehiculos.ciudad.Id_Ciudad = alquiler_vehiculos.vehiculo.Ciudad_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.departamento " +
+                "ON alquiler_vehiculos.ciudad.Departamento_Ciudad = alquiler_vehiculos.departamento.Id_Departamento " +
                 "INNER JOIN alquiler_vehiculos.tipo_combustible " +
                 "ON alquiler_vehiculos.tipo_combustible.Id_TipoCombustible = alquiler_vehiculos.vehiculo.TipoCombustible_Vehiculo " +
                 "INNER JOIN alquiler_vehiculos.estado_vehiculo " +
@@ -102,12 +105,12 @@ namespace ALQUILER_VEHICULOS.Models
                             NumeroCertificadoCDA = Lector.GetString(9),
                             PrecioAlquilerDia = Lector.GetFloat(10),
                             RutaFoto = Lector.GetString(11),
-                            Ciudad = Lector.GetString(12),
-                            Marca = Lector.GetString(13),
-                            Linea = Lector.GetString(14),
-                            TipoCombustible = Lector.GetString(15),
-                            Estado = Lector.GetString(16),
-                            Propietario = Lector.GetInt32(17),
+                            Ciudad = Lector.GetString(12) + " - " + Lector.GetString(13),
+                            Marca = Lector.GetString(14),
+                            Linea = Lector.GetString(15),
+                            TipoCombustible = Lector.GetString(16),
+                            Estado = Lector.GetString(17),
+                            Propietario = Lector.GetInt32(18),
                         };
                         ListaVehiculos.Add(Vehiculo);
                     }
@@ -145,6 +148,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.vehiculo.PrecioAlquilerDia_Vehiculo, " +
                 "alquiler_vehiculos.vehiculo.Foto_Vehiculo, " +
                 "alquiler_vehiculos.ciudad.Nombre_Ciudad, " +
+                "alquiler_vehiculos.departamento.Nombre_Departamento, " +
                 "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo, " +
                 "alquiler_vehiculos.linea_vehiculo.Nombre_LineaVehiculo, " +
                 "alquiler_vehiculos.tipo_combustible.Nombre_TipoCombustible, " +
@@ -155,6 +159,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.vehiculo.Clasificacion_Vehiculo = alquiler_vehiculos.clasificacion_vehiculo.Id_ClasificacionVehiculo " +
                 "INNER JOIN alquiler_vehiculos.ciudad " +
                 "ON alquiler_vehiculos.ciudad.Id_Ciudad = alquiler_vehiculos.vehiculo.Ciudad_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.departamento " +
+                "ON alquiler_vehiculos.ciudad.Departamento_Ciudad = alquiler_vehiculos.departamento.Id_Departamento " +
                 "INNER JOIN alquiler_vehiculos.tipo_combustible " +
                 "ON alquiler_vehiculos.tipo_combustible.Id_TipoCombustible = alquiler_vehiculos.vehiculo.TipoCombustible_Vehiculo " +
                 "INNER JOIN alquiler_vehiculos.estado_vehiculo " +
@@ -172,31 +178,31 @@ namespace ALQUILER_VEHICULOS.Models
             {
                 ConexionBD.Open();
                 MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
-                MySqlDataReader Lecto = Comando.ExecuteReader();
-                if (Lecto.HasRows)
+                MySqlDataReader Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
                 {
-                    while (Lecto.Read())
+                    while (Lector.Read())
                     {
                         ModeloVehiculo Vehiculo = new()
                         {
-                            Id = Lecto.GetInt32(0),
-                            TipoVehiculo = Lecto.GetString(1),
-                            ClasificacionVehiculo = Lecto.GetString(2),
-                            Placa = Lecto.GetString(3),
-                            Modelo = Lecto.GetInt32(4),
-                            Cilindrada = Lecto.GetInt32(5),
-                            Color = Lecto.GetString(6),
-                            CantidadPasajeros = Lecto.GetInt32(7),
-                            NumeroSeguro = Lecto.GetString(8),
-                            NumeroCertificadoCDA = Lecto.GetString(9),
-                            PrecioAlquilerDia = Lecto.GetFloat(10),
-                            RutaFoto = Lecto.GetString(11),
-                            Ciudad = Lecto.GetString(12),
-                            Marca = Lecto.GetString(13),
-                            Linea = Lecto.GetString(14),
-                            TipoCombustible = Lecto.GetString(15),
-                            Estado = Lecto.GetString(16),
-                            Propietario = Lecto.GetInt32(17),
+                            Id = Lector.GetInt32(0),
+                            TipoVehiculo = Lector.GetString(1),
+                            ClasificacionVehiculo = Lector.GetString(2),
+                            Placa = Lector.GetString(3),
+                            Modelo = Lector.GetInt32(4),
+                            Cilindrada = Lector.GetInt32(5),
+                            Color = Lector.GetString(6),
+                            CantidadPasajeros = Lector.GetInt32(7),
+                            NumeroSeguro = Lector.GetString(8),
+                            NumeroCertificadoCDA = Lector.GetString(9),
+                            PrecioAlquilerDia = Lector.GetFloat(10),
+                            RutaFoto = Lector.GetString(11),
+                            Ciudad = Lector.GetString(12) + " - " + Lector.GetString(13),
+                            Marca = Lector.GetString(14),
+                            Linea = Lector.GetString(15),
+                            TipoCombustible = Lector.GetString(16),
+                            Estado = Lector.GetString(17),
+                            Propietario = Lector.GetInt32(18),
                         };
                         ListaVehiculos.Add(Vehiculo);
                     }
@@ -234,6 +240,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.vehiculo.PrecioAlquilerDia_Vehiculo, " +
                 "alquiler_vehiculos.vehiculo.Foto_Vehiculo, " +
                 "alquiler_vehiculos.ciudad.Nombre_Ciudad, " +
+                "alquiler_vehiculos.departamento.Nombre_Departamento, " +
                 "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo, " +
                 "alquiler_vehiculos.linea_vehiculo.Nombre_LineaVehiculo, " +
                 "alquiler_vehiculos.tipo_combustible.Nombre_TipoCombustible, " +
@@ -244,6 +251,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.vehiculo.Clasificacion_Vehiculo = alquiler_vehiculos.clasificacion_vehiculo.Id_ClasificacionVehiculo " +
                 "INNER JOIN alquiler_vehiculos.ciudad " +
                 "ON alquiler_vehiculos.ciudad.Id_Ciudad = alquiler_vehiculos.vehiculo.Ciudad_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.departamento " +
+                "ON alquiler_vehiculos.ciudad.Departamento_Ciudad = alquiler_vehiculos.departamento.Id_Departamento " +
                 "INNER JOIN alquiler_vehiculos.tipo_combustible " +
                 "ON alquiler_vehiculos.tipo_combustible.Id_TipoCombustible = alquiler_vehiculos.vehiculo.TipoCombustible_Vehiculo " +
                 "INNER JOIN alquiler_vehiculos.estado_vehiculo " +
@@ -280,12 +289,12 @@ namespace ALQUILER_VEHICULOS.Models
                             NumeroCertificadoCDA = Lector.GetString(9),
                             PrecioAlquilerDia = Lector.GetFloat(10),
                             RutaFoto = Lector.GetString(11),
-                            Ciudad = Lector.GetString(12),
-                            Marca = Lector.GetString(13),
-                            Linea = Lector.GetString(14),
-                            TipoCombustible = Lector.GetString(15),
-                            Estado = Lector.GetString(16),
-                            Propietario = Lector.GetInt32(17),
+                            Ciudad = Lector.GetString(12) + " - " + Lector.GetString(13),
+                            Marca = Lector.GetString(14),
+                            Linea = Lector.GetString(15),
+                            TipoCombustible = Lector.GetString(16),
+                            Estado = Lector.GetString(17),
+                            Propietario = Lector.GetInt32(18),
                         };
                         ListaVehiculos.Add(Vehiculo);
                     }
@@ -323,6 +332,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.vehiculo.PrecioAlquilerDia_Vehiculo, " +
                 "alquiler_vehiculos.vehiculo.Foto_Vehiculo, " +
                 "alquiler_vehiculos.ciudad.Nombre_Ciudad, " +
+                "alquiler_vehiculos.departamento.Nombre_Departamento, " +
                 "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo, " +
                 "alquiler_vehiculos.linea_vehiculo.Nombre_LineaVehiculo, " +
                 "alquiler_vehiculos.tipo_combustible.Nombre_TipoCombustible, " +
@@ -333,6 +343,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.vehiculo.Clasificacion_Vehiculo = alquiler_vehiculos.clasificacion_vehiculo.Id_ClasificacionVehiculo " +
                 "INNER JOIN alquiler_vehiculos.ciudad " +
                 "ON alquiler_vehiculos.ciudad.Id_Ciudad = alquiler_vehiculos.vehiculo.Ciudad_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.departamento " +
+                "ON alquiler_vehiculos.ciudad.Departamento_Ciudad = alquiler_vehiculos.departamento.Id_Departamento " +
                 "INNER JOIN alquiler_vehiculos.tipo_combustible " +
                 "ON alquiler_vehiculos.tipo_combustible.Id_TipoCombustible = alquiler_vehiculos.vehiculo.TipoCombustible_Vehiculo " +
                 "INNER JOIN alquiler_vehiculos.estado_vehiculo " +
@@ -369,12 +381,12 @@ namespace ALQUILER_VEHICULOS.Models
                             NumeroCertificadoCDA = Lector.GetString(9),
                             PrecioAlquilerDia = Lector.GetFloat(10),
                             RutaFoto = Lector.GetString(11),
-                            Ciudad = Lector.GetString(12),
-                            Marca = Lector.GetString(13),
-                            Linea = Lector.GetString(14),
-                            TipoCombustible = Lector.GetString(15),
-                            Estado = Lector.GetString(16),
-                            Propietario = Lector.GetInt32(17),
+                            Ciudad = Lector.GetString(12) + " - " + Lector.GetString(13),
+                            Marca = Lector.GetString(14),
+                            Linea = Lector.GetString(15),
+                            TipoCombustible = Lector.GetString(16),
+                            Estado = Lector.GetString(17),
+                            Propietario = Lector.GetInt32(18),
                         };
                     }
                 }

@@ -191,7 +191,7 @@ html, body {
 .ValorInformacionVehiculoCrearAlquiler {
     border-radius: 20px;
     border: solid 4px var(--FifthColor);
-    width: 300px;
+    width: 350px;
     padding: 0;
     text-align: center;
     height: 40px;
@@ -200,6 +200,10 @@ html, body {
     margin: 5px 0;
     font-size: 25px;
     font-family: var(--Font);
+}
+
+.CiudadVehiculo {
+    font-size: 18px;
 }
 
 .BotonInformacionVehiculoCrearAlquiler {
