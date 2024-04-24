@@ -20,10 +20,10 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloCrearAlquiler ModeloCrearAlquiler = new(Id_vehiculo);
             return View(ModeloCrearAlquiler);
         }
-        public IActionResult AccionCrearAlquiler(DateTime FechaInicio, DateTime FechaFin, float Precio, bool SiLavada, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
+        public IActionResult AccionCrearAlquiler(DateTime FechaInicio, DateTime FechaFin, float Precio, string SiLavada, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
         {
             ModeloAlquiler ModeloAlquiler = new();
-            int Lavada = SiLavada? 1 : 0;
+            int Lavada = SiLavada == "on"? 1 : 0;
             ModeloAlquilador ModeloAlquilador = new();
             ModeloAlquilador ModeloAlquiladorAux = null;
             if(ModeloAlquilador.ValidarAlquilador(DatosUsuarioSesion().Id)){
@@ -31,7 +31,8 @@ namespace ALQUILER_VEHICULOS.Controllers
             }
             ModeloAlquiladorAux = ModeloAlquilador.TraerAlquilador(DatosUsuarioSesion().Id);
             int Alquilador = ModeloAlquiladorAux.Id;
-            ModeloAlquiler.CrearAquiler(FechaInicio, FechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
+            Console.WriteLine(FechaInicio + "\n" + FechaFin + "\n" + Precio + "\n" + Lavada + "\n" + Alquilador + "\n" + Vehiculo + "\n" + Lugar + "\n" + MetodoPago + "\n" + Seguro);
+            //ModeloAlquiler.CrearAquiler(FechaInicio, FechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
             return RedirectToAction("Inicio", "Inicio");
         }
         [Authorize]
