@@ -31,8 +31,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             }
             ModeloAlquiladorAux = ModeloAlquilador.TraerAlquilador(DatosUsuarioSesion().Id);
             int Alquilador = ModeloAlquiladorAux.Id;
-            Console.WriteLine(FechaInicio + "\n" + FechaFin + "\n" + Precio + "\n" + Lavada + "\n" + Alquilador + "\n" + Vehiculo + "\n" + Lugar + "\n" + MetodoPago + "\n" + Seguro);
-            //ModeloAlquiler.CrearAquiler(FechaInicio, FechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
+            ModeloAlquiler.CrearAquiler(FechaInicio, FechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
             return RedirectToAction("Inicio", "Inicio");
         }
         [Authorize]
