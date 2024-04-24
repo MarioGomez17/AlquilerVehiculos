@@ -1,0 +1,180 @@
+﻿@model List<ModeloTipoIdentificacionUsuario>;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Registrarse.css">
+    <title>REGISTRARSE</title>
+</head>
+<body class="BodyRegistrarse">
+    <div class="ContenidoBodyRegistrarse">
+        <div class="DivBarraNavegacionRegistrarse">
+            <nav class="BarraNavegacionRegistrarse">
+                <div class="LinkLogoRegistrarse">
+                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo" src="~/imagenes/Logo.webp" alt="Logotipo" /></a>
+                </div>
+                <div class="DivLinkRegistrarse">
+                    <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkRegistrarse">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login-2 IconoLinkSVG"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1f9102"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                            <path d="M3 12h13l-3 -3" />
+                            <path d="M13 15l3 -3" />
+                        </svg>
+                        <span class="TextoLinkRegistrarse">Iniciar Sesión</span>
+                    </a>
+                </div>
+                <div class="DivLinkRegistrarse">
+                    <a asp-controller="Usuario" asp-action="InformacionUsuario" class="LinkRegistrarse">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user IconoLinkSVG"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#020291"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        </svg>
+                        <span class="TextoLinkRegistrarse">Ver Mi Perfil</span>
+                    </a>
+                </div>
+                <div class="DivLinkRegistrarse">
+                    <a asp-controller="Vehiculo" asp-action="InformacionVehiculos" class="LinkRegistrarse">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car IconoLinkSVG"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#beac0d"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
+                        </svg>
+                        <span class="TextoLinkRegistrarse">Ver Mis Vehiculos</span>
+                    </a>
+                </div>
+                <div class="DivLinkRegistrarse">
+                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkRegistrarse">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-history IconoLinkSVG"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 8l0 4l2 2" />
+                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                        </svg>
+                        <span class="TextoLinkRegistrarse">Ver Mis Alquileres</span>
+                    </a>
+                </div>
+                <div class="DivLinkRegistrarse">
+                    <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkRegistrarse">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login IconoLinkSVG"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#be0d0d"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                            <path d="M21 12h-13l3 -3" />
+                            <path d="M11 15l-3 -3" />
+                        </svg>
+                        <span class="TextoLinkRegistrarse">Cerrar Sesión</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="DivContenidoRegistrarse">
+            <div class="DivEncabezadoRegistrarse">
+                <header class="EncabezadoRegistrarse">
+                    <h1 class="TituloPrincipalRegistrarse">Alquiler de Vehículos</h1>
+                </header>
+            </div>
+            <div class="DivContenidoPrincipalRegistrarse">
+                <div class="DivPrincipalRegistrarse">
+                    <main role="main" class="PrincipalRegistrarse">
+                        <div class="ContenidoPrincipalRegistrarse">
+                            <div class="DivTituloFormulario">
+                                <h2 class="TituloFormulario">Crear Cuenta</h2>
+                            </div>
+                            <div class="DivErrorViewBag">
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h3 class="ErroViewBag">@ViewBag.Message</h3>
+                                }
+                            </div>
+                            <div class="DivFormularioRegistrarse">
+                                <form asp-controller="User" asp-action="RegistrarseAction" method="post" class="FormularioRegistrarse">
+                                    <div class="DivParaDosComponentees">
+                                        <div class="Componente">
+                                            <input class="InputTexto" type="text" placeholder="Nombre" name="Nombre" id="Nombre" required />
+                                            <label for="Nombre" class="EtiquetaFormulario">Nombre</label>
+                                        </div>
+                                        <div class="Componente">
+                                            <input class="InputTexto" type="text" placeholder="Apellido" name="Apellido" id="Apellido" required />
+                                            <label for="Apellido" class="EtiquetaFormulario">Apellido</label>
+                                        </div>
+                                    </div>
+                                    <div class="DivParaDosComponentees">
+                                        <div class="Componente">
+                                            <select id="TipoIdentificacion" name="TipoIdentificacion" class="SelectFormulario">
+                                                <option disabled selected class="OptionSelectFormulario">Seleccione un Tipo de Identificación</option>
+                                                @foreach (var IdentificationTypeUser in Model)
+                                                {
+                                                    <option value=@IdentificationTypeUser.Id class="OptionSelectFormulario">
+                                                        @IdentificationTypeUser.NombreTipoIdentificacionUsuario (@IdentificationTypeUser.SimboloTipoIdentificacionUsuario)
+                                                    </option>
+                                                }
+                                            </select>
+                                            <label for="TipoIdentificacion" class="EtiquetaFormulario">Tipo de Identificación</label>
+                                        </div>
+                                        <div class="Componente">
+                                            <input class="InputTexto" type="number" placeholder="Número de Identificación" name="NumeroIdentificacion" id="NumeroIdentificacion" required />
+                                            <label for="NumeroIdentificacion" class="EtiquetaFormulario">Número de Identificación</label>
+                                        </div>
+                                    </div>
+                                    <div class="DivParaDosComponentees">
+                                        <div class="Componente">
+                                            <input class="InputTexto" type="number" placeholder="Teléfono" name="Telefono" id="Telefono" required />
+                                            <label for="Telefono" class="EtiquetaFormulario">Teléfono</label>
+                                        </div>
+                                        <div class="Componente">
+                                            <input class="InputTexto" type="email" placeholder="Correo" name="Correo" id="Correo" required />
+                                            <label for="Correo" class="EtiquetaFormulario">Correo</label>
+                                        </div>
+                                    </div>
+                                    <div class="DivParaDosComponentees">
+                                        <div class="Componente">
+                                            <input class="InputTexto" type="password" placeholder="Contraseña" name="Contrasena" id="Contrasena" required />
+                                            <label for="Contrasena" class="EtiquetaFormulario">Contraseña</label>
+                                        </div>
+                                        <div class="Componente">
+                                            <input class="InputTexto" type="password" placeholder="Confirmar Contraseña" id="ConfirmarContrasena" required />
+                                            <label for="ConfirmarContrasena" class="EtiquetaFormulario">Confirmar Contraseña</label>
+                                        </div>
+                                    </div>
+                                    <div class="Componente">
+                                        <input type="submit" value="Registrarme" class="BotonRegistrar" id="BotonRegistrar" disabled />
+                                    </div>
+                                </form>
+                                <div class="Componente DivIniciarSesion">
+                                    <p class="TextoIniciarSesion">¿Ya tienes cuenta? <a asp-controller="Usuario" asp-action="IniciarSesion" class="TextoLinkIniciarSesion">Inicia Sesion</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            <div class="DivFooterRegistrarse">
+                <footer class="FooterRegistrarse">
+                    <span class="TextoFooterRegistrarse">
+                        &copy; 2024 - Alquiler de Vehículos por Mario Gómez y Juan Diego Claros
+                    </span>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/Registrarse.js"></script>
+</body>
+</html>

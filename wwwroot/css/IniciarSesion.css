@@ -1,0 +1,349 @@
+﻿:root {
+    --Font: "Geologica", sans-serif;
+    --FirstColor: #1FE0B7;
+    --SecondColor: #1649E0;
+    --ThirdColor: #1FCAE0;
+    --FourthColor: #69D3E0;
+    --FifthColor: #04E067;
+    --SixthColor: #1F8DE0;
+    --Wihte: #FFFFFF;
+    --Black: #000000;
+}
+
+/*------------------------------------- GENERAL -------------------------------------*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--Font);
+    text-transform: uppercase;
+}
+
+.BodyIniciarSesion {
+    height: 100vh;
+}
+
+.ContenidoBodyIniciarSesion {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+/*------------------------------------- NAVIGATION -------------------------------------*/
+
+.DivBarraNavegacionIniciarSesion {
+    width: 15%;
+    display: flex;
+}
+
+.BarraNavegacionIniciarSesion {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--SecondColor);
+}
+
+.DivLinkLogoIniciarSesion {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImagenLogo {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: solid 7px var(--FifthColor);
+}
+
+.DivLinkIniciarSesion {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LinkIniciarSesion {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    border: solid 5px transparent;
+    border-radius: 15px;
+    transition: background-color 0.5s ease;
+}
+
+
+.IconoLinkSVG {
+    filter: drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte));
+}
+
+.TextoLinkIniciarSesion {
+    color: var(--Black);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.LinkIniciarSesion:hover .TextoLinkIniciarSesion {
+    opacity: 1;
+}
+
+.LinkIniciarSesion:hover .IconoLinkSVG {
+    filter: none;
+}
+
+.LinkIniciarSesion:hover {
+    background-color: var(--FourthColor);
+    border-color: var(--FifthColor);
+}
+
+/*------------------------------------- CONTENT -------------------------------------*/
+
+.DivContenidoIniciarSesion {
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--FirstColor);
+}
+
+.DivEncabezadoIniciarSesion {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.EncabezadoIniciarSesion {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TituloPrincipalIniciarSesion {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.DivContenidoPrincipalIniciarSesion {
+    height: 85%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.DivPrincipalIniciarSesion {
+    height: 100%;
+    width: 100%;
+}
+
+.PrincipalIniciarSesion {
+    height: 100%;
+    width: 100%;
+}
+
+.ContenidoPrincipalIniciarSesion {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.DivTituloFormulario {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DivErrorViewBag {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ErroViewBag {
+    margin: 0;
+    color: red;
+}
+
+.DivFormularioIniciarSesion {
+    width: 40%;
+    height: 80%;
+    background: var(--SixthColor);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+    .DivFormularioIniciarSesion::before {
+        content: '';
+        position: absolute;
+        width: 200px;
+        background-image: linear-gradient(180deg, var(--Black), var(--Wihte));
+        height: 180%;
+        animation: BackgroundRotation 3s linear infinite;
+        transition: all 0.2s linear;
+    }
+
+@keyframes BackgroundRotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.DivFormularioIniciarSesion::after {
+    content: '';
+    position: absolute;
+    background: var(--ThirdColor);
+    inset: 5px;
+    border-radius: 15px;
+}
+
+.FormularioIniciarSesion {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+}
+
+.Componente {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 120px;
+    width: 100%;
+}
+
+.DivRegistrarse {
+    width: 100%;
+    height: 5%;
+    z-index: 2;
+    margin: 15px;
+}
+
+.TextoRegistrarse {
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.TextoLinkRegistrarse {
+    text-decoration: none;
+    color: var(--Black);
+    transition: .5s;
+}
+
+    .TextoLinkRegistrarse:hover {
+        color: var(--Wihte);
+        font-size: 25px;
+    }
+
+.CheckBoxMantenerSesion {
+    display: none;
+}
+
+.EtiquetaMantenerSesion {
+    position: relative;
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: var(--Black);
+    border-radius: 50px;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.CheckBoxMantenerSesion:checked + .EtiquetaMantenerSesion {
+    background-color: var(--FifthColor);
+    box-shadow: 0px 0px 40px rgba(0, 255, 0, 0.7);
+    color: var(--Black);
+}
+
+.EtiquetaFormulario{
+    font-size: 30px;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.BotonIniciarSesion {
+    font-family: var(--Font);
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 90%;
+    padding: 5px 0;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.8s;
+    border: 2px solid var(--SecondColor);
+    border-radius: 15px;
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+}
+
+    .BotonIniciarSesion:hover {
+        color: var(--Wihte);
+        box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+    }
+
+    .BotonIniciarSesion:active {
+        transform: scale(0.9);
+    }
+
+.InputTexto {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 342px;
+    padding: 0;
+    text-indent: 20px;
+    height: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 15px 0;
+    padding-right: 15px;
+    font-family: var(--Font);
+}
+
+.InputTexto:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+    .InputTexto:focus ~ label {
+        color: var(--SecondColor);
+        font-size: 35px;
+    }

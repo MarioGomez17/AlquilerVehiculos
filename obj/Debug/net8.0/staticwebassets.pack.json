@@ -1,0 +1,129 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ALQUILER_VEHICULOS.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ALQUILER_VEHICULOS.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerDiana1117553148_FZ250Azul.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerDiana1117553148_FZ250Azul.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerDiana1117553148_PradoBlanca.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerDiana1117553148_PradoBlanca.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerDiana1117553148_Pulsar180Negra.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerDiana1117553148_Pulsar180Negra.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerDiana1117553148_XR190Blanca.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerDiana1117553148_XR190Blanca.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerDiana1117553148_XTZ125Blanca.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerDiana1117553148_XTZ125Blanca.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerMario1002960089_EcoNegra.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerMario1002960089_EcoNegra.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerMario1002960089_FZ16Roja.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerMario1002960089_FZ16Roja.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerMario1002960089_Pulsar125Roja.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerMario1002960089_Pulsar125Roja.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerMario1002960089_SparkAzul.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerMario1002960089_SparkAzul.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\FotoVehiculos\\OwnerMario1002960089_XR150Roja.webp",
+      "PackagePath": "staticwebassets\\FotoVehiculos\\OwnerMario1002960089_XR150Roja.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\CalificarAlquiler.css",
+      "PackagePath": "staticwebassets\\css\\CalificarAlquiler.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\CrearAlquiler.css",
+      "PackagePath": "staticwebassets\\css\\CrearAlquiler.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\HistorialAlquileres.css",
+      "PackagePath": "staticwebassets\\css\\HistorialAlquileres.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\InformacionAlquiler.css",
+      "PackagePath": "staticwebassets\\css\\InformacionAlquiler.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\InformacionUsuario.css",
+      "PackagePath": "staticwebassets\\css\\InformacionUsuario.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\InformacionVehiculo.css",
+      "PackagePath": "staticwebassets\\css\\InformacionVehiculo.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\InformacionVehiculoCrearAlquiler.css",
+      "PackagePath": "staticwebassets\\css\\InformacionVehiculoCrearAlquiler.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\InformacionVehiculos.css",
+      "PackagePath": "staticwebassets\\css\\InformacionVehiculos.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\IniciarSesion.css",
+      "PackagePath": "staticwebassets\\css\\IniciarSesion.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\Inicio.css",
+      "PackagePath": "staticwebassets\\css\\Inicio.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\RegistrarVehiculo.css",
+      "PackagePath": "staticwebassets\\css\\RegistrarVehiculo.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\css\\Registrarse.css",
+      "PackagePath": "staticwebassets\\css\\Registrarse.css"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\imagenes\\Logo.webp",
+      "PackagePath": "staticwebassets\\imagenes\\Logo.webp"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\js\\CrearAlquiler.js",
+      "PackagePath": "staticwebassets\\js\\CrearAlquiler.js"
+    },
+    {
+      "Id": "D:\\UNIVERSIDAD\\WEB\\ALQUILER_VEHICULOS\\wwwroot\\js\\Registrarse.js",
+      "PackagePath": "staticwebassets\\js\\Registrarse.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ALQUILER_VEHICULOS.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ALQUILER_VEHICULOS.props",
+      "PackagePath": "build\\ALQUILER_VEHICULOS.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ALQUILER_VEHICULOS.props",
+      "PackagePath": "buildMultiTargeting\\ALQUILER_VEHICULOS.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ALQUILER_VEHICULOS.props",
+      "PackagePath": "buildTransitive\\ALQUILER_VEHICULOS.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

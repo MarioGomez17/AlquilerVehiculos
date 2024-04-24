@@ -1,0 +1,426 @@
+﻿:root {
+    --Font: "Geologica", sans-serif;
+    --FirstColor: #1FE0B7;
+    --SecondColor: #1649E0;
+    --ThirdColor: #1FCAE0;
+    --FourthColor: #69D3E0;
+    --FifthColor: #04E067;
+    --SixthColor: #1F8DE0;
+    --Wihte: #FFFFFF;
+    --Black: #000000;
+}
+
+/*------------------------------------- GENERAL -------------------------------------*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--Font);
+    text-transform: uppercase;
+}
+
+.BodyCrearAlquiler {
+    height: 100vh;
+}
+
+.ContenidoBodyCrearAlquiler {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+/*------------------------------------- NAVIGATION -------------------------------------*/
+
+.DivBarraNavegacionCrearAlquiler {
+    width: 15%;
+    display: flex;
+}
+
+.BarraNavegacionCrearAlquiler {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--SecondColor);
+}
+
+.DivLinkLogoCrearAlquiler {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImagenLogo {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: solid 7px var(--FifthColor);
+}
+
+.DivLinkCrearAlquiler {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LinkCrearAlquiler {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    border: solid 5px transparent;
+    border-radius: 15px;
+    transition: background-color 0.5s ease;
+}
+
+
+.IconoLinkSVG {
+    filter: drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte));
+}
+
+.TextoLinkCrearAlquiler {
+    color: var(--Black);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.LinkCrearAlquiler:hover .TextoLinkCrearAlquiler {
+    opacity: 1;
+}
+
+.LinkCrearAlquiler:hover .IconoLinkSVG {
+    filter: none;
+}
+
+.LinkCrearAlquiler:hover {
+    background-color: var(--FourthColor);
+    border-color: var(--FifthColor);
+}
+
+/*------------------------------------- CONTENT -------------------------------------*/
+
+.DivContenidoCrearAlquiler {
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--FirstColor);
+}
+
+.DivEncabezadoCrearAlquiler {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.EncabezadoCrearAlquiler {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TituloPrincipalCrearAlquiler {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.DivContenidoPrincipalCrearAlquiler {
+    height: 85%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.DivPrincipalCrearAlquiler {
+    height: 100%;
+    width: 100%;
+}
+
+.PrincipalCrearAlquiler {
+    height: 100%;
+    width: 100%;
+}
+
+.ContenidoPrincipalCrearAlquiler {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.DivTituloFormularioCrearAlquiler {
+    width: 90%;
+    height: 10%;
+}
+
+.TituloFormularioCrearAlquiler {
+    margin: 0;
+    text-align: center;
+}
+
+.DivFormularioCrearAlquilerl {
+    width: 90%;
+    height: 90%;
+    background-color: var(--ThirdColor);
+    border: solid 5px var(--SixthColor);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.FormularioCrearAlquilerl {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.DivFormularioCrearAlquilerlInputsInterior {
+    width: 100%;
+    height: 85%;
+    display: flex;
+}
+
+.DivFormularioDivFormularioCrearAlquilerInputsInteriorIzquieda {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.DivFormularioCrearAlquilerInputsInteriorDerecha {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.DivFormularioCrearAlquilerlBotonInterior {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BotonEnviarFormularioCrearAlquilerl {
+    height: 100%;
+    width: 95%;
+    font-family: var(--Font);
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: bold;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.8s;
+    border: 2px solid var(--SecondColor);
+    border-radius: 15px;
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+}
+
+    .BotonEnviarFormularioCrearAlquilerl:hover {
+        color: var(--Wihte);
+        box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+    }
+
+    .BotonEnviarFormularioCrearAlquilerl:active {
+        transform: scale(0.9);
+    }
+
+.DivInformacionFormularioCrearAlquilerl {
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ComponenteFormulario {
+    font-family: var(--Font);
+    text-transform: uppercase;
+}
+
+.BotonFormulario {
+    border-radius: 20px;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    background: transparent;
+    transition: ease-out 0.8s;
+    border: 4px solid var(--SecondColor);
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+}
+
+    .BotonFormulario:hover {
+        color: var(--Wihte);
+        box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+    }
+
+    .BotonFormulario:active {
+        transform: scale(0.9);
+    }
+
+.EtiquetaFormulario{
+    font-weight: bold;
+}
+
+.InputTextoFormulario {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 342px;
+    padding: 0;
+    text-indent: 20px;
+    height: 40px;
+    font-weight: bold;
+    font-family: var(--Font);
+}
+
+.SelectFormulario {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 350px;
+    text-indent: 20px;
+    height: 50px;
+    font-weight: bold;
+}
+
+.OptionSelectFormulario {
+    font-weight: bold;
+}
+
+.InputFechaHora {
+    font-family: var(--Font);
+    font-weight: bold;
+}
+
+.SpanCheckBoxLavada {
+    display: flex;
+    width: 190px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.DivCheckBoxLavada * {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+.DivCheckBoxLavada input[type="checkbox"] {
+    display: none;
+}
+
+.DivCheckBoxLavada label {
+    --size: 30px;
+    --shadow: calc(var(--size) * .07) calc(var(--size) * .1);
+    position: relative;
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    margin: 0 auto;
+    background-color: var(--SixthColor);
+    background-image: linear-gradient(43deg, var(--SixthColor) 0%, var(--FifthColor) 46%, var(--FirstColor) 100%);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+    overflow: hidden;
+    z-index: 1;
+    border: 3px solid var(--Black);
+}
+
+    .DivCheckBoxLavada label:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        left: 0;
+        width: calc(var(--size) * .3);
+        height: calc(var(--size) * .3);
+        margin: 0 auto;
+        background-color: #fff;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        transition: 0.2s ease width, 0.2s ease height;
+    }
+
+    .DivCheckBoxLavada label:hover:before {
+        width: calc(var(--size) * .55);
+        height: calc(var(--size) * .55);
+    }
+
+    .DivCheckBoxLavada label:active {
+        transform: scale(0.9);
+    }
+
+.DivCheckBoxLavada .DivMarcador {
+    position: absolute;
+    top: -1px;
+    right: 0;
+    left: calc(var(--size) * -.05);
+    width: calc(var(--size) * .6);
+    height: calc(var(--size) * .6);
+    margin: 0 auto;
+    margin-left: calc(var(--size) * .14);
+    transform: rotateZ(-40deg);
+}
+
+    .DivCheckBoxLavada .DivMarcador:before,
+    .DivCheckBoxLavada .DivMarcador:after {
+        content: "";
+        position: absolute;
+        background-color: #fff;
+        border-radius: 2px;
+        opacity: 0;
+        transition: 0.2s ease transform, 0.2s ease opacity;
+    }
+
+    .DivCheckBoxLavada .DivMarcador:before {
+        left: 0;
+        bottom: 0;
+        width: calc(var(--size) * .1);
+        height: calc(var(--size) * .3);
+        transform: translateY(calc(var(--size) * -.68));
+    }
+
+    .DivCheckBoxLavada .DivMarcador:after {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: calc(var(--size) * .1);
+        transform: translateX(calc(var(--size) * .38));
+    }
+
+.DivCheckBoxLavada input[type="checkbox"]:checked + label {
+    background-color: var(--SixthColor);
+    background-image: linear-gradient(43deg, var(--SixthColor) 0%, var(--FifthColor) 46%, var(--FirstColor) 100%);
+}
+
+    .DivCheckBoxLavada input[type="checkbox"]:checked + label:before {
+        width: 0;
+        height: 0;
+    }
+
+    .DivCheckBoxLavada input[type="checkbox"]:checked + label .DivMarcador:before,
+    .DivCheckBoxLavada input[type="checkbox"]:checked + label .DivMarcador:after {
+        transform: translate(0);
+        opacity: 1;
+    }

@@ -1,0 +1,357 @@
+﻿:root {
+    --Font: "Geologica", sans-serif;
+    --FirstColor: #1FE0B7;
+    --SecondColor: #1649E0;
+    --ThirdColor: #1FCAE0;
+    --FourthColor: #69D3E0;
+    --FifthColor: #04E067;
+    --SixthColor: #1F8DE0;
+    --Wihte: #FFFFFF;
+    --Black: #000000;
+}
+
+/*------------------------------------- GENERAL -------------------------------------*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--Font);
+    text-transform: uppercase;
+}
+
+.BodyRegistrarse {
+    height: 100vh;
+}
+
+.ContenidoBodyRegistrarse {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+/*------------------------------------- NAVIGATION -------------------------------------*/
+
+.DivBarraNavegacionRegistrarse {
+    width: 15%;
+    display: flex;
+}
+
+.BarraNavegacionRegistrarse {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--SecondColor);
+}
+
+.DivLinkLogoRegistrarse {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImagenLogo {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: solid 7px var(--FifthColor);
+}
+
+.DivLinkRegistrarse {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LinkRegistrarse {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    border: solid 5px transparent;
+    border-radius: 15px;
+    transition: background-color 0.5s ease;
+}
+
+
+.IconoLinkSVG {
+    filter: drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte));
+}
+
+.TextoLinkRegistrarse {
+    color: var(--Black);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.LinkRegistrarse:hover .TextoLinkRegistrarse {
+    opacity: 1;
+}
+
+.LinkRegistrarse:hover .IconoLinkSVG {
+    filter: none;
+}
+
+.LinkRegistrarse:hover {
+    background-color: var(--FourthColor);
+    border-color: var(--FifthColor);
+}
+
+/*------------------------------------- Contenido -------------------------------------*/
+
+.DivContenidoRegistrarse {
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--FirstColor);
+}
+
+.DivEncabezadoRegistrarse {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.EncabezadoRegistrarse {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TituloPrincipalRegistrarse {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.DivContenidoPrincipalRegistrarse {
+    height: 85%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.DivPrincipalRegistrarse {
+    height: 100%;
+    width: 100%;
+}
+
+.PrincipalRegistrarse {
+    height: 100%;
+    width: 100%;
+}
+
+.ContenidoPrincipalRegistrarse {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.DivTituloFormulario {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TituloFormulario{
+    margin: 0;
+}
+
+.DivErrorViewBag {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ErroViewBag {
+    margin: 0;
+    color: red;
+}
+
+.DivFormularioRegistrarse {
+    width: 70%;
+    height: 90%;
+    background: var(--SixthColor);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+    .DivFormularioRegistrarse::before {
+        content: '';
+        position: absolute;
+        width: 200px;
+        background-image: linear-gradient(180deg, var(--Black), var(--Wihte));
+        height: 215%;
+        animation: BackgroundRotation 3s linear infinite;
+        transition: all 0.2s linear;
+    }
+
+@keyframes BackgroundRotation {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.DivFormularioRegistrarse::after {
+    content: '';
+    position: absolute;
+    background: var(--ThirdColor);
+    inset: 5px;
+    border-radius: 15px;
+}
+
+.FormularioRegistrarse {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+}
+
+.DivParaDosComponentees{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Componente {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.DivIniciarSesion {
+    width: 100%;
+    height: 5%;
+    z-index: 2;
+    margin: 15px;
+}
+
+.TextoIniciarSesion {
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.TextoLinkIniciarSesion {
+    text-decoration: none;
+    color: var(--Black);
+    transition: .5s;
+}
+
+    .TextoLinkIniciarSesion:hover {
+        color: var(--Wihte);
+        font-size: 25px;
+    }
+
+.EtiquetaFormulario {
+    font-size: 20px;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.BotonRegistrar {
+    font-family: var(--Font);
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 90%;
+    padding: 5px 0;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.8s;
+    border: 2px solid var(--SecondColor);
+    border-radius: 15px;
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+}
+
+.BotonRegistrarHabilitado:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+}
+
+.BotonRegistrarHabilitado:active {
+    transform: scale(0.9);
+}
+
+.InputTexto {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 350px;
+    padding: 0;
+    text-indent: 20px;
+    height: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5px 0;
+    padding-right: 15px;
+    font-family: var(--Font);
+}
+
+    .InputTexto:focus {
+        border: solid 4px var(--SecondColor);
+    }
+
+        .InputTexto:focus ~ label {
+            color: var(--SecondColor);
+            font-size: 25px;
+        }
+
+.SelectFormulario {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 350px;
+    text-indent: 20px;
+    height: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5px 0;
+    font-family: var(--Font);
+}
+
+.OptionSelectFormulario {
+    font-weight: bold;
+    font-family: var(--Font);
+}
+
+.SelectFormulario:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+    .SelectFormulario:focus ~ label {
+        color: var(--SecondColor);
+        font-size: 25px;
+    }

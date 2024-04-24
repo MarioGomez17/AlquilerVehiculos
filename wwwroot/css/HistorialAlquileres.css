@@ -1,0 +1,162 @@
+﻿:root {
+    --Font: "Geologica", sans-serif;
+    --FirstColor: #1FE0B7;
+    --SecondColor: #1649E0;
+    --ThirdColor: #1FCAE0;
+    --FourthColor: #69D3E0;
+    --FifthColor: #04E067;
+    --SixthColor: #1F8DE0;
+    --Wihte: #FFFFFF;
+    --Black: #000000;
+}
+
+/*------------------------------------- GENERAL -------------------------------------*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--Font);
+    text-transform: uppercase;
+}
+
+.BodyHistorialAlquileres {
+    height: 100vh;
+}
+
+.ContenidoBodyHistorialAlquileres {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+/*------------------------------------- NAVIGATION -------------------------------------*/
+
+.DivBarraNavegacionHistorialAlquileres {
+    width: 15%;
+    display: flex;
+}
+
+.BarraNavegacionHistorialAlquileres {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--SecondColor);
+}
+
+.DivLinkLogoHistorialAlquileres {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImagenLogo {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: solid 7px var(--FifthColor);
+}
+
+.DivLinkHistorialAlquileres {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LinkHistorialAlquileres {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    border: solid 5px transparent;
+    border-radius: 15px;
+    transition: background-color 0.5s ease;
+}
+
+
+.IconoLinkSVG {
+    filter: drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte));
+}
+
+.TextoLinkHistorialAlquileres {
+    color: var(--Black);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.LinkHistorialAlquileres:hover .TextoLinkHistorialAlquileres {
+    opacity: 1;
+}
+
+.LinkHistorialAlquileres:hover .IconoLinkSVG {
+    filter: none;
+}
+
+.LinkHistorialAlquileres:hover {
+    background-color: var(--FourthColor);
+    border-color: var(--FifthColor);
+}
+
+/*------------------------------------- CONTENT -------------------------------------*/
+
+.DivContenidoHistorialAlquileres {
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--FirstColor);
+}
+
+.DivEncabezadoHistorialAlquileres {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.EncabezadoHistorialAlquileres {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TituloPrincipalHistorialAlquileres {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.DivContenidoPrincipalHistorialAlquileres {
+    height: 85%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.DivPrincipalHistorialAlquileres {
+    height: 100%;
+    width: 100%;
+}
+
+.PrincipalHistorialAlquileres {
+    height: 100%;
+    width: 100%;
+}
+
+.ContenidoPrincipalHistorialAlquileres {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

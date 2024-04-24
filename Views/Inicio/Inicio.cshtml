@@ -1,0 +1,131 @@
+﻿@model List<ModeloVehiculo>;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Inicio.css">
+    <title>INICIO</title>
+</head>
+<body class="BodyInicio">
+    <div class="ContenidoBodyInicio">
+        <div class="DivBarraNavegacionInicio">
+            <nav class="BarraNavegacionInicio">
+                <div class="DivLinkLogoInicio">
+                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo" src="~/imagenes/Logo.webp" alt="Logotipo" /></a>
+                </div>
+                <div class="DivLinkInicio">
+                    <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkInicio">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login-2 IconoSVGLink"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1f9102"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                            <path d="M3 12h13l-3 -3" />
+                            <path d="M13 15l3 -3" />
+                        </svg>
+                        <span class="TextoLinkInicio">Iniciar Sesión</span>
+                    </a>
+                </div>
+                <div class="DivLinkInicio">
+                    <a asp-controller="Usuario" asp-action="InformacionUsuario" class="LinkInicio">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user IconoSVGLink"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#020291"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        </svg>
+                        <span class="TextoLinkInicio">Ver Mi Perfil</span>
+                    </a>
+                </div>
+                <div class="DivLinkInicio">
+                    <a asp-controller="Vehiculo" asp-action="InformacionVehiculos" class="LinkInicio">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car IconoSVGLink"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#beac0d"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
+                        </svg>
+                        <span class="TextoLinkInicio">Ver Mis Vehiculos</span>
+                    </a>
+                </div>
+                <div class="DivLinkInicio">
+                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInicio">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-history IconoSVGLink"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 8l0 4l2 2" />
+                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                        </svg>
+                        <span class="TextoLinkInicio">Ver Mis Alquileres</span>
+                    </a>
+                </div>
+                <div class="DivLinkInicio">
+                    <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkInicio">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login IconoSVGLink"
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#be0d0d"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                            <path d="M21 12h-13l3 -3" />
+                            <path d="M11 15l-3 -3" />
+                        </svg>
+                        <span class="TextoLinkInicio">Cerrar Sesión</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="DivContenidoInicio">
+            <div class="DivEncabezadoInicio">
+                <header class="EncabezadoInicio">
+                    <h1 class="TituloPrincipalInicio">Alquiler de Vehículos</h1>
+                </header>
+            </div>
+            <div class="DivContenidoPrincipalInicio">
+                <div class="DivPrincipalInicio">
+                    <main role="main" class="PrincipalInicio">
+                        <div class="ContenidoPrincipalInicio">
+                            <div class="BarraFiltrosInicio">
+                                <label for="FiltroCiudad">Ciudad</label>
+                                <input type="text" class="FiltroCiudad" id="FiltroCiudad" name="Ciudad" />
+                            </div>
+                            <div class="TarjetasVehiculosInicio">
+                                @if (Model != null)
+                                {
+                                    @foreach (var Vehiculo in Model)
+                                    {
+                                        <div class="InformacionModeloVehiculo">
+                                            <a class="LinkInformacionModeloVehiculo" asp-controller="Vehiculo" asp-action="InformacionVehiculoCrearAlquiler" asp-route-Id_Vehiculo=@Vehiculo.Id>
+                                                <h3 class="TextoLinkInformacionModeloVehiculo">@Vehiculo.TipoVehiculo: @Vehiculo.Marca @Vehiculo.Linea</h3>
+                                            </a>
+                                            <p class="TituloInformacionModeloVehiculo">Ciudad: <span class="ValorInformacionModeloVehiculo">@Vehiculo.Ciudad</span></p>
+                                            <img class="FotoVehiculo" src="~/FotoVehiculos/@Vehiculo.RutaFoto" alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            <div class="DivFooterInicio">
+                <footer class="FooterInicio">
+                    <span class="TextoFooterInicio">
+                        &copy; 2024 - Alquiler de Vehículos por Mario Gómez y Juan Diego Claros
+                    </span>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
