@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function CalcularPrecioAlquiler() {
     try {
-        let Respuesta = await fetch('http://localhost:5010/Alquiler/ObtenerPrecioAlquiler');
+        let Respuesta = await fetch('/Alquiler/ObtenerPrecioAlquiler');
         let Datos = await Respuesta.json()
         const PrecioAlquiler = document.getElementById("PrecioAlquiler");
         PrecioAlquiler.value = Datos.PrecioAlquiler;
