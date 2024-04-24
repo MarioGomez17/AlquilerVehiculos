@@ -7,16 +7,16 @@ namespace ALQUILER_VEHICULOS.Models
 
         public static MySqlConnection Conect()
         {
-            String Server = "localhost";
-            String DataBase = "alquiler_vehiculos";
-            String User = "root";
-            String Password = "M@rio1002960089";
-            String ConnectionString = "database = " + DataBase + "; Data Source = " + Server + "; User Id = " + User + "; Password = " + Password;
+            String Servidor = "localhost";
+            String BaseDatos = "alquiler_vehiculos";
+            String Usuario = "root";
+            String Contrasena = "M@rio1002960089";
+            String CadenaConexion = "database = " + BaseDatos + "; Data Source = " + Servidor + "; User Id= " + Usuario + "; Password = " + Contrasena;
 
             try
             {
-                MySqlConnection ConecctionBD = new(ConnectionString);
-                return ConecctionBD;
+                MySqlConnection ConexionBD = new(CadenaConexion);
+                return ConexionBD;
             }
             catch (MySqlException)
             {
@@ -24,27 +24,27 @@ namespace ALQUILER_VEHICULOS.Models
             }
         }
 
-        public static Boolean ExecuteNonQuerySentence(String SQLQuery)
+        public static Boolean ExecuteNonQuerySentence(String ConsultaSQL)
         {
-            Boolean Flag = false;
-            MySqlConnection ConecctionBD = Conect();
-            ConecctionBD.Open();
+            Boolean Bandera = false;
+            MySqlConnection Conexion = Conect();
+            Conexion.Open();
             try
             {
-                MySqlCommand Command = new(SQLQuery, ConecctionBD);
-                Command.ExecuteNonQuery();
-                Flag = true;
+                MySqlCommand Comando = new(ConsultaSQL, Conexion);
+                Comando.ExecuteNonQuery();
+                Bandera = true;
             }
             catch (MySqlException error)
             {
-                Flag = false;
+                Bandera = false;
                 Console.WriteLine(error);
             }
             finally
             {
-                ConecctionBD.Close();
+                Conexion.Close();
             }
-            return Flag;
+            return Bandera;
         }
 
     }

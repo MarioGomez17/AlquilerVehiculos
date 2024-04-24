@@ -95,13 +95,13 @@
                 <div class="DivPrincipalInformacionVehiculos">
                     <main role="main" class="PrincipalInformacionVehiculos">
                         <div class="ContenidoPrincipalInformacionVehiculos">
-                            <div class="VehicleCardsInformacionVehiculos">
+                            <div class="TarjetasInformacionVehiculos">
                                 @if (Model != null)
                                 {
                                     @foreach (var Vehiculo in Model)
                                     {
                                         <div class="InformacionModeloVehiculo">
-                                            <a class="LinkVehicleInfoInformacionVehiculos" asp-controller="Vehiculo" asp-action="InformacionVehiculo" asp-route-Id_Vehiculo=@Vehiculo.Id>
+                                            <a class="LinkInformacionVehiculos" asp-controller="Vehiculo" asp-action="InformacionVehiculo" asp-route-Id_Vehiculo=@Vehiculo.Id>
                                                 <h3 class="TextoLinkInformacionVehiculos">@Vehiculo.TipoVehiculo: @Vehiculo.Marca @Vehiculo.Linea</h3>
                                             </a>
                                             <p class="TituloInformacionVehiculo">Tipo de @Vehiculo.TipoVehiculo: <span class="ValorInformacionVehiculo">@Vehiculo.ClasificacionVehiculo</span></p>
@@ -114,7 +114,7 @@
                                             <p class="TituloInformacionVehiculo">Tipo de Combustible: <span class="ValorInformacionVehiculo">@Vehiculo.TipoCombustible</span></p>
                                             <p class="TituloInformacionVehiculo">Precio de Alquiler (Por Día): <span class="ValorInformacionVehiculo">@Vehiculo.PrecioAlquilerDia Pesos</span></p>
                                             <p class="TituloInformacionVehiculo">Ciudad: <span class="ValorInformacionVehiculo">@Vehiculo.Ciudad</span></p>
-                                            <img class="VehiclePhoto" src="~/VehiclePhotos/@Vehiculo.RutaFoto" alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
+                                            <img class="FotoVehiculo" src="~/FotoVehiculos/@Vehiculo.RutaFoto" alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
                                         </div>
                                     }
                                 }

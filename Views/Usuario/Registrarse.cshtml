@@ -105,7 +105,7 @@
                                 }
                             </div>
                             <div class="DivFormularioRegistrarse">
-                                <form asp-controller="User" asp-action="RegistrarseAction" method="post" class="FormularioRegistrarse">
+                                <form asp-controller="Usuario" asp-action="RegistrarseAction" method="post" class="FormularioRegistrarse">
                                     <div class="DivParaDosComponentees">
                                         <div class="Componente">
                                             <input class="InputTexto" type="text" placeholder="Nombre" name="Nombre" id="Nombre" required />
@@ -120,10 +120,10 @@
                                         <div class="Componente">
                                             <select id="TipoIdentificacion" name="TipoIdentificacion" class="SelectFormulario">
                                                 <option disabled selected class="OptionSelectFormulario">Seleccione un Tipo de Identificación</option>
-                                                @foreach (var IdentificationTypeUser in Model)
+                                                @foreach (var TipoIdentificacion in Model)
                                                 {
-                                                    <option value=@IdentificationTypeUser.Id class="OptionSelectFormulario">
-                                                        @IdentificationTypeUser.NombreTipoIdentificacionUsuario (@IdentificationTypeUser.SimboloTipoIdentificacionUsuario)
+                                                    <option value=@TipoIdentificacion.Id class="OptionSelectFormulario">
+                                                        @TipoIdentificacion.NombreTipoIdentificacionUsuario (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)
                                                     </option>
                                                 }
                                             </select>

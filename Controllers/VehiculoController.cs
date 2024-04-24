@@ -11,8 +11,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         private ModeloUsuario DatosUsuarioSesion()
         {
             var Identity = HttpContext.User.Identity as ClaimsIdentity;
-            var UserSessionData = Identity.FindFirst(ClaimTypes.UserData).Value;
-            return JsonConvert.DeserializeObject<ModeloUsuario>(UserSessionData);
+            var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
+            return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
 
         [Authorize]
@@ -30,14 +30,14 @@ namespace ALQUILER_VEHICULOS.Controllers
         [Authorize]
         public IActionResult InformacionVehiculo(int Id_Vehiculo)
         {
-            ModeloVehiculo Vehicle = new();
-            return View(Vehicle.TraerVehiculo(Id_Vehiculo));
+            ModeloVehiculo ModeloVehiculo = new();
+            return View(ModeloVehiculo.TraerVehiculo(Id_Vehiculo));
         }
 
         public IActionResult InformacionVehiculoCrearAlquiler(int Id_Vehiculo)
         {
-            ModeloVehiculo Vehicle = new();
-            return View(Vehicle.TraerVehiculo(Id_Vehiculo));
+            ModeloVehiculo ModeloVehiculo = new();
+            return View(ModeloVehiculo.TraerVehiculo(Id_Vehiculo));
         }
     }
 }

@@ -6,15 +6,15 @@ using System.Security.Claims;
 using ALQUILER_VEHICULOS.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace VEHICLE_RENTAL.Controllers
+namespace ALQUILER_VEHICULOS.Controllers
 {
     public class UsuarioController : Controller
     {
         private ModeloUsuario DatosUsuarioSesion()
         {
             var Identity = HttpContext.User.Identity as ClaimsIdentity;
-            var UserSessionData = Identity.FindFirst(ClaimTypes.UserData).Value;
-            return JsonConvert.DeserializeObject<ModeloUsuario>(UserSessionData);
+            var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
+            return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
         public IActionResult IniciarSesion()
         {
@@ -23,7 +23,7 @@ namespace VEHICLE_RENTAL.Controllers
             {
                 if (ClaimsPrincipal.Identity.IsAuthenticated)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Inicio", "Inicio");
                 }
             }
             return View();
@@ -82,10 +82,10 @@ namespace VEHICLE_RENTAL.Controllers
 
         public IActionResult AccionRegistrarse(string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
         {
-            ModeloUsuario UserModel = new();
-            if (UserModel.ValidarUsuario(NumeroIdentificacion))
+            ModeloUsuario ModeloUsuario = new();
+            if (ModeloUsuario.ValidarUsuario(NumeroIdentificacion))
             {
-                if (UserModel.RegistrarUsuario(Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena))
+                if (ModeloUsuario.RegistrarUsuario(Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena))
                 {
                     return View("IniciarSesion");
                 }

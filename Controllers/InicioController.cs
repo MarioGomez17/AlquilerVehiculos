@@ -10,19 +10,19 @@ namespace ALQUILER_VEHICULOS.Controllers
         private ModeloUsuario DatosUsuarioSesion()
         {
             var Identity = HttpContext.User.Identity as ClaimsIdentity;
-            var UserSessionData = Identity.FindFirst(ClaimTypes.UserData).Value;
-            return JsonConvert.DeserializeObject<ModeloUsuario>(UserSessionData);
+            var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
+            return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
         public IActionResult Inicio()
         {
-            ModeloVehiculo VehicleModel = new();
-            return View(VehicleModel.TraerTodosVehiculos());
+            ModeloVehiculo ModeloVehiculo = new();
+            return View(ModeloVehiculo.TraerTodosVehiculos());
         }
 
         public IActionResult InicioFiltrado(string Ciudad)
         {
-            ModeloVehiculo VehicleModel = new();
-            return View(VehicleModel.TraerTodosVehiculos(Ciudad));
+            ModeloVehiculo ModeloVehiculo = new();
+            return View(ModeloVehiculo.TraerTodosVehiculos(Ciudad));
         }
     }
 }

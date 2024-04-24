@@ -10,16 +10,16 @@
 
         public List<ModeloMetodoPagoAlquiler> MetodosPago { get; set; }
 
-        public ModeloCrearAlquiler(int Id_Vehicle) 
+        public ModeloCrearAlquiler(int Id_Vehiculo) 
         { 
-            ModeloVehiculo VehicleModel = new ();
-            ModeloLugarAlquiler RentalPlaceModel = new();
-            ModeloSeguroAlquiler RentalInsuranceModel = new();
-            ModeloMetodoPagoAlquiler RentalPaymentMethodModel = new();
-            this.Vehiculo = VehicleModel.TraerVehiculo(Id_Vehicle);
-            this.Lugares = RentalPlaceModel.TraerTodosLugaresAlquiler();
-            this.Seguros = RentalInsuranceModel.TraerTodosSegurosAlquiler();
-            this.MetodosPago = RentalPaymentMethodModel.TraerTodosMetodosPagoAlquiler();
+            ModeloVehiculo ModeloVehiculo = new ();
+            ModeloLugarAlquiler ModeloLugarAlquiler = new();
+            ModeloSeguroAlquiler ModeloSeguroAlquiler = new();
+            ModeloMetodoPagoAlquiler ModeloMetodoPagoAlquiler = new();
+            this.Vehiculo = ModeloVehiculo.TraerVehiculo(Id_Vehiculo);
+            this.Lugares = ModeloLugarAlquiler.TraerTodosLugaresAlquiler();
+            this.Seguros = ModeloSeguroAlquiler.TraerTodosSegurosAlquiler();
+            this.MetodosPago = ModeloMetodoPagoAlquiler.TraerTodosMetodosPagoAlquiler();
         }
     }
 }
