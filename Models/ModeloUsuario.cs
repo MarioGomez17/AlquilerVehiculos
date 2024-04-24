@@ -98,7 +98,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
                 "INNER JOIN alquiler_vehiculos.estado_usuario " +
                 "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
-                "alquiler_vehiculos.usuario.Id_Usuario = " + Id_usuario;
+                "WHERE alquiler_vehiculos.usuario.Id_Usuario = " + Id_usuario;
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
