@@ -102,14 +102,15 @@
                                 <h2 class="TituloFormularioCrearAlquiler">Realizar Alquiler</h2>
                             </div>
                             <div class="DivFormularioCrearAlquilerl">
-                                <form asp-controller="" asp-action="" method="post" class="FormularioCrearAlquilerl">
+                                <form asp-controller="Alquiler" asp-action="AccionCrearAlquiler" method="post" class="FormularioCrearAlquilerl">
+                                    <input type="hidden" name="Vehiculo" value="@Model.Vehiculo.Id"/>
                                     <div class="DivFormularioCrearAlquilerlInputsInterior">
                                         <div class="DivFormularioDivFormularioCrearAlquilerInputsInteriorIzquieda">
                                             <label class="EtiquetaFormulario">Fecha Inicio Alquiler</label>
-                                            <input type="datetime-local" name="name"
+                                            <input type="datetime-local" name="FechaInicio"
                                                 class="InputFechaHora ComponenteFormulario" />
                                             <label class="EtiquetaFormulario">Fecha Fin Alquiler</label>
-                                            <input type="datetime-local" name="name"
+                                            <input type="datetime-local" name="FechaFin"
                                                 class="InputFechaHora ComponenteFormulario" />
                                         </div>
                                         <div class="DivFormularioCrearAlquilerInputsInteriorDerecha">
@@ -126,7 +127,7 @@
                                             </div>
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <label class="EtiquetaFormulario">Lugar de Recogida y Entega</label>
-                                                <select class="ComponenteFormulario SelectFormulario">
+                                                <select class="ComponenteFormulario SelectFormulario" name="Lugar">
                                                     <option value=0 selected disabled class="OptionSelectFormulario">
                                                         Seleccione un Lugar</option>
                                                     @foreach (var Place in Model.Lugares)
@@ -139,7 +140,7 @@
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <span class="SpanCheckBoxLavada EtiquetaFormulario">
                                                     <div class="DivCheckBoxLavada">
-                                                        <input id="BotonLavadaVehiculo" type="checkbox">
+                                                        <input id="BotonLavadaVehiculo" type="checkbox" name="SiLavada">
                                                         <label for="BotonLavadaVehiculo">
                                                             <div class="DivMarcador"></div>
                                                         </label>
@@ -151,7 +152,7 @@
                                             </div>
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <label class="EtiquetaFormulario">Seguro</label>
-                                                <select class="ComponenteFormulario SelectFormulario">
+                                                <select class="ComponenteFormulario SelectFormulario" name="Seguro">
                                                     <option value=0 selected disabled class="OptionSelectFormulario">
                                                         Seleccione un Seguro</option>
                                                     @foreach (var Insurance in Model.Seguros)
@@ -166,12 +167,12 @@
                                                 <button id="BotonCalcularPrecioAlquiler"
                                                     class="ComponenteFormulario BotonFormulario">Calcular Total
                                                     Alquiler</button>
-                                                <input type="text" value="" id="PrecioAlquiler"
+                                                <input type="text" value="" id="PrecioAlquiler" name="Precio"
                                                     class="ComponenteFormulario InputTextoFormulario" />
                                             </div>
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <label class="EtiquetaFormulario">Método de Pago</label>
-                                                <select class="ComponenteFormulario SelectFormulario">
+                                                <select class="ComponenteFormulario SelectFormulario" name="MetodoPago">
                                                     <option value=0 selected disabled class="OptionSelectFormulario">
                                                         Seleccione un Método de Pago</option>
                                                     @foreach (var PaymentMethod in Model.MetodosPago)
