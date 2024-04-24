@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\ALQUILER_VEHICULOS.props" />
-</Project>
