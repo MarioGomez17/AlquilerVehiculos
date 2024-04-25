@@ -43,7 +43,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "INNER JOIN alquiler_vehiculos.estado_usuario " +
                 "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
                 "WHERE alquiler_vehiculos.usuario.Correo_Usuario = '" + Correo + "' " +
-                "AND alquiler_vehiculos.usuario.Contrasena_Usuario =SHA('" + Contrasena + "') ";
+                "AND alquiler_vehiculos.usuario.Contrasena_Usuario = SHA('" + Contrasena + "') ";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
@@ -65,12 +65,12 @@ namespace ALQUILER_VEHICULOS.Models
                             Telefono = Lector.GetString(6),
                             Correo = Lector.GetString(7),
                             Contrasena = "",
-                            Estado = Lector.GetString(9),
+                            Estado = Lector.GetString(8),
                         };
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception e) { Console.WriteLine(e.Message); }
             finally
             {
                 ConexionBD.Close();
@@ -118,7 +118,7 @@ namespace ALQUILER_VEHICULOS.Models
                             Telefono = Lector.GetString(6),
                             Correo = Lector.GetString(7),
                             Contrasena = "",
-                            Estado = Lector.GetString(9),
+                            Estado = Lector.GetString(8),
                         };
                     }
                 }
@@ -172,7 +172,7 @@ namespace ALQUILER_VEHICULOS.Models
                             Telefono = Lector.GetString(6),
                             Correo = Lector.GetString(7),
                             Contrasena = "",
-                            Estado = Lector.GetString(9),
+                            Estado = Lector.GetString(8),
                         };
                     }
                 }
