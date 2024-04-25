@@ -17,3 +17,6 @@ bin/Debug/net8.0/
 obj/Debug/
 obj/Debug/ref
 obj/Debug/refint
+
+.Models/ModeloConexion.cs
+Models/ModeloConexion.cs

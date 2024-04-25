@@ -70,7 +70,7 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception e) { Console.WriteLine(e.Message); }
+            catch (Exception) {}
             finally
             {
                 ConexionBD.Close();
