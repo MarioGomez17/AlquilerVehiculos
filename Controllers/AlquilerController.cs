@@ -49,10 +49,13 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             return View();
         }
-        public IActionResult ObtenerPrecioAlquiler()
+        public IActionResult ObtenerPrecioAlquiler(int IdVehiculo, int IdSeguro)
         {
-            float PrecioAlquiler = 999;
-            return Json(new { PrecioAlquiler });
+            ModeloSeguroAlquiler ModeloSeguroAlquiler = new();
+            ModeloSeguroAlquiler = ModeloSeguroAlquiler.TraerSeguroAlquiler(IdSeguro);
+            ModeloVehiculo ModeloVehiculo = new();
+            ModeloVehiculo = ModeloVehiculo.TraerVehiculo(IdVehiculo);
+            return Json(new { PrecioSeguro = ModeloSeguroAlquiler.PrecioSeguroAlquiler, PrecioAlquilerDiaVehiculo = ModeloVehiculo.PrecioAlquilerDia });
         }
     }
 }
