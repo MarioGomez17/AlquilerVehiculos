@@ -29,9 +29,9 @@
                 "Lugar_Alquiler, " + 
                 "MeotodoPago_Alquiler, " + 
                 "Seguro_Alquiler) " + 
-                "VALUES (" + 
-                FechaInicio + ", " + 
-                FechaFin + ", " + 
+                "VALUES ('" + 
+                FechaInicio.ToString("yyyy-MM-dd HH:mm:ss") + "', " + 
+                "'" + FechaFin.ToString("yyyy-MM-dd HH:mm:ss") + "', " + 
                 Precio + ", " + 
                 Lavada + ", " + 
                 Alquilador + ", " + 
