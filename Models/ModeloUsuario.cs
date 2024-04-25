@@ -36,7 +36,6 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " + 
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
-                "alquiler_vehiculos.usuario.Contrasena_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
@@ -65,7 +64,7 @@ namespace ALQUILER_VEHICULOS.Models
                             NumeroIdentificacion = Lector.GetString(5),
                             Telefono = Lector.GetString(6),
                             Correo = Lector.GetString(7),
-                            Contrasena = Lector.GetString(8),
+                            Contrasena = "",
                             Estado = Lector.GetString(9),
                         };
                     }
@@ -91,7 +90,6 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " + 
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
-                "alquiler_vehiculos.usuario.Contrasena_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
@@ -119,7 +117,7 @@ namespace ALQUILER_VEHICULOS.Models
                             NumeroIdentificacion = Lector.GetString(5),
                             Telefono = Lector.GetString(6),
                             Correo = Lector.GetString(7),
-                            Contrasena = Lector.GetString(8),
+                            Contrasena = "",
                             Estado = Lector.GetString(9),
                         };
                     }
@@ -145,7 +143,6 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " +
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
-                "alquiler_vehiculos.usuario.Contrasena_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
@@ -174,7 +171,7 @@ namespace ALQUILER_VEHICULOS.Models
                             NumeroIdentificacion = Lector.GetString(5),
                             Telefono = Lector.GetString(6),
                             Correo = Lector.GetString(7),
-                            Contrasena = Lector.GetString(8),
+                            Contrasena = "",
                             Estado = Lector.GetString(9),
                         };
                     }
