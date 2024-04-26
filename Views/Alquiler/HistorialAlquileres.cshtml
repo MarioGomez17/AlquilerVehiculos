@@ -1,8 +1,10 @@
-﻿@{
+﻿@model ModeloAlquileresUsuario;
+@{
     Layout = null;
 }
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +14,7 @@
     <link rel="stylesheet" href="~/css/HistorialAlquileres.css">
     <title>HISTORIAL ALQUILERES</title>
 </head>
+
 <body class="BodyHistorialAlquileres">
     <div class="ContenidoBodyHistorialAlquileres">
         <div class="DivBarraNavegacionHistorialAlquileres">
@@ -97,6 +100,26 @@
                 <div class="DivPrincipalHistorialAlquileres">
                     <main role="main" class="PrincipalHistorialAlquileres">
                         <div class="ContenidoPrincipalHistorialAlquileres">
+                            <h2>Alquileres Realizados</h2>
+                            @if (Model.HistorialAlquileresAlquilador.Count() > 0)
+                            {
+                                @foreach (var Alquiler in Model.HistorialAlquileresAlquilador)
+                                {
+                                    <h1>@Alquiler.Precio</h1>
+                                }
+                            }else{
+                                <h3>No Tienes Alquileres Realizados</h3>
+                            }
+                            <h2>Alquileres Ofrecidos</h2>
+                            @if (Model.HistorialAlquileresPropietario.Count() > 0)
+                            {
+                                @foreach (var Alquiler in Model.HistorialAlquileresPropietario)
+                                {
+                                    <h1>@Alquiler.Precio</h1>
+                                }
+                            }else{
+                                <h3>No Tienes Alquileres Ofrecidos</h3>
+                            }
                         </div>
                     </main>
                 </div>
@@ -111,4 +134,5 @@
         </div>
     </div>
 </body>
+
 </html>

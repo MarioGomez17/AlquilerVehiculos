@@ -5,9 +5,11 @@ namespace ALQUILER_VEHICULOS.Models
     public class ModeloAlquilador
     {
         public int Id { get; set; }
+
         public string Codigo { get; set; }
+
         public ModeloUsuario Usuario { get; set; }
-        public List<ModeloAlquiler> HistorialAlquileres { get; set; }
+        
         public ModeloAlquilador TraerAlquilador(int Id_Usuario)
         {
             ModeloAlquilador ModeloAlquilador = null;
@@ -44,6 +46,7 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ModeloAlquilador;
         }
+
         public bool CrearAlquilador(int Id_Usuario){
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario = ModeloUsuario.TraerUsuario(Id_Usuario);
@@ -57,11 +60,20 @@ namespace ALQUILER_VEHICULOS.Models
             ModeloUsuario.Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
+        
         public bool ValidarAlquilador(int Id_Usuario){
             return TraerAlquilador(Id_Usuario) == null;
         }
+
+        public bool AgregarAlquilerHistorialAlquilador(int IdAlquilador, int IdAlquiler){
+            string ConsultaSQL = "INSERT INTO " +
+                                "alquiler_vehiculos.historial_alquileres_alquilador ( " +
+                                "alquiler_vehiculos.historial_alquileres_alquilador.alquilador_HistorialAlquileresalquilador, " +
+                                "alquiler_vehiculos.historial_alquileres_alquilador.Alquiler_HistorialAlquileresalquilador) " +
+                                "VALUES ( " +
+                                IdAlquilador + ", " +
+                                IdAlquiler + ")" ;    
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }
-
-
-/*------------------------------- ENSAYO GITHUB -------------------------------*/

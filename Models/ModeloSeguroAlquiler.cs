@@ -32,7 +32,6 @@ namespace ALQUILER_VEHICULOS.Models
                             Id = Lector.GetInt32(0),
                             NombreSeguroAlquiler = Lector.GetString(1),
                             PrecioSeguroAlquiler = Lector.GetFloat(2)
-
                         };
                         SegurosAlquiler.Add(SeguroAlquiler);
                     }
@@ -45,6 +44,7 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return SegurosAlquiler;
         }
+
         public ModeloSeguroAlquiler TraerSeguroAlquiler(int Id_Seguro)
         {
             ModeloSeguroAlquiler SeguroAlquiler = null;
@@ -70,7 +70,6 @@ namespace ALQUILER_VEHICULOS.Models
                             Id = Lector.GetInt32(0),
                             NombreSeguroAlquiler = Lector.GetString(1),
                             PrecioSeguroAlquiler = Lector.GetFloat(2)
-
                         };
                     }
                 }

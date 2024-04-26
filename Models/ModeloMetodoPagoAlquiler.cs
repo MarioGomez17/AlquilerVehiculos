@@ -29,7 +29,6 @@ namespace ALQUILER_VEHICULOS.Models
                         {
                             Id = Lector.GetInt32(0),
                             Nombre = Lector.GetString(1),
-
                         };
                         MetodosPagoAlquiler.Add(MetodoPagoAlquiler);
                     }

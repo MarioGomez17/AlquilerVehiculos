@@ -5,9 +5,7 @@ namespace ALQUILER_VEHICULOS.Models
     public class ModeloTipoIdentificacionUsuario
     {
         public int Id { get; set; } 
-        
         public string NombreTipoIdentificacionUsuario { get; set; }
-
         public string SimboloTipoIdentificacionUsuario { get; set; }
 
         public List<ModeloTipoIdentificacionUsuario> TraerTodosTiposdeIdentificacion()
@@ -34,7 +32,6 @@ namespace ALQUILER_VEHICULOS.Models
                             Id = Lector.GetInt32(0),
                             NombreTipoIdentificacionUsuario = Lector.GetString(1),
                             SimboloTipoIdentificacionUsuario = Lector.GetString(2),
-
                         };
                         TiposdeIdentificacion.Add(TipoIdentificacionUsuario);
                     }
@@ -45,7 +42,6 @@ namespace ALQUILER_VEHICULOS.Models
             {
                 ConexionBD.Close();
             }
-
             return TiposdeIdentificacion;
         }
     }

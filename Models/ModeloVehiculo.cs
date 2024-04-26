@@ -5,41 +5,23 @@ namespace ALQUILER_VEHICULOS.Models
     public class ModeloVehiculo
     {
         public int Id { get; set; }
-
         public string TipoVehiculo { get; set; }
-
         public string ClasificacionVehiculo { get; set; }
-
         public string Placa { get; set; }
-
         public int Modelo { get; set; }
-
         public int Cilindrada { get; set; }
-
         public string Color { get; set; }
-
         public int CantidadPasajeros { get; set; }
-
         public string NumeroSeguro { get; set; }
-
         public string NumeroCertificadoCDA { get; set; }
-
         public float PrecioAlquilerDia { get; set; }
-
         public string RutaFoto { get; set; }
-
         public string Ciudad { get; set; }
-
         public string Marca { get; set; }
-
         public string Linea { get; set; }
-
         public string TipoCombustible { get; set; }
-
         public string Estado { get; set; }
-
         public int Propietario { get; set; }
-
         public List<ModeloVehiculo> TraerTodosVehiculos()
         {
             List<ModeloVehiculo> ListaVehiculos = [];
@@ -80,6 +62,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
+                "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo = 1 " + 
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
@@ -121,13 +104,7 @@ namespace ALQUILER_VEHICULOS.Models
             {
                 ConexionBD.Close();
             }
-            foreach (var Vehiculo in ListaVehiculos)
-            {
-                if (Vehiculo.Estado != "Activo")
-                {
-                    ListaVehiculos.Remove(Vehiculo);
-                }
-            }
+            
             return ListaVehiculos;
         }
 
@@ -171,7 +148,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "WHERE alquiler_vehiculos.ciudad.Nombre_Ciudad = '" + Ciudad + "' " +
+                "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo = 1 " + 
+                "AND alquiler_vehiculos.ciudad.Nombre_Ciudad = '" + Ciudad + "' " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
@@ -212,13 +190,6 @@ namespace ALQUILER_VEHICULOS.Models
             finally
             {
                 ConexionBD.Close();
-            }
-            foreach (var Vehiculo in ListaVehiculos)
-            {
-                if (Vehiculo.Estado != "Activo")
-                {
-                    ListaVehiculos.Remove(Vehiculo);
-                }
             }
             return ListaVehiculos;
         }
@@ -305,13 +276,7 @@ namespace ALQUILER_VEHICULOS.Models
             {
                 ConexionDB.Close();
             }
-            foreach (var Vehiculo in ListaVehiculos)
-            {
-                if (Vehiculo.Estado != "Activo")
-                {
-                    ListaVehiculos.Remove(Vehiculo);
-                }
-            }
+            
             return ListaVehiculos;
         }
 
@@ -397,6 +362,15 @@ namespace ALQUILER_VEHICULOS.Models
                 ConexionBD.Close();
             }
             return Vehiculo;
+        }
+        public bool CambiarEstadoVehiculo(int IdVehiculo){
+            string ConsultaSQL = "UPDATE " +
+                                "alquiler_vehiculos.vehiculo " +
+                                "SET " +
+                                "Estado_Vehiculo = 3 " +
+                                "WHERE " +
+                                "(Id_Vehiculo = " + IdVehiculo + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
     }
 }

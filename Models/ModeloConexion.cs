@@ -4,7 +4,6 @@ namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloConexion
     {
-
         public static MySqlConnection Conect()
         {
             String Servidor = "localhost";

@@ -5,23 +5,14 @@ namespace ALQUILER_VEHICULOS.Models
     public class ModeloUsuario
     {
         public int Id { get; set; }
-
         public string Nombre { get; set; }
-
         public string Apellido { get; set; }
-
         public string TipoIdentificacion { get; set; }
-
         public string SimboloTipoIdentificacion { get; set; }
-
         public string NumeroIdentificacion { get; set; }
-
         public string Telefono { get; set; }
-
         public string Correo { get; set; }
-
         public string Contrasena { get; set; }
-
         public string Estado { get; set; }
 
         public ModeloUsuario TraerUsuario(string Correo, string Contrasena)
@@ -150,7 +141,6 @@ namespace ALQUILER_VEHICULOS.Models
                 "INNER JOIN alquiler_vehiculos.estado_usuario " +
                 "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
                 "WHERE alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario = '" + NumeroIdentificacion + "' ";
-
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {

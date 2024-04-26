@@ -78,6 +78,7 @@ html, body {
     border: solid 5px transparent;
     border-radius: 15px;
     transition: background-color 0.5s ease;
+    font-weight: bold;
 }
 
 
@@ -89,10 +90,12 @@ html, body {
     color: var(--Black);
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+    font-weight: bold;
 }
 
 .LinkInicio:hover .TextoLinkInicio {
     opacity: 1;
+    font-weight: bold;
 }
 
 .LinkInicio:hover .IconoSVGLink {
