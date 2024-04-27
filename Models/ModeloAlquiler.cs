@@ -103,7 +103,7 @@ namespace ALQUILER_VEHICULOS.Models
                             FechaIncio = Lector.GetDateTime(1),
                             FechaFin = Lector.GetDateTime(2),
                             Precio = Lector.GetFloat(3),
-                            Lavada = Lector.GetInt32(4) == 1 ? true : false,
+                            Lavada = Lector.GetInt32(4) == 1,
                             Alquilador = ModeloAlquilador.TraerAlquilador(Lector.GetInt32(5)),
                             Vehiculo = ModeloVehiculo.TraerVehiculo(Lector.GetInt32(6)),
                             Lugar = Lector.GetString(7),

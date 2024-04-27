@@ -31,14 +31,14 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 ModeloAlquilador.CrearAlquilador(DatosUsuarioSesion().Id);
             }
-            ModeloAlquilador = ModeloAlquilador.TraerAlquilador(DatosUsuarioSesion().Id);
+            ModeloAlquilador = ModeloAlquilador.TraerAlquiladorUsuario(DatosUsuarioSesion().Id);
             int Alquilador = ModeloAlquilador.Id;
             ModeloAlquiler.CrearAquiler(FechaInicio, FechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
             return RedirectToAction("Inicio", "Inicio");
         }
 
         [Authorize]
-        public IActionResult InformacionAlquiler()
+        public IActionResult InformacionAlquiler(int IdAlquiler)
         {
             return View();
         }

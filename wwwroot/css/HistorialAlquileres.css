@@ -141,6 +141,9 @@ html, body {
     height: 85%;
     width: 100%;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .DivPrincipalHistorialAlquileres {
@@ -158,6 +161,454 @@ html, body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.DivContenedorHistoriales {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--ThirdColor);
+    border: 5px solid var(--SixthColor);
+    border-radius: 15px;
+}
+
+.DivContenidoHistoriales {
+    width: 100%;
+    height: 97%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.DivTituloHistoriales {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DivTituloHistorialesAlquileresRealizados {
+    margin-bottom: 30px;
+}
+
+.DivTituloHistorialesAlquileresOfrecidos {
+    margin-bottom: 30px;
+    margin-top: 60px;
+}
+
+.TituloHistoriales {
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+}
+
+.ContenidoHistoriales {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 15px;
+}
+
+.TituloNoAlquileres {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+.InformacionAlquiler {
+    width: 95%;
+    height: 350px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 5px solid var(--Black);
+    background-color: var(--SixthColor);
+    border-radius: 15px;
+}
+
+.DetallesAlquiler {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ValorInformacionAlquiler {
+    margin: 0 0 20px 0;
+    font-size: 15px;
+}
+
+.TituloInformacionAlquiler {
+    margin: 10px 0;
+    font-weight: bold;
+    color: var(--Wihte);
+    font-size: 20px;
+}
+
+.InformacionAlquilerParte1 {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.InformacionAlquilerParte2 {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.InformacionAlquilerParte3 {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.CalificacionAlquiler {
+    text-align: center;
+    height: 60%;
+}
+
+.ComentarioCalificacionAlquiler {
+    text-align: center;
+    height: 60%;
+}
+
+:root {
+    --Font: "Geologica", sans-serif;
+    --FirstColor: #1FE0B7;
+    --SecondColor: #1649E0;
+    --ThirdColor: #1FCAE0;
+    --FourthColor: #69D3E0;
+    --FifthColor: #04E067;
+    --SixthColor: #1F8DE0;
+    --Wihte: #FFFFFF;
+    --Black: #000000;
+}
+
+/*------------------------------------- GENERAL -------------------------------------*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--Font);
+    text-transform: uppercase;
+}
+
+.BodyHistorialAlquileres {
+    height: 100vh;
+}
+
+.ContenidoBodyHistorialAlquileres {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+/*------------------------------------- NAVIGATION -------------------------------------*/
+
+.DivBarraNavegacionHistorialAlquileres {
+    width: 15%;
+    display: flex;
+}
+
+.BarraNavegacionHistorialAlquileres {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--SecondColor);
+}
+
+.DivLinkLogoHistorialAlquileres {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImagenLogo {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: solid 7px var(--FifthColor);
+}
+
+.DivLinkHistorialAlquileres {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LinkHistorialAlquileres {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    border: solid 5px transparent;
+    border-radius: 15px;
+    transition: background-color 0.5s ease;
+    font-weight: bold;
+}
+
+
+.IconoLinkSVG {
+    filter: drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte));
+}
+
+.TextoLinkHistorialAlquileres {
+    color: var(--Black);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.LinkHistorialAlquileres:hover .TextoLinkHistorialAlquileres {
+    opacity: 1;
+}
+
+.LinkHistorialAlquileres:hover .IconoLinkSVG {
+    filter: none;
+}
+
+.LinkHistorialAlquileres:hover {
+    background-color: var(--FourthColor);
+    border-color: var(--FifthColor);
+}
+
+/*------------------------------------- CONTENT -------------------------------------*/
+
+.DivContenidoHistorialAlquileres {
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--FirstColor);
+}
+
+.DivEncabezadoHistorialAlquileres {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.EncabezadoHistorialAlquileres {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TituloPrincipalHistorialAlquileres {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.DivContenidoPrincipalHistorialAlquileres {
+    height: 85%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DivPrincipalHistorialAlquileres {
+    height: 100%;
+    width: 100%;
+}
+
+.PrincipalHistorialAlquileres {
+    height: 100%;
+    width: 100%;
+}
+
+.ContenidoPrincipalHistorialAlquileres {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.DivContenedorHistoriales {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--ThirdColor);
+    border: 5px solid var(--SixthColor);
+    border-radius: 15px;
+}
+
+.DivContenidoHistoriales {
+    width: 100%;
+    height: 97%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.DivTituloHistoriales {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DivTituloHistorialesAlquileresRealizados {
+    margin-bottom: 30px;
+}
+
+.DivTituloHistorialesAlquileresOfrecidos {
+    margin-bottom: 30px;
+    margin-top: 60px;
+}
+
+.TituloHistoriales {
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+}
+
+.ContenidoHistoriales {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 15px;
+}
+
+.TituloNoAlquileres {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+
+.LinkInformacionAlquiler{
+    text-decoration: none;
+    transition: .5s;
+    width: 95%;
+    color: var(--Black);
+}
+
+.LinkInformacionAlquiler:hover{
+    scale: 1.07;
+    margin: 10px 0;
+}
+
+.LinkInformacionAlquiler:hover .InformacionAlquiler{
+    border-color: var(--FifthColor);
+}
+
+.InformacionAlquiler {
+    width: 95%;
+    height: 350px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 5px solid var(--Black);
+    background-color: var(--SixthColor);
+    border-radius: 15px;
+}
+
+.DetallesAlquiler {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ValorInformacionAlquiler {
+    margin: 0 0 20px 0;
+    font-size: 15px;
+}
+
+.TituloInformacionAlquiler {
+    margin: 10px 0;
+    font-weight: bold;
+    color: var(--Wihte);
+    font-size: 20px;
+}
+
+.InformacionAlquilerParte1 {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.InformacionAlquilerParte2 {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.InformacionAlquilerParte3 {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.CalificacionAlquiler {
+    text-align: center;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.ComentarioCalificacionAlquiler {
+    text-align: center;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
 }

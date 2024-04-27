@@ -20,7 +20,7 @@ namespace ALQUILER_VEHICULOS.Models
             List<ModeloAlquiler> AlquileresAlquilador = [];
             ModeloAlquilador ModeloAlquilador = new();
             
-            ModeloAlquilador = ModeloAlquilador.TraerAlquilador(IdUsuario);
+            ModeloAlquilador = ModeloAlquilador.TraerAlquiladorUsuario(IdUsuario);
             string ConsultaSQL = "SELECT " +
                                 "alquiler_vehiculos.historial_alquileres_alquilador.Alquiler_HistorialAlquileresAlquilador " +
                                 "FROM alquiler_vehiculos.historial_alquileres_alquilador " +

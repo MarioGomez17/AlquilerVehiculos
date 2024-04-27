@@ -61,7 +61,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                     AuthenticationProperties AuthenticationProperties = new()
                     {
                         AllowRefresh = true,
-                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(MantenerSesion == "on" ? 30 : 5)
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(MantenerSesion == "on" ? 60 : 5)
                     };
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(ClaimsIdentity), AuthenticationProperties);
