@@ -4,6 +4,7 @@
 }
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/InformacionVehiculoCrearAlquiler.css" />
-    <title>Información Vehículo</title>
+    <title>INFORMACIÓN VEHÍCULO</title>
 </head>
+
 <body class="BodyInformacionVehiculoCrearAlquiler">
     <div class="ContenidoBodyInformacionVehiculoCrearAlquiler">
         <div class="DivBarraNavegacionInformacionVehiculoCrearAlquiler">
@@ -101,72 +103,87 @@
                 <div class="DivPrincipalInformacionVehiculoCrearAlquiler">
                     <main role="main" class="PrincipalInformacionVehiculoCrearAlquiler">
                         <div class="ContenidoPrincipalInformacionVehiculoCrearAlquiler">
-                            <div class="DivGrupoComponentesInformacionVehiculoCrearAlquiler">
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Tipo de Vehículo</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.TipoVehiculo" readonly />
+                            <div class="DivInformacionVehiculosParte1">
+                                <div class="DivGrupoInformacionVehiculoParte1">
+                                    <div class="DivGrupo2Componentes">
+                                        <label class="TitluloInformacionVehiculoCrearAlquiler">Tipo de Vehículo</label>
+                                        <input class="ValorInformacionVehiculoCrearAlquilerParte1" type="text"
+                                            value="@Model.TipoVehiculo" readonly />
+                                    </div>
+                                    <div class="DivGrupo2Componentes">
+                                        <label class="TitluloInformacionVehiculoCrearAlquiler">Marca</label>
+                                        <input class="ValorInformacionVehiculoCrearAlquilerParte1" type="text"
+                                            value="@Model.Marca" readonly />
+                                    </div>
+                                    <div class="DivGrupo2Componentes">
+                                        <label class="TitluloInformacionVehiculoCrearAlquiler">Linea</label>
+                                        <input class="ValorInformacionVehiculoCrearAlquilerParte1 LineaVehiculo"
+                                            type="text" value="@Model.Linea" readonly />
+                                    </div>
                                 </div>
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Marca</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.Marca" readonly />
-                                </div>
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Linea</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.Linea" readonly />
-                                </div>
-                            </div>
-                            <div class="DivGrupoComponentesInformacionVehiculoCrearAlquiler">
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Clasificación del
-                                        Vehículo</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.ClasificacionVehiculo" readonly />
-                                </div>
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Cilindrada</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.Cilindrada" readonly />
-                                </div>
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Tipo de Combustible</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.TipoCombustible" readonly />
-                                </div>
-                            </div>
-                            <div class="DivGrupoComponentesInformacionVehiculoCrearAlquiler">
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Modelo</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.Modelo" readonly />
-                                </div>
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Color</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.Color" readonly />
-                                </div>
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Cantidad de Pasajeros</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.CantidadPasajeros" readonly />
+                                <div class="DivGrupoInformacionVehiculoParte1">
+                                    <div class="DivGrupo2Componentes">
+                                        <label class="TitluloInformacionVehiculoCrearAlquiler">Clasificación del
+                                            Vehículo</label>
+                                        <input class="ValorInformacionVehiculoCrearAlquilerParte1" type="text"
+                                            value="@Model.ClasificacionVehiculo" readonly />
+                                    </div>
+                                    <div class="DivGrupo2Componentes">
+                                        <label class="TitluloInformacionVehiculoCrearAlquiler">Color</label>
+                                        <input class="ValorInformacionVehiculoCrearAlquilerParte1" type="text"
+                                            value="@Model.Color" readonly />
+                                    </div>
+                                    <div class="DivGrupo2Componentes">
+                                        <label class="TitluloInformacionVehiculoCrearAlquiler">Ciudad</label>
+                                        <input class="ValorInformacionVehiculoCrearAlquilerParte1 CiudadVehiculo"
+                                            type="text" value="@Model.Ciudad" readonly />
+                                    </div>
                                 </div>
                             </div>
-                            <div class="DivGrupoComponentesInformacionVehiculoCrearAlquiler">
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Ciudad</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler CiudadVehiculo" type="text"
-                                        value="@Model.Ciudad" readonly />
+                            <div class="DivInformacionVehiculosParte2">
+                                <div class="DivInformacionVehiculosParte2Informacion">
+                                    <div class="DivGrupoInformacionVehiculoParte2">
+                                        <div class="DivGrupo2Componentes">
+                                            <label class="TitluloInformacionVehiculoCrearAlquiler">Modelo</label>
+                                            <input class="ValorInformacionVehiculoCrearAlquilerParte2" type="text"
+                                                value="@Model.Modelo" readonly />
+                                        </div>
+                                        <div class="DivGrupo2Componentes">
+                                            <label class="TitluloInformacionVehiculoCrearAlquiler">Cantidad de
+                                                Pasajeros</label>
+                                            <input class="ValorInformacionVehiculoCrearAlquilerParte2" type="text"
+                                                value="@Model.CantidadPasajeros" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="DivGrupoInformacionVehiculoParte2">
+                                        <div class="DivGrupo2Componentes">
+                                            <label class="TitluloInformacionVehiculoCrearAlquiler">Cilindrada</label>
+                                            <input class="ValorInformacionVehiculoCrearAlquilerParte2" type="text"
+                                                value="@Model.Cilindrada" readonly />
+                                        </div>
+                                        <div class="DivGrupo2Componentes">
+                                            <label class="TitluloInformacionVehiculoCrearAlquiler">Tipo de
+                                                Combustible</label>
+                                            <input class="ValorInformacionVehiculoCrearAlquilerParte2" type="text"
+                                                value="@Model.TipoCombustible" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="DivGrupoInformacionVehiculoParte2">
+                                        <div class="DivGrupo2Componentes">
+                                            <label class="TitluloInformacionVehiculoCrearAlquiler">Precio de Alquiler
+                                                (Por
+                                                Día)</label>
+                                            <input class="ValorInformacionVehiculoCrearAlquilerParte2 Precio" type="text"
+                                                value="@Model.PrecioAlquilerDia" readonly />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="DivParaDosComponentesInformacionVehiculoCrearAlquiler">
-                                    <label class="TitluloInformacionVehiculoCrearAlquiler">Precio de Alquiler (Por
-                                        Día)</label>
-                                    <input class="ValorInformacionVehiculoCrearAlquiler" type="text"
-                                        value="@Model.PrecioAlquilerDia" readonly />
+                                <div class="DivInformacionVehiculosParte2FotoVehiculo">
+                                    <img class="FotoVehiculo" src="~/FotoVehiculos/@Model.RutaFoto"
+                                        alt="Foto de @Model.TipoVehiculo : @Model.Marca @Model.Linea" />
                                 </div>
                             </div>
-                            <div class="DivGrupoComponentesInformacionVehiculoCrearAlquiler">
+                            <div class="DivInformacionVehiculosParte3">
                                 <a class="LinkBotonInformacionVehiculoCrearAlquiler" asp-controller="Inicio"
                                     asp-action="Inicio">
                                     <button class="BotonInformacionVehiculoCrearAlquiler">Volver al Inicio</button>
@@ -192,4 +209,5 @@
         </div>
     </div>
 </body>
+
 </html>

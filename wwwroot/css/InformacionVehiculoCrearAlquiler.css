@@ -168,48 +168,16 @@ html, body {
     border-radius: 15px;
 }
 
-.DivGrupoComponentesInformacionVehiculoCrearAlquiler {
-    width: 95%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.DivParaDosComponentesInformacionVehiculoCrearAlquiler{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .TitluloInformacionVehiculoCrearAlquiler {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
-    transition: .5s;
-    color: var(--Wihte);
-}
-
-.ValorInformacionVehiculoCrearAlquiler {
-    border-radius: 20px;
-    border: solid 4px var(--FifthColor);
-    width: 350px;
-    padding: 0;
-    text-align: center;
-    height: 40px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 5px 0;
-    font-size: 25px;
-    font-family: var(--Font);
-}
-
-.CiudadVehiculo {
-    font-size: 18px;
+    color: var(--Black);
+    margin: 5px;
 }
 
 .BotonInformacionVehiculoCrearAlquiler {
     font-family: var(--Font);
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     text-transform: uppercase;
     width: 100%;
@@ -234,4 +202,115 @@ html, body {
 .LinkBotonInformacionVehiculoCrearAlquiler {
     text-decoration: none;
     width: 40%;
+}
+
+/*------------------------------------- Informacion Primera Parte -------------------------------------*/
+
+.DivInformacionVehiculosParte1{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.DivGrupoInformacionVehiculoParte1{
+    width: 100%;
+    height: 45%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.DivGrupo2Componentes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ValorInformacionVehiculoCrearAlquilerParte1 {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 280px;
+    padding: 0;
+    text-align: center;
+    height: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5px 0;
+    font-size: 25px;
+    font-family: var(--Font);
+}
+
+.LineaVehiculo{
+    width: 400px;
+}
+
+.CiudadVehiculo{
+    width: 550px;
+}
+
+/*------------------------------------- Informacion Segunda Parte -------------------------------------*/
+
+.DivInformacionVehiculosParte2{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.DivInformacionVehiculosParte2Informacion{
+    height: 100%;
+    width: 60%;
+}
+
+.DivInformacionVehiculosParte2FotoVehiculo{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.FotoVehiculo{
+    height: 200px;
+    width: 300px;
+}
+
+.DivGrupoInformacionVehiculoParte2{
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ValorInformacionVehiculoCrearAlquilerParte2 {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 280px;
+    padding: 0;
+    text-align: center;
+    height: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5px 0;
+    font-size: 25px;
+    font-family: var(--Font);
+}
+
+.Precio{
+    width: 350px;
+}
+
+/*------------------------------------- Informacion Tercera Parte -------------------------------------*/
+
+.DivInformacionVehiculosParte3{
+    width: 100%;
+    height: 12%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
