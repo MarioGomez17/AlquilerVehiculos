@@ -173,8 +173,8 @@
                                             <label class="TitluloInformacionVehiculoCrearAlquiler">Precio de Alquiler
                                                 (Por
                                                 Día)</label>
-                                            <input class="ValorInformacionVehiculoCrearAlquilerParte2 Precio" type="text"
-                                                value="@Model.PrecioAlquilerDia" readonly />
+                                            <input class="ValorInformacionVehiculoCrearAlquilerParte2 Precio"
+                                                type="text" value="@Model.PrecioAlquilerDia" readonly />
                                         </div>
                                     </div>
                                 </div>
@@ -188,8 +188,9 @@
                                     asp-action="Inicio">
                                     <button class="BotonInformacionVehiculoCrearAlquiler">Volver al Inicio</button>
                                 </a>
-                                <a class="LinkBotonInformacionVehiculoCrearAlquiler" asp-controller="Alquiler"
-                                    asp-action="CrearAlquiler" asp-route-Id_Vehiculo=@Model.Id>
+                                <a class="LinkBotonInformacionVehiculoCrearAlquiler" target="_blank"
+                                    asp-controller="Alquiler" asp-action="CrearAlquiler"
+                                    asp-route-Id_Vehiculo=@Model.Id>
                                     <button class="BotonInformacionVehiculoCrearAlquiler">
                                         Realizar Alquiler
                                     </button>
