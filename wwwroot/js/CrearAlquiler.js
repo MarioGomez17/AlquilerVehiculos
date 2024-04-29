@@ -1,3 +1,20 @@
+const InputFechaInicio = document.getElementById('FechaInicio');
+const FechaActual = new Date();
+const FehcaLimiteFechaInicial = new Date(FechaActual);
+FehcaLimiteFechaInicial.setDate(FehcaLimiteFechaInicial.getDate() + 2);
+const FormatoFehcaLimiteFechaInicial = FehcaLimiteFechaInicial.toISOString().slice(0, 16);
+InputFechaInicio.min = FormatoFehcaLimiteFechaInicial;
+
+InputFechaInicio.addEventListener('change', function () {
+    const InputFechaFin = document.getElementById("FechaFin");
+    InputFechaFin.disabled = false;
+    const FechaInputFehcaInicio = new Date(InputFechaInicio.value);
+    const FehcaLimiteFechaFinal = new Date(FechaInputFehcaInicio);
+    FehcaLimiteFechaFinal.setDate(FehcaLimiteFechaFinal.getDate() + 1);
+    const FormatoFehcaLimiteFechaFinal = FehcaLimiteFechaFinal.toISOString().slice(0, 16);
+    InputFechaFin.min = FormatoFehcaLimiteFechaFinal;
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     const BotonCalcularPrecioAlquiler = document.getElementById("BotonCalcularPrecioAlquiler");
     BotonCalcularPrecioAlquiler.addEventListener("click", function (event) {
@@ -26,7 +43,7 @@ async function CalcularPrecioAlquiler() {
         }
         var DiferenciaFechas = Math.abs(FechaFin - FechaInicio);
         var DiasAlquiler = Math.ceil(DiferenciaFechas / (1000 * 60 * 60 * 24));
-        var ValorPrecioAlquiler = ((Number(PrecioAlquilerDiaVehiculo)*Number(DiasAlquiler)) + Number(PrecioSeguro) + Number(Lavada));
+        var ValorPrecioAlquiler = ((Number(PrecioAlquilerDiaVehiculo) * Number(DiasAlquiler)) + Number(PrecioSeguro) + Number(Lavada));
         const PrecioAlquiler = document.getElementById("PrecioAlquiler");
         PrecioAlquiler.value = ValorPrecioAlquiler;
     } else {
@@ -39,9 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
     BotonLavadaVehiculo.addEventListener('change', function () {
         const PrecioLavadaVehiculo = document.getElementById("PrecioLavadaVehiculo");
         if (this.checked) {
-            PrecioLavadaVehiculo.value = "15000";
+            PrecioLavadaVehiculo.value = "20000";
         } else {
             PrecioLavadaVehiculo.value = "";
         }
     });
 });
+
