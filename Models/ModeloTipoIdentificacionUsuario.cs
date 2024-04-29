@@ -4,10 +4,9 @@ namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloTipoIdentificacionUsuario
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public string NombreTipoIdentificacionUsuario { get; set; }
         public string SimboloTipoIdentificacionUsuario { get; set; }
-
         public List<ModeloTipoIdentificacionUsuario> TraerTodosTiposdeIdentificacion()
         {
             List<ModeloTipoIdentificacionUsuario> TiposdeIdentificacion = [];

@@ -14,26 +14,22 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-
         [Authorize]
         public IActionResult RegistrarVehiculo()
         {
             return View();
         }
-
         [Authorize]
         public IActionResult InformacionVehiculos()
         {
             return View();
         }
-
         [Authorize]
         public IActionResult InformacionVehiculo(int Id_Vehiculo)
         {
             ModeloVehiculo ModeloVehiculo = new();
             return View(ModeloVehiculo.TraerVehiculo(Id_Vehiculo));
         }
-
         public IActionResult InformacionVehiculoCrearAlquiler(int Id_Vehiculo)
         {
             ModeloVehiculo ModeloVehiculo = new();

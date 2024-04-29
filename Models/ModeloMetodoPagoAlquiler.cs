@@ -6,7 +6,6 @@ namespace ALQUILER_VEHICULOS.Models
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-
         public List<ModeloMetodoPagoAlquiler> TraerTodosMetodosPagoAlquiler()
         {
             List<ModeloMetodoPagoAlquiler> MetodosPagoAlquiler = [];

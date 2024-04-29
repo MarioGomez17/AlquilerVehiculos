@@ -14,7 +14,6 @@ namespace ALQUILER_VEHICULOS.Models
         public string Correo { get; set; }
         public string Contrasena { get; set; }
         public string Estado { get; set; }
-
         public ModeloUsuario TraerUsuario(string Correo, string Contrasena)
         {
             ModeloUsuario Usuario = new();
@@ -24,7 +23,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.Apellido_Usuario, " +
                 "alquiler_vehiculos.tipo_identificacion_usuario.Nombre_TipoIdentificacionUsuario, " +
                 "alquiler_vehiculos.tipo_identificacion_usuario.Simbolo_TipoIdentificacionUsuario, " +
-                "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " + 
+                "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " +
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario " +
@@ -61,14 +60,13 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
             }
             return Usuario;
         }
-
         public ModeloUsuario TraerUsuario(int Id_usuario)
         {
             ModeloUsuario Usuario = new();
@@ -78,7 +76,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.Apellido_Usuario, " +
                 "alquiler_vehiculos.tipo_identificacion_usuario.Nombre_TipoIdentificacionUsuario, " +
                 "alquiler_vehiculos.tipo_identificacion_usuario.Simbolo_TipoIdentificacionUsuario, " +
-                "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " + 
+                "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " +
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario " +
@@ -121,7 +119,6 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Usuario;
         }
-
         public bool ValidarUsuario(string NumeroIdentificacion)
         {
             ModeloUsuario Usuario = null;
@@ -174,7 +171,6 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Usuario == null;
         }
-
         public bool RegistrarUsuario(string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
         {
             string ConsultaSQL = "INSERT INTO alquiler_vehiculos.usuario " +

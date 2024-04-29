@@ -27,21 +27,17 @@ namespace ALQUILER_VEHICULOS.Controllers
                 }
             }
             return View();
-
         }
-
         public IActionResult Registrarse()
         {
             ModeloTipoIdentificacionUsuario TipoIdentificacionUsuario = new();
             return View(TipoIdentificacionUsuario.TraerTodosTiposdeIdentificacion());
         }
-
         [Authorize]
         public IActionResult InformacionUsuario()
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> AccionIniciarSesion(string Correo, string Contrasena, string MantenerSesion)
         {
@@ -63,7 +59,6 @@ namespace ALQUILER_VEHICULOS.Controllers
                         AllowRefresh = true,
                         ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(MantenerSesion == "on" ? 60 : 5)
                     };
-
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(ClaimsIdentity), AuthenticationProperties);
                     return RedirectToAction("Inicio", "Inicio");
                 }
@@ -79,7 +74,6 @@ namespace ALQUILER_VEHICULOS.Controllers
                 return View("IniciarSesion");
             }
         }
-
         public IActionResult AccionRegistrarse(string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
         {
             ModeloUsuario ModeloUsuario = new();
@@ -103,7 +97,6 @@ namespace ALQUILER_VEHICULOS.Controllers
                 return View("Registrarse");
             }
         }
-
         [Authorize]
         public async Task<IActionResult> CerrarSesion()
         {

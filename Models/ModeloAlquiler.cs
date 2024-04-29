@@ -19,7 +19,6 @@ namespace ALQUILER_VEHICULOS.Models
         public float Calificacion { get; set; }
         public string ComentarioCalificacion { get; set; }
         public string Estado { get; set; }
-
         public bool CrearAquiler(DateTime FechaInicio, DateTime FechaFin, float Precio, int Lavada, int Alquilador, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
         {
             string ConsultaSQL = "INSERT INTO " +
@@ -43,17 +42,16 @@ namespace ALQUILER_VEHICULOS.Models
                 Lugar + ", " +
                 MetodoPago + ", " +
                 Seguro + ")";
-                ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
-                int IdAlquiler = TraerIdUltimoAlquilerPorVehiculo(Vehiculo);
-                ModeloAlquilador ModeloAlquilador = new();
-                ModeloPropietario ModeloPropietario = new();
-                ModeloVehiculo ModeloVehiculo = new();
-                ModeloVehiculo = ModeloVehiculo.TraerVehiculo(Vehiculo);
-                ModeloAlquilador.AgregarAlquilerHistorialAlquilador(Alquilador, IdAlquiler);
-                ModeloPropietario.AgregarAlquilerHistorialPropietario(ModeloVehiculo.Propietario, IdAlquiler);
+            ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+            int IdAlquiler = TraerIdUltimoAlquilerPorVehiculo(Vehiculo);
+            ModeloAlquilador ModeloAlquilador = new();
+            ModeloPropietario ModeloPropietario = new();
+            ModeloVehiculo ModeloVehiculo = new();
+            ModeloVehiculo = ModeloVehiculo.TraerVehiculo(Vehiculo);
+            ModeloAlquilador.AgregarAlquilerHistorialAlquilador(Alquilador, IdAlquiler);
+            ModeloPropietario.AgregarAlquilerHistorialPropietario(ModeloVehiculo.Propietario, IdAlquiler);
             return ModeloVehiculo.CambiarEstadoVehiculo(Vehiculo);
         }
-
         public ModeloAlquiler TraerAlquiler(int IdAlquiler)
         {
             ModeloAlquiler ModeloALquiler = new();

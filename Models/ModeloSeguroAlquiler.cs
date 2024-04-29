@@ -7,7 +7,6 @@ namespace ALQUILER_VEHICULOS.Models
         public int Id { get; set; }
         public string NombreSeguroAlquiler { get; set; }
         public float PrecioSeguroAlquiler { get; set; }
-
         public List<ModeloSeguroAlquiler> TraerTodosSegurosAlquiler()
         {
             List<ModeloSeguroAlquiler> SegurosAlquiler = [];
@@ -44,7 +43,6 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return SegurosAlquiler;
         }
-
         public ModeloSeguroAlquiler TraerSeguroAlquiler(int Id_Seguro)
         {
             ModeloSeguroAlquiler SeguroAlquiler = null;

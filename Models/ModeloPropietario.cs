@@ -7,7 +7,6 @@ namespace ALQUILER_VEHICULOS.Models
         public int Id { get; set; }
         public string Codigo { get; set; }
         public ModeloUsuario Usuario { get; set; }
-        
         public ModeloPropietario TraerPropietario(int Id_Usuario)
         {
             ModeloPropietario ModeloPropietario = null;
@@ -37,15 +36,15 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
             }
             return ModeloPropietario;
         }
-
-        public bool CrearPropietario(int Id_Usuario){
+        public bool CrearPropietario(int Id_Usuario)
+        {
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario = ModeloUsuario.TraerUsuario(Id_Usuario);
             string CodigoPropietario = "Propietario" + ModeloUsuario.Nombre + ModeloUsuario.NumeroIdentificacion;
@@ -54,23 +53,23 @@ namespace ALQUILER_VEHICULOS.Models
             "(alquiler_vehiculos.propietario.Codigo_Propietario, " +
             "alquiler_vehiculos.propietario.Usuario_Propietario) " +
             "VALUES " +
-            "('" + CodigoPropietario +  "', " +
+            "('" + CodigoPropietario + "', " +
             ModeloUsuario.Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-
-        public bool ValidarPropietario(int Id_Usuario){
+        public bool ValidarPropietario(int Id_Usuario)
+        {
             return TraerPropietario(Id_Usuario) == null;
         }
-
-        public bool AgregarAlquilerHistorialPropietario(int IdPropietario, int IdAlquiler){
+        public bool AgregarAlquilerHistorialPropietario(int IdPropietario, int IdAlquiler)
+        {
             string ConsultaSQL = "INSERT INTO " +
                                 "alquiler_vehiculos.historial_alquileres_propietario ( " +
                                 "alquiler_vehiculos.historial_alquileres_propietario.Propietario_HistorialAlquileresPropietario, " +
                                 "alquiler_vehiculos.historial_alquileres_propietario.Alquiler_HistorialAlquileresPropietario) " +
                                 "VALUES ( " +
                                 IdPropietario + ", " +
-                                IdAlquiler + ")" ;    
+                                IdAlquiler + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
     }

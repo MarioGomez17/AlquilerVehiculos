@@ -4,10 +4,9 @@ namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloAlquileresUsuario
     {
-        public ModeloUsuario Usuario {get; set;}
+        public ModeloUsuario Usuario { get; set; }
         public List<ModeloAlquiler> HistorialAlquileresAlquilador { get; set; }
         public List<ModeloAlquiler> HistorialAlquileresPropietario { get; set; }
-
         public ModeloAlquileresUsuario(int IdUsuario)
         {
             ModeloUsuario ModeloUsuario = new();
@@ -15,11 +14,11 @@ namespace ALQUILER_VEHICULOS.Models
             this.HistorialAlquileresAlquilador = TraerHistorialAlquileresAlquilador(IdUsuario);
             this.HistorialAlquileresPropietario = TraerHistorialAlquileresPropietario(IdUsuario);
         }
-
-        public List<ModeloAlquiler> TraerHistorialAlquileresAlquilador(int IdUsuario){
+        public List<ModeloAlquiler> TraerHistorialAlquileresAlquilador(int IdUsuario)
+        {
             List<ModeloAlquiler> AlquileresAlquilador = [];
             ModeloAlquilador ModeloAlquilador = new();
-            
+
             ModeloAlquilador = ModeloAlquilador.TraerAlquiladorUsuario(IdUsuario);
             string ConsultaSQL = "SELECT " +
                                 "alquiler_vehiculos.historial_alquileres_alquilador.Alquiler_HistorialAlquileresAlquilador " +
@@ -50,11 +49,11 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return AlquileresAlquilador;
         }
-        
-        public List<ModeloAlquiler> TraerHistorialAlquileresPropietario(int IdUsuario){
+        public List<ModeloAlquiler> TraerHistorialAlquileresPropietario(int IdUsuario)
+        {
             List<ModeloAlquiler> AlquileresPropietario = [];
             ModeloPropietario ModeloPropietario = new();
-            
+
             ModeloPropietario = ModeloPropietario.TraerPropietario(IdUsuario);
             string ConsultaSQL = "SELECT " +
                                 "alquiler_vehiculos.historial_alquileres_propietario.Alquiler_HistorialAlquileresPropietario " +

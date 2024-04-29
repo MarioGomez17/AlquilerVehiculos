@@ -6,7 +6,6 @@ namespace ALQUILER_VEHICULOS.Models
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-
         public List<ModeloLugarAlquiler> TraerTodosLugaresAlquiler()
         {
             List<ModeloLugarAlquiler> LugaresAlquiler = [];
@@ -29,7 +28,6 @@ namespace ALQUILER_VEHICULOS.Models
                         {
                             Id = Lector.GetInt32(0),
                             Nombre = Lector.GetString(1),
-
                         };
                         LugaresAlquiler.Add(LugarAlquiler);
                     }

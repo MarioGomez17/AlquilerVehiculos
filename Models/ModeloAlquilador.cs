@@ -5,11 +5,8 @@ namespace ALQUILER_VEHICULOS.Models
     public class ModeloAlquilador
     {
         public int Id { get; set; }
-
         public string Codigo { get; set; }
-
         public ModeloUsuario Usuario { get; set; }
-        
         public ModeloAlquilador TraerAlquiladorUsuario(int Id_Usuario)
         {
             ModeloAlquilador ModeloAlquilador = null;
@@ -39,15 +36,14 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
             }
             return ModeloAlquilador;
         }
-
-public ModeloAlquilador TraerAlquilador(int Id_Alquilador)
+        public ModeloAlquilador TraerAlquilador(int Id_Alquilador)
         {
             ModeloAlquilador ModeloAlquilador = null;
             ModeloUsuario ModeloUsuario = new();
@@ -76,15 +72,15 @@ public ModeloAlquilador TraerAlquilador(int Id_Alquilador)
                     }
                 }
             }
-            catch (Exception) {}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
             }
             return ModeloAlquilador;
         }
-
-        public bool CrearAlquilador(int Id_Usuario){
+        public bool CrearAlquilador(int Id_Usuario)
+        {
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario = ModeloUsuario.TraerUsuario(Id_Usuario);
             string CodigoAlquilador = "Alquilador" + ModeloUsuario.Nombre + ModeloUsuario.NumeroIdentificacion;
@@ -93,23 +89,23 @@ public ModeloAlquilador TraerAlquilador(int Id_Alquilador)
             "(alquiler_vehiculos.alquilador.Codigo_Alquilador, " +
             "alquiler_vehiculos.alquilador.Usuario_Alquilador) " +
             "VALUES " +
-            "('" + CodigoAlquilador +  "', " +
+            "('" + CodigoAlquilador + "', " +
             ModeloUsuario.Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        
-        public bool ValidarAlquilador(int Id_Usuario){
+        public bool ValidarAlquilador(int Id_Usuario)
+        {
             return TraerAlquiladorUsuario(Id_Usuario) == null;
         }
-
-        public bool AgregarAlquilerHistorialAlquilador(int IdAlquilador, int IdAlquiler){
+        public bool AgregarAlquilerHistorialAlquilador(int IdAlquilador, int IdAlquiler)
+        {
             string ConsultaSQL = "INSERT INTO " +
                                 "alquiler_vehiculos.historial_alquileres_alquilador ( " +
                                 "alquiler_vehiculos.historial_alquileres_alquilador.alquilador_HistorialAlquileresalquilador, " +
                                 "alquiler_vehiculos.historial_alquileres_alquilador.Alquiler_HistorialAlquileresalquilador) " +
                                 "VALUES ( " +
                                 IdAlquilador + ", " +
-                                IdAlquiler + ")" ;    
+                                IdAlquiler + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
     }

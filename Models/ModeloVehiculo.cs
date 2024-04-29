@@ -62,7 +62,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo = 1 " + 
+                "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo = 1 " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
@@ -104,10 +104,9 @@ namespace ALQUILER_VEHICULOS.Models
             {
                 ConexionBD.Close();
             }
-            
+
             return ListaVehiculos;
         }
-
         public List<ModeloVehiculo> TraerTodosVehiculos(string Ciudad)
         {
             List<ModeloVehiculo> ListaVehiculos = [];
@@ -148,7 +147,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo = 1 " + 
+                "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo = 1 " +
                 "AND alquiler_vehiculos.ciudad.Nombre_Ciudad = '" + Ciudad + "' " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
@@ -193,7 +192,6 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ListaVehiculos;
         }
-
         public List<ModeloVehiculo> TraerTodosVehiculosUsuario(int Propietario)
         {
             List<ModeloVehiculo> ListaVehiculos = [];
@@ -276,10 +274,9 @@ namespace ALQUILER_VEHICULOS.Models
             {
                 ConexionDB.Close();
             }
-            
+
             return ListaVehiculos;
         }
-
         public ModeloVehiculo TraerVehiculo(int Id_Vehiculo)
         {
             ModeloVehiculo Vehiculo = new();
@@ -363,7 +360,8 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Vehiculo;
         }
-        public bool CambiarEstadoVehiculo(int IdVehiculo){
+        public bool CambiarEstadoVehiculo(int IdVehiculo)
+        {
             string ConsultaSQL = "UPDATE " +
                                 "alquiler_vehiculos.vehiculo " +
                                 "SET " +

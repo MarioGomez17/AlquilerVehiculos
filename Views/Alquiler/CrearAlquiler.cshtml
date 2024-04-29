@@ -4,6 +4,7 @@
 }
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="~/css/CrearAlquiler.css">
     <title>REALIZAR ALQUILER</title>
 </head>
+
 <body class="BodyCrearAlquiler">
     <div class="ContenidoBodyCrearAlquiler">
         <div class="DivBarraNavegacionCrearAlquiler">
@@ -102,8 +104,9 @@
                                 <h2 class="TituloFormularioCrearAlquiler">Realizar Alquiler</h2>
                             </div>
                             <div class="DivFormularioCrearAlquilerl">
-                                <form asp-controller="Alquiler" asp-action="AccionCrearAlquiler" method="post" class="FormularioCrearAlquilerl">
-                                    <input type="hidden" id="Vehiculo" name="Vehiculo" value="@Model.Vehiculo.Id"/>
+                                <form asp-controller="Alquiler" asp-action="AccionCrearAlquiler" method="post"
+                                    class="FormularioCrearAlquilerl">
+                                    <input type="hidden" id="Vehiculo" name="Vehiculo" value="@Model.Vehiculo.Id" />
                                     <div class="DivFormularioCrearAlquilerlInputsInterior">
                                         <div class="DivFormularioDivFormularioCrearAlquilerInputsInteriorIzquieda">
                                             <label class="EtiquetaFormulario">Fecha Inicio Alquiler</label>
@@ -152,7 +155,8 @@
                                             </div>
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <label class="EtiquetaFormulario">Seguro</label>
-                                                <select class="ComponenteFormulario SelectFormulario" name="Seguro" id="Seguro">
+                                                <select class="ComponenteFormulario SelectFormulario" name="Seguro"
+                                                    id="Seguro">
                                                     <option value=0 selected disabled class="OptionSelectFormulario">
                                                         Seleccione un Seguro</option>
                                                     @foreach (var Insurance in Model.Seguros)
@@ -168,7 +172,7 @@
                                                     class="ComponenteFormulario BotonFormulario">Calcular Total
                                                     Alquiler</button>
                                                 <input type="text" value="" id="PrecioAlquiler" name="Precio"
-                                                    class="ComponenteFormulario InputTextoFormulario" readonly/>
+                                                    class="ComponenteFormulario InputTextoFormulario" readonly />
                                             </div>
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <label class="EtiquetaFormulario">Método de Pago</label>
@@ -205,4 +209,5 @@
     </div>
     <script src="~/js/CrearAlquiler.js"></script>
 </body>
+
 </html>

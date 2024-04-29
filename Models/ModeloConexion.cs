@@ -11,7 +11,6 @@ namespace ALQUILER_VEHICULOS.Models
             String Usuario = "root";
             String Contrasena = "juan123";
             String CadenaConexion = "database = " + BaseDatos + "; Data Source = " + Servidor + "; User Id= " + Usuario + "; Password = " + Contrasena;
-
             try
             {
                 MySqlConnection ConexionBD = new(CadenaConexion);
@@ -22,7 +21,6 @@ namespace ALQUILER_VEHICULOS.Models
                 return null;
             }
         }
-
         public static Boolean ExecuteNonQuerySentence(String ConsultaSQL)
         {
             Boolean Bandera = false;
