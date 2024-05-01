@@ -8,32 +8,14 @@ namespace ALQUILER_VEHICULOS.Controllers
 {
     public class AlquilerController : Controller
     {
-        private ModeloUsuario DatosUsuarioSesion()
-        {
-            var Identity = HttpContext.User.Identity as ClaimsIdentity;
-            var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
-            return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
-        }
+        //---------------------------------------------- VISTAS ----------------------------------------------
         [Authorize]
         public IActionResult CrearAlquiler(int Id_vehiculo)
         {
             ModeloCrearAlquiler ModeloCrearAlquiler = new(Id_vehiculo);
             return View(ModeloCrearAlquiler);
         }
-        public IActionResult AccionCrearAlquiler(DateTime FechaInicio, DateTime FechaFin, float Precio, string SiLavada, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
-        {
-            ModeloAlquiler ModeloAlquiler = new();
-            int Lavada = SiLavada == "on" ? 1 : 0;
-            ModeloAlquilador ModeloAlquilador = new();
-            if (ModeloAlquilador.ValidarAlquilador(DatosUsuarioSesion().Id))
-            {
-                ModeloAlquilador.CrearAlquilador(DatosUsuarioSesion().Id);
-            }
-            ModeloAlquilador = ModeloAlquilador.TraerAlquiladorUsuario(DatosUsuarioSesion().Id);
-            int Alquilador = ModeloAlquilador.Id;
-            ModeloAlquiler.CrearAquiler(FechaInicio, FechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
-            return RedirectToAction("Inicio", "Inicio");
-        }
+
         [Authorize]
         public IActionResult InformacionAlquiler(int IdAlquiler)
         {
@@ -49,6 +31,28 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             ModeloAlquileresUsuario ModeloAlquileresUsuario = new(DatosUsuarioSesion().Id);
             return View(ModeloAlquileresUsuario);
+        }
+        //---------------------------------------------- ACCIONES ----------------------------------------------
+        private ModeloUsuario DatosUsuarioSesion()
+        {
+            var Identity = HttpContext.User.Identity as ClaimsIdentity;
+            var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
+            return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
+        }
+        [HttpPost]
+        public IActionResult AccionCrearAlquiler(DateTime FechaInicio, DateTime FechaFin, float Precio, string SiLavada, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
+        {
+            ModeloAlquiler ModeloAlquiler = new();
+            int Lavada = SiLavada == "on" ? 1 : 0;
+            ModeloAlquilador ModeloAlquilador = new();
+            if (ModeloAlquilador.ValidarAlquilador(DatosUsuarioSesion().Id))
+            {
+                ModeloAlquilador.CrearAlquilador(DatosUsuarioSesion().Id);
+            }
+            ModeloAlquilador = ModeloAlquilador.TraerAlquiladorUsuario(DatosUsuarioSesion().Id);
+            int Alquilador = ModeloAlquilador.Id;
+            ModeloAlquiler.CrearAquiler(FechaInicio, FechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
+            return RedirectToAction("Inicio", "Inicio");
         }
         [Authorize]
         public IActionResult ObtenerPrecioAlquiler(int IdVehiculo, int IdSeguro)

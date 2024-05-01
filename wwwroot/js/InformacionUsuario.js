@@ -1,0 +1,21 @@
+const Contrasena = document.getElementById('Contraseña');
+const ConfirmarContrasena = document.getElementById('ConfirmarContraseña');
+const BotonActualizarDatos = document.getElementById('BotonActualizarDatos');
+
+Contrasena.addEventListener('input', ValidatePassword);
+ConfirmarContrasena.addEventListener('input', ValidatePassword);
+
+function ValidatePassword() {
+    const ContrasenaVariable = Contrasena.value;
+    const ConfirmarContrasenaVariable = ConfirmarContrasena.value;
+    if ((ContrasenaVariable.length) >= 8 && (ContrasenaVariable === ConfirmarContrasenaVariable)) {
+        BotonActualizarDatos.disabled = false;
+        BotonActualizarDatos.classList.add("BotonActualizarDatosHabilitado");
+    } else if((ContrasenaVariable.length) >= 1 && (ContrasenaVariable.length) < 8){
+        BotonActualizarDatos.disabled = true;
+        BotonActualizarDatos.classList.remove("BotonActualizarDatosHabilitado");
+    }else if((ContrasenaVariable.length) == 0){
+        BotonActualizarDatos.disabled = false;
+        BotonActualizarDatos.classList.add("BotonActualizarDatosHabilitado");
+    }
+}

@@ -101,25 +101,25 @@
                 <div class="DivPrincipalInformacionUsuario">
                     <main role="main" class="PrincipalInformacionUsuario">
                         <div class="ContenidoPrincipalInformacionUsuario">
-                            <form class="FormularioActualizarUsuario" action="/" method="post">
+                            <form class="FormularioActualizarUsuario" asp-controller="Usuario" asp-action="AccionActualizarUsuario" method="post">
                                 <div class="Grupo2Elementos">
-                                    <input type="text" name="name" id="Nombre" value="@Model.Usuario.Nombre"
+                                    <input type="text" name="Nombre" id="Nombre" value="@Model.Usuario.Nombre"
                                         class="InputFormulario" />
                                     <label class="EtiquetaFormulario" for="Nombre">Nombre</label>
                                 </div>
                                 <div class="Grupo2Elementos">
-                                    <input type="text" name="name" id="Apellido" value="@Model.Usuario.Apellido"
+                                    <input type="text" name="Apellido" id="Apellido" value="@Model.Usuario.Apellido"
                                         class="InputFormulario" />
                                     <label class="EtiquetaFormulario" for="Apellido">Apellido</label>
                                 </div>
                                 <div class="Grupo2Elementos">
-                                    <select class="SelectFormulario" id="TipoIdentificacion">
+                                    <select class="SelectFormulario" id="TipoIdentificacion" name="TipoIdentificacion">
                                         @foreach (var TipoIdentificacion in Model.TiposIdentificacion)
                                         {
                                             if (Model.Usuario.TipoIdentificacion ==
                                             TipoIdentificacion.NombreTipoIdentificacionUsuario)
                                             {
-                                                <option selecte value="@TipoIdentificacion.Id" class="OptionSelect">
+                                                <option selected value="@TipoIdentificacion.Id" class="OptionSelect">
                                                     @TipoIdentificacion.NombreTipoIdentificacionUsuario
                                                     (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)</option>
                                             }
@@ -135,18 +135,18 @@
                                         Identificacion</label>
                                 </div>
                                 <div class="Grupo2Elementos">
-                                    <input type="text" name="name" id="NumeroIdentificacion"
+                                    <input type="text" name="NumeroIdentificacion" id="NumeroIdentificacion"
                                         value="@Model.Usuario.NumeroIdentificacion" class="InputFormulario" />
                                     <label class="EtiquetaFormulario" for="NumeroIdentificacion">Numero de
                                         Identificacion</label>
                                 </div>
                                 <div class="Grupo2Elementos">
-                                    <input type="text" name="name" id="Telefono" value="@Model.Usuario.Telefono"
+                                    <input type="text" name="Telefono" id="Telefono" value="@Model.Usuario.Telefono"
                                         class="InputFormulario" />
                                     <label class="EtiquetaFormulario" for="Telefono">Telefono</label>
                                 </div>
                                 <div class="Grupo2Elementos">
-                                    <input type="text" name="name" id="Correo" value="@Model.Usuario.Correo"
+                                    <input type="text" name="Correo" id="Correo" value="@Model.Usuario.Correo"
                                         class="InputFormulario" />
                                     <label class="EtiquetaFormulario" for="Correo">Correo</label>
                                 </div>
@@ -156,15 +156,14 @@
                                     <label class="EtiquetaFormulario" for="Contraseña">Contraseña</label>
                                 </div>
                                 <div class="Grupo2Elementos">
-                                    <input type="password" name="name" id="ConfirmarContraseña" value=""
+                                    <input type="password" name="Contrasena" id="ConfirmarContraseña" value=""
                                         class="InputFormulario" />
                                     <label class="EtiquetaFormulario" for="ConfirmarContraseña">Confirmar
                                         Contraseña</label>
                                 </div>
                                 <div class="Grupo2Elementos DivBotones">
-                                    <button class="BotonesFormulario">Eliminar cuenta</button>
-                                    <input type="submit" name="name" value="Actualizar Datos" class="BotonesFormulario" />
-                                    
+                                    <button class="BotonesFormulario BotonActualizarDatosHabilitado">Eliminar cuenta</button>
+                                    <input type="submit" value="Actualizar Datos" class="BotonesFormulario BotonActualizarDatosHabilitado" id="BotonActualizarDatos"/>
                                 </div>
                             </form>
                             <div class="GrupoLinks">
@@ -188,6 +187,7 @@
             </div>
         </div>
     </div>
+    <script src="~/js/InformacionUsuario.js"></script>
 </body>
 
 </html>

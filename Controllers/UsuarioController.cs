@@ -10,12 +10,7 @@ namespace ALQUILER_VEHICULOS.Controllers
 {
     public class UsuarioController : Controller
     {
-        private ModeloUsuario DatosUsuarioSesion()
-        {
-            var Identity = HttpContext.User.Identity as ClaimsIdentity;
-            var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
-            return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
-        }
+        //---------------------------------------------- VISTAS ----------------------------------------------
         public IActionResult IniciarSesion()
         {
             ClaimsPrincipal ClaimsPrincipal = HttpContext.User;
@@ -38,12 +33,20 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
             List<ModeloTipoIdentificacionUsuario> TiposIdentificacion = TipoIdentificacion.TraerTodosTiposdeIdentificacion();
+            ModeloUsuario ModeloUsuario = new();
             ModeloEditarUsuario ModeloEditarUsuario = new()
             {
-                Usuario = DatosUsuarioSesion(),
+                Usuario = ModeloUsuario.TraerUsuario(DatosUsuarioSesion().Id),
                 TiposIdentificacion = TiposIdentificacion
             };
             return View(ModeloEditarUsuario);
+        }
+        //---------------------------------------------- ACCIONES ----------------------------------------------
+        private ModeloUsuario DatosUsuarioSesion()
+        {
+            var Identity = HttpContext.User.Identity as ClaimsIdentity;
+            var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
+            return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
         [HttpPost]
         public async Task<IActionResult> AccionIniciarSesion(string Correo, string Contrasena, string MantenerSesion)
@@ -109,6 +112,23 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return View("IniciarSesion");
+        }
+        [Authorize]
+        public IActionResult AccionActualizarUsuario(string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
+        {
+            ModeloUsuario ModeloUsuario = new();
+            ModeloUsuario = ModeloUsuario.TraerUsuario(DatosUsuarioSesion().Id);
+            int Id_Usuario = ModeloUsuario.Id;
+            if (Contrasena == "")
+            {
+                ModeloUsuario.ActualizarUsuario(Id_Usuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo);
+            }
+            else
+            {
+                ModeloUsuario.ActualizarUsuario(Id_Usuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena);
+            }
+            InformacionUsuario();
+            return View("InformacionUsuario");
         }
     }
 }

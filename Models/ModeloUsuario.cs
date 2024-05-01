@@ -191,5 +191,31 @@ namespace ALQUILER_VEHICULOS.Models
                 "SHA ('" + Contrasena + "'))";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
+        public bool ActualizarUsuario(int Id, string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena){
+            string ConsultaSQL = "UPDATE alquiler_vehiculos.usuario " + 
+            "SET " + 
+            "Nombre_Usuario = '" + Nombre + "', " + 
+            "Apellido_Usuario = '" + Apellido + "', " +
+            "TipoIdentificacion_Usuario = " + TipoIdentificacion + ", " +
+            "NumeroIdentificacion_Usuario = '" + NumeroIdentificacion + "', " +
+            "Telefono_Usuario = '" + Telefono + "', " +
+            "Correo_Usuario = '" + Correo + "', " +
+            "Contrasena_Usuario = SHA('" + Contrasena + "')" + 
+            " WHERE (Id_Usuario = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool ActualizarUsuario(int Id, string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo)
+        {
+            string ConsultaSQL = "UPDATE alquiler_vehiculos.usuario " + 
+            "SET " + 
+            "Nombre_Usuario = '" + Nombre + "', " + 
+            "Apellido_Usuario = '" + Apellido + "', " +
+            "TipoIdentificacion_Usuario = " + TipoIdentificacion + ", " +
+            "NumeroIdentificacion_Usuario = '" + NumeroIdentificacion + "', " +
+            "Telefono_Usuario = '" + Telefono + "', " +
+            "Correo_Usuario = '" + Correo + "' " +
+            " WHERE (Id_Usuario = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }
