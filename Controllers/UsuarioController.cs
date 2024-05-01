@@ -119,7 +119,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario = ModeloUsuario.TraerUsuario(DatosUsuarioSesion().Id);
             int Id_Usuario = ModeloUsuario.Id;
-            if (Contrasena == "")
+            if (Contrasena == null)
             {
                 ModeloUsuario.ActualizarUsuario(Id_Usuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo);
             }

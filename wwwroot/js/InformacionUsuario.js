@@ -2,10 +2,10 @@ const Contrasena = document.getElementById('Contraseña');
 const ConfirmarContrasena = document.getElementById('ConfirmarContraseña');
 const BotonActualizarDatos = document.getElementById('BotonActualizarDatos');
 
-Contrasena.addEventListener('input', ValidatePassword);
-ConfirmarContrasena.addEventListener('input', ValidatePassword);
+Contrasena.addEventListener('input', ValidarContrasena);
+ConfirmarContrasena.addEventListener('input', ValidarContrasena);
 
-function ValidatePassword() {
+function ValidarContrasena() {
     const ContrasenaVariable = Contrasena.value;
     const ConfirmarContrasenaVariable = ConfirmarContrasena.value;
     if ((ContrasenaVariable.length) >= 8 && (ContrasenaVariable === ConfirmarContrasenaVariable)) {

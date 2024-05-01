@@ -24,15 +24,15 @@ namespace ALQUILER_VEHICULOS.Controllers
             return View(Vehiculos);
         }
         [Authorize]
-        public IActionResult InformacionVehiculo(int Id_Vehiculo)
+        public IActionResult InformacionVehiculo(int IdVehiculo)
         {
             ModeloVehiculo ModeloVehiculo = new();
-            return View(ModeloVehiculo.TraerVehiculo(Id_Vehiculo));
+            return View(ModeloVehiculo.TraerVehiculo(IdVehiculo));
         }
-        public IActionResult InformacionVehiculoCrearAlquiler(int Id_Vehiculo)
+        public IActionResult InformacionVehiculoCrearAlquiler(int IdVehiculo)
         {
             ModeloVehiculo ModeloVehiculo = new();
-            return View(ModeloVehiculo.TraerVehiculo(Id_Vehiculo));
+            return View(ModeloVehiculo.TraerVehiculo(IdVehiculo));
         }
         //---------------------------------------------- ACCIONES ----------------------------------------------
         private ModeloUsuario DatosUsuarioSesion()
