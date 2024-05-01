@@ -164,14 +164,123 @@ html, body {
     align-items: center;
 }
 
+.BarraFiltrosInicio{
+    background-color: var(--SecondColor);
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
 .BarraFiltrosInicio {
     width: 95%;
-    height: 10%;
+    height: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.DivEtiquetaInputFiltro{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.FormularioFiltros{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.ComponentesFomulario{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.DivBotonFormulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.BotonFormulario{
+    width: 95%;
+}
+
+.BotonFormulario {
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    background: transparent;
+    transition: ease-out 1s;
+    border: 2px solid var(--FourthColor);
+    box-shadow: inset 0 0 0 0 var(--FourthColor);
+    text-transform: uppercase;
+    font: var(--Font);
+    font-weight: bold;
+    color: var(--Wihte);
+}
+
+    .BotonFormulario:hover {
+        color: var(--Black);
+        box-shadow: inset 0 -100px 0 0 var(--FourthColor);
+    }
+
+    .BotonFormulario:active {
+        transform: scale(0.9);
+    }
+
+.EtiquetaFiltrosFormulario {
+    font-size: 12px;
+    font-weight: bold;
+    transition: .5s;
+    font-family: var(--Font);
+    color: var(--Wihte);
+}
+
+.SelectFiltrosFormulario {
+    width: 220px;
+    font: var(--Font);
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    text-align: center;
+    padding: 0;
+    height: 30px;
+}
+
+.EtiquetaFiltrosFormularioCiudad{
+    width: 270px;
+}
+
+.SelectFiltrosFormulario:focus {
+    border: solid 4px var(--Black);
+}
+
+.SelectFiltrosFormulario:focus~label {
+    color: var(--Black);
+    font-size: 18px;
+}
+
+.OptionSelectFormulario {
+    font-weight: bold;
+    text-align: center;
 }
 
 .TarjetasVehiculosInicio {
     width: 95%;
-    height: 90%;
+    height: 75%;
     background-color: var(--ThirdColor);
     border: solid 5px var(--SixthColor);
     border-radius: 15px;

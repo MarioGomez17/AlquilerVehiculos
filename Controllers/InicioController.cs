@@ -16,8 +16,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult Inicio()
         {
-            ModeloVehiculo ModeloVehiculo = new();
-            return View(ModeloVehiculo.TraerTodosVehiculos());
+            ModeloInicio ModeloInicio = new();
+            return View(ModeloInicio);
         }
         public IActionResult InicioFiltrado(string Ciudad)
         {

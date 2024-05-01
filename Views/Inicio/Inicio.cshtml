@@ -1,4 +1,4 @@
-﻿@model List<ModeloVehiculo>;
+﻿@model ModeloInicio;
 @{
     Layout = null;
 }
@@ -101,18 +101,77 @@
                     <main role="main" class="PrincipalInicio">
                         <div class="ContenidoPrincipalInicio">
                             <div class="BarraFiltrosInicio">
-                                <label for="FiltroCiudad">Ciudad</label>
-                                <input type="text" class="FiltroCiudad" id="FiltroCiudad" name="Ciudad" />
+                                <form method="post" class="FormularioFiltros">
+                                    <div class="ComponentesFomulario">
+                                        <div class="DivEtiquetaInputFiltro">
+                                            <select class="SelectFiltrosFormulario EtiquetaFiltrosFormularioCiudad"
+                                                id="FiltroCiudad" name="Ciudad">
+                                                <option class="OptionSelectFormulario" value=0>Seleccione Una Ciudad
+                                                </option>
+                                                @foreach (var Ciudad in Model.Ciudades)
+                                                {
+                                                    <option class="OptionSelectFormulario" value=@Ciudad.Id>@Ciudad.Nombre
+                                                    </option>
+                                                }
+                                            </select>
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroCiudad">Ciudad</label>
+                                        </div>
+                                        <div class="DivEtiquetaInputFiltro">
+                                            <select class="SelectFiltrosFormulario" id="FiltroTipoVehiculo"
+                                                name="FiltroTipoVehiculo">
+                                                <option class="OptionSelectFormulario" value=0>Seleccione Un Tipo de
+                                                    Vehículo</option>
+                                                @foreach (var TipoVehiculo in Model.TiposVehiculos)
+                                                {
+                                                    <option class="OptionSelectFormulario" value=@TipoVehiculo.Id>
+                                                        @TipoVehiculo.Nombre</option>
+                                                }
+                                            </select>
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroTipoVehiculo">Tipo de
+                                                Vehículo</label>
+                                        </div>
+                                        <div class="DivEtiquetaInputFiltro">
+                                            <select class="SelectFiltrosFormulario" id="FiltroMarca" name="Marca">
+                                                <option class="OptionSelectFormulario" value=0>Seleccione Una Marca
+                                                </option>
+                                                @foreach (var Marca in Model.Marcas)
+                                                {
+                                                    <option class="OptionSelectFormulario" value=@Marca.Id>@Marca.Nombre
+                                                    </option>
+                                                }
+                                            </select>
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroMarca">Marca</label>
+                                        </div>
+                                        <div class="DivEtiquetaInputFiltro">
+                                            <select class="SelectFiltrosFormulario" id="FiltroCilindrada"
+                                                name="Cilindrada">
+                                                <option class="OptionSelectFormulario" value=0>Seleccione Una Cilindrada
+                                                </option>
+                                            </select>
+                                            <label class="EtiquetaFiltrosFormulario"
+                                                for="FiltroCilindrada">Cilindrada</label>
+                                        </div>
+                                        <div class="DivEtiquetaInputFiltro">
+                                            <select class="SelectFiltrosFormulario" id="FiltroModelo" name="Modelo">
+                                                <option class="OptionSelectFormulario" value=0>Seleccione Un Modelo
+                                                </option>
+                                            </select>
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroModelo">Modelo</label>
+                                        </div>
+                                    </div>
+                                    <div class="DivBotonFormulario">
+                                        <input class="BotonFormulario" type="submit" value="Aplicar Filtros">
+                                    </div>
+                                </form>
                             </div>
                             <div class="TarjetasVehiculosInicio">
                                 @if (Model != null)
                                 {
-                                    @foreach (var Vehiculo in Model)
+                                    @foreach (var Vehiculo in Model.Vehiculos)
                                     {
                                         <div class="InformacionModeloVehiculo">
                                             <a class="LinkInformacionModeloVehiculo" asp-controller="Vehiculo"
-                                                asp-action="InformacionVehiculoCrearAlquiler"
-                                                asp-route-IdVehiculo=@Vehiculo.Id>
+                                                asp-action="InformacionVehiculoCrearAlquiler" asp-route-IdVehiculo=@Vehiculo.Id>
                                                 <h3 class="TextoLinkInformacionModeloVehiculo">@Vehiculo.TipoVehiculo:
                                                     @Vehiculo.Marca @Vehiculo.Linea</h3>
                                             </a>
@@ -122,7 +181,9 @@
                                                 alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
                                         </div>
                                     }
-                                }else{
+                                }
+                                else
+                                {
                                     <div class="DivNoVehiculos">
                                         <h3>No Hay Vehículos disponibles</h3>
                                     </div>
