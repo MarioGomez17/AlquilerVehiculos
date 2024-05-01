@@ -10,12 +10,12 @@ function ValidarContrasena() {
     const ConfirmarContrasenaVariable = ConfirmarContrasena.value;
     if ((ContrasenaVariable.length) >= 8 && (ContrasenaVariable === ConfirmarContrasenaVariable)) {
         BotonActualizarDatos.disabled = false;
-        BotonActualizarDatos.classList.add("BotonActualizarDatosHabilitado");
+        BotonActualizarDatos.classList.add("BotonHabilitado");
     } else if((ContrasenaVariable.length) >= 1 && (ContrasenaVariable.length) < 8){
         BotonActualizarDatos.disabled = true;
-        BotonActualizarDatos.classList.remove("BotonActualizarDatosHabilitado");
+        BotonActualizarDatos.classList.remove("BotonHabilitado");
     }else if((ContrasenaVariable.length) == 0){
         BotonActualizarDatos.disabled = false;
-        BotonActualizarDatos.classList.add("BotonActualizarDatosHabilitado");
+        BotonActualizarDatos.classList.add("BotonHabilitado");
     }
 }
