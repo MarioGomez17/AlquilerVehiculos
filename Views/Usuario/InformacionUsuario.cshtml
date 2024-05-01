@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ModeloEditarUsuario
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -19,8 +20,9 @@
         <div class="DivBarraNavegacionInformacionUsuario">
             <nav class="BarraNavegacionInformacionUsuario">
                 <div class="LinkLogoInformacionUsuario">
-                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo" src="~/imagenes/Logo.webp"
-                            alt="Logotipo" /></a>
+                    <a asp-controller="Inicio" asp-action="Inicio">
+                        <img class="ImagenLogo" src="~/imagenes/Logo.webp" alt="Logotipo" />
+                    </a>
                 </div>
                 <div class="DivLinkInformacionUsuario">
                     <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkInformacionUsuario">
@@ -99,26 +101,80 @@
                 <div class="DivPrincipalInformacionUsuario">
                     <main role="main" class="PrincipalInformacionUsuario">
                         <div class="ContenidoPrincipalInformacionUsuario">
-                            <form action="/" method="post">
-                                <label>Nombre</label>
-                                <input type="text" name="name" value="" />
-                                <label>Apellido</label>
-                                <input type="text" name="name" value="" />
-                                <label>Tipo de Identificacion</label>
-                                <select></select>
-                                <label>Numero de Identificacion</label>
-                                <input type="text" name="name" value="" />
-                                <label>Telefono</label>
-                                <input type="text" name="name" value="" />
-                                <label>Correo</label>
-                                <input type="text" name="name" value="" />
-                                <label>Contraseña</label>
-                                <input type="password" name="name" value="" />
-                                <input type="submit" name="name" value="Actualizar Datos" />
-                                <button>Eliminar mi cuenta</button>
-                                <a>Ver Mis vehiculos</a>
-                                <a>Ver Mis Alquileres</a>
+                            <form class="FormularioActualizarUsuario" action="/" method="post">
+                                <div class="Grupo2Elementos">
+                                    <input type="text" name="name" id="Nombre" value="@Model.Usuario.Nombre"
+                                        class="InputFormulario" />
+                                    <label class="EtiquetaFormulario" for="Nombre">Nombre</label>
+                                </div>
+                                <div class="Grupo2Elementos">
+                                    <input type="text" name="name" id="Apellido" value="@Model.Usuario.Apellido"
+                                        class="InputFormulario" />
+                                    <label class="EtiquetaFormulario" for="Apellido">Apellido</label>
+                                </div>
+                                <div class="Grupo2Elementos">
+                                    <select class="SelectFormulario" id="TipoIdentificacion">
+                                        @foreach (var TipoIdentificacion in Model.TiposIdentificacion)
+                                        {
+                                            if (Model.Usuario.TipoIdentificacion ==
+                                            TipoIdentificacion.NombreTipoIdentificacionUsuario)
+                                            {
+                                                <option selecte value="@TipoIdentificacion.Id" class="OptionSelect">
+                                                    @TipoIdentificacion.NombreTipoIdentificacionUsuario
+                                                    (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@TipoIdentificacion.Id" class="OptionSelect">
+                                                    @TipoIdentificacion.NombreTipoIdentificacionUsuario
+                                                    (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label class="EtiquetaFormulario" for="TipoIdentificacion">Tipo de
+                                        Identificacion</label>
+                                </div>
+                                <div class="Grupo2Elementos">
+                                    <input type="text" name="name" id="NumeroIdentificacion"
+                                        value="@Model.Usuario.NumeroIdentificacion" class="InputFormulario" />
+                                    <label class="EtiquetaFormulario" for="NumeroIdentificacion">Numero de
+                                        Identificacion</label>
+                                </div>
+                                <div class="Grupo2Elementos">
+                                    <input type="text" name="name" id="Telefono" value="@Model.Usuario.Telefono"
+                                        class="InputFormulario" />
+                                    <label class="EtiquetaFormulario" for="Telefono">Telefono</label>
+                                </div>
+                                <div class="Grupo2Elementos">
+                                    <input type="text" name="name" id="Correo" value="@Model.Usuario.Correo"
+                                        class="InputFormulario" />
+                                    <label class="EtiquetaFormulario" for="Correo">Correo</label>
+                                </div>
+                                <div class="Grupo2Elementos">
+                                    <input type="password" name="name" id="Contraseña" value=""
+                                        class="InputFormulario" />
+                                    <label class="EtiquetaFormulario" for="Contraseña">Contraseña</label>
+                                </div>
+                                <div class="Grupo2Elementos">
+                                    <input type="password" name="name" id="ConfirmarContraseña" value=""
+                                        class="InputFormulario" />
+                                    <label class="EtiquetaFormulario" for="ConfirmarContraseña">Confirmar
+                                        Contraseña</label>
+                                </div>
+                                <div class="Grupo2Elementos DivBotones">
+                                    <button class="BotonesFormulario">Eliminar cuenta</button>
+                                    <input type="submit" name="name" value="Actualizar Datos" class="BotonesFormulario" />
+                                    
+                                </div>
                             </form>
+                            <div class="GrupoLinks">
+                                <div class="Grupo2Elementos">
+                                    <a asp-controller="Vehiculo" asp-action="InformacionVehiculos" class="Link">Ver Mis
+                                        vehiculos</a>
+                                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="Link">Ver Mis
+                                        Alquileres</a>
+                                </div>
+                            </div>
                         </div>
                     </main>
                 </div>

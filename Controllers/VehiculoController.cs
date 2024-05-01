@@ -22,7 +22,11 @@ namespace ALQUILER_VEHICULOS.Controllers
         [Authorize]
         public IActionResult InformacionVehiculos()
         {
-            return View();
+            ModeloPropietario ModeloPropietario = new();
+            ModeloPropietario = ModeloPropietario.TraerPropietario(DatosUsuarioSesion().Id);
+            ModeloVehiculo ModeloVehiculo = new();
+            List<ModeloVehiculo> Vehiculos = ModeloVehiculo.TraerTodosVehiculosPropietario(ModeloPropietario.Id);
+            return View(Vehiculos);
         }
         [Authorize]
         public IActionResult InformacionVehiculo(int Id_Vehiculo)

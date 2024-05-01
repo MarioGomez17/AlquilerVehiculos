@@ -25,7 +25,7 @@ namespace ALQUILER_VEHICULOS.Models
                                 "FROM alquiler_vehiculos.historial_alquileres_alquilador " +
                                 "WHERE " +
                                 "alquiler_vehiculos.historial_alquileres_alquilador.Alquilador_HistorialAlquileresAlquilador = " + ModeloAlquilador.Id + " " +
-                                "ORDER BY alquiler_vehiculos.historial_alquileres_alquilador.Id_HistorialAlquileresAlquilador ASC";
+                                "ORDER BY alquiler_vehiculos.historial_alquileres_alquilador.Id_HistorialAlquileresAlquilador DESC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
@@ -60,7 +60,7 @@ namespace ALQUILER_VEHICULOS.Models
                                 "FROM alquiler_vehiculos.historial_alquileres_propietario " +
                                 "WHERE " +
                                 "alquiler_vehiculos.historial_alquileres_propietario.propietario_HistorialAlquileresPropietario = " + ModeloPropietario.Id + " " +
-                                "ORDER BY alquiler_vehiculos.historial_alquileres_propietario.Id_HistorialAlquileresPropietario ASC";
+                                "ORDER BY alquiler_vehiculos.historial_alquileres_propietario.Id_HistorialAlquileresPropietario DESC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {

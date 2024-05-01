@@ -192,7 +192,7 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ListaVehiculos;
         }
-        public List<ModeloVehiculo> TraerTodosVehiculosUsuario(int Propietario)
+        public List<ModeloVehiculo> TraerTodosVehiculosPropietario(int IdPropietario)
         {
             List<ModeloVehiculo> ListaVehiculos = [];
             string ConsultaSQL = "SELECT " +
@@ -232,8 +232,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "WHERE alquiler_vehiculos.vehiculo.Propietario_Vehiculo = '" + Propietario + "' " +
-                "ORDER BY alquiler_vehiculos.vehiculo.vehiculo ASC";
+                "WHERE alquiler_vehiculos.vehiculo.Propietario_Vehiculo = " + IdPropietario + " " +
+                "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
             MySqlConnection ConexionDB = ModeloConexion.Conect();
             try
             {

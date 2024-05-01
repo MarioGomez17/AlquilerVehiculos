@@ -36,7 +36,14 @@ namespace ALQUILER_VEHICULOS.Controllers
         [Authorize]
         public IActionResult InformacionUsuario()
         {
-            return View();
+            ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
+            List<ModeloTipoIdentificacionUsuario> TiposIdentificacion = TipoIdentificacion.TraerTodosTiposdeIdentificacion();
+            ModeloEditarUsuario ModeloEditarUsuario = new()
+            {
+                Usuario = DatosUsuarioSesion(),
+                TiposIdentificacion = TiposIdentificacion
+            };
+            return View(ModeloEditarUsuario);
         }
         [HttpPost]
         public async Task<IActionResult> AccionIniciarSesion(string Correo, string Contrasena, string MantenerSesion)

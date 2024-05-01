@@ -100,42 +100,33 @@
                 <div class="DivPrincipalInformacionVehiculos">
                     <main role="main" class="PrincipalInformacionVehiculos">
                         <div class="ContenidoPrincipalInformacionVehiculos">
-                            <div class="TarjetasInformacionVehiculos">
+                            <div class="DivCrearVehiculo">
+                                <a asp-controller="Vehiculo" asp-action="RegistrarVehiculo"
+                                    class="LinkRegistrarVehiculo">Registrar Vehículo</a>
+                            </div>
+                            <div class="TarjetasVehiculosInformacionVehiculos">
                                 @if (Model != null)
                                 {
                                     @foreach (var Vehiculo in Model)
                                     {
                                         <div class="InformacionModeloVehiculo">
-                                            <a class="LinkInformacionVehiculos" asp-controller="Vehiculo"
+                                            <a class="LinkInformacionModeloVehiculo" asp-controller="Vehiculo"
                                                 asp-action="InformacionVehiculo" asp-route-Id_Vehiculo=@Vehiculo.Id>
-                                                <h3 class="TextoLinkInformacionVehiculos">@Vehiculo.TipoVehiculo:
+                                                <h3 class="TextoLinkInformacionModeloVehiculo">@Vehiculo.TipoVehiculo:
                                                     @Vehiculo.Marca @Vehiculo.Linea</h3>
                                             </a>
-                                            <p class="TituloInformacionVehiculo">Tipo de @Vehiculo.TipoVehiculo: <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.ClasificacionVehiculo</span></p>
-                                            <p class="TituloInformacionVehiculo">Placa: <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.Placa</span></p>
-                                            <p class="TituloInformacionVehiculo">Cilindrada: <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.Cilindrada CC</span></p>
-                                            <p class="TituloInformacionVehiculo">Cilindrada: <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.Color</span></p>
-                                            <p class="TituloInformacionVehiculo">Modelo: <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.Modelo</span></p>
-                                            <p class="TituloInformacionVehiculo">Color: <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.Color</span></p>
-                                            <p class="TituloInformacionVehiculo">Cantidad de Pasajeros: <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.CantidadPasajeros</span></p>
-                                            <p class="TituloInformacionVehiculo">Tipo de Combustible: <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.TipoCombustible</span></p>
-                                            <p class="TituloInformacionVehiculo">Precio de Alquiler (Por Día): <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.PrecioAlquilerDia Pesos</span>
-                                            </p>
-                                            <p class="TituloInformacionVehiculo">Ciudad: <span
-                                                    class="ValorInformacionVehiculo">@Vehiculo.Ciudad</span></p>
+                                            <p class="TituloInformacionModeloVehiculo">Ciudad: <span
+                                                    class="ValorInformacionModeloVehiculo">@Vehiculo.Ciudad</span></p>
                                             <img class="FotoVehiculo" src="~/FotoVehiculos/@Vehiculo.RutaFoto"
                                                 alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
                                         </div>
                                     }
+                                }
+                                else
+                                {
+                                    <div class="DivNoVehiculos">
+                                        <h3 class="TituloNoVehiculos">No Tienes Vehículos Registrados</h3>
+                                    </div>
                                 }
                             </div>
                         </div>
