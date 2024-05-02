@@ -105,8 +105,9 @@
                                     <div class="ComponentesFomulario">
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario EtiquetaFiltrosFormularioCiudad"
-                                                id="FiltroCiudad" name="Ciudad">
-                                                <option class="OptionSelectFormulario" value=0>Seleccione Una Ciudad
+                                                id="FiltroCiudad" name="FiltroCiudad">
+                                                <option class="OptionSelectFormulario" value="0" disabled selected>
+                                                    Seleccione Una Ciudad
                                                 </option>
                                                 @foreach (var Ciudad in Model.Ciudades)
                                                 {
@@ -119,8 +120,9 @@
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario" id="FiltroTipoVehiculo"
                                                 name="FiltroTipoVehiculo">
-                                                <option class="OptionSelectFormulario" value=0>Seleccione Un Tipo de
-                                                    Vehículo</option>
+                                                <option class="OptionSelectFormulario" value="0" disabled selected>
+                                                    Seleccione Un Tipo de Vehículo
+                                                    </option>
                                                 @foreach (var TipoVehiculo in Model.TiposVehiculos)
                                                 {
                                                     <option class="OptionSelectFormulario" value=@TipoVehiculo.Id>
@@ -131,8 +133,9 @@
                                                 Vehículo</label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <select class="SelectFiltrosFormulario" id="FiltroMarca" name="Marca">
-                                                <option class="OptionSelectFormulario" value=0>Seleccione Una Marca
+                                            <select class="SelectFiltrosFormulario" id="FiltroMarca" name="FiltroMarca">
+                                                <option class="OptionSelectFormulario" value=0 disabled selected>
+                                                    Seleccione Una Marca
                                                 </option>
                                                 @foreach (var Marca in Model.Marcas)
                                                 {
@@ -143,20 +146,14 @@
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroMarca">Marca</label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <select class="SelectFiltrosFormulario" id="FiltroCilindrada"
-                                                name="Cilindrada">
-                                                <option class="OptionSelectFormulario" value=0>Seleccione Una Cilindrada
-                                                </option>
-                                            </select>
-                                            <label class="EtiquetaFiltrosFormulario"
-                                                for="FiltroCilindrada">Cilindrada</label>
+                                            <input type="datetime-local" class="FechaFiltrosFormulario">
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroCilindrada">Fecha
+                                                Inicio</label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <select class="SelectFiltrosFormulario" id="FiltroModelo" name="Modelo">
-                                                <option class="OptionSelectFormulario" value=0>Seleccione Un Modelo
-                                                </option>
-                                            </select>
-                                            <label class="EtiquetaFiltrosFormulario" for="FiltroModelo">Modelo</label>
+                                            <input type="datetime-local" class="FechaFiltrosFormulario">
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroModelo">Fecha
+                                                Fin</label>
                                         </div>
                                     </div>
                                     <div class="DivBotonFormulario">

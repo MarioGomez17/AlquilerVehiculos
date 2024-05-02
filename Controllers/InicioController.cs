@@ -19,10 +19,45 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }
-        public IActionResult InicioFiltrado(string Ciudad)
+        public IActionResult InicioFiltrado(int FiltroCiudad, int FiltroTipoVehiculo, int FiltroMarca)
         {
+            Console.WriteLine(FiltroCiudad + "---" + FiltroTipoVehiculo + "---" + FiltroMarca);
             ModeloVehiculo ModeloVehiculo = new();
-            return View(ModeloVehiculo.TraerTodosVehiculos(Ciudad));
+            List<ModeloVehiculo> Vehiculos = [];
+            if (FiltroCiudad != 0 && FiltroTipoVehiculo != 0 && FiltroMarca != 0)
+            {
+                Vehiculos = ModeloVehiculo.TraerTodosVehiculosTodosFiltros(FiltroCiudad, FiltroTipoVehiculo, FiltroMarca);
+            }
+            else if (FiltroCiudad != 0 && FiltroTipoVehiculo == 0 && FiltroMarca == 0)
+            {
+                Vehiculos = ModeloVehiculo.TraerTodosVehiculosFiltroCiudad(FiltroCiudad);
+            }
+            else if (FiltroCiudad == 0 && FiltroTipoVehiculo != 0 && FiltroMarca == 0)
+            {
+                Vehiculos = ModeloVehiculo.TraerTodosVehiculosFiltroTipo(FiltroTipoVehiculo);
+            }
+            else if (FiltroCiudad == 0 && FiltroTipoVehiculo == 0 && FiltroMarca != 0)
+            {
+                Vehiculos = ModeloVehiculo.TraerTodosVehiculosFiltroMarca(FiltroMarca);
+            }
+            else if (FiltroCiudad != 0 && FiltroTipoVehiculo != 0 && FiltroMarca == 0)
+            {
+                Vehiculos = ModeloVehiculo.TraerTodosVehiculosFiltroCiudadTipo(FiltroCiudad, FiltroTipoVehiculo);
+            }
+            else if (FiltroCiudad != 0 && FiltroTipoVehiculo == 0 && FiltroMarca != 0)
+            {
+                Vehiculos = ModeloVehiculo.TraerTodosVehiculosFiltroCiudadMarca(FiltroCiudad, FiltroMarca);
+            }
+            else if (FiltroCiudad == 0 && FiltroTipoVehiculo != 0 && FiltroMarca != 0)
+            {
+                Vehiculos = ModeloVehiculo.TraerTodosVehiculosFiltroTipoMarca(FiltroTipoVehiculo, FiltroMarca);
+            }
+            else if (FiltroCiudad == 0 && FiltroTipoVehiculo == 0 && FiltroMarca == 0)
+            {
+                Vehiculos = ModeloVehiculo.TraerTodosVehiculos();
+            }
+            ModeloInicio ModeloInicio = new(Vehiculos);
+            return View(ModeloInicio);
         }
     }
 }

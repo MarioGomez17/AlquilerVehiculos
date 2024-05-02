@@ -165,18 +165,15 @@ html, body {
 }
 
 .BarraFiltrosInicio{
-    background-color: var(--SecondColor);
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 15px;
-}
-
-.BarraFiltrosInicio {
     width: 95%;
     height: 20%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    background-color: var(--SecondColor);
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 .DivEtiquetaInputFiltro{
@@ -258,6 +255,18 @@ html, body {
     text-align: center;
     padding: 0;
     height: 30px;
+}
+
+.FechaFiltrosFormulario{
+    width: 180px;
+    font: var(--Font);
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    padding: 0 20px;
+    height: 22px;
 }
 
 .EtiquetaFiltrosFormularioCiudad{

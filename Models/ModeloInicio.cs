@@ -17,5 +17,15 @@ namespace ALQUILER_VEHICULOS.Models
             this.Ciudades = Ciudades.TraerTodasCiudades();
             this.Vehiculos = Vehiculos.TraerTodosVehiculos();
         }
+        public ModeloInicio(List<ModeloVehiculo> Vehiculos)
+        {
+            ModeloMarca Marcas = new();
+            ModeloTipoVehiculo TiposVehiculos = new();
+            ModeloCiudad Ciudades = new();
+            this.Marcas = Marcas.TraerTodosMetodasMarcas();
+            this.TiposVehiculos = TiposVehiculos.TraerTodosTipoVehiculo();
+            this.Ciudades = Ciudades.TraerTodasCiudades();
+            this.Vehiculos = Vehiculos;
+        }
     }
 }
