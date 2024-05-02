@@ -12,10 +12,10 @@ namespace ALQUILER_VEHICULOS.Controllers
         public static DateTime FechaInicio;
         public static DateTime FechaFin;
         [Authorize]
-        public IActionResult CrearAlquiler(int Id_vehiculo)
+        public IActionResult CrearAlquiler(int IdVehiculo)
         {
             DateTime[] Fechas = [FechaInicio, FechaFin];
-            ModeloCrearAlquiler ModeloCrearAlquiler = new(Id_vehiculo);
+            ModeloCrearAlquiler ModeloCrearAlquiler = new(IdVehiculo);
             ViewBag.Message = Fechas;
             return View(ModeloCrearAlquiler);
         }

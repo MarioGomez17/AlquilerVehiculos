@@ -7,7 +7,7 @@ namespace ALQUILER_VEHICULOS.Models
         public int Id { get; set; }
         public string Codigo { get; set; }
         public ModeloUsuario Usuario { get; set; }
-        public ModeloAlquilador TraerAlquiladorUsuario(int Id_Usuario)
+        public ModeloAlquilador TraerAlquiladorUsuario(int IdUsuario)
         {
             ModeloAlquilador ModeloAlquilador = null;
             ModeloUsuario ModeloUsuario = new();
@@ -16,7 +16,7 @@ namespace ALQUILER_VEHICULOS.Models
                     "alquiler_vehiculos.alquilador.Codigo_Alquilador, " +
                     "alquiler_vehiculos.alquilador.Usuario_Alquilador " +
                     "FROM alquiler_vehiculos.alquilador " +
-                    "WHERE alquiler_vehiculos.alquilador.Usuario_Alquilador = " + Id_Usuario;
+                    "WHERE alquiler_vehiculos.alquilador.Usuario_Alquilador = " + IdUsuario;
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
@@ -31,7 +31,7 @@ namespace ALQUILER_VEHICULOS.Models
                         {
                             Id = Lector.GetInt32(0),
                             Codigo = Lector.GetString(1),
-                            Usuario = ModeloUsuario.TraerUsuario(Id_Usuario)
+                            Usuario = ModeloUsuario.TraerUsuario(IdUsuario)
                         };
                     }
                 }
@@ -43,7 +43,7 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ModeloAlquilador;
         }
-        public ModeloAlquilador TraerAlquilador(int Id_Alquilador)
+        public ModeloAlquilador TraerAlquilador(int IdAlquilador)
         {
             ModeloAlquilador ModeloAlquilador = null;
             ModeloUsuario ModeloUsuario = new();
@@ -52,7 +52,7 @@ namespace ALQUILER_VEHICULOS.Models
                     "alquiler_vehiculos.alquilador.Codigo_Alquilador, " +
                     "alquiler_vehiculos.alquilador.Usuario_Alquilador " +
                     "FROM alquiler_vehiculos.alquilador " +
-                    "WHERE alquiler_vehiculos.alquilador.Id_Alquilador = " + Id_Alquilador;
+                    "WHERE alquiler_vehiculos.alquilador.Id_Alquilador = " + IdAlquilador;
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
@@ -79,10 +79,10 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ModeloAlquilador;
         }
-        public bool CrearAlquilador(int Id_Usuario)
+        public bool CrearAlquilador(int IdUsuario)
         {
             ModeloUsuario ModeloUsuario = new();
-            ModeloUsuario = ModeloUsuario.TraerUsuario(Id_Usuario);
+            ModeloUsuario = ModeloUsuario.TraerUsuario(IdUsuario);
             string CodigoAlquilador = "Alquilador" + ModeloUsuario.Nombre + ModeloUsuario.NumeroIdentificacion;
             string ConsultaSQL = "INSERT INTO " +
             "alquiler_vehiculos.alquilador " +
@@ -93,9 +93,9 @@ namespace ALQUILER_VEHICULOS.Models
             ModeloUsuario.Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool ValidarAlquilador(int Id_Usuario)
+        public bool ValidarAlquilador(int IdUsuario)
         {
-            return TraerAlquiladorUsuario(Id_Usuario) == null;
+            return TraerAlquiladorUsuario(IdUsuario) == null;
         }
         public bool AgregarAlquilerHistorialAlquilador(int IdAlquilador, int IdAlquiler)
         {

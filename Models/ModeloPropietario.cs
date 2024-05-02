@@ -7,7 +7,7 @@ namespace ALQUILER_VEHICULOS.Models
         public int Id { get; set; }
         public string Codigo { get; set; }
         public ModeloUsuario Usuario { get; set; }
-        public ModeloPropietario TraerPropietario(int Id_Usuario)
+        public ModeloPropietario TraerPropietario(int IdUsuario)
         {
             ModeloPropietario ModeloPropietario = null;
             ModeloUsuario ModeloUsuario = new();
@@ -16,7 +16,7 @@ namespace ALQUILER_VEHICULOS.Models
                     "alquiler_vehiculos.propietario.Codigo_Propietario," +
                     "alquiler_vehiculos.propietario.Usuario_Propietario " +
                     "FROM alquiler_vehiculos.propietario " +
-                    "WHERE alquiler_vehiculos.propietario.Usuario_Propietario = " + Id_Usuario;
+                    "WHERE alquiler_vehiculos.propietario.Usuario_Propietario = " + IdUsuario;
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
@@ -31,7 +31,7 @@ namespace ALQUILER_VEHICULOS.Models
                         {
                             Id = Lector.GetInt32(0),
                             Codigo = Lector.GetString(1),
-                            Usuario = ModeloUsuario.TraerUsuario(Id_Usuario)
+                            Usuario = ModeloUsuario.TraerUsuario(IdUsuario)
                         };
                     }
                 }
@@ -43,10 +43,10 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ModeloPropietario;
         }
-        public bool CrearPropietario(int Id_Usuario)
+        public bool CrearPropietario(int IdUsuario)
         {
             ModeloUsuario ModeloUsuario = new();
-            ModeloUsuario = ModeloUsuario.TraerUsuario(Id_Usuario);
+            ModeloUsuario = ModeloUsuario.TraerUsuario(IdUsuario);
             string CodigoPropietario = "Propietario" + ModeloUsuario.Nombre + ModeloUsuario.NumeroIdentificacion;
             string ConsultaSQL = "INSERT INTO " +
             "alquiler_vehiculos.propietario " +
@@ -57,9 +57,9 @@ namespace ALQUILER_VEHICULOS.Models
             ModeloUsuario.Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool ValidarPropietario(int Id_Usuario)
+        public bool ValidarPropietario(int IdUsuario)
         {
-            return TraerPropietario(Id_Usuario) == null;
+            return TraerPropietario(IdUsuario) == null;
         }
         public bool AgregarAlquilerHistorialPropietario(int IdPropietario, int IdAlquiler)
         {

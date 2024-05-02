@@ -6,13 +6,13 @@
         public List<ModeloLugarAlquiler> Lugares { get; set; }
         public List<ModeloSeguroAlquiler> Seguros { get; set; }
         public List<ModeloMetodoPagoAlquiler> MetodosPago { get; set; }
-        public ModeloCrearAlquiler(int Id_Vehiculo)
+        public ModeloCrearAlquiler(int IdVehiculo)
         {
             ModeloVehiculo ModeloVehiculo = new();
             ModeloLugarAlquiler ModeloLugarAlquiler = new();
             ModeloSeguroAlquiler ModeloSeguroAlquiler = new();
             ModeloMetodoPagoAlquiler ModeloMetodoPagoAlquiler = new();
-            this.Vehiculo = ModeloVehiculo.TraerVehiculo(Id_Vehiculo);
+            this.Vehiculo = ModeloVehiculo.TraerVehiculo(IdVehiculo);
             this.Lugares = ModeloLugarAlquiler.TraerTodosLugaresAlquiler();
             this.Seguros = ModeloSeguroAlquiler.TraerTodosSegurosAlquiler();
             this.MetodosPago = ModeloMetodoPagoAlquiler.TraerTodosMetodosPagoAlquiler();

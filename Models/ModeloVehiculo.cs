@@ -793,7 +793,7 @@ namespace ALQUILER_VEHICULOS.Models
 
             return ListaVehiculos;
         }
-        public ModeloVehiculo TraerVehiculo(int Id_Vehiculo)
+        public ModeloVehiculo TraerVehiculo(int IdVehiculo)
         {
             ModeloVehiculo Vehiculo = new();
             string ConsultaSQL = "SELECT " +
@@ -833,7 +833,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "WHERE alquiler_vehiculos.vehiculo.Id_Vehiculo = '" + Id_Vehiculo + "' " +
+                "WHERE alquiler_vehiculos.vehiculo.Id_Vehiculo = '" + IdVehiculo + "' " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try

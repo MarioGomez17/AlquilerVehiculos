@@ -118,14 +118,14 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario = ModeloUsuario.TraerUsuario(DatosUsuarioSesion().Id);
-            int Id_Usuario = ModeloUsuario.Id;
+            int IdUsuario = ModeloUsuario.Id;
             if (Contrasena == null)
             {
-                ModeloUsuario.ActualizarUsuario(Id_Usuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo);
+                ModeloUsuario.ActualizarUsuario(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo);
             }
             else
             {
-                ModeloUsuario.ActualizarUsuario(Id_Usuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena);
+                ModeloUsuario.ActualizarUsuario(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena);
             }
             InformacionUsuario();
             return View("InformacionUsuario");

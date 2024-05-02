@@ -67,7 +67,7 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Usuario;
         }
-        public ModeloUsuario TraerUsuario(int Id_usuario)
+        public ModeloUsuario TraerUsuario(int IdUsuario)
         {
             ModeloUsuario Usuario = new();
             string ConsultaSQL = "SELECT " +
@@ -85,7 +85,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
                 "INNER JOIN alquiler_vehiculos.estado_usuario " +
                 "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
-                "WHERE alquiler_vehiculos.usuario.Id_Usuario = " + Id_usuario;
+                "WHERE alquiler_vehiculos.usuario.Id_Usuario = " + IdUsuario;
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
