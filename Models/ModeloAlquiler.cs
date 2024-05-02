@@ -152,5 +152,78 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return IdAlquiler;
         }
+
+        public List<ModeloAlquiler> TraerAlquileres()
+        {
+            List<ModeloAlquiler> Alquileres = [];
+            ModeloAlquilador ModeloAlquilador = new();
+            ModeloVehiculo ModeloVehiculo = new();
+            string ConsultaSQL = "SELECT " +
+                                "alquiler_vehiculos.alquiler.Id_Alquiler, " +
+                                "alquiler_vehiculos.alquiler.FechaIncio_Alquiler, " +
+                                "alquiler_vehiculos.alquiler.FechaFin_Alquiler, " +
+                                "alquiler_vehiculos.alquiler.Precio_Alquiler, " +
+                                "alquiler_vehiculos.alquiler.LavadaVehiculo_Alquiler, " +
+                                "alquiler_vehiculos.alquiler.Alquilador_Alquiler, " +
+                                "alquiler_vehiculos.alquiler.Vehiculo_Alquiler, " +
+                                "alquiler_vehiculos.lugar_alquiler.Nombre_LugarAlquiler, " +
+                                "alquiler_vehiculos.metodo_pago.Nombre_MetodoPago, " +
+                                "alquiler_vehiculos.estado_pago_alquiler.Nombre_EstadoPagoAlquiler, " +
+                                "alquiler_vehiculos.seguro_alquiler.Nombre_SeguroAlquiler, " +
+                                "alquiler_vehiculos.seguro_alquiler.Precio_SeguroAlquiler, " +
+                                "alquiler_vehiculos.alquiler.Calificacion_Alquiler, " +
+                                "alquiler_vehiculos.alquiler.ComentarioCalificacion_Alquiler, " +
+                                "alquiler_vehiculos.estado_alquiler.Nombre_EstadoAlquiler " +
+                                "FROM alquiler_vehiculos.alquiler " +
+                                "INNER JOIN alquiler_vehiculos.lugar_alquiler " +
+                                "ON alquiler_vehiculos.lugar_alquiler.Id_LugarAlquiler = alquiler_vehiculos.alquiler.Lugar_Alquiler " +
+                                "INNER JOIN alquiler_vehiculos.metodo_pago " +
+                                "ON alquiler_vehiculos.metodo_pago.Id_MetodoPago = alquiler_vehiculos.alquiler.MeotodoPago_Alquiler " +
+                                "INNER JOIN alquiler_vehiculos.estado_pago_alquiler " +
+                                "ON alquiler_vehiculos.estado_pago_alquiler.Id_EstadoPagoAlquiler = alquiler_vehiculos.alquiler.EstadoPago_Alquiler " +
+                                "INNER JOIN alquiler_vehiculos.seguro_alquiler " +
+                                "ON alquiler_vehiculos.seguro_alquiler.Id_SeguroAlquiler = alquiler_vehiculos.alquiler.Seguro_Alquiler " +
+                                "INNER JOIN alquiler_vehiculos.estado_alquiler " +
+                                "ON alquiler_vehiculos.estado_alquiler.Id_EstadoAlquiler = alquiler_vehiculos.alquiler.Estado_Alquiler " +
+                                "ORDER BY alquiler_vehiculos.alquiler.Id_Alquiler ASC";
+            MySqlConnection ConexionBD = ModeloConexion.Conect();
+            try
+            {
+                ConexionBD.Open();
+                MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
+                MySqlDataReader Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
+                {
+                    while (Lector.Read())
+                    {
+                        ModeloAlquiler Alquiler= new()
+                        {
+                            Id = Lector.GetInt32(0),
+                            FechaIncio = Lector.GetDateTime(1),
+                            FechaFin = Lector.GetDateTime(2),
+                            Precio = Lector.GetFloat(3),
+                            Lavada = Lector.GetInt32(4) == 1,
+                            Alquilador = ModeloAlquilador.TraerAlquilador(Lector.GetInt32(5)),
+                            Vehiculo = ModeloVehiculo.TraerVehiculo(Lector.GetInt32(6)),
+                            Lugar = Lector.GetString(7),
+                            MetodoPago = Lector.GetString(8),
+                            EstadoPago = Lector.GetString(9),
+                            Seguro = Lector.GetString(10),
+                            PrecioSeguro = Lector.GetFloat(11),
+                            Calificacion = Lector.GetFloat(12),
+                            ComentarioCalificacion = Lector.GetString(13),
+                            Estado = Lector.GetString(14),
+                        };
+                        Alquileres.Add(Alquiler);
+                    }
+                }
+            }
+            catch (Exception) { }
+            finally
+            {
+                ConexionBD.Close();
+            }
+            return Alquileres;
+        }
     }
 }

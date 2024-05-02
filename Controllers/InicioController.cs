@@ -19,9 +19,8 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }
-        public IActionResult InicioFiltrado(int FiltroCiudad, int FiltroTipoVehiculo, int FiltroMarca)
+        public IActionResult InicioFiltrado(int FiltroCiudad, int FiltroTipoVehiculo, int FiltroMarca, DateTime FiltroFechaInicio, DateTime FiltroFechaFin)
         {
-            Console.WriteLine(FiltroCiudad + "---" + FiltroTipoVehiculo + "---" + FiltroMarca);
             ModeloVehiculo ModeloVehiculo = new();
             List<ModeloVehiculo> Vehiculos = [];
             if (FiltroCiudad != 0 && FiltroTipoVehiculo != 0 && FiltroMarca != 0)
@@ -56,7 +55,16 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 Vehiculos = ModeloVehiculo.TraerTodosVehiculos();
             }
+            ModeloAlquiler ModeloAlquiler = new();
+            List<ModeloAlquiler> Alquileres = ModeloAlquiler.TraerAlquileres();
             ModeloInicio ModeloInicio = new(Vehiculos);
+            foreach(var Alquiler in Alquileres){
+                if((FiltroFechaInicio >= Alquiler.FechaIncio && FiltroFechaInicio <= Alquiler.FechaFin) || (FiltroFechaFin >= Alquiler.FechaIncio && FiltroFechaFin <= Alquiler.FechaFin)){
+                    int IdVehiculoEliminar = Alquiler.Vehiculo.Id;
+                    ModeloVehiculo VehiculoEliminar = ModeloInicio.Vehiculos.Find(ModeloVehiculo => ModeloVehiculo.Id == IdVehiculoEliminar);
+                    ModeloInicio.Vehiculos.Remove(VehiculoEliminar);
+                }
+            }
             return View(ModeloInicio);
         }
     }

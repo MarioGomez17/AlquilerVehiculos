@@ -101,7 +101,8 @@
                     <main role="main" class="PrincipalInicio">
                         <div class="ContenidoPrincipalInicio">
                             <div class="BarraFiltrosInicio">
-                                <form method="post" class="FormularioFiltros" asp-controller="Inicio" asp-action="InicioFiltrado">
+                                <form method="post" class="FormularioFiltros" asp-controller="Inicio"
+                                    asp-action="InicioFiltrado">
                                     <div class="ComponentesFomulario">
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario EtiquetaFiltrosFormularioCiudad"
@@ -146,13 +147,17 @@
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroMarca">Marca</label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <input type="datetime-local" class="FechaFiltrosFormulario">
-                                            <label class="EtiquetaFiltrosFormulario"
-                                                for="FiltroCilindrada">Fecha Inicio</label>
+                                            <input type="datetime-local" class="FechaFiltrosFormulario"
+                                                id="FiltroFechaInicio" name="FiltroFechaInicio">
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroFechaInicio">
+                                                Fecha Inicio
+                                            </label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <input type="datetime-local" class="FechaFiltrosFormulario">
-                                            <label class="EtiquetaFiltrosFormulario" for="FiltroModelo">Fecha Fin</label>
+                                            <input type="datetime-local" class="FechaFiltrosFormulario"
+                                                id="FiltroFechaFin" name="FiltroFechaFin">
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroFechaFin">Fecha
+                                                Fin</label>
                                         </div>
                                     </div>
                                     <div class="DivBotonFormulario">
