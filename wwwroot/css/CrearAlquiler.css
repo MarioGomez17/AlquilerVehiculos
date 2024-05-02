@@ -296,6 +296,10 @@ html, body {
     font-family: var(--Font);
 }
 
+.InputFechaHora{
+    width: 202px;
+}
+
 .SelectFormulario {
     border-radius: 20px;
     border: solid 4px var(--FifthColor);

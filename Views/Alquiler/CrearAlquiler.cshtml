@@ -1,6 +1,8 @@
 ﻿@model ModeloCrearAlquiler;
 @{
     Layout = null;
+    string FechaInicioFormateada = ViewBag.Message[0].ToString("yyyy-MM-dd h:mm tt");
+    string FechaFinFormateada = ViewBag.Message[1].ToString("yyyy-MM-dd h:mm tt");
 }
 <!DOCTYPE html>
 <html lang="es">
@@ -110,11 +112,13 @@
                                     <div class="DivFormularioCrearAlquilerlInputsInterior">
                                         <div class="DivFormularioDivFormularioCrearAlquilerInputsInteriorIzquieda">
                                             <label class="EtiquetaFormulario">Fecha Inicio Alquiler</label>
-                                            <input type="datetime-local" name="FechaInicio" id="FechaInicio"
-                                                class="InputFechaHora ComponenteFormulario" />
+                                            <input type="text"
+                                                class="ComponenteFormulario InputFechaHora InputTextoFormulario"
+                                                readonly value="@FechaInicioFormateada" />
                                             <label class="EtiquetaFormulario">Fecha Fin Alquiler</label>
-                                            <input type="datetime-local" name="FechaFin" id="FechaFin" disabled
-                                                class="InputFechaHora ComponenteFormulario" />
+                                            <input type="text"
+                                                class="ComponenteFormulario InputFechaHora InputTextoFormulario"
+                                                readonly value="@FechaFinFormateada" />
                                         </div>
                                         <div class="DivFormularioCrearAlquilerInputsInteriorDerecha">
                                             <div class="DivInformacionFormularioCrearAlquilerl">

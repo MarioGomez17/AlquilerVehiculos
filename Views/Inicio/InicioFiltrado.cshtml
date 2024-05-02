@@ -1,6 +1,8 @@
 ﻿@model ModeloInicio;
 @{
     Layout = null;
+    string FechaInicioFormateada = ViewBag.Message[3].ToString("yyyy-MM-dd HH:mm");
+    string FechaFinFormateada = ViewBag.Message[4].ToString("yyyy-MM-dd HH:mm");
 }
 <!DOCTYPE html>
 <html lang="es">
@@ -106,13 +108,35 @@
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario EtiquetaFiltrosFormularioCiudad"
                                                 id="FiltroCiudad" name="FiltroCiudad">
-                                                <option class="OptionSelectFormulario" value="0" disabled selected>
-                                                    Seleccione Una Ciudad
-                                                </option>
-                                                @foreach (var Ciudad in Model.Ciudades)
+                                                @if (ViewBag.Message[0] == 0)
                                                 {
-                                                    <option class="OptionSelectFormulario" value=@Ciudad.Id>@Ciudad.Nombre
+                                                    <option class="OptionSelectFormulario" value="0" disabled selected>
+                                                        Seleccione Una Ciudad
                                                     </option>
+                                                    @foreach (var Ciudad in Model.Ciudades)
+                                                    {
+                                                        <option class="OptionSelectFormulario" value=@Ciudad.Id>
+                                                            @Ciudad.Nombre
+                                                        </option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    @foreach (var Ciudad in Model.Ciudades)
+                                                    {
+                                                        if (ViewBag.Message[0] == Ciudad.Id)
+                                                        {
+                                                            <option class="OptionSelectFormulario" value=@Ciudad.Id selected>
+                                                                @Ciudad.Nombre
+                                                            </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option class="OptionSelectFormulario" value=@Ciudad.Id>
+                                                                @Ciudad.Nombre
+                                                            </option>
+                                                        }
+                                                    }
                                                 }
                                             </select>
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroCiudad">Ciudad</label>
@@ -120,13 +144,35 @@
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario" id="FiltroTipoVehiculo"
                                                 name="FiltroTipoVehiculo">
-                                                <option class="OptionSelectFormulario" value="0" disabled selected>
-                                                    Seleccione Un Tipo de Vehículo
-                                                    </option>
-                                                @foreach (var TipoVehiculo in Model.TiposVehiculos)
+                                                @if (ViewBag.Message[1] == 0)
                                                 {
-                                                    <option class="OptionSelectFormulario" value=@TipoVehiculo.Id>
-                                                        @TipoVehiculo.Nombre</option>
+                                                    <option class="OptionSelectFormulario" value="0" disabled selected>
+                                                        Seleccione Un Tipo de Vehículo
+                                                    </option>
+                                                    @foreach (var TipoVehiculo in Model.TiposVehiculos)
+                                                    {
+                                                        <option class="OptionSelectFormulario" value=@TipoVehiculo.Id>
+                                                            @TipoVehiculo.Nombre
+                                                        </option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    @foreach (var TipoVehiculo in Model.TiposVehiculos)
+                                                    {
+                                                        if (ViewBag.Message[1] == TipoVehiculo.Id)
+                                                        {
+                                                            <option class="OptionSelectFormulario" value=@TipoVehiculo.Id selected>
+                                                                @TipoVehiculo.Nombre
+                                                            </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option class="OptionSelectFormulario" value=@TipoVehiculo.Id>
+                                                                @TipoVehiculo.Nombre
+                                                            </option>
+                                                        }
+                                                    }
                                                 }
                                             </select>
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroTipoVehiculo">Tipo de
@@ -134,28 +180,54 @@
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario" id="FiltroMarca" name="FiltroMarca">
-                                                <option class="OptionSelectFormulario" value=0 disabled selected>
-                                                    Seleccione Una Marca
-                                                </option>
-                                                @foreach (var Marca in Model.Marcas)
+                                                @if (ViewBag.Message[2] == 0)
                                                 {
-                                                    <option class="OptionSelectFormulario" value=@Marca.Id>@Marca.Nombre
+                                                    <option class="OptionSelectFormulario" value=0 disabled selected>
+                                                        Seleccione Una Marca
                                                     </option>
+                                                    @foreach (var Marca in Model.Marcas)
+                                                    {
+                                                        <option class="OptionSelectFormulario" value=@Marca.Id>
+                                                            @Marca.Nombre
+                                                        </option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    @foreach (var Marca in Model.Marcas)
+                                                    {
+                                                        if (ViewBag.Message[2] == Marca.Id)
+                                                        {
+                                                            <option class="OptionSelectFormulario" value=@Marca.Id selected>
+                                                                @Marca.Nombre
+                                                            </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option class="OptionSelectFormulario" value=@Marca.Id>
+                                                                @Marca.Nombre
+                                                            </option>
+                                                        }
+                                                    }
                                                 }
                                             </select>
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroMarca">Marca</label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <input type="datetime-local" class="FechaFiltrosFormulario" id="" name="">
-                                            <label class="EtiquetaFiltrosFormulario" for="FiltroCilindrada">
+                                            <input type="datetime-local" class="FechaFiltrosFormulario"
+                                                id="FiltroFechaInicio" name="FiltroFechaInicio" required
+                                                value="@FechaInicioFormateada">
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroFechaInicio">
                                                 Fecha Inicio
-                                                </label>
+                                            </label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <input type="datetime-local" class="FechaFiltrosFormulario" id="FiltroFechaFin" name="FiltroFechaFin">
+                                            <input type="datetime-local" class="FechaFiltrosFormulario"
+                                                id="FiltroFechaFin" name="FiltroFechaFin" required
+                                                value="@FechaFinFormateada">
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroFechaFin">
                                                 Fecha Fin
-                                                </label>
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="DivBotonFormulario">
@@ -201,6 +273,7 @@
             </div>
         </div>
     </div>
+    <script src="~/js/Inicio.js"></script>
 </body>
 
 </html>

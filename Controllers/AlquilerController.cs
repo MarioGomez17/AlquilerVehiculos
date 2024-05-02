@@ -9,10 +9,14 @@ namespace ALQUILER_VEHICULOS.Controllers
     public class AlquilerController : Controller
     {
         //---------------------------------------------- VISTAS ----------------------------------------------
+        public static DateTime FechaInicio;
+        public static DateTime FechaFin;
         [Authorize]
         public IActionResult CrearAlquiler(int Id_vehiculo)
         {
+            DateTime[] Fechas = [FechaInicio, FechaFin];
             ModeloCrearAlquiler ModeloCrearAlquiler = new(Id_vehiculo);
+            ViewBag.Message = Fechas;
             return View(ModeloCrearAlquiler);
         }
 

@@ -65,6 +65,17 @@ namespace ALQUILER_VEHICULOS.Controllers
                     ModeloInicio.Vehiculos.Remove(VehiculoEliminar);
                 }
             }
+            AlquilerController.FechaInicio = FiltroFechaInicio;
+            AlquilerController.FechaFin = FiltroFechaFin;
+            object[] Datos =
+            [
+                FiltroCiudad,
+                FiltroTipoVehiculo,
+                FiltroMarca,
+                FiltroFechaInicio,
+                FiltroFechaFin,
+            ];
+            ViewBag.Message = Datos;
             return View(ModeloInicio);
         }
     }
