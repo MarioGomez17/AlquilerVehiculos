@@ -365,9 +365,39 @@ namespace ALQUILER_VEHICULOS.Models
             string ConsultaSQL = "UPDATE " +
                                 "alquiler_vehiculos.vehiculo " +
                                 "SET " +
-                                "Estado_Vehiculo = 3 " +
+                                "alquiler_vehiculos.vehiculo.Estado_Vehiculo = 3 " +
                                 "WHERE " +
-                                "(Id_Vehiculo = " + IdVehiculo + ")";
+                                "(alquiler_vehiculos.vehiculo.Id_Vehiculo = " + IdVehiculo + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool ActualizarVehiculo(int Id, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad)
+        {
+            string ConsultaSQL = "UPDATE " +
+                                "alquiler_vehiculos.vehiculo " +
+                                "SET " +
+                                "alquiler_vehiculos.vehiculo.Placa_Vehiculo = '" + Placa + "', " +
+                                "alquiler_vehiculos.vehiculo.Modelo_Vehiculo = " + Modelo + ", " +
+                                "alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo = " + Cilindrada + ", " +
+                                "alquiler_vehiculos.vehiculo.Color_Vehiculo = '" + Color + "', " +
+                                "alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo = " + CantidadPasajeros + ", " +
+                                "alquiler_vehiculos.vehiculo.NumeroSeguro_Vehiculo = '" + NumeroSeguro + "', " +
+                                "alquiler_vehiculos.vehiculo.NumeroCertificadoCDA_Vehiculo = '" + NumeroCertificadoCDA + "', " +
+                                "alquiler_vehiculos.vehiculo.PrecioAlquilerDia_Vehiculo = " + PrecioAlquilerDia + ", " +
+                                "alquiler_vehiculos.vehiculo.Ciudad_Vehiculo = " + Ciudad + ", " +
+                                "alquiler_vehiculos.vehiculo.Clasificacion_Vehiculo = " + ClasificacionVehiculo + ", " +
+                                "alquiler_vehiculos.vehiculo.Linea_Vehiculo = " + Linea + ", " +
+                                "alquiler_vehiculos.vehiculo.TipoCombustible_Vehiculo = " + TipoCombustible + " " +
+                                "WHERE (alquiler_vehiculos.vehiculo.Id_Vehiculo = " + Id + " )";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool EliminarVehiculo(int IdVehiculo)
+        {
+            string ConsultaSQL = "UPDATE " +
+                                "alquiler_vehiculos.vehiculo " +
+                                "SET " +
+                                "alquiler_vehiculos.vehiculo.Estado_Vehiculo = 2 " +
+                                "WHERE " +
+                                "(alquiler_vehiculos.vehiculo.Id_Vehiculo = " + IdVehiculo + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
     }

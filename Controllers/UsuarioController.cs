@@ -130,5 +130,11 @@ namespace ALQUILER_VEHICULOS.Controllers
             InformacionUsuario();
             return View("InformacionUsuario");
         }
+        public async Task<IActionResult> AccionEliminarUsuario(int IdUsuario){
+            ModeloUsuario ModeloUsuario = new();
+            ModeloUsuario.EliminarUsuario(IdUsuario);
+            await CerrarSesion();
+            return View("IniciarSesion");
+        }
     }
 }

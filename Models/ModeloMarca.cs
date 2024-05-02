@@ -43,5 +43,42 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return MarcasVehiculo;
         }
+        public List<ModeloMarca> TraerTodosMetodasMarcasPorTIpo(int IdTipoVehiculo)
+        {
+            List<ModeloMarca> MarcasVehiculo = [];
+            string ConsultaSQL = "SELECT " +
+                "alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo, " +
+                "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo, " +
+                "alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " + 
+                "FROM alquiler_vehiculos.marca_vehiculo " +
+                "WHERE alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo = " + IdTipoVehiculo + " " +
+                "ORDER BY alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo ASC";
+            MySqlConnection ConexionBD = ModeloConexion.Conect();
+            try
+            {
+                ConexionBD.Open();
+                MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
+                MySqlDataReader Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
+                {
+                    while (Lector.Read())
+                    {
+                        ModeloMarca MarcaVehiculo = new()
+                        {
+                            Id = Lector.GetInt32(0),
+                            Nombre = Lector.GetString(1),
+                            TipoVehiculo = Lector.GetInt32(2)
+                        };
+                        MarcasVehiculo.Add(MarcaVehiculo);
+                    }
+                }
+            }
+            catch (Exception) { }
+            finally
+            {
+                ConexionBD.Close();
+            }
+            return MarcasVehiculo;
+        }
     }
 }

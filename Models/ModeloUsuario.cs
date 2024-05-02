@@ -217,5 +217,15 @@ namespace ALQUILER_VEHICULOS.Models
             " WHERE (Id_Usuario = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
+        public bool EliminarUsuario(int IdUsuario)
+        {
+            string ConsultaSQL = "UPDATE " +
+                                "alquiler_vehiculos.usuario " +
+                                "SET " +
+                                "alquiler_vehiculos.usuario.Estado_Usuario = 2 " +
+                                "WHERE " +
+                                "(alquiler_vehiculos.usuario.Id_Usuario = " + IdUsuario + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }

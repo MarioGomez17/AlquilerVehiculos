@@ -101,7 +101,8 @@
                 <div class="DivPrincipalInformacionUsuario">
                     <main role="main" class="PrincipalInformacionUsuario">
                         <div class="ContenidoPrincipalInformacionUsuario">
-                            <form class="FormularioActualizarUsuario" asp-controller="Usuario" asp-action="AccionActualizarUsuario" method="post">
+                            <form class="FormularioActualizarUsuario" asp-controller="Usuario"
+                                asp-action="AccionActualizarUsuario" method="post">
                                 <div class="Grupo2Elementos">
                                     <input type="text" name="Nombre" id="Nombre" value="@Model.Usuario.Nombre"
                                         class="InputFormulario" />
@@ -162,8 +163,13 @@
                                         Contraseña</label>
                                 </div>
                                 <div class="Grupo2Elementos DivBotones">
-                                    <button class="BotonFormularioEliminar BotonHabilitado">Eliminar cuenta</button>
-                                    <input type="submit" value="Actualizar Datos" class="BotonFormularioActualizar BotonHabilitado" id="BotonActualizarDatos"/>
+                                    <a class="BotonFormularioEliminar" asp-controller="Usuario"
+                                        asp-action="AccionEliminarUsuario"
+                                        asp-route-IdUsuario=@Model.Usuario.Id>
+                                        Eliminar Cuenta
+                                    </a>
+                                    <input type="submit" value="Actualizar Datos"
+                                        class="BotonFormularioActualizar BotonHabilitado" id="BotonActualizarDatos" />
                                 </div>
                             </form>
                             <div class="GrupoLinks">

@@ -219,17 +219,15 @@ body {
 }
 
 .InputFormulario {
-    width: 292px;
+    width: 357px;
     font: var(--Font);
     font-weight: bold;
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
     border-radius: 20px;
     border: solid 4px var(--FifthColor);
-    text-indent: 20px;
     padding: 0;
     height: 40px;
-    padding-right: 20px;
     text-align: center;
 }
 
@@ -238,17 +236,16 @@ body {
 }
 
 .SelectFormulario {
-    width: 320px;
+    width: 365px;
     font: var(--Font);
     font-weight: bold;
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
     border-radius: 20px;
     border: solid 4px var(--FifthColor);
-    text-indent: 20px;
+    text-align: center;
     padding: 0;
     height: 48px;
-    padding-right: 20px;
 }
 
 .InputFormulario:focus {
@@ -279,13 +276,11 @@ body {
 .DivFotoVehiculo {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 30%;
     height: 100%;
 }
-
-
 
 .FotoVehiculo {
     width: 95%;
@@ -345,6 +340,9 @@ body {
     border: 2px solid red;
     border-radius: 15px;
     box-shadow: inset 0 0 0 0 red;
+    text-decoration: none;
+    text-align: center;
+    color: var(--Black);
 }
 
 .BotonFormularioEliminar:hover {
@@ -358,8 +356,8 @@ body {
 
 .DivInputFoto {
     position: relative;
-    width: 130px;
-    height: 130px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     border: 2px solid var(--SecondColor);
     background: transparent;
