@@ -12,7 +12,8 @@
 
 /*------------------------------------- GENERAL -------------------------------------*/
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     font-family: var(--Font);
@@ -170,7 +171,7 @@ html, body {
     align-items: center;
 }
 
-.TituloFormulario{
+.TituloFormulario {
     margin: 0;
 }
 
@@ -200,21 +201,20 @@ html, body {
     border-radius: 20px;
 }
 
-    .DivFormularioRegistrarse::before {
-        content: '';
-        position: absolute;
-        width: 200px;
-        background-image: linear-gradient(180deg, var(--Black), var(--Wihte));
-        height: 215%;
-        animation: BackgroundRotation 3s linear infinite;
-        transition: all 0.2s linear;
-    }
+.DivFormularioRegistrarse::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    background-image: linear-gradient(180deg, var(--Black), var(--Wihte));
+    height: 215%;
+    animation: BackgroundRotation 3s linear infinite;
+    transition: all 0.2s linear;
+}
 
 @keyframes BackgroundRotation {
     from {
         transform: rotate(360deg);
     }
-
     to {
         transform: rotate(0deg);
     }
@@ -238,7 +238,7 @@ html, body {
     z-index: 2;
 }
 
-.DivParaDosComponentees{
+.DivParaDosComponentees {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -273,10 +273,10 @@ html, body {
     transition: .5s;
 }
 
-    .TextoLinkIniciarSesion:hover {
-        color: var(--Wihte);
-        font-size: 25px;
-    }
+.TextoLinkIniciarSesion:hover {
+    color: var(--Wihte);
+    font-size: 25px;
+}
 
 .EtiquetaFormulario {
     font-size: 20px;
@@ -322,14 +322,14 @@ html, body {
     font-family: var(--Font);
 }
 
-    .InputTexto:focus {
-        border: solid 4px var(--SecondColor);
-    }
+.InputTexto:focus {
+    border: solid 4px var(--SecondColor);
+}
 
-        .InputTexto:focus ~ label {
-            color: var(--SecondColor);
-            font-size: 25px;
-        }
+.InputTexto:focus~label {
+    color: var(--SecondColor);
+    font-size: 25px;
+}
 
 .SelectFormulario {
     border-radius: 20px;
@@ -352,7 +352,7 @@ html, body {
     border: solid 4px var(--SecondColor);
 }
 
-    .SelectFormulario:focus ~ label {
-        color: var(--SecondColor);
-        font-size: 25px;
-    }
+.SelectFormulario:focus~label {
+    color: var(--SecondColor);
+    font-size: 25px;
+}

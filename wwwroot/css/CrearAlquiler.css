@@ -12,7 +12,8 @@
 
 /*------------------------------------- GENERAL -------------------------------------*/
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     font-family: var(--Font);
@@ -80,7 +81,6 @@ html, body {
     transition: background-color 0.5s ease;
     font-weight: bold;
 }
-
 
 .IconoLinkSVG {
     filter: drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte));
@@ -222,7 +222,7 @@ html, body {
     align-items: center;
 }
 
-.BotonEnviarFormularioCrearAlquilerl {
+.BotonEnviarFormularioCrearAlquiler {
     height: 100%;
     width: 95%;
     font-family: var(--Font);
@@ -237,14 +237,14 @@ html, body {
     box-shadow: inset 0 0 0 0 var(--SecondColor);
 }
 
-    .BotonEnviarFormularioCrearAlquilerl:hover {
-        color: var(--Wihte);
-        box-shadow: inset 0 -100px 0 0 var(--SecondColor);
-    }
+.BotonEnviarFormularioCrearAlquiler:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+}
 
-    .BotonEnviarFormularioCrearAlquilerl:active {
-        transform: scale(0.9);
-    }
+.BotonEnviarFormularioCrearAlquiler:active {
+    transform: scale(0.9);
+}
 
 .DivInformacionFormularioCrearAlquilerl {
     width: 80%;
@@ -272,16 +272,16 @@ html, body {
     box-shadow: inset 0 0 0 0 var(--SecondColor);
 }
 
-    .BotonFormulario:hover {
-        color: var(--Wihte);
-        box-shadow: inset 0 -100px 0 0 var(--SecondColor);
-    }
+.BotonFormulario:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+}
 
-    .BotonFormulario:active {
-        transform: scale(0.9);
-    }
+.BotonFormulario:active {
+    transform: scale(0.9);
+}
 
-.EtiquetaFormulario{
+.EtiquetaFormulario {
     font-weight: bold;
 }
 
@@ -296,7 +296,7 @@ html, body {
     font-family: var(--Font);
 }
 
-.InputFechaHora{
+.InputFechaHora {
     width: 202px;
 }
 
@@ -352,29 +352,29 @@ html, body {
     border: 3px solid var(--Black);
 }
 
-    .DivCheckBoxLavada label:before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 0;
-        left: 0;
-        width: calc(var(--size) * .3);
-        height: calc(var(--size) * .3);
-        margin: 0 auto;
-        background-color: #fff;
-        transform: translateY(-50%);
-        border-radius: 50%;
-        transition: 0.2s ease width, 0.2s ease height;
-    }
+.DivCheckBoxLavada label:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: calc(var(--size) * .3);
+    height: calc(var(--size) * .3);
+    margin: 0 auto;
+    background-color: #fff;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    transition: 0.2s ease width, 0.2s ease height;
+}
 
-    .DivCheckBoxLavada label:hover:before {
-        width: calc(var(--size) * .55);
-        height: calc(var(--size) * .55);
-    }
+.DivCheckBoxLavada label:hover:before {
+    width: calc(var(--size) * .55);
+    height: calc(var(--size) * .55);
+}
 
-    .DivCheckBoxLavada label:active {
-        transform: scale(0.9);
-    }
+.DivCheckBoxLavada label:active {
+    transform: scale(0.9);
+}
 
 .DivCheckBoxLavada .DivMarcador {
     position: absolute;
@@ -388,44 +388,52 @@ html, body {
     transform: rotateZ(-40deg);
 }
 
-    .DivCheckBoxLavada .DivMarcador:before,
-    .DivCheckBoxLavada .DivMarcador:after {
-        content: "";
-        position: absolute;
-        background-color: #fff;
-        border-radius: 2px;
-        opacity: 0;
-        transition: 0.2s ease transform, 0.2s ease opacity;
-    }
+.DivCheckBoxLavada .DivMarcador:before,
+.DivCheckBoxLavada .DivMarcador:after {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    border-radius: 2px;
+    opacity: 0;
+    transition: 0.2s ease transform, 0.2s ease opacity;
+}
 
-    .DivCheckBoxLavada .DivMarcador:before {
-        left: 0;
-        bottom: 0;
-        width: calc(var(--size) * .1);
-        height: calc(var(--size) * .3);
-        transform: translateY(calc(var(--size) * -.68));
-    }
+.DivCheckBoxLavada .DivMarcador:before {
+    left: 0;
+    bottom: 0;
+    width: calc(var(--size) * .1);
+    height: calc(var(--size) * .3);
+    transform: translateY(calc(var(--size) * -.68));
+}
 
-    .DivCheckBoxLavada .DivMarcador:after {
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: calc(var(--size) * .1);
-        transform: translateX(calc(var(--size) * .38));
-    }
+.DivCheckBoxLavada .DivMarcador:after {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(var(--size) * .1);
+    transform: translateX(calc(var(--size) * .38));
+}
 
-.DivCheckBoxLavada input[type="checkbox"]:checked + label {
+.DivCheckBoxLavada input[type="checkbox"]:checked+label {
     background-color: var(--SixthColor);
     background-image: linear-gradient(43deg, var(--SixthColor) 0%, var(--FifthColor) 46%, var(--FirstColor) 100%);
 }
 
-    .DivCheckBoxLavada input[type="checkbox"]:checked + label:before {
-        width: 0;
-        height: 0;
-    }
+.DivCheckBoxLavada input[type="checkbox"]:checked+label:before {
+    width: 0;
+    height: 0;
+}
 
-    .DivCheckBoxLavada input[type="checkbox"]:checked + label .DivMarcador:before,
-    .DivCheckBoxLavada input[type="checkbox"]:checked + label .DivMarcador:after {
-        transform: translate(0);
-        opacity: 1;
-    }
+.DivCheckBoxLavada input[type="checkbox"]:checked+label .DivMarcador:before,
+.DivCheckBoxLavada input[type="checkbox"]:checked+label .DivMarcador:after {
+    transform: translate(0);
+    opacity: 1;
+}
+
+.swal2-shown .ContenidoBodyInicio {
+    opacity: 0;
+}
+
+.swal2-height-auto .ContenidoBodyInicio {
+    opacity: 0;
+}

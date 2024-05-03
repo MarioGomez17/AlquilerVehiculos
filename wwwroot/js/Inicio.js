@@ -1,3 +1,5 @@
+import Swal from 'https://cdn.skypack.dev/sweetalert2';
+
 function TraerTodasMarcasPorTIpo() {
     var IdTipoVehiculo = document.getElementById('FiltroTipoVehiculo').value;
     if (IdTipoVehiculo) {
@@ -23,6 +25,8 @@ function TraerTodasMarcasPorTIpo() {
     }
 }
 
+
+
 document.getElementById('FiltroTipoVehiculo').addEventListener('change', TraerTodasMarcasPorTIpo);
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -30,11 +34,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const FiltroHoraFin = document.getElementById('FiltroHoraFin');
     const FiltroFechaInicio = document.getElementById('FiltroFechaInicio');
     const FiltroFechaFin = document.getElementById('FiltroFechaFin');
-    BotonFiltros = document.getElementById('BotonFiltros');
+    const BotonFiltros = document.getElementById('BotonFiltros');
     BotonFiltros.addEventListener('click', function (event) {
         if (FiltroHoraInicio.value == '' || FiltroHoraFin.value == '' || FiltroFechaInicio.value == '' || FiltroFechaFin.value == '') {
             event.preventDefault();
-            alert("Complete al menos los filtros de fecha y hora de inicio y fin del alquiler");
+            Swal.fire({
+                title: 'ERROR',
+                text: 'COMPLETE AL MENOS LOS FILTROS DE FECHA Y HORA DE INICIO Y FIN DEL ALQUILER',
+                icon: 'error',
+                confirmButtonText: 'Sí'
+            });
         }
     });
     //------------------------- VALIDACIÓN HORAS -------------------------
@@ -43,7 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const ValorHora = this.value;
             const [Horas, Minutos] = ValorHora.split(':').map(Number);
             if (Horas < 9 || Horas > 17 || (Horas === 17 && Minutos > 0)) {
-                alert('Por favor, selecciona una hora entre las 9 am y las 5 pm.');
+                Swal.fire({
+                    title: 'ERROR',
+                    text: 'LA HORA DEBE ESTAR ENTRE LAS 9:00 AM Y LAS 5:00 PM',
+                    icon: 'error',
+                    confirmButtonText: 'Sí'
+                });
                 this.value = '';
             } else {
                 if (FiltroHoraInicio.id === 'FiltroHoraInicio') {

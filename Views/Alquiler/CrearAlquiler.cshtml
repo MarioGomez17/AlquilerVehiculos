@@ -112,29 +112,30 @@
                                     <div class="DivFormularioCrearAlquilerlInputsInterior">
                                         <div class="DivFormularioDivFormularioCrearAlquilerInputsInteriorIzquieda">
                                             <label class="EtiquetaFormulario">Fecha Inicio Alquiler</label>
-                                            <input type="text"
+                                            <input type="text" name="FechaInicio"
                                                 class="ComponenteFormulario InputFechaHora InputTextoFormulario"
-                                                readonly value="@FechaInicioFormateada" />
+                                                readonly value="@FechaInicioFormateada" id="FechaInicio" />
                                             <label class="EtiquetaFormulario">Fecha Fin Alquiler</label>
-                                            <input type="text"
+                                            <input type="text" name="FechaFin"
                                                 class="ComponenteFormulario InputFechaHora InputTextoFormulario"
-                                                readonly value="@FechaFinFormateada" />
+                                                readonly value="@FechaFinFormateada" id="FechaFin" />
                                         </div>
                                         <div class="DivFormularioCrearAlquilerInputsInteriorDerecha">
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <label class="EtiquetaFormulario">Vehículo</label>
                                                 <input type="text" class="ComponenteFormulario InputTextoFormulario"
-                                                    readonly
+                                                    readonly id="NombreVehiculo"
                                                     value="@Model.Vehiculo.TipoVehiculo : @Model.Vehiculo.Linea" />
                                             </div>
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <label class="EtiquetaFormulario">Ciudad</label>
                                                 <input type="text" class="ComponenteFormulario InputTextoFormulario"
-                                                    readonly value="@Model.Vehiculo.Ciudad" />
+                                                    readonly value="@Model.Vehiculo.Ciudad" id="Ciudad" />
                                             </div>
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <label class="EtiquetaFormulario">Lugar de Recogida y Entega</label>
-                                                <select class="ComponenteFormulario SelectFormulario" name="Lugar">
+                                                <select class="ComponenteFormulario SelectFormulario" name="Lugar"
+                                                    id="Lugar">
                                                     <option value=0 selected disabled class="OptionSelectFormulario">
                                                         Seleccione un Lugar</option>
                                                     @foreach (var Place in Model.Lugares)
@@ -154,7 +155,7 @@
                                                     </div>
                                                     Agregar lavada
                                                 </span>
-                                                <input type="text" id="PrecioLavadaVehiculo"
+                                                <input type="text" id="PrecioLavadaVehiculo" value="0"
                                                     class="ComponenteFormulario InputTextoFormulario" readonly />
                                             </div>
                                             <div class="DivInformacionFormularioCrearAlquilerl">
@@ -180,7 +181,8 @@
                                             </div>
                                             <div class="DivInformacionFormularioCrearAlquilerl">
                                                 <label class="EtiquetaFormulario">Método de Pago</label>
-                                                <select class="ComponenteFormulario SelectFormulario" name="MetodoPago">
+                                                <select class="ComponenteFormulario SelectFormulario" name="MetodoPago"
+                                                    id="MetodoPago">
                                                     <option value=0 selected disabled class="OptionSelectFormulario">
                                                         Seleccione un Método de Pago</option>
                                                     @foreach (var PaymentMethod in Model.MetodosPago)
@@ -194,7 +196,8 @@
                                     </div>
                                     <div class="DivFormularioCrearAlquilerlBotonInterior">
                                         <input type="submit" value="Realizar Alquiler"
-                                            class="BotonEnviarFormularioCrearAlquilerl" />
+                                            id="BotonEnviarFormularioCrearAlquiler"
+                                            class="BotonEnviarFormularioCrearAlquiler" />
                                     </div>
                                 </form>
                             </div>
@@ -211,7 +214,8 @@
             </div>
         </div>
     </div>
-    <script src="~/js/CrearAlquiler.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/CrearAlquiler.js" type="module"></script>
 </body>
 
 </html>

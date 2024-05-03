@@ -49,8 +49,7 @@ namespace ALQUILER_VEHICULOS.Models
             ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo = ModeloVehiculo.TraerVehiculo(Vehiculo);
             ModeloAlquilador.AgregarAlquilerHistorialAlquilador(Alquilador, IdAlquiler);
-            ModeloPropietario.AgregarAlquilerHistorialPropietario(ModeloVehiculo.Propietario, IdAlquiler);
-            return ModeloVehiculo.CambiarEstadoVehiculo(Vehiculo);
+            return ModeloPropietario.AgregarAlquilerHistorialPropietario(ModeloVehiculo.Propietario, IdAlquiler);
         }
         public ModeloAlquiler TraerAlquiler(int IdAlquiler)
         {

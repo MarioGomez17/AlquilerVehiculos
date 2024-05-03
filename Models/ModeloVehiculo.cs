@@ -876,16 +876,7 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Vehiculo;
         }
-        public bool CambiarEstadoVehiculo(int IdVehiculo)
-        {
-            string ConsultaSQL = "UPDATE " +
-                                "alquiler_vehiculos.vehiculo " +
-                                "SET " +
-                                "alquiler_vehiculos.vehiculo.Estado_Vehiculo = 3 " +
-                                "WHERE " +
-                                "(alquiler_vehiculos.vehiculo.Id_Vehiculo = " + IdVehiculo + ")";
-            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
-        }
+        
         public bool ActualizarVehiculo(int Id, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad)
         {
             string ConsultaSQL = "UPDATE " +

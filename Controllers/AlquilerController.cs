@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Security.Claims;
 using ALQUILER_VEHICULOS.Models;
+using System.Globalization;
 
 namespace ALQUILER_VEHICULOS.Controllers
 {
@@ -44,8 +45,10 @@ namespace ALQUILER_VEHICULOS.Controllers
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
         [HttpPost]
-        public IActionResult AccionCrearAlquiler(DateTime FechaInicio, DateTime FechaFin, float Precio, string SiLavada, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
+        public IActionResult AccionCrearAlquiler(string FechaInicio, string FechaFin, float Precio, string SiLavada, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
         {
+            DateTime ValorFiltroFechaInicio = DateTime.Parse(FechaInicio);
+            DateTime ValorFiltroFechaFin = DateTime.Parse(FechaFin);
             ModeloAlquiler ModeloAlquiler = new();
             int Lavada = SiLavada == "on" ? 1 : 0;
             ModeloAlquilador ModeloAlquilador = new();
@@ -55,9 +58,8 @@ namespace ALQUILER_VEHICULOS.Controllers
             }
             ModeloAlquilador = ModeloAlquilador.TraerAlquiladorUsuario(DatosUsuarioSesion().Id);
             int Alquilador = ModeloAlquilador.Id;
-            ModeloAlquiler.CrearAquiler(FechaInicio, FechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
-            HistorialAlquileres();
-            return View("HistorialAlquileres");
+            ModeloAlquiler.CrearAquiler(ValorFiltroFechaInicio, ValorFiltroFechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
+            return RedirectToAction("Inicio", "Inicio");
         }
         [Authorize]
         public IActionResult ObtenerPrecioAlquiler(int IdVehiculo, int IdSeguro)

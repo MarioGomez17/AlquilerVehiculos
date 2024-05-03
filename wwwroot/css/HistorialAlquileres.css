@@ -12,7 +12,8 @@
 
 /*------------------------------------- GENERAL -------------------------------------*/
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     font-family: var(--Font);
@@ -80,7 +81,6 @@ html, body {
     transition: background-color 0.5s ease;
     font-weight: bold;
 }
-
 
 .IconoLinkSVG {
     filter: drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte));
@@ -306,7 +306,8 @@ html, body {
 
 /*------------------------------------- GENERAL -------------------------------------*/
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     font-family: var(--Font);
@@ -374,7 +375,6 @@ html, body {
     transition: background-color 0.5s ease;
     font-weight: bold;
 }
-
 
 .IconoLinkSVG {
     filter: drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte)) drop-shadow(0 0 1px var(--Wihte));
@@ -518,20 +518,19 @@ html, body {
     margin: 0;
 }
 
-
-.LinkInformacionAlquiler{
+.LinkInformacionAlquiler {
     text-decoration: none;
     transition: .5s;
     width: 95%;
     color: var(--Black);
 }
 
-.LinkInformacionAlquiler:hover{
+.LinkInformacionAlquiler:hover {
     scale: 1.07;
     margin: 10px 0;
 }
 
-.LinkInformacionAlquiler:hover .InformacionAlquiler{
+.LinkInformacionAlquiler:hover .InformacionAlquiler {
     border-color: var(--FifthColor);
 }
 

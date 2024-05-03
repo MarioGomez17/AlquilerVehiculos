@@ -1,19 +1,4 @@
-const InputFechaInicio = document.getElementById('FechaInicio');
-const FechaActual = new Date();
-const FehcaLimiteFechaInicial = new Date(FechaActual);
-FehcaLimiteFechaInicial.setDate(FehcaLimiteFechaInicial.getDate() + 2);
-const FormatoFehcaLimiteFechaInicial = FehcaLimiteFechaInicial.toISOString().slice(0, 16);
-InputFechaInicio.min = FormatoFehcaLimiteFechaInicial;
-
-InputFechaInicio.addEventListener('change', function () {
-    const InputFechaFin = document.getElementById("FechaFin");
-    InputFechaFin.disabled = false;
-    const FechaInputFehcaInicio = new Date(InputFechaInicio.value);
-    const FehcaLimiteFechaFinal = new Date(FechaInputFehcaInicio);
-    FehcaLimiteFechaFinal.setDate(FehcaLimiteFechaFinal.getDate() + 1);
-    const FormatoFehcaLimiteFechaFinal = FehcaLimiteFechaFinal.toISOString().slice(0, 16);
-    InputFechaFin.min = FormatoFehcaLimiteFechaFinal;
-});
+import Swal from 'https://cdn.skypack.dev/sweetalert2';
 
 document.addEventListener("DOMContentLoaded", function () {
     const BotonCalcularPrecioAlquiler = document.getElementById("BotonCalcularPrecioAlquiler");
@@ -21,7 +6,58 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         CalcularPrecioAlquiler();
     });
+    var BotonLavadaVehiculo = document.getElementById("BotonLavadaVehiculo");
+    BotonLavadaVehiculo.addEventListener('change', function () {
+        const PrecioLavadaVehiculo = document.getElementById("PrecioLavadaVehiculo");
+        const PrecioAlquiler = document.getElementById("PrecioAlquiler");
+        if (this.checked) {
+            if (PrecioAlquiler.value != "") {
+                var ValorAlquiler = (Number(PrecioAlquiler.value) + 20000);
+                PrecioAlquiler.value = ValorAlquiler;
+            }
+            PrecioLavadaVehiculo.value = "20000";
+        } else {
+            if (PrecioAlquiler.value != "") {
+                var ValorAlquiler = (Number(PrecioAlquiler.value) - 20000);
+                PrecioAlquiler.value = ValorAlquiler;
+            }
+            PrecioLavadaVehiculo.value = "0";
+        }
+    });
+    const BotonEnviarFormularioCrearAlquiler = document.getElementById("BotonEnviarFormularioCrearAlquiler");
+    BotonEnviarFormularioCrearAlquiler.addEventListener('click', function (event) {
+        const FechaInicio = document.getElementById("FechaInicio").value;
+        const FechaFin = document.getElementById("FechaFin").value;
+        const Seguro = document.getElementById("Seguro").value;
+        const PrecioAlquiler = document.getElementById("PrecioAlquiler").value;
+        const NombreVehiculo = document.getElementById("NombreVehiculo").value;
+        const Ciudad = document.getElementById("Ciudad").value;
+        const Lugar = document.getElementById("Lugar").value;
+        const MetodoPago = document.getElementById("MetodoPago").value;
+        if (FechaInicio == "" || FechaFin == "" || Seguro == 0 || PrecioAlquiler == "" || NombreVehiculo == "" || Ciudad == 0 || Lugar == 0 || MetodoPago == 0) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'ERROR',
+                text: 'COMPLETE TODO EL FORMULARIO PARA PODER REGISTRAR EL ALQUILER',
+                icon: 'error',
+                confirmButtonText: 'Sí'
+            });
+        }
+    });
 });
+
+function ConvertirFecha(StringFecha) {
+    let [ParteFecha, ParteHora, ParteMeridiano] = StringFecha.split(' ');
+    let [Dia, Mes, Anio] = ParteFecha.split('-').map(Number);
+    let [Hora, Minuto] = ParteHora.split(':').map(Number);
+    if (ParteMeridiano.toUpperCase() === 'P.M.' && Hora !== 12) {
+        Hora += 12;
+    } else if (ParteMeridiano.toUpperCase() === 'A.M.' && Hora === 12) {
+        Hora = 0;
+    }
+    Mes -= 1;
+    return new Date(Anio, Mes, Dia, Hora, Minuto);
+}
 
 async function CalcularPrecioAlquiler() {
     var PrecioSeguro = 0;
@@ -29,8 +65,9 @@ async function CalcularPrecioAlquiler() {
     var IdVehiculo = document.getElementById("Vehiculo").value;
     var IdSeguro = document.getElementById("Seguro").value;
     var Lavada = document.getElementById("PrecioLavadaVehiculo").value;
-    var FechaInicio = new Date(document.getElementById("FechaInicio").value);
-    var FechaFin = new Date(document.getElementById("FechaFin").value);
+    var FechaInicio = ConvertirFecha(document.getElementById("FechaInicio").value);
+    var FechaFin = ConvertirFecha(document.getElementById("FechaFin").value);
+
     if (IdVehiculo != 0 && IdSeguro != 0 && FechaInicio != "" && FechaFin != "") {
         try {
             let Respuesta = await fetch('/Alquiler/ObtenerPrecioAlquiler?IdVehiculo=' + IdVehiculo + '&IdSeguro=' + IdSeguro);
@@ -39,7 +76,6 @@ async function CalcularPrecioAlquiler() {
             PrecioAlquilerDiaVehiculo = Datos.PrecioAlquilerDiaVehiculo;
         }
         catch (error) {
-            console.log("Error" + error);
         }
         var DiferenciaFechas = Math.abs(FechaFin - FechaInicio);
         var DiasAlquiler = Math.ceil(DiferenciaFechas / (1000 * 60 * 60 * 24));
@@ -47,19 +83,12 @@ async function CalcularPrecioAlquiler() {
         const PrecioAlquiler = document.getElementById("PrecioAlquiler");
         PrecioAlquiler.value = ValorPrecioAlquiler;
     } else {
-        alert("COMPLETE TODOS LOS CAMPOS DEL FORMULARIO PARA CONSULTAR EL PRECIO DEL ALQUILER");
+        Swal.fire({
+            title: 'ERROR',
+            text: 'DEBE SELECCIONAR AL MENOS UN SEGURO PARA PODER CALCULAR EL PRECIO DEL ALQUILER',
+            icon: 'error',
+            confirmButtonText: 'Sí'
+        });
     }
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    var BotonLavadaVehiculo = document.getElementById("BotonLavadaVehiculo");
-    BotonLavadaVehiculo.addEventListener('change', function () {
-        const PrecioLavadaVehiculo = document.getElementById("PrecioLavadaVehiculo");
-        if (this.checked) {
-            PrecioLavadaVehiculo.value = "20000";
-        } else {
-            PrecioLavadaVehiculo.value = "";
-        }
-    });
-});
 
