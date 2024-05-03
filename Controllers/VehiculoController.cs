@@ -67,10 +67,10 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloLinea ModeloLinea = new();
             return Json(new { Lineas =  ModeloLinea.TraerTodasLineasPorMarca(IdMarca)});
         }
-        public IActionResult TraerTodosMetodasMarcasPorTIpo(int IdTipoVehiculo)
+        public IActionResult TraerTodasMarcasPorTIpo(int IdTipoVehiculo)
         {
             ModeloMarca ModeloMarca = new();
-            return Json(new { Marcas = ModeloMarca.TraerTodosMetodasMarcasPorTIpo(IdTipoVehiculo) });
+            return Json(new { Marcas = ModeloMarca.TraerTodasMarcasPorTIpo(IdTipoVehiculo) });
         }
     }
 }

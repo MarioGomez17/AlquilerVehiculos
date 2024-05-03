@@ -43,7 +43,7 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return MarcasVehiculo;
         }
-        public List<ModeloMarca> TraerTodosMetodasMarcasPorTIpo(int IdTipoVehiculo)
+        public List<ModeloMarca> TraerTodasMarcasPorTIpo(int IdTipoVehiculo)
         {
             List<ModeloMarca> MarcasVehiculo = [];
             string ConsultaSQL = "SELECT " +

@@ -1,8 +1,6 @@
 ﻿@model ModeloInicio;
 @{
     Layout = null;
-    string FechaInicioFormateada = ViewBag.Message[3].ToString("yyyy-MM-dd HH:mm");
-    string FechaFinFormateada = ViewBag.Message[4].ToString("yyyy-MM-dd HH:mm");
 }
 <!DOCTYPE html>
 <html lang="es">
@@ -214,24 +212,30 @@
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroMarca">Marca</label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <input type="datetime-local" class="FechaFiltrosFormulario"
-                                                id="FiltroFechaInicio" name="FiltroFechaInicio" required
-                                                value="@FechaInicioFormateada">
-                                            <label class="EtiquetaFiltrosFormulario" for="FiltroFechaInicio">
+                                            <input type="time" class="FechaFiltrosFormulario" id="FiltroHoraInicio"
+                                                name="FiltroHoraInicio" value="@ViewBag.Message[4]" min="09:00"
+                                                max="17:00">
+                                            <input type="date" class="FechaFiltrosFormulario" id="FiltroFechaInicio"
+                                                name="FiltroFechaInicio" value="@ViewBag.Message[3]">
+                                            <label class="EtiquetaFiltrosFormulario"
+                                                for="FiltroFechaInicio FiltroHoraInicio">
                                                 Fecha Inicio
                                             </label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <input type="datetime-local" class="FechaFiltrosFormulario"
-                                                id="FiltroFechaFin" name="FiltroFechaFin" required
-                                                value="@FechaFinFormateada">
-                                            <label class="EtiquetaFiltrosFormulario" for="FiltroFechaFin">
+                                            <input type="time" class="FechaFiltrosFormulario" id="FiltroHoraFin"
+                                                name="FiltroHoraFin" value="@ViewBag.Message[6]" min="09:00"
+                                                max="17:00">
+                                            <input type="date" class="FechaFiltrosFormulario" id="FiltroFechaFin"
+                                                name="FiltroFechaFin" value="@ViewBag.Message[5]">
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroFechaFin FiltroHoraFin">
                                                 Fecha Fin
                                             </label>
                                         </div>
                                     </div>
                                     <div class="DivBotonFormulario">
-                                        <input class="BotonFormulario" type="submit" value="Aplicar Filtros">
+                                        <input class="BotonFormulario" id="BotonFiltros" type="submit"
+                                            value="Aplicar Filtros">
                                     </div>
                                 </form>
                             </div>

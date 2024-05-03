@@ -23,10 +23,10 @@ function TraerTodasClasificacionesPorTipo() {
     }
 }
 
-function TraerTodosMetodasMarcasPorTIpo() {
+function TraerTodasMarcasPorTIpo() {
     var IdTipoVehiculo = document.getElementById('TipoVehiculo').value;
     if (IdTipoVehiculo) {
-        fetch('/Vehiculo/TraerTodosMetodasMarcasPorTIpo?IdTipoVehiculo=' + IdTipoVehiculo)
+        fetch('/Vehiculo/TraerTodasMarcasPorTIpo?IdTipoVehiculo=' + IdTipoVehiculo)
             .then(response => response.json())
             .then(Data => {
                 var MarcaVehiculo = document.getElementById('Marca');
@@ -100,9 +100,9 @@ function TraerTodasClasificacionesPorTipoInicial(IdTipoVehiculo) {
     }
 }
 
-function TraerTodosMetodasMarcasPorTIpoInicial(IdTipoVehiculo) {
+function TraerTodasMarcasPorTIpoInicial(IdTipoVehiculo) {
     if (IdTipoVehiculo) {
-        fetch('/Vehiculo/TraerTodosMetodasMarcasPorTIpo?IdTipoVehiculo=' + IdTipoVehiculo)
+        fetch('/Vehiculo/TraerTodasMarcasPorTIpo?IdTipoVehiculo=' + IdTipoVehiculo)
             .then(response => response.json())
             .then(Data => {
                 var MarcaVehiculo = document.getElementById('Marca');
@@ -153,11 +153,11 @@ function TraerTodasLineasPorMarcaInicial(IdMarca) {
 }
 
 document.getElementById('TipoVehiculo').addEventListener('change', TraerTodasClasificacionesPorTipo);
-document.getElementById('TipoVehiculo').addEventListener('change', TraerTodosMetodasMarcasPorTIpo);
+document.getElementById('TipoVehiculo').addEventListener('change', TraerTodasMarcasPorTIpo);
 document.getElementById('Marca').addEventListener('change', TraerTodasLineasPorMarca);
 
 document.addEventListener('DOMContentLoaded', function () {
     TraerTodasClasificacionesPorTipoInicial(document.getElementById('TipoVehiculo').value);
-    TraerTodosMetodasMarcasPorTIpoInicial(document.getElementById('TipoVehiculo').value);
+    TraerTodasMarcasPorTIpoInicial(document.getElementById('TipoVehiculo').value);
     TraerTodasLineasPorMarcaInicial(document.getElementById('Marca').value);
 });

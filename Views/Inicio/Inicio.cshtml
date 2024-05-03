@@ -147,22 +147,28 @@
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroMarca">Marca</label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <input type="datetime-local" class="FechaFiltrosFormulario"
-                                                id="FiltroFechaInicio" name="FiltroFechaInicio" required>
-                                            <label class="EtiquetaFiltrosFormulario" for="FiltroFechaInicio">
+                                            <input type="time" class="FechaFiltrosFormulario" id="FiltroHoraInicio"
+                                                name="FiltroHoraInicio" min="09:00" max="17:00">
+                                            <input type="date" class="FechaFiltrosFormulario" id="FiltroFechaInicio"
+                                                name="FiltroFechaInicio">
+                                            <label class="EtiquetaFiltrosFormulario"
+                                                for="FiltroFechaInicio FiltroHoraInicio">
                                                 Fecha Inicio
                                             </label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
-                                            <input type="datetime-local" class="FechaFiltrosFormulario"
-                                                id="FiltroFechaFin" name="FiltroFechaFin" required disabled>
-                                            <label class="EtiquetaFiltrosFormulario" for="FiltroFechaFin">
+                                            <input type="time" class="FechaFiltrosFormulario" id="FiltroHoraFin"
+                                                name="FiltroHoraFin" min="09:00" max="17:00" disabled>
+                                            <input type="date" class="FechaFiltrosFormulario" id="FiltroFechaFin"
+                                                name="FiltroFechaFin" disabled>
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroFechaFin FiltroHoraFin">
                                                 Fecha Fin
                                             </label>
                                         </div>
                                     </div>
                                     <div class="DivBotonFormulario">
-                                        <input class="BotonFormulario" type="submit" value="Aplicar Filtros">
+                                        <input class="BotonFormulario" id="BotonFiltros" type="submit"
+                                            value="Aplicar Filtros">
                                     </div>
                                 </form>
                             </div>
@@ -172,11 +178,8 @@
                                     @foreach (var Vehiculo in Model.Vehiculos)
                                     {
                                         <div class="InformacionModeloVehiculo">
-                                            <a class="LinkInformacionModeloVehiculo" asp-controller="Vehiculo"
-                                                asp-action="InformacionVehiculoCrearAlquiler" asp-route-IdVehiculo=@Vehiculo.Id>
-                                                <h3 class="TextoLinkInformacionModeloVehiculo">@Vehiculo.TipoVehiculo:
-                                                    @Vehiculo.Marca @Vehiculo.Linea</h3>
-                                            </a>
+                                            <h3 class="TextoLinkInformacionModeloVehiculo">
+                                                @Vehiculo.TipoVehiculo: @Vehiculo.Marca @Vehiculo.Linea</h3>
                                             <p class="TituloInformacionModeloVehiculo">Ciudad: <span
                                                     class="ValorInformacionModeloVehiculo">@Vehiculo.Ciudad</span></p>
                                             <img class="FotoVehiculo" src="~/FotoVehiculos/@Vehiculo.RutaFoto"

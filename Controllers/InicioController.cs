@@ -19,7 +19,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }
-        public IActionResult InicioFiltrado(int FiltroCiudad, int FiltroTipoVehiculo, int FiltroMarca, DateTime FiltroFechaInicio, DateTime FiltroFechaFin)
+        public IActionResult InicioFiltrado(int FiltroCiudad, int FiltroTipoVehiculo, int FiltroMarca, string FiltroFechaInicio, string FiltroHoraInicio, string FiltroFechaFin, string FiltroHoraFin)
         {
             ModeloVehiculo ModeloVehiculo = new();
             List<ModeloVehiculo> Vehiculos = [];
@@ -58,22 +58,28 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloAlquiler ModeloAlquiler = new();
             List<ModeloAlquiler> Alquileres = ModeloAlquiler.TraerAlquileres();
             ModeloInicio ModeloInicio = new(Vehiculos);
+            DateTime  ValorFiltroFechaInicio = DateTime.Parse(FiltroFechaInicio);
+            ValorFiltroFechaInicio = ValorFiltroFechaInicio.Add(TimeSpan.Parse(FiltroHoraInicio));
+            DateTime  ValorFiltroFechaFin = DateTime.Parse(FiltroFechaFin);
+            ValorFiltroFechaFin = ValorFiltroFechaFin.Add(TimeSpan.Parse(FiltroHoraFin));
             foreach(var Alquiler in Alquileres){
-                if((FiltroFechaInicio >= Alquiler.FechaIncio && FiltroFechaInicio <= Alquiler.FechaFin) || (FiltroFechaFin >= Alquiler.FechaIncio && FiltroFechaFin <= Alquiler.FechaFin)){
+                if((ValorFiltroFechaInicio >= Alquiler.FechaIncio && ValorFiltroFechaInicio <= Alquiler.FechaFin) || (ValorFiltroFechaFin >= Alquiler.FechaIncio && ValorFiltroFechaFin <= Alquiler.FechaFin)){
                     int IdVehiculoEliminar = Alquiler.Vehiculo.Id;
                     ModeloVehiculo VehiculoEliminar = ModeloInicio.Vehiculos.Find(ModeloVehiculo => ModeloVehiculo.Id == IdVehiculoEliminar);
                     ModeloInicio.Vehiculos.Remove(VehiculoEliminar);
                 }
             }
-            AlquilerController.FechaInicio = FiltroFechaInicio;
-            AlquilerController.FechaFin = FiltroFechaFin;
+            AlquilerController.FechaInicio = ValorFiltroFechaInicio;
+            AlquilerController.FechaFin = ValorFiltroFechaFin;
             object[] Datos =
             [
                 FiltroCiudad,
                 FiltroTipoVehiculo,
                 FiltroMarca,
                 FiltroFechaInicio,
+                FiltroHoraInicio,
                 FiltroFechaFin,
+                FiltroHoraFin
             ];
             ViewBag.Message = Datos;
             return View(ModeloInicio);
