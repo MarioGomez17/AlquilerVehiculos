@@ -20,11 +20,17 @@ namespace ALQUILER_VEHICULOS.Controllers
             ViewBag.Message = Fechas;
             return View(ModeloCrearAlquiler);
         }
-
         [Authorize]
-        public IActionResult InformacionAlquiler(int IdAlquiler)
+        public IActionResult InformacionAlquilerAlquilador(int IdAlquiler)
         {
-            return View();
+            ModeloAlquiler ModeloAlquiler = new();
+            return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
+        }
+        [Authorize]
+        public IActionResult InformacionAlquilerPropietario(int IdAlquiler)
+        {
+            ModeloAlquiler ModeloAlquiler = new();
+            return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
         }
         [Authorize]
         public IActionResult CalificarAlquiler()

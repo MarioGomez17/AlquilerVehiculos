@@ -113,7 +113,7 @@
                                                 if (Alquiler.Estado == "Iniciado")
                                                 {
                                                     <a class="LinkInformacionAlquiler" asp-controller="Alquiler"
-                                                        asp-action="InformacionAlquiler" asp-route-IdAlquiler=@Alquiler.Id>
+                                                        asp-action="InformacionAlquilerAlquilador" asp-route-IdAlquiler=@Alquiler.Id>
                                                         <div class="InformacionAlquilerIniciado">
                                                             <div class="InformacionAlquilerParte1">
                                                                 <span class="DetallesAlquiler">
@@ -160,7 +160,7 @@
                                                 else if (Alquiler.Estado == "Finalizado" || Alquiler.Estado == "Cancelado")
                                                 {
                                                     <a class="LinkInformacionAlquiler" asp-controller="Alquiler"
-                                                        asp-action="InformacionAlquiler" asp-route-IdAlquiler=@Alquiler.Id>
+                                                        asp-action="InformacionAlquilerAlquilador" asp-route-IdAlquiler=@Alquiler.Id>
                                                         <div class="InformacionAlquilerFinalizado">
                                                             <div class="InformacionAlquilerParte1">
                                                                 <span class="DetallesAlquiler">
@@ -207,7 +207,7 @@
                                                 else if (Alquiler.Estado == "Sin Iniciar")
                                                 {
                                                     <a class="LinkInformacionAlquiler" asp-controller="Alquiler"
-                                                        asp-action="InformacionAlquiler" asp-route-IdAlquiler=@Alquiler.Id>
+                                                        asp-action="InformacionAlquilerAlquilador" asp-route-IdAlquiler=@Alquiler.Id>
                                                         <div class="InformacionAlquilerPorIniciar">
                                                             <div class="InformacionAlquilerParte1">
                                                                 <span class="DetallesAlquiler">
@@ -271,7 +271,7 @@
                                                 if (Alquiler.Estado == "Iniciado")
                                                 {
                                                     <a class="LinkInformacionAlquiler" asp-controller="Alquiler"
-                                                        asp-action="InformacionAlquiler" asp-route-IdAlquiler=@Alquiler.Id>
+                                                        asp-action="InformacionAlquilerPropietario" asp-route-IdAlquiler=@Alquiler.Id>
                                                         <div class="InformacionAlquilerIniciado">
                                                             <div class="InformacionAlquilerParte1">
                                                                 <span class="DetallesAlquiler">
@@ -331,7 +331,7 @@
                                                 else if (Alquiler.Estado == "Finalizado" || Alquiler.Estado == "Cancelado")
                                                 {
                                                     <a class="LinkInformacionAlquiler" asp-controller="Alquiler"
-                                                        asp-action="InformacionAlquiler" asp-route-IdAlquiler=@Alquiler.Id>
+                                                        asp-action="InformacionAlquilerPropietario" asp-route-IdAlquiler=@Alquiler.Id>
                                                         <div class="InformacionAlquilerFinalizado">
                                                             <div class="InformacionAlquilerParte1">
                                                                 <span class="DetallesAlquiler">
@@ -391,7 +391,7 @@
                                                 else if (Alquiler.Estado == "Por Iniciar")
                                                 {
                                                     <a class="LinkInformacionAlquiler" asp-controller="Alquiler"
-                                                        asp-action="InformacionAlquiler" asp-route-IdAlquiler=@Alquiler.Id>
+                                                        asp-action="InformacionAlquilerPropietario" asp-route-IdAlquiler=@Alquiler.Id>
                                                         <div class="InformacionAlquilerPorIniciar">
                                                             <div class="InformacionAlquilerParte1">
                                                                 <span class="DetallesAlquiler">
@@ -448,7 +448,6 @@
                                                         </div>
                                                     </a>
                                                 }
-
                                             }
                                         }
                                         else
