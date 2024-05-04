@@ -43,7 +43,7 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult AccionActualizarVehiculo(int Id, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad)
         {
-            ModeloVehiculo ModeloVehiculo = new ();
+            ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo.ActualizarVehiculo(Id, Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroSeguro, NumeroCertificadoCDA, TipoCombustible, Ciudad);
             InformacionVehiculo(Id);
             return View("InformacionVehiculo");
@@ -51,12 +51,18 @@ namespace ALQUILER_VEHICULOS.Controllers
 
         public IActionResult AccionEliminarVehiculo(int IdVehiculo)
         {
-            ModeloVehiculo ModeloVehiculo = new ();
+            ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo.EliminarVehiculo(IdVehiculo);
-            InformacionVehiculos();
-            return View("InformacionVehiculos");
+            InformacionVehiculo(IdVehiculo);
+            return View("InformacionVehiculo");
         }
-
+        public IActionResult AccionActivarVehiculo(int IdVehiculo)
+        {
+            ModeloVehiculo ModeloVehiculo = new();
+            ModeloVehiculo.ActivarVehiculo(IdVehiculo);
+            InformacionVehiculo(IdVehiculo);
+            return View("InformacionVehiculo");
+        }
         public IActionResult TraerTodasClasificacionesPorTipo(int IdTipoVehiculo)
         {
             ModeloClasificacionVehículo ModeloClasificacionVehículo = new();
@@ -65,7 +71,7 @@ namespace ALQUILER_VEHICULOS.Controllers
         public IActionResult TraerTodasLineasPorMarca(int IdMarca)
         {
             ModeloLinea ModeloLinea = new();
-            return Json(new { Lineas =  ModeloLinea.TraerTodasLineasPorMarca(IdMarca)});
+            return Json(new { Lineas = ModeloLinea.TraerTodasLineasPorMarca(IdMarca) });
         }
         public IActionResult TraerTodasMarcasPorTIpo(int IdTipoVehiculo)
         {

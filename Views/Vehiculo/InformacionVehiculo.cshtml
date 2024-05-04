@@ -332,8 +332,9 @@
                                             value="Actalizar Datos" />
                                         @if (Model.Vehiculo.Estado == "Inactivo")
                                         {
-                                            <a class="BotonFormularioEliminar">
-                                                Eliminar Vehículo
+                                            <a class="BotonFormularioActivar" asp-controller="Vehiculo"
+                                                asp-action="AccionActivarVehiculo" asp-route-IdVehiculo=@Model.Vehiculo.Id>
+                                                Activar Vehículo
                                             </a>
                                         }
                                         else

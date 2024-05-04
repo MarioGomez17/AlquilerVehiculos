@@ -109,17 +109,35 @@
                                 {
                                     @foreach (var Vehiculo in Model)
                                     {
-                                        <div class="InformacionModeloVehiculo">
-                                            <a class="LinkInformacionModeloVehiculo" asp-controller="Vehiculo"
-                                                asp-action="InformacionVehiculo" asp-route-IdVehiculo=@Vehiculo.Id>
-                                                <h3 class="TextoLinkInformacionModeloVehiculo">@Vehiculo.TipoVehiculo:
-                                                    @Vehiculo.Marca @Vehiculo.Linea</h3>
-                                            </a>
-                                            <p class="TituloInformacionModeloVehiculo">Ciudad: <span
-                                                    class="ValorInformacionModeloVehiculo">@Vehiculo.Ciudad</span></p>
-                                            <img class="FotoVehiculo" src="~/FotoVehiculos/@Vehiculo.RutaFoto"
-                                                alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
-                                        </div>
+                                        if (Vehiculo.Estado == "Activo")
+                                        {
+                                            <div class="InformacionModeloVehiculoActivo">
+                                                <a class="LinkInformacionModeloVehiculo" asp-controller="Vehiculo"
+                                                    asp-action="InformacionVehiculo" asp-route-IdVehiculo=@Vehiculo.Id>
+                                                    <h3 class="TextoLinkInformacionModeloVehiculo">@Vehiculo.TipoVehiculo:
+                                                        @Vehiculo.Marca @Vehiculo.Linea</h3>
+                                                </a>
+                                                <p class="TituloInformacionModeloVehiculo">Ciudad: <span
+                                                        class="ValorInformacionModeloVehiculo">@Vehiculo.Ciudad</span></p>
+                                                <img class="FotoVehiculo" src="~/FotoVehiculos/@Vehiculo.RutaFoto"
+                                                    alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="InformacionModeloVehiculoInactivo">
+                                                <a class="LinkInformacionModeloVehiculo" asp-controller="Vehiculo"
+                                                    asp-action="InformacionVehiculo" asp-route-IdVehiculo=@Vehiculo.Id>
+                                                    <h3 class="TextoLinkInformacionModeloVehiculo">@Vehiculo.TipoVehiculo:
+                                                        @Vehiculo.Marca @Vehiculo.Linea</h3>
+                                                </a>
+                                                <p class="TituloInformacionModeloVehiculo">Ciudad: <span
+                                                        class="ValorInformacionModeloVehiculo">@Vehiculo.Ciudad</span></p>
+                                                <img class="FotoVehiculo" src="~/FotoVehiculos/@Vehiculo.RutaFoto"
+                                                    alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
+                                            </div>
+                                        }
+
                                     }
                                 }
                                 else

@@ -312,14 +312,14 @@ body {
     background: transparent;
     cursor: pointer;
     transition: ease-out 0.8s;
-    border: 2px solid green;
+    border: 2px solid var(--SecondColor);
     border-radius: 15px;
-    box-shadow: inset 0 0 0 0 green;
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
 }
 
 .BotonFormularioActualizar:hover {
     color: var(--Wihte);
-    box-shadow: inset 0 -100px 0 0 green;
+    box-shadow: inset 0 -100px 0 0 var(--SecondColor);
 }
 
 .BotonFormularioActualizar:active {
@@ -350,6 +350,33 @@ body {
 }
 
 .BotonFormularioEliminar:active {
+    transform: scale(0.9);
+}
+
+.BotonFormularioActivar {
+    font-family: var(--Font);
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 40%;
+    padding: 5px 0;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.8s;
+    border: 2px solid green;
+    border-radius: 15px;
+    box-shadow: inset 0 0 0 0 green;
+    text-decoration: none;
+    text-align: center;
+    color: var(--Black);
+}
+
+.BotonFormularioActivar:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 green;
+}
+
+.BotonFormularioActivar:active {
     transform: scale(0.9);
 }
 

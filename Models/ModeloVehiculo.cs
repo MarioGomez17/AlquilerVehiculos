@@ -907,5 +907,15 @@ namespace ALQUILER_VEHICULOS.Models
                                 "(alquiler_vehiculos.vehiculo.Id_Vehiculo = " + IdVehiculo + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
+        public bool ActivarVehiculo(int IdVehiculo)
+        {
+            string ConsultaSQL = "UPDATE " +
+                                "alquiler_vehiculos.vehiculo " +
+                                "SET " +
+                                "alquiler_vehiculos.vehiculo.Estado_Vehiculo = 1 " +
+                                "WHERE " +
+                                "(alquiler_vehiculos.vehiculo.Id_Vehiculo = " + IdVehiculo + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }
