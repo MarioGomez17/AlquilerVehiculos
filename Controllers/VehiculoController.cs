@@ -12,7 +12,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         [Authorize]
         public IActionResult RegistrarVehiculo()
         {
-            return View();
+            ModeloRegistrarVehiculo ModeloRegistrarVehiculo = new();
+            return View(ModeloRegistrarVehiculo);
         }
         [Authorize]
         public IActionResult InformacionVehiculos()

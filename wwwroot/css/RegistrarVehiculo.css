@@ -151,13 +151,218 @@ body {
 .PrincipalRegistrarVehiculo {
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/*--------------------------------------------------------------------------------*/
+
 .ContenidoPrincipalRegistrarVehiculo {
-    height: 100%;
-    width: 100%;
+    height: 97%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--ThirdColor);
+    border: 5px solid var(--SixthColor);
+    border-radius: 15px;
+}
+
+.FormularioVehiculo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.DivComponentesConFoto {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.GrupoComponentes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ComponentesFormulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 65%;
+    height: 100%;
+    gap: 10px;
+}
+
+.DivEtiquetaInput {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.EtiquetaFormulario {
+    font-size: 15px;
+    font-weight: bold;
+    transition: .5s;
+    font-family: var(--Font);
+}
+
+.InputFormulario {
+    width: 357px;
+    font: var(--Font);
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    padding: 0;
+    height: 40px;
+    text-align: center;
+}
+
+.InputCorto {
+    width: 202px;
+}
+
+.SelectFormulario {
+    width: 365px;
+    font: var(--Font);
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    text-align: center;
+    padding: 0;
+    height: 48px;
+}
+
+.InputFormulario:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+.InputFormulario:focus~label {
+    color: var(--SecondColor);
+    font-size: 18px;
+}
+
+.SelectFormulario:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+.SelectFormulario:focus~label {
+    color: var(--SecondColor);
+    font-size: 18px;
+}
+
+.OptionSelect {
+    font: var(--Font);
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.DivFotoVehiculo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+}
+
+.FotoVehiculo {
+    width: 95%;
+    height: 250px;
+}
+
+.ComponentesBotones {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.GrupoBotones {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.BotonFormularioRegistrar {
+    font-family: var(--Font);
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 95%;
+    padding: 5px 0;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.8s;
+    border: 2px solid var(--SecondColor);
+    border-radius: 15px;
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+}
+
+.BotonFormularioRegistrar:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+}
+
+.BotonFormularioRegistrar:active {
+    transform: scale(0.9);
+}
+
+.DivInputFoto {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid var(--SecondColor);
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+    transition: ease-out 0.8s;
+}
+
+.DivInputFoto:hover {
+    box-shadow: inset 0 -150px 0 0 var(--SecondColor);
+}
+
+.DivInputFoto:hover .IconoSubirFoto {
+    stroke: var(--Wihte);
+    stroke-width: 2;
+    scale: 1.2;
+}
+
+.IconoSubirFoto {
+    cursor: pointer;
+    transition: ease-out 0.8s;
+}
+
+.InputFotoVehiculo {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer !important;
+    z-index: 5;
 }
