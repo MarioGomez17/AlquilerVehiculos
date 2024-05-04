@@ -31,7 +31,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "Vehiculo_Alquiler, " +
                 "Lugar_Alquiler, " +
                 "MeotodoPago_Alquiler, " +
-                "Seguro_Alquiler) " +
+                "Seguro_Alquiler, " +
+                " Estado_Alquiler) " +
                 "VALUES ('" +
                 FechaInicio.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
                 "'" + FechaFin.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
@@ -41,7 +42,8 @@ namespace ALQUILER_VEHICULOS.Models
                 Vehiculo + ", " +
                 Lugar + ", " +
                 MetodoPago + ", " +
-                Seguro + ")";
+                Seguro + ", " +
+                3 + ")";
             ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
             int IdAlquiler = TraerIdUltimoAlquilerPorVehiculo(Vehiculo);
             ModeloAlquilador ModeloAlquilador = new();

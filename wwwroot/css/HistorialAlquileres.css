@@ -530,17 +530,35 @@ body {
     margin: 10px 0;
 }
 
-.LinkInformacionAlquiler:hover .InformacionAlquiler {
-    border-color: var(--FifthColor);
-}
-
-.InformacionAlquiler {
+.InformacionAlquilerIniciado {
     width: 95%;
     height: 350px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 5px solid var(--Black);
+    border: 5px solid rgb(0, 255, 0);
+    background-color: var(--SixthColor);
+    border-radius: 15px;
+}
+
+.InformacionAlquilerFinalizado {
+    width: 95%;
+    height: 350px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 5px solid rgb(255, 0, 0);
+    background-color: var(--SixthColor);
+    border-radius: 15px;
+}
+
+.InformacionAlquilerPorIniciar {
+    width: 95%;
+    height: 350px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 5px solid rgb(255, 255, 0);
     background-color: var(--SixthColor);
     border-radius: 15px;
 }
