@@ -91,7 +91,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 if (ModeloUsuario.RegistrarUsuario(Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena))
                 {
-                    return View("IniciarSesion");
+                    return RedirectToAction("IniciarSesion", "Usuario");
                 }
                 else
                 {
@@ -111,7 +111,7 @@ namespace ALQUILER_VEHICULOS.Controllers
         public async Task<IActionResult> CerrarSesion()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return View("IniciarSesion");
+            return RedirectToAction("IniciarSesion", "Usuario");
         }
         [Authorize]
         public IActionResult AccionActualizarUsuario(string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
@@ -128,13 +128,13 @@ namespace ALQUILER_VEHICULOS.Controllers
                 ModeloUsuario.ActualizarUsuario(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena);
             }
             InformacionUsuario();
-            return View("InformacionUsuario");
+            return  RedirectToAction("InformacionUsuario", "Usuario");
         }
         public async Task<IActionResult> AccionEliminarUsuario(int IdUsuario){
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario.EliminarUsuario(IdUsuario);
             await CerrarSesion();
-            return View("IniciarSesion");
+            return  RedirectToAction("IniciarSesion", "Usuario");
         }
     }
 }

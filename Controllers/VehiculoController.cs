@@ -47,7 +47,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo.ActualizarVehiculo(Id, Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroSeguro, NumeroCertificadoCDA, TipoCombustible, Ciudad);
             InformacionVehiculo(Id);
-            return View("InformacionVehiculo");
+            return RedirectToAction("InformacionVehiculo", "Vehiculo");
         }
 
         public IActionResult AccionEliminarVehiculo(int IdVehiculo)
@@ -55,14 +55,14 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo.EliminarVehiculo(IdVehiculo);
             InformacionVehiculo(IdVehiculo);
-            return View("InformacionVehiculo");
+            return RedirectToAction("InformacionVehiculo", "Vehiculo");
         }
         public IActionResult AccionActivarVehiculo(int IdVehiculo)
         {
             ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo.ActivarVehiculo(IdVehiculo);
             InformacionVehiculo(IdVehiculo);
-            return View("InformacionVehiculo");
+            return RedirectToAction("InformacionVehiculo", "Vehiculo");
         }
         public IActionResult TraerTodasClasificacionesPorTipo(int IdTipoVehiculo)
         {

@@ -216,14 +216,18 @@
                                 </div>
                             </div>
                             <div class="InformacionAlquilerParte3">
-                                @if(Model.Estado == "Iniciado"){
-                                <a href="#" class="LinkInformacionAlquiler">
-                                    Finalizar Alquiler
-                                </a>
-                                }else{
-                                <a class="LinkInformacionAlquiler">
-                                    Finalizar Alquiler
-                                </a>
+                                @if (Model.Estado == "Iniciado")
+                                {
+                                    <a asp-controller="Alquiler" asp-action="AccionFinalizarAlquiler" asp-route-IdAlquiler=@Model.Id
+                                        class="LinkInformacionAlquiler">
+                                        Finalizar Alquiler
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="LinkInformacionAlquiler">
+                                        Finalizar Alquiler
+                                    </a>
                                 }
                             </div>
                         </div>

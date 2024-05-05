@@ -226,5 +226,41 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Alquileres;
         }
+        public bool IniciarAlquiler(int IdAlquiler){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.alquiler " + 
+            "SET " + 
+            "alquiler_vehiculos.alquiler.Estado_Alquiler = 1 " + 
+            "WHERE " + 
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler +  "))";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool FinalizarAlquiler(int IdAlquiler){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.alquiler " + 
+            "SET " + 
+            "alquiler_vehiculos.alquiler.Estado_Alquiler = 2 " + 
+            "WHERE " + 
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler +  "))";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool CancelarAlquiler(int IdAlquiler){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.alquiler " + 
+            "SET " + 
+            "alquiler_vehiculos.alquiler.Estado_Alquiler = 4 " + 
+            "WHERE " + 
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler +  "))";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool PagarAlquiler(int IdAlquiler){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.alquiler " + 
+            "SET " + 
+            "alquiler_vehiculos.alquiler.EstadoPago_Alquiler = 1 " + 
+            "WHERE " + 
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler +  "))";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloAlquilador = ModeloAlquilador.TraerAlquiladorUsuario(DatosUsuarioSesion().Id);
             int Alquilador = ModeloAlquilador.Id;
             ModeloAlquiler.CrearAquiler(ValorFiltroFechaInicio, ValorFiltroFechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
-            return RedirectToAction("Inicio", "Inicio");
+            return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
         [Authorize]
         public IActionResult ObtenerPrecioAlquiler(int IdVehiculo, int IdSeguro)
@@ -75,6 +75,30 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo = ModeloVehiculo.TraerVehiculo(IdVehiculo);
             return Json(new { PrecioSeguro = ModeloSeguroAlquiler.PrecioSeguroAlquiler, PrecioAlquilerDiaVehiculo = ModeloVehiculo.PrecioAlquilerDia });
+        }
+        public IActionResult AccionIniciarAlquiler(int IdAlquiler){
+            ModeloAlquiler ModeloAlquiler = new();
+            ModeloAlquiler.IniciarAlquiler(IdAlquiler);
+            InformacionAlquilerAlquilador(IdAlquiler);
+            return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler");
+        }
+        public IActionResult AccionFinalizarAlquiler(int IdAlquiler){
+            ModeloAlquiler ModeloAlquiler = new();
+            ModeloAlquiler.FinalizarAlquiler(IdAlquiler);
+            InformacionAlquilerPropietario(IdAlquiler);
+            return RedirectToAction("InformacionAlquilerPropietario", "Alquiler");
+        }
+        public IActionResult AccionCancelarAlquiler(int IdAlquiler){
+            ModeloAlquiler ModeloAlquiler = new();
+            ModeloAlquiler.CancelarAlquiler(IdAlquiler);
+            HistorialAlquileres();
+            return RedirectToAction("HistorialAlquileres", "Alquiler");
+        }
+        public IActionResult AccionPagarAlquiler(int IdAlquiler){
+            ModeloAlquiler ModeloAlquiler = new();
+            ModeloAlquiler.PagarAlquiler(IdAlquiler);
+            InformacionAlquilerAlquilador(IdAlquiler);
+            return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler");
         }
     }
 }

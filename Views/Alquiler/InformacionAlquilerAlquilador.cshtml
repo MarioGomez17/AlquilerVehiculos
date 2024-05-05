@@ -210,9 +210,9 @@
                                 </div>
                             </div>
                             <div class="InformacionAlquilerParte3">
-                                @if (Model.EstadoPago == "Sin Inicar")
+                                @if (Model.Estado == "Sin Iniciar")
                                 {
-                                    <a href="#" class="LinkInformacionAlquilerIniciar">
+                                    <a asp-controller="Alquiler" asp-action="AccionIniciarAlquiler" asp-route-IdAlquiler=@Model.Id class="LinkInformacionAlquilerIniciar">
                                         Iniciar Alquiler
                                     </a>
                                 }
@@ -224,7 +224,7 @@
                                 }
                                 @if (DiasAlquiler > 2)
                                 {
-                                    <a href="#" class="LinkInformacionAlquilerCancelar">
+                                    <a asp-controller="Alquiler" asp-action="AccionCancelarAlquiler" asp-route-IdAlquiler=@Model.Id class="LinkInformacionAlquilerCancelar">
                                         Cancelar Alquiler
                                     </a>
                                 }
@@ -236,7 +236,7 @@
                                 }
                                 @if (Model.EstadoPago == "Sin Pagar")
                                 {
-                                    <a href="#" class="LinkInformacionAlquilerPagar">
+                                    <a asp-controller="Alquiler" asp-action="AccionPagarAlquiler" asp-route-IdAlquiler=@Model.Id class="LinkInformacionAlquilerPagar">
                                         Pagar Alquiler
                                     </a>
                                 }
@@ -248,7 +248,7 @@
                                 }
                                 @if (Model.Estado == "Finalizado")
                                 {
-                                    <a href="#" class="LinkInformacionAlquilerCalificar">
+                                    <a asp-controller="Alquiler" asp-action="CalificarAlquiler" asp-route-IdAlquiler=@Model.Id class="LinkInformacionAlquilerCalificar">
                                         Calificar Alquiler
                                     </a>
                                 }
