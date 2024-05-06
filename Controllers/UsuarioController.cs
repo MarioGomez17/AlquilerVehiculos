@@ -79,8 +79,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                     object[] Mensaje =
                     [
                         "Correo o Contraseña Equivocados",
-                        Correo,
-                        Contrasena
+                        Correo
                     ];
                     return RedirectToAction("IniciarSesion", "Usuario", new { Mensaje });
                 }
@@ -90,8 +89,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 object[] Mensaje =
                     [
                         "Correo o Contraseña Equivocados",
-                        Correo.ToString(),
-                        Contrasena.ToString()
+                        Correo.ToString()
                     ];
                 return RedirectToAction("IniciarSesion", "Usuario", new { Mensaje });
             }

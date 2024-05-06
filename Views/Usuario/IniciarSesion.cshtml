@@ -125,16 +125,8 @@
                                         <label for="Correo" class="EtiquetaFormulario">Correo</label>
                                     </div>
                                     <div class="Componente">
-                                        @if (ViewBag.Message.Length > 0)
-                                        {
-                                            <input class="InputTexto" type="password" placeholder="Contraseña"
-                                                name="Contrasena" id="Contrasena" required value="@ViewBag.Message[2]" />
-                                        }
-                                        else
-                                        {
-                                            <input class="InputTexto" type="password" placeholder="Contraseña"
-                                                name="Contrasena" id="Contrasena" required />
-                                        }
+                                        <input class="InputTexto" type="password" placeholder="Contraseña"
+                                            name="Contrasena" id="Contrasena" required />
                                         <label for="Contrasena" class="EtiquetaFormulario">Contraseña</label>
                                     </div>
                                     <div class="Componente">
