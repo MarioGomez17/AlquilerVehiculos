@@ -2,10 +2,10 @@
 const ConfirmarContrasena = document.getElementById('ConfirmarContrasena');
 const BotonRegistrar = document.getElementById('BotonRegistrar');
 
-Contrasena.addEventListener('input', ValidatePassword);
-ConfirmarContrasena.addEventListener('input', ValidatePassword);
+Contrasena.addEventListener('input', ValidarContrasena);
+ConfirmarContrasena.addEventListener('input', ValidarContrasena);
 
-function ValidatePassword() {
+function ValidarContrasena() {
     const ContrasenaVariable = Contrasena.value;
     const ConfirmarContrasenaVariable = ConfirmarContrasena.value;
 
