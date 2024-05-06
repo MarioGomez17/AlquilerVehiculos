@@ -41,13 +41,31 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-        public IActionResult AccionActualizarVehiculo(int IdVehiculo, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad)
+        public IActionResult AccionActualizarVehiculo(int IdVehiculo, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad, IFormFile FotoVehiculo)
         {
-            ModeloVehiculo ModeloVehiculo = new();
-            ModeloVehiculo.ActualizarVehiculo(IdVehiculo, Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroSeguro, NumeroCertificadoCDA, TipoCombustible, Ciudad);
+            if (FotoVehiculo != null)
+            {
+                string NombreFoto = FotoVehiculo.FileName;
+                ModeloPropietario ModeloPropietario = new();
+                if (ModeloPropietario.ValidarPropietario(DatosUsuarioSesion().Id))
+                {
+                    ModeloPropietario.CrearPropietario(DatosUsuarioSesion().Id);
+                }
+                ModeloPropietario = ModeloPropietario.TraerPropietarioUsuario(DatosUsuarioSesion().Id);
+                string RutaFoto = ModeloPropietario.Codigo + "_" + NombreFoto;
+                var RutaArchivo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/FotoVehiculos", RutaFoto);
+                using var fileStream = new FileStream(RutaArchivo, FileMode.Create);
+                FotoVehiculo.CopyTo(fileStream);
+                ModeloVehiculo ModeloVehiculo = new();
+                ModeloVehiculo.ActualizarVehiculoConFoto(IdVehiculo, Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroSeguro, NumeroCertificadoCDA, TipoCombustible, Ciudad, RutaFoto);
+            }
+            else
+            {
+                ModeloVehiculo ModeloVehiculo = new();
+                ModeloVehiculo.ActualizarVehiculo(IdVehiculo, Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroSeguro, NumeroCertificadoCDA, TipoCombustible, Ciudad);
+            }
             return RedirectToAction("InformacionVehiculo", "Vehiculo", new { IdVehiculo });
         }
-
         public IActionResult AccionEliminarVehiculo(int IdVehiculo)
         {
             ModeloVehiculo ModeloVehiculo = new();

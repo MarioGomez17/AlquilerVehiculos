@@ -102,8 +102,8 @@
                     <main role="main" class="PrincipalInformacionVehiculo">
                         <div class="ContenidoPrincipalInformacionVehiculo">
                             <form method="post" class="FormularioVehiculo" asp-controller="Vehiculo"
-                                asp-action="AccionActualizarVehiculo">
-                                <input type="hidden" name="Id" id="IdVehiculo" value="@Model.Vehiculo.Id">
+                                asp-action="AccionActualizarVehiculo"  enctype="multipart/form-data">
+                                <input type="hidden" name="IdVehiculo" id="IdVehiculo" value="@Model.Vehiculo.Id">
                                 <input type="hidden" id="TextoClasificacion"
                                     value="@Model.Vehiculo.ClasificacionVehiculo">
                                 <input type="hidden" id="TextoMarca" value="@Model.Vehiculo.Marca">
@@ -304,10 +304,10 @@
                                         </div>
                                     </div>
                                     <div class="DivFotoVehiculo">
-                                        <img class="FotoVehiculo" src="~/FotoVehiculos/@Model.Vehiculo.RutaFoto"
+                                        <img class="FotoVehiculo" src="~/FotoVehiculos/@Model.Vehiculo.RutaFoto" id="EspacioFotoVehiculo"
                                             alt="Foto de @Model.Vehiculo.TipoVehiculo @Model.Vehiculo.Marca @Model.Vehiculo.Linea" />
                                         <div class="DivInputFoto">
-                                            <input class="InputFotoVehiculo" name="file" type="file" id="FotoVehiculo">
+                                            <input class="InputFotoVehiculo" name="FotoVehiculo" type="file" id="FotoVehiculo">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="IconoSubirFoto" width="45"
                                                 height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">

@@ -152,9 +152,23 @@ function TraerTodasLineasPorMarcaInicial(IdMarca) {
     }
 }
 
+function CargarImagen() {
+    const EspacioFotoVehiculo = document.getElementById('EspacioFotoVehiculo');
+    const FotoVehiculo = document.getElementById('FotoVehiculo').files[0];
+    if (FotoVehiculo) {
+        const Lector = new FileReader();
+        Lector.onload = function (event) {
+            const URL = event.target.result;
+            EspacioFotoVehiculo.src = URL;
+        };
+        Lector.readAsDataURL(FotoVehiculo);
+    }
+}
+
 document.getElementById('TipoVehiculo').addEventListener('change', TraerTodasClasificacionesPorTipo);
 document.getElementById('TipoVehiculo').addEventListener('change', TraerTodasMarcasPorTIpo);
 document.getElementById('Marca').addEventListener('change', TraerTodasLineasPorMarca);
+document.getElementById('FotoVehiculo').addEventListener('change', CargarImagen);
 
 document.addEventListener('DOMContentLoaded', function () {
     TraerTodasClasificacionesPorTipoInicial(document.getElementById('TipoVehiculo').value);
