@@ -187,7 +187,7 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {Console.WriteLine("T");}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
@@ -272,7 +272,7 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {Console.WriteLine("C");}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
@@ -357,7 +357,7 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {Console.WriteLine("TV");}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
@@ -442,7 +442,7 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {Console.WriteLine("M");}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
@@ -528,7 +528,7 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {Console.WriteLine("CT");}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
@@ -614,7 +614,7 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {Console.WriteLine("CM");}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
@@ -700,7 +700,7 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception) {Console.WriteLine("TM");}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
@@ -876,7 +876,7 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Vehiculo;
         }
-        
+
         public bool ActualizarVehiculo(int Id, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad)
         {
             string ConsultaSQL = "UPDATE " +

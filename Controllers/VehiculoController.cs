@@ -42,27 +42,24 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-        public IActionResult AccionActualizarVehiculo(int Id, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad)
+        public IActionResult AccionActualizarVehiculo(int IdVehiculo, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad)
         {
             ModeloVehiculo ModeloVehiculo = new();
-            ModeloVehiculo.ActualizarVehiculo(Id, Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroSeguro, NumeroCertificadoCDA, TipoCombustible, Ciudad);
-            InformacionVehiculo(Id);
-            return RedirectToAction("InformacionVehiculo", "Vehiculo");
+            ModeloVehiculo.ActualizarVehiculo(IdVehiculo, Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroSeguro, NumeroCertificadoCDA, TipoCombustible, Ciudad);
+            return RedirectToAction("InformacionVehiculo", "Vehiculo", new { IdVehiculo });
         }
 
         public IActionResult AccionEliminarVehiculo(int IdVehiculo)
         {
             ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo.EliminarVehiculo(IdVehiculo);
-            InformacionVehiculo(IdVehiculo);
-            return RedirectToAction("InformacionVehiculo", "Vehiculo");
+            return RedirectToAction("InformacionVehiculo", "Vehiculo", new { IdVehiculo });
         }
         public IActionResult AccionActivarVehiculo(int IdVehiculo)
         {
             ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo.ActivarVehiculo(IdVehiculo);
-            InformacionVehiculo(IdVehiculo);
-            return RedirectToAction("InformacionVehiculo", "Vehiculo");
+            return RedirectToAction("InformacionVehiculo", "Vehiculo", new { IdVehiculo });
         }
         public IActionResult TraerTodasClasificacionesPorTipo(int IdTipoVehiculo)
         {

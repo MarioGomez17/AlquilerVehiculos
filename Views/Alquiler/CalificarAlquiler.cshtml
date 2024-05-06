@@ -1,5 +1,8 @@
-﻿@{
+﻿@using System.Globalization;
+@model ModeloAlquiler;
+@{
     Layout = null;
+    string Calificacion = Model.Calificacion.ToString(CultureInfo.InvariantCulture);
 }
 <!DOCTYPE html>
 <html lang="es">
@@ -99,23 +102,86 @@
                 <div class="DivPrincipalCalificarAlquiler">
                     <main role="main" class="PrincipalCalificarAlquiler">
                         <div class="ContenidoPrincipalCalificarAlquiler">
-                            <p>Tipo de Vehiculo</p>
-                            <p>Clasificacion</p>
-                            <p>Marca</p>
-                            <p>Linea</p>
-                            <p>Modelo</p>
-                            <p>Cilindraje</p>
-                            <p>Color</p>
-                            <p>Ciudad</p>
-                            <p>Fecha Inicio</p>
-                            <p>Fecha Fin</p>
-                            <form>
-                                <label>puntucuacion</label>
-                                <input type="text" name="name" value="" />
-                                <label>Comentario</label>
-                                <textarea></textarea>
-                                <input type="submit" name="name" value="Calificar Alquiler" />
-                            </form>
+                            <div class="InformacionAlquiler">
+                                <div class="GrupoComponentes">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto" value="@Model.FechaIncio" id="FechaInicio"
+                                            readonly>
+                                        <label for="FechaInicio" class="EtiquetaInput">Fecha de Inicio</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto" value="@Model.FechaFin" id="FechaFin"
+                                            readonly>
+                                        <label for="FechaFin" class="EtiquetaInput">Fecha de Fin</label>
+                                    </div>
+                                </div>
+                                <div class="GrupoComponentes">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto"
+                                            value="@Model.Seguro (@Model.PrecioSeguro)" id="Seguro" readonly>
+                                        <label for="Seguro" class="EtiquetaInput">Seguro</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto" value="@Model.Precio" id="Precio"
+                                            readonly>
+                                        <label for="Precio" class="EtiquetaInput">Precio</label>
+                                    </div>
+                                </div>
+                                <div class="GrupoComponentes">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto" value="@Model.Vehiculo.TipoVehiculo"
+                                            id="TipoVehiculo" readonly>
+                                        <label for="TipoVehiculo" class="EtiquetaInput">Tipo de Vehículo</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto"
+                                            value="@Model.Vehiculo.Marca: @Model.Vehiculo.Linea" id="Vehiculo" readonly>
+                                        <label for="Vehiculo" class="EtiquetaInput">Vehículo</label>
+                                    </div>
+                                </div>
+                                <div class="GrupoComponentes">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto" value="@Model.MetodoPago" id="MetodoPago"
+                                            readonly>
+                                        <label for="MetodoPago" class="EtiquetaInput">Metodo de Pago</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto" value="@Model.EstadoPago" id="EstadoPago"
+                                            readonly>
+                                        <label for="EstadoPago" class="EtiquetaInput">Estado del Pago</label>
+                                    </div>
+                                </div>
+                                <div class="GrupoComponentes">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto" value="@Model.Vehiculo.Ciudad" id="Ciudad"
+                                            readonly>
+                                        <label for="Ciudad" class="EtiquetaInput">Ciudad</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTexto" value="@Model.Lugar" id="Lugar" readonly>
+                                        <label for="Lugar" class="EtiquetaInput">Lugar de Recogida y Entrega</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="FormularioCalificacion">
+                                <form asp-controller="Alquiler" asp-action="AccionCalificarAlquiler" class="FormularioCalificacion">
+                                    <input type="hidden" value="@Model.Id" name="IdAlquiler">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="number" name="Calificacion"
+                                            class="InputCalificacionFormularioCalificacion" id="InputCalificacion"
+                                            value="@Calificacion" min="0" max="5" name="Calificacion" />
+                                        <label class="EtiquetaFormularioCalificacion"
+                                            for="InputCalificacion">Puntucuación</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <textarea id="InputComentario" name="Comentario"
+                                            class="InputComentarioFormularioCalificacion">@Model.ComentarioCalificacion</textarea>
+                                        <label class="EtiquetaFormularioCalificacion"
+                                            for="InputComentario">Comentario</label>
+                                    </div>
+                                    <input type="submit" class="BotonCalificacion" value="Calificar Alquiler" />
+                                </form>
+                            </div>
                         </div>
                     </main>
                 </div>

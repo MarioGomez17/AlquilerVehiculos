@@ -127,7 +127,6 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 ModeloUsuario.ActualizarUsuario(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena);
             }
-            InformacionUsuario();
             return  RedirectToAction("InformacionUsuario", "Usuario");
         }
         public async Task<IActionResult> AccionEliminarUsuario(int IdUsuario){

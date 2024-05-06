@@ -24,7 +24,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         public IActionResult InformacionAlquilerAlquilador(int IdAlquiler)
         {
             ModeloAlquiler ModeloAlquiler = new();
-            return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
+            ModeloAlquiler = ModeloAlquiler.TraerAlquiler(IdAlquiler);
+            return View(ModeloAlquiler);
         }
         [Authorize]
         public IActionResult InformacionAlquilerPropietario(int IdAlquiler)
@@ -33,9 +34,10 @@ namespace ALQUILER_VEHICULOS.Controllers
             return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
         }
         [Authorize]
-        public IActionResult CalificarAlquiler()
+        public IActionResult CalificarAlquiler(int IdAlquiler)
         {
-            return View();
+            ModeloAlquiler ModeloAlquiler = new();
+            return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
         }
         [Authorize]
         public IActionResult HistorialAlquileres()
@@ -76,29 +78,35 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloVehiculo = ModeloVehiculo.TraerVehiculo(IdVehiculo);
             return Json(new { PrecioSeguro = ModeloSeguroAlquiler.PrecioSeguroAlquiler, PrecioAlquilerDiaVehiculo = ModeloVehiculo.PrecioAlquilerDia });
         }
-        public IActionResult AccionIniciarAlquiler(int IdAlquiler){
+        public IActionResult AccionIniciarAlquiler(int IdAlquiler)
+        {
             ModeloAlquiler ModeloAlquiler = new();
             ModeloAlquiler.IniciarAlquiler(IdAlquiler);
-            InformacionAlquilerAlquilador(IdAlquiler);
-            return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler");
+            return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler", new { IdAlquiler });
         }
-        public IActionResult AccionFinalizarAlquiler(int IdAlquiler){
+        public IActionResult AccionFinalizarAlquiler(int IdAlquiler)
+        {
             ModeloAlquiler ModeloAlquiler = new();
             ModeloAlquiler.FinalizarAlquiler(IdAlquiler);
-            InformacionAlquilerPropietario(IdAlquiler);
-            return RedirectToAction("InformacionAlquilerPropietario", "Alquiler");
+            return RedirectToAction("InformacionAlquilerPropietario", "Alquiler", new { IdAlquiler });
         }
-        public IActionResult AccionCancelarAlquiler(int IdAlquiler){
+        public IActionResult AccionCancelarAlquiler(int IdAlquiler)
+        {
             ModeloAlquiler ModeloAlquiler = new();
             ModeloAlquiler.CancelarAlquiler(IdAlquiler);
-            HistorialAlquileres();
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
-        public IActionResult AccionPagarAlquiler(int IdAlquiler){
+        public IActionResult AccionPagarAlquiler(int IdAlquiler)
+        {
             ModeloAlquiler ModeloAlquiler = new();
             ModeloAlquiler.PagarAlquiler(IdAlquiler);
-            InformacionAlquilerAlquilador(IdAlquiler);
-            return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler");
+            return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler", new { IdAlquiler });
+        }
+        public IActionResult AccionCalificarAlquiler(int IdAlquiler, string Calificacion, string Comentario)
+        {
+            ModeloAlquiler modeloAlquiler = new();
+            modeloAlquiler.CalificarAlquiler(IdAlquiler, Calificacion, Comentario);
+            return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler", new { IdAlquiler });
         }
     }
 }

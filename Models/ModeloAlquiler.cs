@@ -197,7 +197,7 @@ namespace ALQUILER_VEHICULOS.Models
                 {
                     while (Lector.Read())
                     {
-                        ModeloAlquiler Alquiler= new()
+                        ModeloAlquiler Alquiler = new()
                         {
                             Id = Lector.GetInt32(0),
                             FechaIncio = Lector.GetDateTime(1),
@@ -226,40 +226,59 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Alquileres;
         }
-        public bool IniciarAlquiler(int IdAlquiler){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.alquiler " + 
-            "SET " + 
-            "alquiler_vehiculos.alquiler.Estado_Alquiler = 1 " + 
-            "WHERE " + 
-            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler +  "))";
+        public bool IniciarAlquiler(int IdAlquiler)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.alquiler " +
+            "SET " +
+            "alquiler_vehiculos.alquiler.Estado_Alquiler = 1 " +
+            "WHERE " +
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler + "))";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool FinalizarAlquiler(int IdAlquiler){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.alquiler " + 
-            "SET " + 
-            "alquiler_vehiculos.alquiler.Estado_Alquiler = 2 " + 
-            "WHERE " + 
-            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler +  "))";
+        public bool FinalizarAlquiler(int IdAlquiler)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.alquiler " +
+            "SET " +
+            "alquiler_vehiculos.alquiler.Estado_Alquiler = 2 " +
+            "WHERE " +
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler + "))";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool CancelarAlquiler(int IdAlquiler){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.alquiler " + 
-            "SET " + 
-            "alquiler_vehiculos.alquiler.Estado_Alquiler = 4 " + 
-            "WHERE " + 
-            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler +  "))";
+        public bool CancelarAlquiler(int IdAlquiler)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.alquiler " +
+            "SET " +
+            "alquiler_vehiculos.alquiler.Estado_Alquiler = 4 " +
+            "WHERE " +
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler + "))";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool PagarAlquiler(int IdAlquiler){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.alquiler " + 
-            "SET " + 
-            "alquiler_vehiculos.alquiler.EstadoPago_Alquiler = 1 " + 
-            "WHERE " + 
-            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler +  "))";
+        public bool PagarAlquiler(int IdAlquiler)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.alquiler " +
+            "SET " +
+            "alquiler_vehiculos.alquiler.EstadoPago_Alquiler = 1 " +
+            "WHERE " +
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler + "))";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool CalificarAlquiler(int IdAlquiler, string Calificacion, string Comentario)
+        {
+            if (Comentario == null)
+            {
+                Comentario = "Sin Comentarios";
+            }
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.alquiler " +
+            "SET " +
+            "alquiler_vehiculos.alquiler.Calificacion_Alquiler = " + Calificacion + ", " +
+            "alquiler_vehiculos.alquiler.ComentarioCalificacion_Alquiler = '" + Comentario + "' " +
+            "WHERE " +
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler + "))";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
     }
