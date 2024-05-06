@@ -11,7 +11,7 @@ namespace ALQUILER_VEHICULOS.Controllers
     public class UsuarioController : Controller
     {
         //---------------------------------------------- VISTAS ----------------------------------------------
-        public IActionResult IniciarSesion()
+        public IActionResult IniciarSesion(string[] Mensaje)
         {
             ClaimsPrincipal ClaimsPrincipal = HttpContext.User;
             if (ClaimsPrincipal != null)
@@ -21,11 +21,13 @@ namespace ALQUILER_VEHICULOS.Controllers
                     return RedirectToAction("Inicio", "Inicio");
                 }
             }
+            ViewBag.Message = Mensaje;
             return View();
         }
-        public IActionResult Registrarse()
+        public IActionResult Registrarse(string[] Mensaje)
         {
             ModeloTipoIdentificacionUsuario TipoIdentificacionUsuario = new();
+            ViewBag.Message = Mensaje;
             return View(TipoIdentificacionUsuario.TraerTodosTiposdeIdentificacion());
         }
         [Authorize]
@@ -74,14 +76,24 @@ namespace ALQUILER_VEHICULOS.Controllers
                 }
                 else
                 {
-                    ViewBag.Message = "Correo o Contraseña Equivocados";
-                    return View("IniciarSesion");
+                    object[] Mensaje =
+                    [
+                        "Correo o Contraseña Equivocados",
+                        Correo,
+                        Contrasena
+                    ];
+                    return RedirectToAction("IniciarSesion", "Usuario", new { Mensaje });
                 }
             }
             else
             {
-                ViewBag.Message = "Correo o Contraseña Incorrectos";
-                return View("IniciarSesion");
+                object[] Mensaje =
+                    [
+                        "Correo o Contraseña Equivocados",
+                        Correo.ToString(),
+                        Contrasena.ToString()
+                    ];
+                return RedirectToAction("IniciarSesion", "Usuario", new { Mensaje });
             }
         }
         public IActionResult AccionRegistrarse(string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
@@ -95,16 +107,32 @@ namespace ALQUILER_VEHICULOS.Controllers
                 }
                 else
                 {
-                    ViewBag.Message = "Complete los campos del formulario correctamente";
-                    Registrarse();
-                    return View("Registrarse");
+                    object[] Mensaje =
+                    [
+                        "Complete los campos del formulario correctamente",
+                        Nombre,
+                        Apellido,
+                        TipoIdentificacion,
+                        NumeroIdentificacion,
+                        Telefono,
+                        Correo
+                    ];
+                    return RedirectToAction("Registrarse", "Usuario", new { Mensaje });
                 }
             }
             else
             {
-                ViewBag.Message = "El usuario ya existe";
-                Registrarse();
-                return View("Registrarse");
+                object[] Mensaje =
+                    [
+                        "El usuario con ese número de identificación ya existe",
+                        Nombre,
+                        Apellido,
+                        TipoIdentificacion,
+                        NumeroIdentificacion,
+                        Telefono,
+                        Correo
+                    ];
+                return RedirectToAction("Registrarse", "Usuario", new { Mensaje });
             }
         }
         [Authorize]
@@ -127,13 +155,14 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 ModeloUsuario.ActualizarUsuario(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena);
             }
-            return  RedirectToAction("InformacionUsuario", "Usuario");
+            return RedirectToAction("InformacionUsuario", "Usuario");
         }
-        public async Task<IActionResult> AccionEliminarUsuario(int IdUsuario){
+        public async Task<IActionResult> AccionEliminarUsuario(int IdUsuario)
+        {
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario.EliminarUsuario(IdUsuario);
             await CerrarSesion();
-            return  RedirectToAction("IniciarSesion", "Usuario");
+            return RedirectToAction("IniciarSesion", "Usuario");
         }
     }
 }

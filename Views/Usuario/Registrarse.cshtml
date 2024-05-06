@@ -1,6 +1,7 @@
 ﻿@model List<ModeloTipoIdentificacionUsuario>;
 @{
     Layout = null;
+
 }
 <!DOCTYPE html>
 <html lang="es">
@@ -104,9 +105,9 @@
                                 <h2 class="TituloFormulario">Crear Cuenta</h2>
                             </div>
                             <div class="DivErrorViewBag">
-                                @if (ViewBag.Message != null)
+                                @if (ViewBag.Message.Length > 0)
                                 {
-                                    <h3 class="ErroViewBag">@ViewBag.Message</h3>
+                                    <h3 class="ErroViewBag">@ViewBag.Message[0]</h3>
                                 }
                             </div>
                             <div class="DivFormularioRegistrarse">
@@ -114,13 +115,29 @@
                                     class="FormularioRegistrarse">
                                     <div class="DivParaDosComponentees">
                                         <div class="Componente">
-                                            <input class="InputTexto" type="text" placeholder="Nombre" name="Nombre"
-                                                id="Nombre" required />
+                                            @if (ViewBag.Message.Length > 0)
+                                            {
+                                                <input class="InputTexto" type="text" placeholder="Nombre" name="Nombre"
+                                                    id="Nombre" required value="@ViewBag.Message[1]" />
+                                            }
+                                            else
+                                            {
+                                                <input class="InputTexto" type="text" placeholder="Nombre" name="Nombre"
+                                                    id="Nombre" required />
+                                            }
                                             <label for="Nombre" class="EtiquetaFormulario">Nombre</label>
                                         </div>
                                         <div class="Componente">
-                                            <input class="InputTexto" type="text" placeholder="Apellido" name="Apellido"
-                                                id="Apellido" required />
+                                            @if (ViewBag.Message.Length > 0)
+                                            {
+                                                <input class="InputTexto" type="text" placeholder="Apellido" name="Apellido"
+                                                    id="Apellido" value="@ViewBag.Message[2]" required />
+                                            }
+                                            else
+                                            {
+                                                <input class="InputTexto" type="text" placeholder="Apellido" name="Apellido"
+                                                    id="Apellido" required />
+                                            }
                                             <label for="Apellido" class="EtiquetaFormulario">Apellido</label>
                                         </div>
                                     </div>
@@ -128,36 +145,100 @@
                                         <div class="Componente">
                                             <select id="TipoIdentificacion" name="TipoIdentificacion"
                                                 class="SelectFormulario">
-                                                <option disabled selected class="OptionSelectFormulario">Seleccione un
-                                                    Tipo de Identificación</option>
-                                                @foreach (var TipoIdentificacion in Model)
+                                                @if (ViewBag.Message.Length > 0)
                                                 {
-                                                    <option value=@TipoIdentificacion.Id class="OptionSelectFormulario">
-                                                        @TipoIdentificacion.NombreTipoIdentificacionUsuario
-                                                        (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)
-                                                    </option>
+                                                    if (int.Parse(ViewBag.Message[3]) != 0)
+                                                    {
+                                                        @foreach (var TipoIdentificacion in Model)
+                                                        {
+                                                            if (TipoIdentificacion.Id == int.Parse(ViewBag.Message[3]))
+                                                            {
+                                                                <option value=@TipoIdentificacion.Id class="OptionSelectFormulario"
+                                                                    selected>
+                                                                    @TipoIdentificacion.NombreTipoIdentificacionUsuario
+                                                                    (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)
+                                                                </option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value=@TipoIdentificacion.Id class="OptionSelectFormulario">
+                                                                    @TipoIdentificacion.NombreTipoIdentificacionUsuario
+                                                                    (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)
+                                                                </option>
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <option disabled selected class="OptionSelectFormulario">Seleccione un
+                                                            Tipo de Identificación</option>
+                                                        @foreach (var TipoIdentificacion in Model)
+                                                        {
+                                                            <option value=@TipoIdentificacion.Id class="OptionSelectFormulario">
+                                                                @TipoIdentificacion.NombreTipoIdentificacionUsuario
+                                                                (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)
+                                                            </option>
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <option disabled selected class="OptionSelectFormulario">Seleccione un
+                                                        Tipo de Identificación</option>
+                                                    @foreach (var TipoIdentificacion in Model)
+                                                    {
+                                                        <option value=@TipoIdentificacion.Id class="OptionSelectFormulario">
+                                                            @TipoIdentificacion.NombreTipoIdentificacionUsuario
+                                                            (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)
+                                                        </option>
+                                                    }
                                                 }
                                             </select>
                                             <label for="TipoIdentificacion" class="EtiquetaFormulario">Tipo de
                                                 Identificación</label>
                                         </div>
                                         <div class="Componente">
-                                            <input class="InputTexto" type="number"
-                                                placeholder="Número de Identificación" name="NumeroIdentificacion"
-                                                id="NumeroIdentificacion" required />
+                                            @if (ViewBag.Message.Length > 0)
+                                            {
+                                                <input class="InputTexto" type="number"
+                                                    placeholder="Número de Identificación" name="NumeroIdentificacion"
+                                                    id="NumeroIdentificacion" required value="@ViewBag.Message[4]" />
+                                            }
+                                            else
+                                            {
+                                                <input class="InputTexto" type="number"
+                                                    placeholder="Número de Identificación" name="NumeroIdentificacion"
+                                                    id="NumeroIdentificacion" required />
+                                            }
                                             <label for="NumeroIdentificacion" class="EtiquetaFormulario">Número de
                                                 Identificación</label>
                                         </div>
                                     </div>
                                     <div class="DivParaDosComponentees">
                                         <div class="Componente">
-                                            <input class="InputTexto" type="number" placeholder="Teléfono"
-                                                name="Telefono" id="Telefono" required />
+                                            @if (ViewBag.Message.Length > 0)
+                                            {
+                                                <input class="InputTexto" type="number" placeholder="Teléfono"
+                                                    name="Telefono" id="Telefono" required value="@ViewBag.Message[5]" />
+                                            }
+                                            else
+                                            {
+                                                <input class="InputTexto" type="number" placeholder="Teléfono"
+                                                    name="Telefono" id="Telefono" required />
+                                            }
                                             <label for="Telefono" class="EtiquetaFormulario">Teléfono</label>
                                         </div>
                                         <div class="Componente">
-                                            <input class="InputTexto" type="email" placeholder="Correo" name="Correo"
-                                                id="Correo" required />
+                                            @if (ViewBag.Message.Length > 0)
+                                            {
+                                                <input class="InputTexto" type="email" placeholder="Correo" name="Correo"
+                                                    id="Correo" required value="@ViewBag.Message[6]" />
+                                            }
+                                            else
+                                            {
+                                                <input class="InputTexto" type="email" placeholder="Correo" name="Correo"
+                                                    id="Correo" required />
+                                            }
                                             <label for="Correo" class="EtiquetaFormulario">Correo</label>
                                         </div>
                                     </div>
