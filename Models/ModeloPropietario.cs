@@ -7,13 +7,13 @@ namespace ALQUILER_VEHICULOS.Models
         public int Id { get; set; }
         public string Codigo { get; set; }
         public ModeloUsuario Usuario { get; set; }
-        public ModeloPropietario TraerPropietario(int IdUsuario)
+        public ModeloPropietario TraerPropietarioUsuario(int IdUsuario)
         {
             ModeloPropietario ModeloPropietario = null;
             ModeloUsuario ModeloUsuario = new();
             string ConsultaSQL = "SELECT " +
                     "alquiler_vehiculos.propietario.Id_Propietario, " +
-                    "alquiler_vehiculos.propietario.Codigo_Propietario," +
+                    "alquiler_vehiculos.propietario.Codigo_Propietario, " +
                     "alquiler_vehiculos.propietario.Usuario_Propietario " +
                     "FROM alquiler_vehiculos.propietario " +
                     "WHERE alquiler_vehiculos.propietario.Usuario_Propietario = " + IdUsuario;
@@ -43,6 +43,43 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ModeloPropietario;
         }
+
+        public ModeloPropietario TraerPropietario(int IdPropietario)
+        {
+            ModeloPropietario ModeloPropietario = null;
+            ModeloUsuario ModeloUsuario = new();
+            string ConsultaSQL = "SELECT " +
+                    "alquiler_vehiculos.propietario.Id_Propietario, " +
+                    "alquiler_vehiculos.propietario.Codigo_Propietario," +
+                    "alquiler_vehiculos.propietario.Usuario_Propietario " +
+                    "FROM alquiler_vehiculos.propietario " +
+                    "WHERE alquiler_vehiculos.propietario.Usuario_Propietario = " + IdPropietario;
+            MySqlConnection ConexionBD = ModeloConexion.Conect();
+            try
+            {
+                ConexionBD.Open();
+                MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
+                MySqlDataReader Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
+                {
+                    while (Lector.Read())
+                    {
+                        ModeloPropietario = new()
+                        {
+                            Id = Lector.GetInt32(0),
+                            Codigo = Lector.GetString(1),
+                            Usuario = ModeloUsuario.TraerUsuario(Lector.GetInt32(2))
+                        };
+                    }
+                }
+            }
+            catch (Exception) { }
+            finally
+            {
+                ConexionBD.Close();
+            }
+            return ModeloPropietario;
+        }
         public bool CrearPropietario(int IdUsuario)
         {
             ModeloUsuario ModeloUsuario = new();
@@ -59,7 +96,7 @@ namespace ALQUILER_VEHICULOS.Models
         }
         public bool ValidarPropietario(int IdUsuario)
         {
-            return TraerPropietario(IdUsuario) == null;
+            return TraerPropietarioUsuario(IdUsuario) == null;
         }
         public bool AgregarAlquilerHistorialPropietario(int IdPropietario, int IdAlquiler)
         {

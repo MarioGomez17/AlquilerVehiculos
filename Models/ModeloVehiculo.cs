@@ -708,10 +708,14 @@ namespace ALQUILER_VEHICULOS.Models
             return ListaVehiculos;
         }
 
-        public List<ModeloVehiculo> TraerTodosVehiculosPropietario(int IdPropietario)
+        public List<ModeloVehiculo> TraerTodosVehiculosPropietario(int IdUsuario)
         {
             List<ModeloVehiculo> ListaVehiculos = [];
-            string ConsultaSQL = "SELECT " +
+            ModeloPropietario ModeloPropietario = new();
+            if (!ModeloPropietario.ValidarPropietario(IdUsuario))
+            {
+                ModeloPropietario = ModeloPropietario.TraerPropietarioUsuario(IdUsuario);
+                string ConsultaSQL = "SELECT " +
                 "alquiler_vehiculos.vehiculo.Id_Vehiculo, " +
                 "alquiler_vehiculos.tipo_vehiculo.Nombre_TipoVehiculo, " +
                 "alquiler_vehiculos.clasificacion_vehiculo.Nombre_ClasificacionVehiculo, " +
@@ -748,49 +752,49 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "WHERE alquiler_vehiculos.vehiculo.Propietario_Vehiculo = " + IdPropietario + " " +
+                "WHERE alquiler_vehiculos.vehiculo.Propietario_Vehiculo = " + ModeloPropietario.Id + " " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
-            MySqlConnection ConexionDB = ModeloConexion.Conect();
-            try
-            {
-                ConexionDB.Open();
-                MySqlCommand Comando = new(ConsultaSQL, ConexionDB);
-                MySqlDataReader Lector = Comando.ExecuteReader();
-                if (Lector.HasRows)
+                MySqlConnection ConexionDB = ModeloConexion.Conect();
+                try
                 {
-                    while (Lector.Read())
+                    ConexionDB.Open();
+                    MySqlCommand Comando = new(ConsultaSQL, ConexionDB);
+                    MySqlDataReader Lector = Comando.ExecuteReader();
+                    if (Lector.HasRows)
                     {
-                        ModeloVehiculo Vehiculo = new()
+                        while (Lector.Read())
                         {
-                            Id = Lector.GetInt32(0),
-                            TipoVehiculo = Lector.GetString(1),
-                            ClasificacionVehiculo = Lector.GetString(2),
-                            Placa = Lector.GetString(3),
-                            Modelo = Lector.GetInt32(4),
-                            Cilindrada = Lector.GetInt32(5),
-                            Color = Lector.GetString(6),
-                            CantidadPasajeros = Lector.GetInt32(7),
-                            NumeroSeguro = Lector.GetString(8),
-                            NumeroCertificadoCDA = Lector.GetString(9),
-                            PrecioAlquilerDia = Lector.GetFloat(10),
-                            RutaFoto = Lector.GetString(11),
-                            Ciudad = Lector.GetString(12) + " - " + Lector.GetString(13),
-                            Marca = Lector.GetString(14),
-                            Linea = Lector.GetString(15),
-                            TipoCombustible = Lector.GetString(16),
-                            Estado = Lector.GetString(17),
-                            Propietario = Lector.GetInt32(18),
-                        };
-                        ListaVehiculos.Add(Vehiculo);
+                            ModeloVehiculo Vehiculo = new()
+                            {
+                                Id = Lector.GetInt32(0),
+                                TipoVehiculo = Lector.GetString(1),
+                                ClasificacionVehiculo = Lector.GetString(2),
+                                Placa = Lector.GetString(3),
+                                Modelo = Lector.GetInt32(4),
+                                Cilindrada = Lector.GetInt32(5),
+                                Color = Lector.GetString(6),
+                                CantidadPasajeros = Lector.GetInt32(7),
+                                NumeroSeguro = Lector.GetString(8),
+                                NumeroCertificadoCDA = Lector.GetString(9),
+                                PrecioAlquilerDia = Lector.GetFloat(10),
+                                RutaFoto = Lector.GetString(11),
+                                Ciudad = Lector.GetString(12) + " - " + Lector.GetString(13),
+                                Marca = Lector.GetString(14),
+                                Linea = Lector.GetString(15),
+                                TipoCombustible = Lector.GetString(16),
+                                Estado = Lector.GetString(17),
+                                Propietario = Lector.GetInt32(18),
+                            };
+                            ListaVehiculos.Add(Vehiculo);
+                        }
                     }
                 }
+                catch (Exception) { }
+                finally
+                {
+                    ConexionDB.Close();
+                }
             }
-            catch (Exception) { }
-            finally
-            {
-                ConexionDB.Close();
-            }
-
             return ListaVehiculos;
         }
         public ModeloVehiculo TraerVehiculo(int IdVehiculo)
@@ -915,6 +919,41 @@ namespace ALQUILER_VEHICULOS.Models
                                 "alquiler_vehiculos.vehiculo.Estado_Vehiculo = 1 " +
                                 "WHERE " +
                                 "(alquiler_vehiculos.vehiculo.Id_Vehiculo = " + IdVehiculo + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool RegistrarVehiculo(string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroCertificadoCDA, string NumeroSeguro, int TipoCombustible, int Ciudad, string FotoVehiculo, int Propietario)
+        {
+            string ConsultaSQL = "INSERT INTO  " +
+                                "alquiler_vehiculos.vehiculo ( " +
+                                "Placa_Vehiculo, " +
+                                "Modelo_Vehiculo, " +
+                                "Cilindrada_Vehiculo, " +
+                                "Color_Vehiculo, " +
+                                "CantidadPasajeros_Vehiculo, " +
+                                "NumeroSeguro_Vehiculo, " +
+                                "NumeroCertificadoCDA_Vehiculo, " +
+                                "PrecioAlquilerDia_Vehiculo, " +
+                                "Foto_Vehiculo, " +
+                                "Propietario_Vehiculo, " +
+                                "Ciudad_Vehiculo, " +
+                                "Clasificacion_Vehiculo, " +
+                                "Linea_Vehiculo, " +
+                                "TipoCombustible_Vehiculo) " +
+                                "VALUES ('" +
+                                Placa + "', " +
+                                Modelo + ", " +
+                                Cilindrada + ", '" +
+                                Color + "', " +
+                                CantidadPasajeros + ", '" +
+                                NumeroSeguro + "', '" +
+                                NumeroCertificadoCDA + "', " +
+                                PrecioAlquilerDia + ", '" +
+                                FotoVehiculo + "', " +
+                                Propietario + ", " +
+                                Ciudad + ", " +
+                                ClasificacionVehiculo + ", " +
+                                Linea + ", " +
+                                TipoCombustible + ") ";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
     }

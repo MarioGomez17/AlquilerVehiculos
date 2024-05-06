@@ -101,8 +101,14 @@
                 <div class="DivPrincipalRegistrarVehiculo">
                     <main role="main" class="PrincipalRegistrarVehiculo">
                         <div class="ContenidoPrincipalRegistrarVehiculo">
+                            <div class="DivErrorViewBag">
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h3 class="ErroViewBag">@ViewBag.Message</h3>
+                                }
+                            </div>
                             <form method="post" class="FormularioVehiculo" asp-controller="Vehiculo"
-                                asp-action="AccionActualizarVehiculo">
+                                asp-action="AccionRegistrarVehiculo" enctype="multipart/form-data">
                                 <div class="DivComponentesConFoto">
                                     <div class="ComponentesFormulario">
                                         <div class="GrupoComponentes">
@@ -256,10 +262,11 @@
                                         </div>
                                     </div>
                                     <div class="DivFotoVehiculo">
-                                        <img class="FotoVehiculo" src="~/FotoVehiculos/FotoBlanco.png"
-                                            alt="Foto Vacia" />
+                                        <img class="FotoVehiculo" src="~/FotoVehiculos/FotoBlanco.png" alt="Foto Vacia"
+                                            id="EspacioFotoVehiculo" />
                                         <div class="DivInputFoto">
-                                            <input class="InputFotoVehiculo" name="file" type="file" id="FotoVehiculo">
+                                            <input class="InputFotoVehiculo" type="file" id="FotoVehiculo"
+                                                name="FotoVehiculo" accept="image/*">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="IconoSubirFoto" width="45"
                                                 height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -276,7 +283,7 @@
                                 <div class="ComponentesBotones">
                                     <div class="GrupoBotones">
                                         <input class="BotonFormularioRegistrar" type="submit"
-                                            value="Registrar Vehículo" />
+                                            id="BotonRegistrarVehiculo" value="Registrar Vehículo" />
                                     </div>
                                 </div>
                             </form>
@@ -293,6 +300,7 @@
             </div>
         </div>
     </div>
+    <script src="~/js/RegistrarVehiculo.js"></script>
 </body>
 
 </html>

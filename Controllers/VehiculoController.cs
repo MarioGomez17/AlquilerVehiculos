@@ -10,18 +10,17 @@ namespace ALQUILER_VEHICULOS.Controllers
     {
         //---------------------------------------------- VISTAS ----------------------------------------------
         [Authorize]
-        public IActionResult RegistrarVehiculo()
+        public IActionResult RegistrarVehiculo(string Mensaje)
         {
+            ViewBag.Message = Mensaje;
             ModeloRegistrarVehiculo ModeloRegistrarVehiculo = new();
             return View(ModeloRegistrarVehiculo);
         }
         [Authorize]
         public IActionResult InformacionVehiculos()
         {
-            ModeloPropietario ModeloPropietario = new();
-            ModeloPropietario = ModeloPropietario.TraerPropietario(DatosUsuarioSesion().Id);
             ModeloVehiculo ModeloVehiculo = new();
-            List<ModeloVehiculo> Vehiculos = ModeloVehiculo.TraerTodosVehiculosPropietario(ModeloPropietario.Id);
+            List<ModeloVehiculo> Vehiculos = ModeloVehiculo.TraerTodosVehiculosPropietario(DatosUsuarioSesion().Id);
             return View(Vehiculos);
         }
         [Authorize]
@@ -75,6 +74,37 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             ModeloMarca ModeloMarca = new();
             return Json(new { Marcas = ModeloMarca.TraerTodasMarcasPorTIpo(IdTipoVehiculo) });
+        }
+        public IActionResult AccionRegistrarVehiculo(string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroCertificadoCDA, string NumeroSeguro, int TipoCombustible, int Ciudad, IFormFile FotoVehiculo)
+        {
+            if (FotoVehiculo != null)
+            {
+                string NombreFoto = FotoVehiculo.FileName;
+                ModeloPropietario ModeloPropietario = new();
+                if (ModeloPropietario.ValidarPropietario(DatosUsuarioSesion().Id))
+                {
+                    ModeloPropietario.CrearPropietario(DatosUsuarioSesion().Id);
+                }
+                ModeloPropietario = ModeloPropietario.TraerPropietarioUsuario(DatosUsuarioSesion().Id);
+                int Propietario = ModeloPropietario.Id;
+                string RutaFoto = ModeloPropietario.Codigo + "_" + NombreFoto;
+                var RutaArchivo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/FotoVehiculos", RutaFoto);
+                using var fileStream = new FileStream(RutaArchivo, FileMode.Create);
+                FotoVehiculo.CopyTo(fileStream);
+                ModeloVehiculo ModeloVehiculo = new();
+                if (ModeloVehiculo.RegistrarVehiculo(Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroCertificadoCDA, NumeroSeguro, TipoCombustible, Ciudad, RutaFoto, Propietario))
+                {
+                    return RedirectToAction("InformacionVehiculos", "Vehiculo");
+                }
+                else
+                {
+                    return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje = "Error al registrar vehículo. Por favor Intente de nuevo" });
+                }
+            }
+            else
+            {
+                return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje = "Error al cargar archivo" });
+            }
         }
     }
 }

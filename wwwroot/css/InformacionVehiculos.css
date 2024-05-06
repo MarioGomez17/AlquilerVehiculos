@@ -204,7 +204,7 @@ body {
 }
 
 .InformacionModeloVehiculoActivo {
-    width: 95%;
+    width: 98%;
     height: 100%;
     border-radius: 10px;
     border: 5px solid rgb(0, 255, 0);
@@ -216,7 +216,7 @@ body {
 }
 
 .InformacionModeloVehiculoInactivo {
-    width: 95%;
+    width: 98%;
     height: 100%;
     border-radius: 10px;
     border: 5px solid red;
@@ -240,14 +240,14 @@ body {
     font-weight: bold;
     margin: 0;
     display: flex;
-    font-size: 14px;
+    font-size: 12px;
     gap: 10px;
 }
 
 .ValorInformacionModeloVehiculo {
     color: var(--Black);
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
 }
 
