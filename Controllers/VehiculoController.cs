@@ -97,38 +97,39 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             if (FotoVehiculo != null)
             {
-                string NombreFoto = FotoVehiculo.FileName;
-                ModeloPropietario ModeloPropietario = new();
-                if (ModeloPropietario.ValidarPropietario(DatosUsuarioSesion().Id))
-                {
-                    ModeloPropietario.CrearPropietario(DatosUsuarioSesion().Id);
-                }
-                ModeloPropietario = ModeloPropietario.TraerPropietarioUsuario(DatosUsuarioSesion().Id);
-                int Propietario = ModeloPropietario.Id;
-                string RutaFoto = ModeloPropietario.Codigo + "_" + NombreFoto;
-                var RutaArchivo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/FotoVehiculos", RutaFoto);
-                using var fileStream = new FileStream(RutaArchivo, FileMode.Create);
-                FotoVehiculo.CopyTo(fileStream);
+
                 ModeloVehiculo ModeloVehiculo = new();
                 if (ModeloVehiculo.ValidarVehiculo(Placa))
                 {
+                    string NombreFoto = FotoVehiculo.FileName;
+                    ModeloPropietario ModeloPropietario = new();
+                    if (ModeloPropietario.ValidarPropietario(DatosUsuarioSesion().Id))
+                    {
+                        ModeloPropietario.CrearPropietario(DatosUsuarioSesion().Id);
+                    }
+                    ModeloPropietario = ModeloPropietario.TraerPropietarioUsuario(DatosUsuarioSesion().Id);
+                    int Propietario = ModeloPropietario.Id;
+                    string RutaFoto = ModeloPropietario.Codigo + "_" + NombreFoto;
                     if (ModeloVehiculo.RegistrarVehiculo(Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroCertificadoCDA, NumeroSeguro, TipoCombustible, Ciudad, RutaFoto, Propietario))
                     {
+                        var RutaArchivo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/FotoVehiculos", RutaFoto);
+                        using var fileStream = new FileStream(RutaArchivo, FileMode.Create);
+                        FotoVehiculo.CopyTo(fileStream);
                         return RedirectToAction("InformacionVehiculos", "Vehiculo");
                     }
                     else
                     {
                         object[] Mensaje = [
                             "Error al registrar vehículo. Por favor Intente de nuevo",
-                            Placa, 
-                            Cilindrada, 
-                            Modelo, 
-                            PrecioAlquilerDia, 
-                            Color, 
-                            CantidadPasajeros, 
-                            NumeroCertificadoCDA, 
-                            NumeroSeguro, 
-                            TipoCombustible, 
+                            Placa,
+                            Cilindrada,
+                            Modelo,
+                            PrecioAlquilerDia,
+                            Color,
+                            CantidadPasajeros,
+                            NumeroCertificadoCDA,
+                            NumeroSeguro,
+                            TipoCombustible,
                             Ciudad
                         ];
                         return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje });
@@ -138,15 +139,15 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     object[] Mensaje = [
                             "La placa del vehículo ya está registrada",
-                            Placa, 
-                            Cilindrada, 
-                            Modelo, 
-                            PrecioAlquilerDia, 
-                            Color, 
-                            CantidadPasajeros, 
-                            NumeroCertificadoCDA, 
-                            NumeroSeguro, 
-                            TipoCombustible, 
+                            Placa,
+                            Cilindrada,
+                            Modelo,
+                            PrecioAlquilerDia,
+                            Color,
+                            CantidadPasajeros,
+                            NumeroCertificadoCDA,
+                            NumeroSeguro,
+                            TipoCombustible,
                             Ciudad
                         ];
                     return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje });
@@ -156,15 +157,15 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 object[] Mensaje = [
                             "Error al cargar archivo",
-                            Placa, 
-                            Cilindrada, 
-                            Modelo, 
-                            PrecioAlquilerDia, 
-                            Color, 
-                            CantidadPasajeros, 
-                            NumeroCertificadoCDA, 
-                            NumeroSeguro, 
-                            TipoCombustible, 
+                            Placa,
+                            Cilindrada,
+                            Modelo,
+                            PrecioAlquilerDia,
+                            Color,
+                            CantidadPasajeros,
+                            NumeroCertificadoCDA,
+                            NumeroSeguro,
+                            TipoCombustible,
                             Ciudad
                         ];
                 return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje });
