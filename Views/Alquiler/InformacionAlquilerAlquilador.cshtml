@@ -222,7 +222,7 @@
                                         Iniciar Alquiler
                                     </a>
                                 }
-                                @if (DiasAlquiler > 2)
+                                @if (DiasAlquiler >= 2)
                                 {
                                     <a asp-controller="Alquiler" asp-action="AccionCancelarAlquiler" asp-route-IdAlquiler=@Model.Id class="LinkInformacionAlquilerCancelar">
                                         Cancelar Alquiler

@@ -380,3 +380,17 @@ body {
 .swal2-height-auto .ContenidoBodyInicio {
     opacity: 0;
 }
+
+.DivNoVehiculos{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1/4;
+}
+
+.TituloNoVehiculos{
+    margin: 0;
+    text-align: center;
+    font-size: 70px;
+}

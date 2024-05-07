@@ -20,15 +20,17 @@
         <div class="DivBarraNavegacionInicio">
             <nav class="BarraNavegacionInicio">
                 <div class="DivLinkLogoInicio">
-                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo" src="~/imagenes/Logo.webp"
-                            alt="Logotipo" /></a>
+                    <a asp-controller="Inicio" asp-action="Inicio">
+                        <img class="ImagenLogo" src="~/imagenes/Logo.webp"
+                             alt="Logotipo" />
+                    </a>
                 </div>
                 <div class="DivLinkInicio">
                     <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkInicio">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-login-2 IconoSVGLink" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#1f9102" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
+                             class="icon icon-tabler icon-tabler-login-2 IconoSVGLink" width="35" height="35"
+                             viewBox="0 0 24 24" stroke-width="1.5" stroke="#1f9102" fill="none" stroke-linecap="round"
+                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
                             <path d="M3 12h13l-3 -3" />
@@ -40,8 +42,8 @@
                 <div class="DivLinkInicio">
                     <a asp-controller="Usuario" asp-action="InformacionUsuario" class="LinkInicio">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user IconoSVGLink"
-                            width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#020291" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#020291" fill="none"
+                             stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
@@ -52,8 +54,8 @@
                 <div class="DivLinkInicio">
                     <a asp-controller="Vehiculo" asp-action="InformacionVehiculos" class="LinkInicio">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car IconoSVGLink"
-                            width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#beac0d" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#beac0d" fill="none"
+                             stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                             <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -65,9 +67,9 @@
                 <div class="DivLinkInicio">
                     <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInicio">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
+                             class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
+                             viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 8l0 4l2 2" />
                             <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
@@ -78,8 +80,8 @@
                 <div class="DivLinkInicio">
                     <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkInicio">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login IconoSVGLink"
-                            width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#be0d0d" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
+                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#be0d0d" fill="none"
+                             stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
                             <path d="M21 12h-13l3 -3" />
@@ -102,17 +104,18 @@
                         <div class="ContenidoPrincipalInicio">
                             <div class="BarraFiltrosInicio">
                                 <form method="post" class="FormularioFiltros" asp-controller="Inicio"
-                                    asp-action="InicioFiltrado">
+                                      asp-action="InicioFiltrado">
                                     <div class="ComponentesFomulario">
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario EtiquetaFiltrosFormularioCiudad"
-                                                id="FiltroCiudad" name="FiltroCiudad">
+                                                    id="FiltroCiudad" name="FiltroCiudad">
                                                 <option class="OptionSelectFormulario" value="0" disabled selected>
                                                     Seleccione Una Ciudad
                                                 </option>
                                                 @foreach (var Ciudad in Model.Ciudades)
                                                 {
-                                                    <option class="OptionSelectFormulario" value=@Ciudad.Id>@Ciudad.Nombre
+                                                    <option class="OptionSelectFormulario" value=@Ciudad.Id>
+                                                        @Ciudad.Nombre
                                                     </option>
                                                 }
                                             </select>
@@ -120,18 +123,21 @@
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario" id="FiltroTipoVehiculo"
-                                                name="FiltroTipoVehiculo">
+                                                    name="FiltroTipoVehiculo">
                                                 <option class="OptionSelectFormulario" value="0" disabled selected>
                                                     Seleccione Un Tipo de Vehículo
                                                 </option>
                                                 @foreach (var TipoVehiculo in Model.TiposVehiculos)
                                                 {
                                                     <option class="OptionSelectFormulario" value=@TipoVehiculo.Id>
-                                                        @TipoVehiculo.Nombre</option>
+                                                        @TipoVehiculo.Nombre
+                                                    </option>
                                                 }
                                             </select>
-                                            <label class="EtiquetaFiltrosFormulario" for="FiltroTipoVehiculo">Tipo de
-                                                Vehículo</label>
+                                            <label class="EtiquetaFiltrosFormulario" for="FiltroTipoVehiculo">
+                                                Tipo de
+                                                Vehículo
+                                            </label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario" id="FiltroMarca" name="FiltroMarca">
@@ -140,7 +146,8 @@
                                                 </option>
                                                 @foreach (var Marca in Model.Marcas)
                                                 {
-                                                    <option class="OptionSelectFormulario" value=@Marca.Id>@Marca.Nombre
+                                                    <option class="OptionSelectFormulario" value=@Marca.Id>
+                                                        @Marca.Nombre
                                                     </option>
                                                 }
                                             </select>
@@ -148,19 +155,19 @@
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
                                             <input type="time" class="FechaFiltrosFormulario" id="FiltroHoraInicio"
-                                                name="FiltroHoraInicio" min="09:00" max="17:00">
+                                                   name="FiltroHoraInicio" min="09:00" max="17:00">
                                             <input type="date" class="FechaFiltrosFormulario" id="FiltroFechaInicio"
-                                                name="FiltroFechaInicio">
+                                                   name="FiltroFechaInicio">
                                             <label class="EtiquetaFiltrosFormulario"
-                                                for="FiltroFechaInicio FiltroHoraInicio">
+                                                   for="FiltroFechaInicio FiltroHoraInicio">
                                                 Fecha Inicio
                                             </label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
                                             <input type="time" class="FechaFiltrosFormulario" id="FiltroHoraFin"
-                                                name="FiltroHoraFin" min="09:00" max="17:00" disabled>
+                                                   name="FiltroHoraFin" min="09:00" max="17:00" disabled>
                                             <input type="date" class="FechaFiltrosFormulario" id="FiltroFechaFin"
-                                                name="FiltroFechaFin" disabled>
+                                                   name="FiltroFechaFin" disabled>
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroFechaFin FiltroHoraFin">
                                                 Fecha Fin
                                             </label>
@@ -168,29 +175,31 @@
                                     </div>
                                     <div class="DivBotonFormulario">
                                         <input class="BotonFormulario" id="BotonFiltros" type="submit"
-                                            value="Aplicar Filtros">
+                                               value="Aplicar Filtros">
                                     </div>
                                 </form>
                             </div>
                             <div class="TarjetasVehiculosInicio">
-                                @if (Model != null)
+                                @if (Model.Vehiculos.Count() > 0)
                                 {
                                     @foreach (var Vehiculo in Model.Vehiculos)
                                     {
                                         <div class="InformacionModeloVehiculo">
                                             <h3 class="TextoLinkInformacionModeloVehiculo">
-                                                @Vehiculo.TipoVehiculo: @Vehiculo.Marca @Vehiculo.Linea</h3>
-                                            <p class="TituloInformacionModeloVehiculo">Ciudad: <span
-                                                    class="ValorInformacionModeloVehiculo">@Vehiculo.Ciudad</span></p>
+                                                @Vehiculo.TipoVehiculo: @Vehiculo.Marca @Vehiculo.Linea
+                                            </h3>
+                                            <p class="TituloInformacionModeloVehiculo">
+                                                Ciudad: <span class="ValorInformacionModeloVehiculo">@Vehiculo.Ciudad</span>
+                                            </p>
                                             <img class="FotoVehiculo" src="~/FotoVehiculos/@Vehiculo.RutaFoto"
-                                                alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
+                                                 alt="Foto de @Vehiculo.TipoVehiculo : @Vehiculo.Marca @Vehiculo.Linea" />
                                         </div>
                                     }
                                 }
                                 else
                                 {
                                     <div class="DivNoVehiculos">
-                                        <h3>No Hay Vehículos disponibles</h3>
+                                        <h3 class="TituloNoVehiculos">No Hay Vehículos disponibles</h3>
                                     </div>
                                 }
                             </div>

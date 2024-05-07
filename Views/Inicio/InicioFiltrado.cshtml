@@ -240,7 +240,7 @@
                                 </form>
                             </div>
                             <div class="TarjetasVehiculosInicio">
-                                @if (Model != null)
+                                @if (Model.Vehiculos.Count() > 0)
                                 {
                                     @foreach (var Vehiculo in Model.Vehiculos)
                                     {
@@ -260,7 +260,7 @@
                                 else
                                 {
                                     <div class="DivNoVehiculos">
-                                        <h3>No Hay Vehículos disponibles</h3>
+                                        <h3 class="TituloNoVehiculos">No Hay Vehículos disponibles</h3>
                                     </div>
                                 }
                             </div>

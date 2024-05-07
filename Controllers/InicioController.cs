@@ -55,9 +55,9 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 Vehiculos = ModeloVehiculo.TraerTodosVehiculos();
             }
+            ModeloInicio ModeloInicio = new(Vehiculos);
             ModeloAlquiler ModeloAlquiler = new();
             List<ModeloAlquiler> Alquileres = ModeloAlquiler.TraerAlquileres();
-            ModeloInicio ModeloInicio = new(Vehiculos);
             DateTime  ValorFiltroFechaInicio = DateTime.Parse(FiltroFechaInicio);
             ValorFiltroFechaInicio = ValorFiltroFechaInicio.Add(TimeSpan.Parse(FiltroHoraInicio));
             DateTime  ValorFiltroFechaFin = DateTime.Parse(FiltroFechaFin);
