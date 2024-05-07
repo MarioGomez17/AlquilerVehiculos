@@ -97,7 +97,6 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             if (FotoVehiculo != null)
             {
-
                 ModeloVehiculo ModeloVehiculo = new();
                 if (ModeloVehiculo.ValidarVehiculo(Placa))
                 {

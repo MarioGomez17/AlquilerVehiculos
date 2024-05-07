@@ -52,7 +52,6 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-        [HttpPost]
         public IActionResult AccionCrearAlquiler(string FechaInicio, string FechaFin, float Precio, string SiLavada, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
         {
             DateTime ValorFiltroFechaInicio = DateTime.Parse(FechaInicio);
@@ -69,7 +68,6 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloAlquiler.CrearAquiler(ValorFiltroFechaInicio, ValorFiltroFechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
-        [Authorize]
         public IActionResult ObtenerPrecioAlquiler(int IdVehiculo, int IdSeguro)
         {
             ModeloSeguroAlquiler ModeloSeguroAlquiler = new();

@@ -50,7 +50,6 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-        [HttpPost]
         public async Task<IActionResult> AccionIniciarSesion(string Correo, string Contrasena, string MantenerSesion)
         {
             ModeloUsuario ModeloUsuario = new();
@@ -139,7 +138,6 @@ namespace ALQUILER_VEHICULOS.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("IniciarSesion", "Usuario");
         }
-        [Authorize]
         public IActionResult AccionActualizarUsuario(string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
         {
             ModeloUsuario ModeloUsuario = new();
