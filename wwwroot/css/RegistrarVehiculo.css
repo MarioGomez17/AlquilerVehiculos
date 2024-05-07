@@ -375,3 +375,11 @@ body {
     cursor: pointer !important;
     z-index: 5;
 }
+
+.swal2-shown .ContenidoBodyRegistrarVehiculo {
+    opacity: 0;
+}
+
+.swal2-height-auto .ContenidoBodyRegistrarVehiculo {
+    opacity: 0;
+}

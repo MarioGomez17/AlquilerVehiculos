@@ -1,3 +1,5 @@
+import Swal from 'https://cdn.skypack.dev/sweetalert2';
+
 function TraerTodasClasificacionesPorTipo() {
     var IdTipoVehiculo = document.getElementById('TipoVehiculo').value;
     if (IdTipoVehiculo) {
@@ -74,58 +76,6 @@ function TraerTodasLineasPorMarca() {
     }
 }
 
-function TraerTodasClasificacionesPorTipoInicial(IdTipoVehiculo) {
-    if (IdTipoVehiculo) {
-        fetch('/Vehiculo/TraerTodasClasificacionesPorTipo?IdTipoVehiculo=' + IdTipoVehiculo)
-            .then(response => response.json())
-            .then(Data => {
-                var ClasificacionVehiculo = document.getElementById('ClasificacionVehiculo');
-                ClasificacionVehiculo.innerHTML = '';
-                Data.ClasificacionesVehiculo.forEach(function (Clasificacion) {
-                    if (document.getElementById('TextoClasificacion').value == Clasificacion.Nombre) {
-                        var OptionSelect = new Option(Clasificacion.Nombre, Clasificacion.Id);
-                        OptionSelect.classList.add("OptionSelect");
-                        OptionSelect.selected = true;
-                        ClasificacionVehiculo.add(OptionSelect);
-                    } else {
-                        var OptionSelect = new Option(Clasificacion.Nombre, Clasificacion.Id);
-                        OptionSelect.classList.add("OptionSelect");
-                        ClasificacionVehiculo.add(OptionSelect);
-                    }
-                });
-            })
-            .catch(error => console.error('Error:', error));
-    } else {
-        document.getElementById('ClasificacionVehiculo').innerHTML = '';
-    }
-}
-
-function TraerTodasMarcasPorTIpoInicial(IdTipoVehiculo) {
-    if (IdTipoVehiculo) {
-        fetch('/Vehiculo/TraerTodasMarcasPorTIpo?IdTipoVehiculo=' + IdTipoVehiculo)
-            .then(response => response.json())
-            .then(Data => {
-                var MarcaVehiculo = document.getElementById('Marca');
-                MarcaVehiculo.innerHTML = '';
-                Data.Marcas.forEach(function (Marca) {
-                    if (document.getElementById('TextoMarca').value == Marca.Nombre) {
-                        var OptionSelect = new Option(Marca.Nombre, Marca.Id);
-                        OptionSelect.classList.add("OptionSelect");
-                        OptionSelect.selected = true;
-                        MarcaVehiculo.add(OptionSelect);
-                    } else {
-                        var OptionSelect = new Option(Marca.Nombre, Marca.Id);
-                        OptionSelect.classList.add("OptionSelect");
-                        MarcaVehiculo.add(OptionSelect);
-                    }
-                });
-            })
-            .catch(error => console.error('Error:', error));
-    } else {
-        document.getElementById('Marca').innerHTML = '';
-    }
-}
-
 function CargarImagen() {
     const EspacioFotoVehiculo = document.getElementById('EspacioFotoVehiculo');
     const FotoVehiculo = document.getElementById('FotoVehiculo').files[0];
@@ -139,7 +89,34 @@ function CargarImagen() {
     }
 }
 
+function ValidarRegistrarVehiculo(event) {
+    const Placa = document.getElementById('Placa');
+    const Cilindrada = document.getElementById('Cilindrada');
+    const Modelo = document.getElementById('Modelo');
+    const PrecioAlquilerDia = document.getElementById('PrecioAlquilerDia');
+    const Color = document.getElementById('Color');
+    const TipoVehiculo = document.getElementById('TipoVehiculo');
+    const ClasificacionVehiculo = document.getElementById('ClasificacionVehiculo');
+    const Marca = document.getElementById('Marca');
+    const Linea = document.getElementById('Linea');
+    const NumeroCertificadoCDA = document.getElementById('NumeroCertificadoCDA');
+    const NumeroPolizaSeguro = document.getElementById('NumeroPolizaSeguro');
+    const TipoCombustible = document.getElementById('TipoCombustible');
+    const Ciudad = document.getElementById('Ciudad');
+    const FotoVehiculo = document.getElementById('FotoVehiculo');
+    if (Placa.value == "" || Cilindrada.value == "" || Modelo.value == "" || PrecioAlquilerDia.value == "" || Color.value == "" || TipoVehiculo.value == 0 || ClasificacionVehiculo.value == 0 || Marca.value == 0 || Linea.value == 0 || NumeroCertificadoCDA.value == "" || NumeroPolizaSeguro.value == "" || TipoCombustible.value == 0 || Ciudad.value == 0 || FotoVehiculo.value == "") {
+        event.preventDefault();
+        Swal.fire({
+            title: 'ERROR',
+            text: 'COMPLETE TODO EL FORMULARIO PARA PODER REGISTRAR UN VEHÍCULO',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    }
+}
+
 document.getElementById('TipoVehiculo').addEventListener('change', TraerTodasClasificacionesPorTipo);
 document.getElementById('TipoVehiculo').addEventListener('change', TraerTodasMarcasPorTIpo);
 document.getElementById('Marca').addEventListener('change', TraerTodasLineasPorMarca);
 document.getElementById('FotoVehiculo').addEventListener('change', CargarImagen);
+document.getElementById('BotonRegistrarVehiculo').addEventListener('click', ValidarRegistrarVehiculo);

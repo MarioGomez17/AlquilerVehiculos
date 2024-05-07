@@ -164,7 +164,8 @@
                                 </div>
                             </div>
                             <div class="FormularioCalificacion">
-                                <form asp-controller="Alquiler" asp-action="AccionCalificarAlquiler" class="FormularioCalificacion">
+                                <form asp-controller="Alquiler" asp-action="AccionCalificarAlquiler"
+                                    class="FormularioCalificacion">
                                     <input type="hidden" value="@Model.Id" name="IdAlquiler">
                                     <div class="DivEtiquetaInput">
                                         <input type="number" name="Calificacion"
@@ -179,7 +180,8 @@
                                         <label class="EtiquetaFormularioCalificacion"
                                             for="InputComentario">Comentario</label>
                                     </div>
-                                    <input type="submit" class="BotonCalificacion" value="Calificar Alquiler" />
+                                    <input type="submit" class="BotonCalificacion" value="Calificar Alquiler"
+                                        id="BotonEnviarCalificacion" />
                                 </form>
                             </div>
                         </div>
@@ -195,6 +197,7 @@
             </div>
         </div>
     </div>
+    <script src="~/js/CalificarAlquiler.js" type="module"></script>
 </body>
 
 </html>

@@ -317,3 +317,11 @@ body {
 .BotonCalificacion:active {
     transform: scale(0.9);
 }
+
+.swal2-shown .ContenidoBodyCalificarAlquiler {
+    opacity: 0;
+}
+
+.swal2-height-auto .ContenidoBodyCalificarAlquiler {
+    opacity: 0;
+}

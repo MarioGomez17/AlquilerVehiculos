@@ -356,3 +356,11 @@ body {
     color: var(--SecondColor);
     font-size: 25px;
 }
+
+.swal2-shown .ContenidoBodyRegistrarse {
+    opacity: 0;
+}
+
+.swal2-height-auto .ContenidoBodyRegistrarse {
+    opacity: 0;
+}

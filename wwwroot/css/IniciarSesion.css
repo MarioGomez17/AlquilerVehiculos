@@ -348,3 +348,11 @@ body {
     color: var(--SecondColor);
     font-size: 35px;
 }
+
+.swal2-shown .ContenidoBodyIniciarSesion {
+    opacity: 0;
+}
+
+.swal2-height-auto .ContenidoBodyIniciarSesion {
+    opacity: 0;
+}

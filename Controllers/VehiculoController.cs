@@ -10,7 +10,7 @@ namespace ALQUILER_VEHICULOS.Controllers
     {
         //---------------------------------------------- VISTAS ----------------------------------------------
         [Authorize]
-        public IActionResult RegistrarVehiculo(string Mensaje)
+        public IActionResult RegistrarVehiculo(string[] Mensaje)
         {
             ViewBag.Message = Mensaje;
             ModeloRegistrarVehiculo ModeloRegistrarVehiculo = new();
@@ -110,18 +110,64 @@ namespace ALQUILER_VEHICULOS.Controllers
                 using var fileStream = new FileStream(RutaArchivo, FileMode.Create);
                 FotoVehiculo.CopyTo(fileStream);
                 ModeloVehiculo ModeloVehiculo = new();
-                if (ModeloVehiculo.RegistrarVehiculo(Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroCertificadoCDA, NumeroSeguro, TipoCombustible, Ciudad, RutaFoto, Propietario))
+                if (ModeloVehiculo.ValidarVehiculo(Placa))
                 {
-                    return RedirectToAction("InformacionVehiculos", "Vehiculo");
+                    if (ModeloVehiculo.RegistrarVehiculo(Placa, Cilindrada, Modelo, PrecioAlquilerDia, Color, CantidadPasajeros, ClasificacionVehiculo, Linea, NumeroCertificadoCDA, NumeroSeguro, TipoCombustible, Ciudad, RutaFoto, Propietario))
+                    {
+                        return RedirectToAction("InformacionVehiculos", "Vehiculo");
+                    }
+                    else
+                    {
+                        object[] Mensaje = [
+                            "Error al registrar vehículo. Por favor Intente de nuevo",
+                            Placa, 
+                            Cilindrada, 
+                            Modelo, 
+                            PrecioAlquilerDia, 
+                            Color, 
+                            CantidadPasajeros, 
+                            NumeroCertificadoCDA, 
+                            NumeroSeguro, 
+                            TipoCombustible, 
+                            Ciudad
+                        ];
+                        return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje });
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje = "Error al registrar vehículo. Por favor Intente de nuevo" });
+                    object[] Mensaje = [
+                            "La placa del vehículo ya está registrada",
+                            Placa, 
+                            Cilindrada, 
+                            Modelo, 
+                            PrecioAlquilerDia, 
+                            Color, 
+                            CantidadPasajeros, 
+                            NumeroCertificadoCDA, 
+                            NumeroSeguro, 
+                            TipoCombustible, 
+                            Ciudad
+                        ];
+                    return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje });
                 }
             }
             else
             {
-                return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje = "Error al cargar archivo" });
+                object[] Mensaje = [
+                            "Error al cargar archivo",
+                            Placa, 
+                            Cilindrada, 
+                            Modelo, 
+                            PrecioAlquilerDia, 
+                            Color, 
+                            CantidadPasajeros, 
+                            NumeroCertificadoCDA, 
+                            NumeroSeguro, 
+                            TipoCombustible, 
+                            Ciudad
+                        ];
+                return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje });
             }
         }
     }

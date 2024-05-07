@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: 'ERROR',
                 text: 'COMPLETE AL MENOS LOS FILTROS DE FECHA Y HORA DE INICIO Y FIN DEL ALQUILER',
                 icon: 'error',
-                confirmButtonText: 'Sí'
+                confirmButtonText: 'OK'
             });
         }
     });
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: 'ERROR',
                     text: 'LA HORA DEBE ESTAR ENTRE LAS 9:00 AM Y LAS 5:00 PM',
                     icon: 'error',
-                    confirmButtonText: 'Sí'
+                    confirmButtonText: 'OK'
                 });
                 this.value = '';
             } else {

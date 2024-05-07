@@ -430,10 +430,10 @@ body {
     opacity: 1;
 }
 
-.swal2-shown .ContenidoBodyInicio {
+.swal2-shown .ContenidoBodyCrearAlquiler {
     opacity: 0;
 }
 
-.swal2-height-auto .ContenidoBodyInicio {
+.swal2-height-auto .ContenidoBodyCrearAlquiler {
     opacity: 0;
 }

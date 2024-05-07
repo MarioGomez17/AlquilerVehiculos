@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: 'ERROR',
                 text: 'COMPLETE TODO EL FORMULARIO PARA PODER REGISTRAR EL ALQUILER',
                 icon: 'error',
-                confirmButtonText: 'Sí'
+                confirmButtonText: 'OK'
             });
         }
     });
@@ -87,7 +87,7 @@ async function CalcularPrecioAlquiler() {
             title: 'ERROR',
             text: 'DEBE SELECCIONAR AL MENOS UN SEGURO PARA PODER CALCULAR EL PRECIO DEL ALQUILER',
             icon: 'error',
-            confirmButtonText: 'Sí'
+            confirmButtonText: 'OK'
         });
     }
 }
