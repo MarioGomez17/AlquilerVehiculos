@@ -105,7 +105,21 @@ body {
     border-color: var(--FifthColor);
 }
 
+
 /*------------------------------------- CONTENT -------------------------------------*/
+
+.EncabezadoHistorialAlquileres {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TituloPrincipallHistorialAlquileres{
+    text-align: center;
+    font-size: 4rem;
+}
+
 
 .DivContenidoHistorialAlquileres {
     height: 100%;
