@@ -111,6 +111,7 @@
                             <div class="DivFormularioIniciarSesion">
                                 <form asp-controller="Usuario" asp-action="AccionIniciarSesion" method="post"
                                     class="FormularioIniciarSesion">
+                                    <input type="hidden" value="@ViewData["ReturnUrl"]" name="ReturnULR">
                                     <div class="Componente">
                                         @if (ViewBag.Message.Length > 0)
                                         {

@@ -9,8 +9,17 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         SessionOptions.LoginPath = "/Usuario/IniciarSesion";
         SessionOptions.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-        SessionOptions.AccessDeniedPath = "/Usuario/IniciarSesion";
+        SessionOptions.AccessDeniedPath = "/Inicio/SinPermisos";
+        SessionOptions.Events.OnRedirectToAccessDenied = context =>
+        {
+            context.Response.Redirect(SessionOptions.AccessDeniedPath);
+            return Task.CompletedTask;
+        };
     });
+
+builder.Services.AddAuthorizationBuilder()
+        .AddPolicy("SoloAdministrador", policy =>
+                    policy.RequireRole("Administrador"));
 
 builder.Services.AddControllers()
         .AddJsonOptions(options =>

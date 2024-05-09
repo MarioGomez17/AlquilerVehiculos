@@ -11,7 +11,7 @@ namespace ALQUILER_VEHICULOS.Controllers
     public class UsuarioController : Controller
     {
         //---------------------------------------------- VISTAS ----------------------------------------------
-        public IActionResult IniciarSesion(string[] Mensaje)
+        public IActionResult IniciarSesion(string[] Mensaje, string returnUrl = null)
         {
             ClaimsPrincipal ClaimsPrincipal = HttpContext.User;
             if (ClaimsPrincipal != null)
@@ -22,6 +22,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 }
             }
             ViewBag.Message = Mensaje;
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
         public IActionResult Registrarse(string[] Mensaje)
@@ -50,7 +51,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-        public async Task<IActionResult> AccionIniciarSesion(string Correo, string Contrasena, string MantenerSesion)
+        public async Task<IActionResult> AccionIniciarSesion(string Correo, string Contrasena, string MantenerSesion, string ReturnULR)
         {
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario = ModeloUsuario.TraerUsuario(Correo, Contrasena);
@@ -60,7 +61,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     var Claims = new List<Claim> {
                         new (ClaimTypes.Name, ModeloUsuario.Nombre),
-                        new ("Correo", ModeloUsuario.Correo)
+                        new ("Correo", ModeloUsuario.Correo),
+                        new (ClaimTypes.Role, ModeloUsuario.Rol)
                     };
                     ClaimsIdentity ClaimsIdentity = new(Claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     Claim DatosUsuario = new(ClaimTypes.UserData, JsonConvert.SerializeObject(ModeloUsuario));
@@ -71,7 +73,14 @@ namespace ALQUILER_VEHICULOS.Controllers
                         ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(MantenerSesion == "on" ? 60 : 5)
                     };
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(ClaimsIdentity), AuthenticationProperties);
-                    return RedirectToAction("Inicio", "Inicio");
+                    if (Url.IsLocalUrl(ReturnULR))
+                    {
+                        return Redirect(ReturnULR);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Inicio", "Inicio");
+                    }
                 }
                 else
                 {

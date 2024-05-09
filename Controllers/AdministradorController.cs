@@ -6,77 +6,71 @@ using ALQUILER_VEHICULOS.Models;
 
 namespace ALQUILER_VEHICULOS.Controllers
 {
+    [Authorize(Policy = "SoloAdministrador")]
     public class AdministradorController : Controller
     {
-        [Authorize]
+        
         public IActionResult VerTodosUsuarios()
         {
             return View();
         }
-        [Authorize]
         public IActionResult VerTodosVehiculos()
         {
             return View();
         }
-        [Authorize]
         public IActionResult VerTodosAlquileres()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarTipoVehiculo()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarClasificacionVehiculo()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarMarcaVehiculo()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarLineaVehiculo()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarTipoCombustible()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarCiudad()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarSeguroAlquiler()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarMetodoPago()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarLugarRecogidaEntrega()
         {
             return View();
         }
-        [Authorize]
         public IActionResult VerUsuarioAdministrador()
         {
             return View();
         }
-        [Authorize]
         public IActionResult AgregarTipoIdentificacion()
         {
             return View();
+        }
+        private ModeloUsuario DatosUsuarioSesion()
+        {
+            var Identity = HttpContext.User.Identity as ClaimsIdentity;
+            var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
+            return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
     }
 }

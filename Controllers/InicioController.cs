@@ -52,12 +52,14 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloInicio ModeloInicio = new(Vehiculos);
             ModeloAlquiler ModeloAlquiler = new();
             List<ModeloAlquiler> Alquileres = ModeloAlquiler.TraerAlquileres();
-            DateTime  ValorFiltroFechaInicio = DateTime.Parse(FiltroFechaInicio);
+            DateTime ValorFiltroFechaInicio = DateTime.Parse(FiltroFechaInicio);
             ValorFiltroFechaInicio = ValorFiltroFechaInicio.Add(TimeSpan.Parse(FiltroHoraInicio));
-            DateTime  ValorFiltroFechaFin = DateTime.Parse(FiltroFechaFin);
+            DateTime ValorFiltroFechaFin = DateTime.Parse(FiltroFechaFin);
             ValorFiltroFechaFin = ValorFiltroFechaFin.Add(TimeSpan.Parse(FiltroHoraFin));
-            foreach(var Alquiler in Alquileres){
-                if((ValorFiltroFechaInicio >= Alquiler.FechaIncio && ValorFiltroFechaInicio <= Alquiler.FechaFin) || (ValorFiltroFechaFin >= Alquiler.FechaIncio && ValorFiltroFechaFin <= Alquiler.FechaFin)){
+            foreach (var Alquiler in Alquileres)
+            {
+                if ((ValorFiltroFechaInicio >= Alquiler.FechaIncio && ValorFiltroFechaInicio <= Alquiler.FechaFin) || (ValorFiltroFechaFin >= Alquiler.FechaIncio && ValorFiltroFechaFin <= Alquiler.FechaFin))
+                {
                     int IdVehiculoEliminar = Alquiler.Vehiculo.Id;
                     ModeloVehiculo VehiculoEliminar = ModeloInicio.Vehiculos.Find(ModeloVehiculo => ModeloVehiculo.Id == IdVehiculoEliminar);
                     ModeloInicio.Vehiculos.Remove(VehiculoEliminar);
@@ -76,6 +78,11 @@ namespace ALQUILER_VEHICULOS.Controllers
                 FiltroHoraFin
             ];
             ViewBag.Message = Datos;
+            return View(ModeloInicio);
+        }
+        public IActionResult SinPermisos()
+        {
+            ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }
     }
