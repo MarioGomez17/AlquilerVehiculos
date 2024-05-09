@@ -164,8 +164,7 @@
                                 </div>
                                 <div class="Grupo2Elementos DivBotones">
                                     <a class="BotonFormularioEliminar" asp-controller="Usuario"
-                                        asp-action="AccionEliminarUsuario"
-                                        asp-route-IdUsuario=@Model.Usuario.Id>
+                                        asp-action="AccionEliminarUsuario" asp-route-IdUsuario=@Model.Usuario.Id>
                                         Eliminar Cuenta
                                     </a>
                                     <input type="submit" value="Actualizar Datos"
@@ -181,6 +180,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="DivMenuUsuario">
+                            <h4 class="TituloMenuUsuario">Menú de usuario</h4>
+                            <div class="DivSeccionMenu">
+                                @foreach(var Permiso in Model.Usuario.Permisos){
+                                    <a asp-controller="@Permiso.Controlador" asp-action="@Permiso.Accion" class="LinkMenuUsuario">@Permiso.Nombre</a>
+                                }
+                            </div>
+                        </div>
                     </main>
                 </div>
             </div>
@@ -192,6 +199,7 @@
                 </footer>
             </div>
         </div>
+    </div>
     </div>
     <script src="~/js/InformacionUsuario.js"></script>
 </body>

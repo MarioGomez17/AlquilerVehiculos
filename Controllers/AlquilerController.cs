@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Security.Claims;
 using ALQUILER_VEHICULOS.Models;
-using System.Globalization;
 
 namespace ALQUILER_VEHICULOS.Controllers
 {

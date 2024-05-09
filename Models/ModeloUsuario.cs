@@ -14,6 +14,8 @@ namespace ALQUILER_VEHICULOS.Models
         public string Correo { get; set; }
         public string Contrasena { get; set; }
         public string Estado { get; set; }
+        public string Rol { get; set; }
+        public List<ModeloPermiso> Permisos { get; set; }
         public ModeloUsuario TraerUsuario(string Correo, string Contrasena)
         {
             ModeloUsuario Usuario = new();
@@ -26,12 +28,15 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " +
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
-                "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario " +
+                "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario, " +
+                "alquiler_vehiculos.rol.Nombre_Rol " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
                 "INNER JOIN alquiler_vehiculos.estado_usuario " +
                 "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
+                "INNER JOIN alquiler_vehiculos.rol " +
+                "ON alquiler_vehiculos.usuario.Rol_Usuario = alquiler_vehiculos.rol.Id_Rol " +
                 "WHERE alquiler_vehiculos.usuario.Correo_Usuario = '" + Correo + "' " +
                 "AND alquiler_vehiculos.usuario.Contrasena_Usuario = SHA('" + Contrasena + "') ";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
@@ -56,7 +61,10 @@ namespace ALQUILER_VEHICULOS.Models
                             Correo = Lector.GetString(7),
                             Contrasena = "",
                             Estado = Lector.GetString(8),
+                            Rol = Lector.GetString(9)
                         };
+                        ModeloPermiso Permiso = new();
+                        Usuario.Permisos = Permiso.TraerPermisosUsuario(Usuario.Rol);
                     }
                 }
             }
@@ -79,12 +87,15 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " +
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
-                "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario " +
+                "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario, " +
+                "alquiler_vehiculos.rol.Nombre_Rol " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
                 "INNER JOIN alquiler_vehiculos.estado_usuario " +
                 "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
+                "INNER JOIN alquiler_vehiculos.rol " +
+                "ON alquiler_vehiculos.usuario.Rol_Usuario = alquiler_vehiculos.rol.Id_Rol " +
                 "WHERE alquiler_vehiculos.usuario.Id_Usuario = " + IdUsuario;
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
@@ -108,7 +119,10 @@ namespace ALQUILER_VEHICULOS.Models
                             Correo = Lector.GetString(7),
                             Contrasena = "",
                             Estado = Lector.GetString(8),
+                            Rol = Lector.GetString(9)
                         };
+                        ModeloPermiso Permiso = new();
+                        Usuario.Permisos = Permiso.TraerPermisosUsuario(Usuario.Rol);
                     }
                 }
             }
@@ -131,12 +145,15 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " +
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
-                "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario " +
+                "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario, " +
+                "alquiler_vehiculos.rol.Nombre_Rol " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
                 "INNER JOIN alquiler_vehiculos.estado_usuario " +
                 "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
+                "INNER JOIN alquiler_vehiculos.rol " +
+                "ON alquiler_vehiculos.usuario.Rol_Usuario = alquiler_vehiculos.rol.Id_Rol " +
                 "WHERE alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario = '" + NumeroIdentificacion + "' ";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
@@ -160,7 +177,10 @@ namespace ALQUILER_VEHICULOS.Models
                             Correo = Lector.GetString(7),
                             Contrasena = "",
                             Estado = Lector.GetString(8),
+                            Rol = Lector.GetString(9)
                         };
+                        ModeloPermiso Permiso = new();
+                        Usuario.Permisos = Permiso.TraerPermisosUsuario(Usuario.Rol);
                     }
                 }
             }
@@ -191,24 +211,25 @@ namespace ALQUILER_VEHICULOS.Models
                 "SHA ('" + Contrasena + "'))";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool ActualizarUsuario(int Id, string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena){
-            string ConsultaSQL = "UPDATE alquiler_vehiculos.usuario " + 
-            "SET " + 
-            "Nombre_Usuario = '" + Nombre + "', " + 
+        public bool ActualizarUsuario(int Id, string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
+        {
+            string ConsultaSQL = "UPDATE alquiler_vehiculos.usuario " +
+            "SET " +
+            "Nombre_Usuario = '" + Nombre + "', " +
             "Apellido_Usuario = '" + Apellido + "', " +
             "TipoIdentificacion_Usuario = " + TipoIdentificacion + ", " +
             "NumeroIdentificacion_Usuario = '" + NumeroIdentificacion + "', " +
             "Telefono_Usuario = '" + Telefono + "', " +
             "Correo_Usuario = '" + Correo + "', " +
-            "Contrasena_Usuario = SHA('" + Contrasena + "')" + 
+            "Contrasena_Usuario = SHA('" + Contrasena + "')" +
             " WHERE (Id_Usuario = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
         public bool ActualizarUsuario(int Id, string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo)
         {
-            string ConsultaSQL = "UPDATE alquiler_vehiculos.usuario " + 
-            "SET " + 
-            "Nombre_Usuario = '" + Nombre + "', " + 
+            string ConsultaSQL = "UPDATE alquiler_vehiculos.usuario " +
+            "SET " +
+            "Nombre_Usuario = '" + Nombre + "', " +
             "Apellido_Usuario = '" + Apellido + "', " +
             "TipoIdentificacion_Usuario = " + TipoIdentificacion + ", " +
             "NumeroIdentificacion_Usuario = '" + NumeroIdentificacion + "', " +
