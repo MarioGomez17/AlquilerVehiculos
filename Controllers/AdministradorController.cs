@@ -20,7 +20,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarTodosAlquileres()
         {
-            return View();
+            ModeloAlquiler ModeloAlquiler = new();
+            return View(ModeloAlquiler.TraerAlquileres());
         }
         public IActionResult GestionarTipoVehiculo()
         {

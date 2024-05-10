@@ -8,6 +8,7 @@ namespace ALQUILER_VEHICULOS.Models
         public DateTime FechaIncio { get; set; }
         public DateTime FechaFin { get; set; }
         public float Precio { get; set; }
+        public float Ganancia { get; set; }
         public bool Lavada { get; set; }
         public ModeloAlquilador Alquilador { get; set; }
         public ModeloVehiculo Vehiculo { get; set; }
@@ -19,13 +20,14 @@ namespace ALQUILER_VEHICULOS.Models
         public float Calificacion { get; set; }
         public string ComentarioCalificacion { get; set; }
         public string Estado { get; set; }
-        public bool CrearAquiler(DateTime FechaInicio, DateTime FechaFin, float Precio, int Lavada, int Alquilador, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
+        public bool CrearAquiler(DateTime FechaInicio, DateTime FechaFin, float Precio, int Lavada, int Alquilador, int Vehiculo, int Lugar, int MetodoPago, int Seguro, float Ganancia)
         {
             string ConsultaSQL = "INSERT INTO " +
                 "alquiler_vehiculos.alquiler (" +
                 "FechaIncio_Alquiler, " +
                 "FechaFin_Alquiler, " +
                 "Precio_Alquiler, " +
+                "Ganancias_Alquiler, " +
                 "LavadaVehiculo_Alquiler, " +
                 "Alquilador_Alquiler, " +
                 "Vehiculo_Alquiler, " +
@@ -37,6 +39,7 @@ namespace ALQUILER_VEHICULOS.Models
                 FechaInicio.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
                 "'" + FechaFin.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
                 Precio + ", " +
+                Ganancia + ", " +
                 Lavada + ", " +
                 Alquilador + ", " +
                 Vehiculo + ", " +
@@ -63,6 +66,7 @@ namespace ALQUILER_VEHICULOS.Models
                                 "alquiler_vehiculos.alquiler.FechaIncio_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.FechaFin_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.Precio_Alquiler, " +
+                                "alquiler_vehiculos.alquiler.Ganancias_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.LavadaVehiculo_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.Alquilador_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.Vehiculo_Alquiler, " +
@@ -102,17 +106,18 @@ namespace ALQUILER_VEHICULOS.Models
                             FechaIncio = Lector.GetDateTime(1),
                             FechaFin = Lector.GetDateTime(2),
                             Precio = Lector.GetFloat(3),
-                            Lavada = Lector.GetInt32(4) == 1,
-                            Alquilador = ModeloAlquilador.TraerAlquilador(Lector.GetInt32(5)),
-                            Vehiculo = ModeloVehiculo.TraerVehiculo(Lector.GetInt32(6)),
-                            Lugar = Lector.GetString(7),
-                            MetodoPago = Lector.GetString(8),
-                            EstadoPago = Lector.GetString(9),
-                            Seguro = Lector.GetString(10),
-                            PrecioSeguro = Lector.GetFloat(11),
-                            Calificacion = Lector.GetFloat(12),
-                            ComentarioCalificacion = Lector.GetString(13),
-                            Estado = Lector.GetString(14),
+                            Ganancia = Lector.GetFloat(4),
+                            Lavada = Lector.GetInt32(5) == 1,
+                            Alquilador = ModeloAlquilador.TraerAlquilador(Lector.GetInt32(6)),
+                            Vehiculo = ModeloVehiculo.TraerVehiculo(Lector.GetInt32(7)),
+                            Lugar = Lector.GetString(8),
+                            MetodoPago = Lector.GetString(9),
+                            EstadoPago = Lector.GetString(10),
+                            Seguro = Lector.GetString(11),
+                            PrecioSeguro = Lector.GetFloat(12),
+                            Calificacion = Lector.GetFloat(13),
+                            ComentarioCalificacion = Lector.GetString(14),
+                            Estado = Lector.GetString(15),
                         };
                     }
                 }
@@ -164,6 +169,7 @@ namespace ALQUILER_VEHICULOS.Models
                                 "alquiler_vehiculos.alquiler.FechaIncio_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.FechaFin_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.Precio_Alquiler, " +
+                                "alquiler_vehiculos.alquiler.Ganancias_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.LavadaVehiculo_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.Alquilador_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.Vehiculo_Alquiler, " +
@@ -203,17 +209,18 @@ namespace ALQUILER_VEHICULOS.Models
                             FechaIncio = Lector.GetDateTime(1),
                             FechaFin = Lector.GetDateTime(2),
                             Precio = Lector.GetFloat(3),
-                            Lavada = Lector.GetInt32(4) == 1,
-                            Alquilador = ModeloAlquilador.TraerAlquilador(Lector.GetInt32(5)),
-                            Vehiculo = ModeloVehiculo.TraerVehiculo(Lector.GetInt32(6)),
-                            Lugar = Lector.GetString(7),
-                            MetodoPago = Lector.GetString(8),
-                            EstadoPago = Lector.GetString(9),
-                            Seguro = Lector.GetString(10),
-                            PrecioSeguro = Lector.GetFloat(11),
-                            Calificacion = Lector.GetFloat(12),
-                            ComentarioCalificacion = Lector.GetString(13),
-                            Estado = Lector.GetString(14),
+                            Ganancia = Lector.GetFloat(4),
+                            Lavada = Lector.GetInt32(5) == 1,
+                            Alquilador = ModeloAlquilador.TraerAlquilador(Lector.GetInt32(6)),
+                            Vehiculo = ModeloVehiculo.TraerVehiculo(Lector.GetInt32(7)),
+                            Lugar = Lector.GetString(8),
+                            MetodoPago = Lector.GetString(9),
+                            EstadoPago = Lector.GetString(10),
+                            Seguro = Lector.GetString(11),
+                            PrecioSeguro = Lector.GetFloat(12),
+                            Calificacion = Lector.GetFloat(13),
+                            ComentarioCalificacion = Lector.GetString(14),
+                            Estado = Lector.GetString(15),
                         };
                         Alquileres.Add(Alquiler);
                     }

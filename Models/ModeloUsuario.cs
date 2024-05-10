@@ -133,6 +133,66 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Usuario;
         }
+        public ModeloUsuario TraerUsuarioPropietario(int IdPropietario)
+        {
+            ModeloUsuario Usuario = new();
+            string ConsultaSQL = "SELECT " +
+                "alquiler_vehiculos.usuario.Id_Usuario, " +
+                "alquiler_vehiculos.usuario.Nombre_Usuario, " +
+                "alquiler_vehiculos.usuario.Apellido_Usuario, " +
+                "alquiler_vehiculos.tipo_identificacion_usuario.Nombre_TipoIdentificacionUsuario, " +
+                "alquiler_vehiculos.tipo_identificacion_usuario.Simbolo_TipoIdentificacionUsuario, " +
+                "alquiler_vehiculos.usuario.NumeroIdentificacion_Usuario, " +
+                "alquiler_vehiculos.usuario.Telefono_Usuario, " +
+                "alquiler_vehiculos.usuario.Correo_Usuario, " +
+                "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario, " +
+                "alquiler_vehiculos.rol.Nombre_Rol " +
+                "FROM alquiler_vehiculos.usuario " +
+                "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
+                "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
+                "INNER JOIN alquiler_vehiculos.estado_usuario " +
+                "ON alquiler_vehiculos.usuario.Estado_Usuario = alquiler_vehiculos.estado_usuario.Id_EstadoUsuario " +
+                "INNER JOIN alquiler_vehiculos.rol " +
+                "ON alquiler_vehiculos.usuario.Rol_Usuario = alquiler_vehiculos.rol.Id_Rol " +
+                "INNER JOIN alquiler_vehiculos.propietario " +
+                "ON alquiler_vehiculos.propietario.Usuario_Propietario = alquiler_vehiculos.usuario.Id_Usuario " +
+                "WHERE alquiler_vehiculos.propietario.Id_Propietario = " + IdPropietario;
+            MySqlConnection ConexionBD = ModeloConexion.Conect();
+            try
+            {
+                ConexionBD.Open();
+                MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
+                MySqlDataReader Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
+                {
+                    while (Lector.Read())
+                    {
+                        Usuario = new()
+                        {
+                            Id = Lector.GetInt32(0),
+                            Nombre = Lector.GetString(1),
+                            Apellido = Lector.GetString(2),
+                            TipoIdentificacion = Lector.GetString(3),
+                            SimboloTipoIdentificacion = Lector.GetString(4),
+                            NumeroIdentificacion = Lector.GetString(5),
+                            Telefono = Lector.GetString(6),
+                            Correo = Lector.GetString(7),
+                            Contrasena = "",
+                            Estado = Lector.GetString(8),
+                            Rol = Lector.GetString(9)
+                        };
+                        ModeloPermiso Permiso = new();
+                        Usuario.Permisos = Permiso.TraerPermisosUsuario(Usuario.Rol);
+                    }
+                }
+            }
+            catch (Exception) { }
+            finally
+            {
+                ConexionBD.Close();
+            }
+            return Usuario;
+        }
         public bool ValidarUsuario(string NumeroIdentificacion)
         {
             ModeloUsuario Usuario = null;

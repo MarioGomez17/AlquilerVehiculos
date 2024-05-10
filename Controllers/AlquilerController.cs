@@ -64,7 +64,8 @@ namespace ALQUILER_VEHICULOS.Controllers
             }
             ModeloAlquilador = ModeloAlquilador.TraerAlquiladorUsuario(DatosUsuarioSesion().Id);
             int Alquilador = ModeloAlquilador.Id;
-            ModeloAlquiler.CrearAquiler(ValorFiltroFechaInicio, ValorFiltroFechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro);
+            float Ganancias = (float)(Precio * 0.15);
+            ModeloAlquiler.CrearAquiler(ValorFiltroFechaInicio, ValorFiltroFechaFin, Precio, Lavada, Alquilador, Vehiculo, Lugar, MetodoPago, Seguro, Ganancias);
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
         public IActionResult ObtenerPrecioAlquiler(int IdVehiculo, int IdSeguro)

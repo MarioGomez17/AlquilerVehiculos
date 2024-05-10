@@ -22,6 +22,7 @@ namespace ALQUILER_VEHICULOS.Models
         public string TipoCombustible { get; set; }
         public string Estado { get; set; }
         public int Propietario { get; set; }
+        public ModeloUsuario UsuarioPropietario { get; set; }
         public List<ModeloVehiculo> TraerTodosVehiculos()
         {
             List<ModeloVehiculo> ListaVehiculos = [];
@@ -95,6 +96,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                         ListaVehiculos.Add(Vehiculo);
                     }
                 }
@@ -183,6 +186,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                         ListaVehiculos.Add(Vehiculo);
                     }
                 }
@@ -268,6 +273,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                         ListaVehiculos.Add(Vehiculo);
                     }
                 }
@@ -353,6 +360,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                         ListaVehiculos.Add(Vehiculo);
                     }
                 }
@@ -438,6 +447,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                         ListaVehiculos.Add(Vehiculo);
                     }
                 }
@@ -524,6 +535,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                         ListaVehiculos.Add(Vehiculo);
                     }
                 }
@@ -610,6 +623,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                         ListaVehiculos.Add(Vehiculo);
                     }
                 }
@@ -696,6 +711,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                         ListaVehiculos.Add(Vehiculo);
                     }
                 }
@@ -785,6 +802,8 @@ namespace ALQUILER_VEHICULOS.Models
                                 Estado = Lector.GetString(17),
                                 Propietario = Lector.GetInt32(18),
                             };
+                            ModeloUsuario Usuario = new();
+                            UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                             ListaVehiculos.Add(Vehiculo);
                         }
                     }
@@ -869,6 +888,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        Vehiculo.UsuarioPropietario = UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                     }
                 }
             }
@@ -880,7 +901,7 @@ namespace ALQUILER_VEHICULOS.Models
             return Vehiculo;
         }
 
-public bool ValidarVehiculo(string Placa)
+        public bool ValidarVehiculo(string Placa)
         {
             ModeloVehiculo Vehiculo = null;
             string ConsultaSQL = "SELECT " +
@@ -952,6 +973,8 @@ public bool ValidarVehiculo(string Placa)
                             Estado = Lector.GetString(17),
                             Propietario = Lector.GetInt32(18),
                         };
+                        ModeloUsuario Usuario = new();
+                        UsuarioPropietario = Usuario.TraerUsuarioPropietario(Lector.GetInt32(18));
                     }
                 }
             }

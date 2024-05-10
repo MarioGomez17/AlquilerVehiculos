@@ -1,6 +1,10 @@
-﻿@model ModeloInicio;
+﻿@model List<ModeloAlquiler>;
 @{
     Layout = null;
+    float GananciasTotales = 0;
+    foreach (var Alquiler in Model){
+        GananciasTotales += Alquiler.Ganancia;
+    }
 }
 <!DOCTYPE html>
 <html lang="es">
@@ -12,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/GestionarAplicacion.css">
+    <link rel="stylesheet" href="~/css/HistorialAlquileres.css">
     <title>VER TODOS LOS ALQUILERES</title>
 </head>
 
@@ -101,6 +106,107 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivContenedorHistoriales">
+                                <div class="DivContenidoHistoriales">
+                                    <div class="DivTituloHistoriales DivTituloHistorialesAlquileresRealizados">
+                                        <h2 class="TituloHistoriales">Alquileres Realizados ($@GananciasTotales Pesos)</h2>
+                                    </div>
+                                    <div class="ContenidoHistoriales">
+                                        @if (Model.Count() > 0)
+                                        {
+                                            @foreach (var Alquiler in Model)
+                                            {
+                                                <div class="InformacionAlquiler">
+                                                    <div class="InformacionAlquilerParte1">
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Fecha de Inicio</p>
+                                                            <p class="ValorInformacionAlquiler">@Alquiler.FechaIncio</p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Usuario</p>
+                                                            <p class="ValorInformacionAlquiler">
+                                                                @Alquiler.Alquilador.Usuario.Nombre
+                                                                @Alquiler.Alquilador.Usuario.Apellido
+                                                            </p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Tipo Vehículo</p>
+                                                            <p class="ValorInformacionAlquiler">
+                                                                @Alquiler.Vehiculo.TipoVehiculo
+                                                            </p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Propietario</p>
+                                                            <p class="ValorInformacionAlquiler">
+                                                                @Alquiler.Vehiculo.UsuarioPropietario.Nombre
+                                                                @Alquiler.Vehiculo.UsuarioPropietario.Apellido
+                                                            </p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Ciudad</p>
+                                                            <p class="ValorInformacionAlquiler">
+                                                                @Alquiler.Vehiculo.Ciudad
+                                                            </p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Precio</p>
+                                                            <p class="ValorInformacionAlquiler">@Alquiler.Precio</p>
+                                                        </span>
+                                                    </div>
+                                                    <div class="InformacionAlquilerParte2">
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Fecha de Fin</p>
+                                                            <p class="ValorInformacionAlquiler">@Alquiler.FechaFin</p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Identificación Usuario</p>
+                                                            <p class="ValorInformacionAlquiler">
+                                                                @Alquiler.Alquilador.Usuario.NumeroIdentificacion
+                                                            </p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Vehículo</p>
+                                                            <p class="ValorInformacionAlquiler">
+                                                                @Alquiler.Vehiculo.Marca
+                                                                @Alquiler.Vehiculo.Linea
+                                                            </p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">
+                                                                Identificación Propietario
+                                                            </p>
+                                                            <p class="ValorInformacionAlquiler">
+                                                                @Alquiler.Vehiculo.UsuarioPropietario.NumeroIdentificacion
+                                                            </p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Lugar de Recogida y Entrega
+                                                            </p>
+                                                            <p class="ValorInformacionAlquiler">@Alquiler.Lugar</p>
+                                                        </span>
+                                                        <span class="DetallesAlquiler">
+                                                            <p class="TituloInformacionAlquiler">Ganancias Adquiridas</p>
+                                                            <p class="ValorInformacionAlquiler">@Alquiler.Ganancia</p>
+                                                        </span>
+                                                    </div>
+                                                    <div class="InformacionAlquilerParte3">
+                                                        <p class="ValorInformacionAlquiler CalificacionAlquiler">
+                                                            @Alquiler.Calificacion</p>
+                                                        <p class="ValorInformacionAlquiler ComentarioCalificacionAlquiler">
+                                                            @Alquiler.ComentarioCalificacion</p>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="DivTituloHistoriales">
+                                                <h3 class="TituloNoAlquileres">No Hay Alquileres Realizados</h3>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </main>
                 </div>
