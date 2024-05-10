@@ -1,4 +1,4 @@
-﻿@model ModeloInicio;
+﻿@model List<ModeloDepartamento>;
 @{
     Layout = null;
 }
@@ -101,6 +101,50 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivFormularioGestion">
+                                <form asp-action="AccionAgregarCiudad" asp-controller="Administrador"
+                                    class="FormularioAgregar">
+                                    <div class="DivEtiquetaInput">
+                                        <select name="Departamento" id="Departamento" class="SelectFormularioAgregar">
+                                            <option value="0" class="OptionSelectFormularioAgregar" selected disabled>
+                                                Seleccione un
+                                                Departamento</option>
+                                            @foreach (var Departamento in Model)
+                                            {
+                                                <option value="@Departamento.Id" class="OptionSelectFormularioAgregar">
+                                                    @Departamento.Nombre</option>
+                                            }
+                                        </select>
+                                        <label for="Departamento" class="EtiquetaFormulario">Departamento</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" name="Ciudad" value="" class="InputFormularioAgregar"
+                                            id="Ciudad">
+                                        <label for="Ciudad" class="EtiquetaFormulario">Ciudad</label>
+                                    </div>
+                                    <input type="submit" value="Agregar Ciudad" class="BotonFormularioAgregar">
+                                </form>
+                            </div>
+                            <div class="DivInformacionGestion">
+                                @foreach (var Departamento in Model)
+                                {
+                                    <h3 class="TituloDepartamento">@Departamento.Nombre</h3>
+                                    @foreach (var Ciudad in Departamento.Ciudades)
+                                    {
+                                        <ul class="ListaCiudades">
+                                            <li class="NombreCiudad">
+                                                <form asp-action="AccionActualizarCiudad" asp-controller="Administrador"
+                                                    class="FormularioActualizarCiudad">
+                                                    <input type="hidden" name="Id" value="@Ciudad.Id">
+                                                    <input type="text" name="Ciudad" value="@Ciudad.Nombre"
+                                                        class="InputFormularioActualizar">
+                                                    <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    }
+                                }
+                            </div>
                         </div>
                     </main>
                 </div>

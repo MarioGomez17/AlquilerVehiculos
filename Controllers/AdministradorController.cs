@@ -10,51 +10,52 @@ namespace ALQUILER_VEHICULOS.Controllers
     public class AdministradorController : Controller
     {
         
-        public IActionResult VerTodosUsuarios()
+        public IActionResult GestionarTodosUsuarios()
         {
             return View();
         }
-        public IActionResult VerTodosVehiculos()
+        public IActionResult GestionarTodosVehiculos()
         {
             return View();
         }
-        public IActionResult VerTodosAlquileres()
+        public IActionResult GestionarTodosAlquileres()
         {
             return View();
         }
-        public IActionResult AgregarTipoVehiculo()
+        public IActionResult GestionarTipoVehiculo()
         {
             return View();
         }
-        public IActionResult AgregarClasificacionVehiculo()
+        public IActionResult GestionarClasificacionVehiculo()
         {
             return View();
         }
-        public IActionResult AgregarMarcaVehiculo()
+        public IActionResult GestionarMarcaVehiculo()
         {
             return View();
         }
-        public IActionResult AgregarLineaVehiculo()
+        public IActionResult GestionarLineaVehiculo()
         {
             return View();
         }
-        public IActionResult AgregarTipoCombustible()
+        public IActionResult GestionarTipoCombustible()
         {
             return View();
         }
-        public IActionResult AgregarCiudad()
+        public IActionResult GestionarCiudad()
+        {
+            ModeloDepartamento ModeloDepartamento = new();
+            return View(ModeloDepartamento.TraerDepartamentos());
+        }
+        public IActionResult GestionarSeguroAlquiler()
         {
             return View();
         }
-        public IActionResult AgregarSeguroAlquiler()
+        public IActionResult GestionarMetodoPago()
         {
             return View();
         }
-        public IActionResult AgregarMetodoPago()
-        {
-            return View();
-        }
-        public IActionResult AgregarLugarRecogidaEntrega()
+        public IActionResult GestionarLugarRecogidaEntrega()
         {
             return View();
         }
@@ -62,7 +63,7 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             return View();
         }
-        public IActionResult AgregarTipoIdentificacion()
+        public IActionResult GestionarTipoIdentificacion()
         {
             return View();
         }
@@ -72,5 +73,17 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
+        public IActionResult AccionAgregarCiudad(int Departamento, string Ciudad){
+            ModeloCiudad ModeloCiudad = new();
+            ModeloCiudad.AgregarCiudad(Departamento, Ciudad);
+            return RedirectToAction("GestionarCiudad", "Administrador");
+        }
+        
+        public IActionResult AccionActualizarCiudad(int Id, string Ciudad){
+            ModeloCiudad ModeloCiudad = new();
+            ModeloCiudad.ActualizarCiudad(Id, Ciudad);
+            return RedirectToAction("GestionarCiudad", "Administrador");
+        }
+
     }
 }

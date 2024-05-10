@@ -159,11 +159,205 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 
+.DivFormularioGestion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 95%;
+    scrollbar-width: none;
+    background-color: var(--ThirdColor);
+    border: solid 5px var(--SixthColor);
+    border-radius: 15px;
+}
+
+.DivEtiquetaInput{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.FormularioAgregar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+}
+
+.EtiquetaFormulario {
+    font-size: 30px;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.InputFormularioAgregar {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 60%;
+    padding: 0;
+    text-indent: 20px;
+    height: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5px 0;
+    font-family: var(--Font);
+}
+
+.InputFormularioAgregar:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+.InputFormularioAgregar:focus~label {
+    color: var(--SecondColor);
+    font-size: 35px;
+}
+
+.SelectFormularioAgregar {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 350px;
+    text-indent: 20px;
+    height: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5px 0;
+    font-family: var(--Font);
+}
+
+.OptionSelectFormularioAgregar {
+    font-weight: bold;
+    font-family: var(--Font);
+}
+
+.SelectFormularioAgregar:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+.SelectFormularioAgregar:focus~label {
+    color: var(--SecondColor);
+    font-size: 35px;
+}
+
+.BotonFormularioAgregar {
+    border-radius: 20px;
+    cursor: pointer;
+    height: 50px;
+    font-family: var(--Font);
+    font-size: 35px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+    transition: ease-out 0.8s;
+    border: 4px solid var(--SecondColor);
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+    text-decoration: none;
+    color: var(--Black);
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.BotonFormularioAgregar:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+}
+
+.BotonFormularioAgregar:active {
+    transform: scale(0.9);
+}
+
+.DivInformacionGestion{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: auto;
+    width: 35%;
+    height: 95%;
+    scrollbar-width: none;
+    background-color: var(--ThirdColor);
+    border: solid 5px var(--SixthColor);
+    border-radius: 15px;
+}
+
+.TituloDepartamento{
+    font-size: 25px;
+}
+
+.ListaCiudades{
+    list-style: none;
+    width: 95%;
+    padding: 0;
+}
+
+.NombreCiudad{
+    width: 95%;
+}
+
+.FormularioActualizarCiudad{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.InputFormularioActualizar {
+    width: 200px;
+    font: var(--Font);
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 20px;
+    border: solid 3px var(--FifthColor);
+    padding: 0;
+    height: 30px;
+}
+
+.InputFormularioActualizar:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+.BotonFormularioActualizar {
+    border-radius: 20px;
+    cursor: pointer;
+    height: 30px;
+    font-family: var(--Font);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+    transition: ease-out 0.8s;
+    border: 4px solid green;
+    box-shadow: inset 0 0 0 0 green;
+    text-decoration: none;
+    color: var(--Black);
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.BotonFormularioActualizar:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 green;
+}
+
+.BotonFormularioActualizar:active {
+    transform: scale(0.9);
+}
 
 .DivFooterGestionarAplicacion {
     height: 5%;

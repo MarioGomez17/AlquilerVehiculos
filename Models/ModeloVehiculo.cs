@@ -1061,7 +1061,3 @@ public bool ValidarVehiculo(string Placa)
         }
     }
 }
-
-/*
-
-*/
