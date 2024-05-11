@@ -7,6 +7,7 @@ namespace ALQUILER_VEHICULOS.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public List<ModeloClasificacionVehículo> Clasificaciones { get; set; }
+        public List<ModeloMarca> Marcas {get; set;}
         public List<ModeloTipoVehiculo> TraerTodosTipoVehiculo()
         {
             List<ModeloTipoVehiculo> TiposVehiculo = [];
@@ -31,7 +32,9 @@ namespace ALQUILER_VEHICULOS.Models
                             Nombre = Lector.GetString(1),
                         };
                         ModeloClasificacionVehículo ModeloClasificiacion = new();
+                        ModeloMarca Marca = new();
                         TipoVehiculo.Clasificaciones = ModeloClasificiacion.TraerTodasClasificacionesPorTipo(Lector.GetInt32(0));
+                        TipoVehiculo.Marcas = Marca.TraerTodasMarcasPorTIpo(Lector.GetInt32(0));
                         TiposVehiculo.Add(TipoVehiculo);
                     }
                 }

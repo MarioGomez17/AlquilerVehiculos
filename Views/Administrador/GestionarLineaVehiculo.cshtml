@@ -123,45 +123,44 @@
                                         <label for="Marca" class="EtiquetaFormulario">Marcas</label>
                                     </div>
                                     <div class="DivEtiquetaInput">
-                                        <input type="text" name="Linea" class="InputFormularioAgregar"
-                                            id="Linea">
+                                        <input type="text" name="Linea" class="InputFormularioAgregar" id="Linea">
                                         <label for="Linea" class="EtiquetaFormulario">Línea</label>
                                     </div>
                                     <input type="submit" value="Agregar Linea" class="BotonFormularioAgregar">
                                 </form>
-                        </div>
-                        <div class="DivInformacionGestion">
+                            </div>
+                            <div class="DivInformacionGestion">
                                 @foreach (var TipoVehiculo in Model)
                                 {
-                                <h3 class="TituloTipoVehiculo">@TipoVehiculo.Nombre</h3>
+                                    <h3 class="TituloTipoVehiculo">@TipoVehiculo.Nombre</h3>
                                     @foreach (var Linea in TipoVehiculo.Lineas)
                                     {
-                                    <ul class="ListaExistentes">
-                                        <li class="NombreExistentes">
-                                            <form asp-action="AccionActualizarLinea" asp-controller="Administrador"
-                                                class="FormularioActualizar">
-                                                <input type="hidden" name="Id" value="@Linea.Id">
-                                                <input type="text" name="Linea" value="@Linea.Nombre"
-                                                    class="InputFormularioActualizar">
-                                                <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
-                                            </form>
-                                        </li>
-                                    </ul>
+                                        <ul class="ListaExistentes">
+                                            <li class="NombreExistentes">
+                                                <form asp-action="AccionActualizarLinea" asp-controller="Administrador"
+                                                    class="FormularioActualizar">
+                                                    <input type="hidden" name="Id" value="@Linea.Id">
+                                                    <input type="text" name="Linea" value="@Linea.Nombre"
+                                                        class="InputFormularioActualizar">
+                                                    <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
+                                                </form>
+                                            </li>
+                                        </ul>
                                     }
                                 }
+                            </div>
                         </div>
+                    </main>
                 </div>
-                </main>
+            </div>
+            <div class="DivFooterGestionarAplicacion">
+                <footer class="FooterGestionarAplicacion">
+                    <span class="TextoFooterGestionarAplicacion">
+                        &copy; 2024 - Alquiler de Vehículos por Mario Gómez y Juan Diego Claros
+                    </span>
+                </footer>
             </div>
         </div>
-        <div class="DivFooterGestionarAplicacion">
-            <footer class="FooterGestionarAplicacion">
-                <span class="TextoFooterGestionarAplicacion">
-                    &copy; 2024 - Alquiler de Vehículos por Mario Gómez y Juan Diego Claros
-                </span>
-            </footer>
-        </div>
-    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/GestionarAplicacion.js" type="module"></script>

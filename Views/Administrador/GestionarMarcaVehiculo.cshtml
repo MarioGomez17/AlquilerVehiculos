@@ -1,4 +1,4 @@
-﻿@model ModeloInicio;
+﻿@model List<ModeloTipoVehiculo>;
 @{
     Layout = null;
 }
@@ -101,6 +101,49 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivFormularioGestion">
+                                <form asp-action="AccionAgregarMarca" asp-controller="Administrador"
+                                    class="FormularioAgregar">
+                                    <div class="DivEtiquetaInput">
+                                        <select name="Tipo" id="Tipo" class="SelectFormularioAgregar">
+                                            <option value="0" class="OptionSelectFormularioAgregar" selected disabled>
+                                                Seleccione un Tipo de Vehículo
+                                            </option>
+                                            @foreach (var Tipo in Model)
+                                            {
+                                                <option value="@Tipo.Id" class="OptionSelectFormularioAgregar">
+                                                    @Tipo.Nombre</option>
+                                            }
+                                        </select>
+                                        <label for="Tipo" class="EtiquetaFormulario">Tipos de Vehículo</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" name="Marca" class="InputFormularioAgregar" id="Marca">
+                                        <label for="Marca" class="EtiquetaFormulario">Marca</label>
+                                    </div>
+                                    <input type="submit" value="Agregar Marca" class="BotonFormularioAgregar">
+                                </form>
+                            </div>
+                            <div class="DivInformacionGestion">
+                                @foreach (var TipoVehiculo in Model)
+                                {
+                                    <h3 class="TituloTipoVehiculo">@TipoVehiculo.Nombre</h3>
+                                    @foreach (var Marca in TipoVehiculo.Marcas)
+                                    {
+                                        <ul class="ListaExistentes">
+                                            <li class="NombreExistentes">
+                                                <form asp-action="AccionActualizarMarca" asp-controller="Administrador"
+                                                    class="FormularioActualizar">
+                                                    <input type="hidden" name="Id" value="@Marca.Id">
+                                                    <input type="text" name="Marca" value="@Marca.Nombre"
+                                                        class="InputFormularioActualizar">
+                                                    <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    }
+                                }
+                            </div>
                         </div>
                     </main>
                 </div>

@@ -34,7 +34,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarMarcaVehiculo()
         {
-            return View();
+            ModeloTipoVehiculo TipoVehiculo = new();
+            return View(TipoVehiculo.TraerTodosTipoVehiculo());
         }
         public IActionResult GestionarLineaVehiculo()
         {
@@ -117,6 +118,16 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloLinea ModeloLinea = new();
             ModeloLinea.ActualizarLinea(Id, Linea);
             return RedirectToAction("GestionarLineaVehiculo", "Administrador");
+        }
+        public IActionResult AccionAgregarMarca(int Tipo, string Marca){
+            ModeloMarca ModeloMarca = new();
+            ModeloMarca.AgregarMarca(Tipo, Marca);
+            return RedirectToAction("GestionarMarcaVehiculo", "Administrador");
+        }
+        public IActionResult AccionActualizarMarca(int Id, string Marca){
+            ModeloMarca ModeloMarca = new();
+            ModeloMarca.ActualizarMarca(Id, Marca);
+            return RedirectToAction("GestionarMarcaVehiculo", "Administrador");
         }
     }
 }
