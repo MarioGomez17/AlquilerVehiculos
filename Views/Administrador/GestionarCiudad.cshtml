@@ -118,7 +118,7 @@
                                         <label for="Departamento" class="EtiquetaFormulario">Departamento</label>
                                     </div>
                                     <div class="DivEtiquetaInput">
-                                        <input type="text" name="Ciudad" value="" class="InputFormularioAgregar"
+                                        <input type="text" name="Ciudad" class="InputFormularioAgregar"
                                             id="Ciudad">
                                         <label for="Ciudad" class="EtiquetaFormulario">Ciudad</label>
                                     </div>
@@ -131,10 +131,10 @@
                                     <h3 class="TituloDepartamento">@Departamento.Nombre</h3>
                                     @foreach (var Ciudad in Departamento.Ciudades)
                                     {
-                                        <ul class="ListaCiudades">
-                                            <li class="NombreCiudad">
+                                        <ul class="ListaExistentes">
+                                            <li class="NombreExistentes">
                                                 <form asp-action="AccionActualizarCiudad" asp-controller="Administrador"
-                                                    class="FormularioActualizarCiudad">
+                                                    class="FormularioActualizar">
                                                     <input type="hidden" name="Id" value="@Ciudad.Id">
                                                     <input type="text" name="Ciudad" value="@Ciudad.Nombre"
                                                         class="InputFormularioActualizar">

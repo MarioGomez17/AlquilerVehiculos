@@ -29,7 +29,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarClasificacionVehiculo()
         {
-            return View();
+            ModeloTipoVehiculo TiModeloTipoVehiculo = new();
+            return View(TiModeloTipoVehiculo.TraerTodosTipoVehiculo());
         }
         public IActionResult GestionarMarcaVehiculo()
         {
@@ -58,7 +59,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarLugarRecogidaEntrega()
         {
-            return View();
+            ModeloLugarAlquiler LugaresAlquiler = new();
+            return View(LugaresAlquiler.TraerTodosLugaresAlquiler());
         }
         public IActionResult VerUsuarioAdministrador()
         {
@@ -85,6 +87,25 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloCiudad.ActualizarCiudad(Id, Ciudad);
             return RedirectToAction("GestionarCiudad", "Administrador");
         }
-
+        public IActionResult AccionAgregarLugar(string Lugar){
+            ModeloLugarAlquiler ModeloLugar = new();
+            ModeloLugar.AgregarLugarRecogidaEntrega(Lugar);
+            return RedirectToAction("GestionarLugarRecogidaEntrega", "Administrador");
+        }
+        public IActionResult AccionActualizarLugar(int Id, string Lugar){
+            ModeloLugarAlquiler ModeloLugar = new();
+            ModeloLugar.ActualizarLugarRecogidaEntrega(Id, Lugar);
+            return RedirectToAction("GestionarLugarRecogidaEntrega", "Administrador");
+        }
+        public IActionResult AccionAgregarClasificacion(int TipoVehiculo, string Clasificacion){
+            ModeloClasificacionVehículo ClasificacionVehículo = new();
+            ClasificacionVehículo.AgregarClasificacion(TipoVehiculo, Clasificacion);
+            return RedirectToAction("GestionarClasificacionVehiculo", "Administrador");
+        }
+        public IActionResult AccionActualizarClasificacion(int Id, string Clasificacion){
+            ModeloClasificacionVehículo ClasificacionVehículo = new();
+            ClasificacionVehículo.ActualizarClasificacion(Id, Clasificacion);
+            return RedirectToAction("GestionarClasificacionVehiculo", "Administrador");
+        }
     }
 }

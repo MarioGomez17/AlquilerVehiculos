@@ -80,5 +80,24 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ClasificacionesVehículo;
         }
+        public bool ActualizarClasificacion(int TipoVehiculo, string Clasificacion){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.clasificacion_vehiculo " + 
+            "SET " + 
+            "alquiler_vehiculos.clasificacion_vehiculo.Nombre_ClasificacionVehiculo = '" + 
+            Clasificacion + "' " + 
+            "WHERE (alquiler_vehiculos.clasificacion_vehiculo.Id_ClasificacionVehiculo = " + TipoVehiculo + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool AgregarClasificacion(int Tipo, string Clasificacion){
+            string ConsultaSQL = "INSERT INTO " + 
+            "alquiler_vehiculos.clasificacion_vehiculo (" + 
+            "alquiler_vehiculos.clasificacion_vehiculo.TipoVehiculo_ClasificacionVehiculo, " + 
+            "alquiler_vehiculos.clasificacion_vehiculo.Nombre_ClasificacionVehiculo) " + 
+            "VALUES (" + 
+            Tipo + ", '" +
+            Clasificacion + "') "; 
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }
