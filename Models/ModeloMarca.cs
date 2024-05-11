@@ -55,7 +55,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
                 "FROM alquiler_vehiculos.marca_vehiculo " +
                 "WHERE alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo = " + IdTipoVehiculo + " " +
-                "ORDER BY alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo ASC";
+                "ORDER BY alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {

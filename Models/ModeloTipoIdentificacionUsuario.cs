@@ -15,7 +15,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.tipo_identificacion_usuario.Nombre_TipoIdentificacionUsuario, " +
                 "alquiler_vehiculos.tipo_identificacion_usuario.Simbolo_TipoIdentificacionUsuario " +
                 "FROM alquiler_vehiculos.tipo_identificacion_usuario " +
-                "ORDER BY alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario ASC";
+                "ORDER BY alquiler_vehiculos.tipo_identificacion_usuario.Nombre_TipoIdentificacionUsuario ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {

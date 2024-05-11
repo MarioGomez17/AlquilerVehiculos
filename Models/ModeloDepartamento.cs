@@ -14,7 +14,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.departamento.Id_Departamento, " +
                 "alquiler_vehiculos.departamento.Nombre_Departamento " +
                 "FROM alquiler_vehiculos.departamento " +
-                "ORDER BY alquiler_vehiculos.departamento.Id_Departamento ASC";
+                "ORDER BY alquiler_vehiculos.departamento.Nombre_Departamento ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {

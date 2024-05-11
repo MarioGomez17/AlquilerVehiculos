@@ -105,6 +105,11 @@
                                 <form asp-action="AccionAgregarLinea" asp-controller="Administrador"
                                     class="FormularioAgregar">
                                     <div class="DivEtiquetaInput">
+                                        <select id="Tipo" class="SelectFormularioAgregar">
+                                        </select>
+                                        <label for="Tipo" class="EtiquetaFormulario">Tipo de Vehiculo</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
                                         <select name="Marca" id="Marca" class="SelectFormularioAgregar">
                                             <option value="0" class="OptionSelectFormularioAgregar" selected disabled>
                                                 Seleccione una Marca
@@ -115,7 +120,7 @@
                                                     @Marca.Nombre</option>
                                             }
                                         </select>
-                                        <label for="Marca" class="EtiquetaFormulario">Tipo de Vehiculo</label>
+                                        <label for="Marca" class="EtiquetaFormulario">Marcas</label>
                                     </div>
                                     <div class="DivEtiquetaInput">
                                         <input type="text" name="Linea" class="InputFormularioAgregar"

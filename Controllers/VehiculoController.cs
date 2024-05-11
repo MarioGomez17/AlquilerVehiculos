@@ -93,6 +93,11 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloMarca ModeloMarca = new();
             return Json(new { Marcas = ModeloMarca.TraerTodasMarcasPorTIpo(IdTipoVehiculo) });
         }
+        public IActionResult TraerTodosTIpo()
+        {
+            ModeloTipoVehiculo TipoVehiculo = new();
+            return Json(new { TiposVehiculo = TipoVehiculo.TraerTodosTipoVehiculo() });
+        }
         public IActionResult AccionRegistrarVehiculo(string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroCertificadoCDA, string NumeroSeguro, int TipoCombustible, int Ciudad, IFormFile FotoVehiculo)
         {
             if (FotoVehiculo != null)

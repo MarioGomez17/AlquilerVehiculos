@@ -13,7 +13,7 @@ namespace ALQUILER_VEHICULOS.Models
                                 "alquiler_vehiculos.tipo_combustible.Id_TipoCombustible, " +
                                 "alquiler_vehiculos.tipo_combustible.Nombre_TipoCombustible " +
                                 "FROM alquiler_vehiculos.tipo_combustible " +
-                                "ORDER BY alquiler_vehiculos.tipo_combustible.Id_TipoCombustible ASC";
+                                "ORDER BY alquiler_vehiculos.tipo_combustible.Nombre_TipoCombustible ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {

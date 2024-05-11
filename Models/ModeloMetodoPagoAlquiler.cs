@@ -13,7 +13,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.metodo_pago.Id_MetodoPago, " +
                 "alquiler_vehiculos.metodo_pago.Nombre_MetodoPago " +
                 "FROM alquiler_vehiculos.metodo_pago " +
-                "ORDER BY alquiler_vehiculos.metodo_pago.Id_MetodoPago ASC";
+                "ORDER BY alquiler_vehiculos.metodo_pago.Nombre_MetodoPago ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {

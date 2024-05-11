@@ -15,7 +15,7 @@ namespace ALQUILER_VEHICULOS.Models
                                 "alquiler_vehiculos.clasificacion_vehiculo.Nombre_ClasificacionVehiculo, " +
                                 "alquiler_vehiculos.clasificacion_vehiculo.TipoVehiculo_ClasificacionVehiculo " +
                                 "FROM alquiler_vehiculos.clasificacion_vehiculo " +
-                                "ORDER BY alquiler_vehiculos.clasificacion_vehiculo.Id_ClasificacionVehiculo ASC";
+                                "ORDER BY alquiler_vehiculos.clasificacion_vehiculo.Nombre_ClasificacionVehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
@@ -52,7 +52,7 @@ namespace ALQUILER_VEHICULOS.Models
                                 "alquiler_vehiculos.clasificacion_vehiculo.TipoVehiculo_ClasificacionVehiculo " +
                                 "FROM alquiler_vehiculos.clasificacion_vehiculo " +
                                 "WHERE alquiler_vehiculos.clasificacion_vehiculo.TipoVehiculo_ClasificacionVehiculo = " + IdTipoVehiculo + " " + 
-                                "ORDER BY alquiler_vehiculos.clasificacion_vehiculo.Id_ClasificacionVehiculo ASC";
+                                "ORDER BY alquiler_vehiculos.clasificacion_vehiculo.Nombre_ClasificacionVehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
