@@ -38,7 +38,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarLineaVehiculo()
         {
-            return View();
+            ModeloMarca Marca= new();
+            return View(Marca.TraerTodosMetodasMarcas());
         }
         public IActionResult GestionarTipoCombustible()
         {
@@ -106,6 +107,16 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloClasificacionVehículo ClasificacionVehículo = new();
             ClasificacionVehículo.ActualizarClasificacion(Id, Clasificacion);
             return RedirectToAction("GestionarClasificacionVehiculo", "Administrador");
+        }
+        public IActionResult AccionAgregarLinea(int Marca, string Linea){
+            ModeloLinea ModeloLinea = new();
+            ModeloLinea.AgregarLinea(Marca, Linea);
+            return RedirectToAction("GestionarLineaVehiculo", "Administrador");
+        }
+        public IActionResult AccionActualizarLinea(int Id, string Linea){
+            ModeloLinea ModeloLinea = new();
+            ModeloLinea.ActualizarLinea(Id, Linea);
+            return RedirectToAction("GestionarLineaVehiculo", "Administrador");
         }
     }
 }

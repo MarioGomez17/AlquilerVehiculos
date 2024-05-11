@@ -80,13 +80,13 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ClasificacionesVehículo;
         }
-        public bool ActualizarClasificacion(int TipoVehiculo, string Clasificacion){
+        public bool ActualizarClasificacion(int Id, string Clasificacion){
             string ConsultaSQL = "UPDATE " + 
             "alquiler_vehiculos.clasificacion_vehiculo " + 
             "SET " + 
             "alquiler_vehiculos.clasificacion_vehiculo.Nombre_ClasificacionVehiculo = '" + 
             Clasificacion + "' " + 
-            "WHERE (alquiler_vehiculos.clasificacion_vehiculo.Id_ClasificacionVehiculo = " + TipoVehiculo + ")";
+            "WHERE (alquiler_vehiculos.clasificacion_vehiculo.Id_ClasificacionVehiculo = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
         public bool AgregarClasificacion(int Tipo, string Clasificacion){

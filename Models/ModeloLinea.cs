@@ -80,5 +80,24 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Lineas;
         }
+        public bool ActualizarLinea(int Id, string Linea){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.linea_vehiculo " + 
+            "SET " + 
+            "alquiler_vehiculos.linea_vehiculo.Nombre_LineaVehiculo = '" + 
+            Linea + "' " + 
+            "WHERE (alquiler_vehiculos.linea_vehiculo.Id_LineaVehiculo = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool AgregarLinea(int Marca, string Linea){
+            string ConsultaSQL = "INSERT INTO " + 
+            "alquiler_vehiculos.linea_vehiculo (" + 
+            "alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo, " + 
+            "alquiler_vehiculos.linea_vehiculo.Nombre_LineaVehiculo) " + 
+            "VALUES (" + 
+            Marca + ", '" +
+            Linea + "') "; 
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }

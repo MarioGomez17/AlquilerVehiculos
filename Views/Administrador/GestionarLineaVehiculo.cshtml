@@ -1,4 +1,4 @@
-﻿@model ModeloInicio;
+﻿@model List<ModeloMarca>;
 @{
     Layout = null;
 }
@@ -101,18 +101,62 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivFormularioGestion">
+                                <form asp-action="AccionAgregarLinea" asp-controller="Administrador"
+                                    class="FormularioAgregar">
+                                    <div class="DivEtiquetaInput">
+                                        <select name="Marca" id="Marca" class="SelectFormularioAgregar">
+                                            <option value="0" class="OptionSelectFormularioAgregar" selected disabled>
+                                                Seleccione una Marca
+                                            </option>
+                                            @foreach (var Marca in Model)
+                                            {
+                                                <option value="@Marca.Id" class="OptionSelectFormularioAgregar">
+                                                    @Marca.Nombre</option>
+                                            }
+                                        </select>
+                                        <label for="Marca" class="EtiquetaFormulario">Tipo de Vehiculo</label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" name="Linea" class="InputFormularioAgregar"
+                                            id="Linea">
+                                        <label for="Linea" class="EtiquetaFormulario">Línea</label>
+                                    </div>
+                                    <input type="submit" value="Agregar Linea" class="BotonFormularioAgregar">
+                                </form>
                         </div>
-                    </main>
+                        <div class="DivInformacionGestion">
+                                @foreach (var TipoVehiculo in Model)
+                                {
+                                <h3 class="TituloTipoVehiculo">@TipoVehiculo.Nombre</h3>
+                                    @foreach (var Linea in TipoVehiculo.Lineas)
+                                    {
+                                    <ul class="ListaExistentes">
+                                        <li class="NombreExistentes">
+                                            <form asp-action="AccionActualizarLinea" asp-controller="Administrador"
+                                                class="FormularioActualizar">
+                                                <input type="hidden" name="Id" value="@Linea.Id">
+                                                <input type="text" name="Linea" value="@Linea.Nombre"
+                                                    class="InputFormularioActualizar">
+                                                <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    }
+                                }
+                        </div>
                 </div>
-            </div>
-            <div class="DivFooterGestionarAplicacion">
-                <footer class="FooterGestionarAplicacion">
-                    <span class="TextoFooterGestionarAplicacion">
-                        &copy; 2024 - Alquiler de Vehículos por Mario Gómez y Juan Diego Claros
-                    </span>
-                </footer>
+                </main>
             </div>
         </div>
+        <div class="DivFooterGestionarAplicacion">
+            <footer class="FooterGestionarAplicacion">
+                <span class="TextoFooterGestionarAplicacion">
+                    &copy; 2024 - Alquiler de Vehículos por Mario Gómez y Juan Diego Claros
+                </span>
+            </footer>
+        </div>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/GestionarAplicacion.js" type="module"></script>

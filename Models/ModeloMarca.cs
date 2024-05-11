@@ -6,16 +6,17 @@ namespace ALQUILER_VEHICULOS.Models
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public int TipoVehiculo {get; set;}
+        public int TipoVehiculo { get; set; }
+        public List<ModeloLinea> Lineas { get; set; }
         public List<ModeloMarca> TraerTodosMetodasMarcas()
         {
             List<ModeloMarca> MarcasVehiculo = [];
             string ConsultaSQL = "SELECT " +
                 "alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo, " +
                 "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo, " +
-                "alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " + 
+                "alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
                 "FROM alquiler_vehiculos.marca_vehiculo " +
-                "ORDER BY alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo ASC";
+                "ORDER BY alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
             {
@@ -32,6 +33,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Nombre = Lector.GetString(1),
                             TipoVehiculo = Lector.GetInt32(2)
                         };
+                        ModeloLinea Linea = new();
+                        MarcaVehiculo.Lineas = Linea.TraerTodasLineasPorMarca(Lector.GetInt32(0));
                         MarcasVehiculo.Add(MarcaVehiculo);
                     }
                 }
@@ -49,7 +52,7 @@ namespace ALQUILER_VEHICULOS.Models
             string ConsultaSQL = "SELECT " +
                 "alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo, " +
                 "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo, " +
-                "alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " + 
+                "alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
                 "FROM alquiler_vehiculos.marca_vehiculo " +
                 "WHERE alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo = " + IdTipoVehiculo + " " +
                 "ORDER BY alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo ASC";
@@ -69,6 +72,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Nombre = Lector.GetString(1),
                             TipoVehiculo = Lector.GetInt32(2)
                         };
+                        ModeloLinea Linea = new();
+                        MarcaVehiculo.Lineas = Linea.TraerTodasLineasPorMarca(Lector.GetInt32(0));
                         MarcasVehiculo.Add(MarcaVehiculo);
                     }
                 }
