@@ -1,4 +1,4 @@
-﻿@model ModeloInicio;
+﻿@model List<ModeloMetodoPagoAlquiler>;
 @{
     Layout = null;
 }
@@ -101,6 +101,35 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivFormularioGestion">
+                                <form asp-action="AccionAgregarMetodoPago" asp-controller="Administrador"
+                                    class="FormularioAgregar">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" name="MetodoPago" class="InputFormularioAgregar" id="MetodoPago">
+                                        <label for="MetodoPago" class="EtiquetaFormulario">
+                                            Método de Pago
+                                        </label>
+                                    </div>
+                                    <input type="submit" value="Agregar Metodo de Pago" class="BotonFormularioAgregar">
+                                </form>
+                            </div>
+                            <div class="DivInformacionGestion">
+                                <h3 class="TituloLista">Colores</h3>
+                                @foreach (var MetodoPago in Model)
+                                {
+                                    <ul class="ListaExistentes">
+                                        <li class="NombreExistentes">
+                                            <form asp-action="AccionActualizarMetodoPago" asp-controller="Administrador"
+                                                class="FormularioActualizar">
+                                                <input type="hidden" name="Id" value="@MetodoPago.Id">
+                                                <input type="text" name="MetodoPago" value="@MetodoPago.Nombre"
+                                                    class="InputFormularioActualizar">
+                                                <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                }
+                            </div>
                         </div>
                     </main>
                 </div>
