@@ -249,5 +249,17 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloTipoVehiculo.ActualizarTipoVehiculo(Id, TipoVehiculo);
             return RedirectToAction("GestionarTipoVehiculo", "Administrador");
         }
+        public IActionResult AccionAgregarTipoCombustible(string Combustible)
+        {
+            ModeloTipoCombustible TipoCombustible = new();
+            TipoCombustible.AgregarTipoCombustible(Combustible);
+            return RedirectToAction("GestionarTipoCombustible", "Administrador");
+        }
+        public IActionResult AccionActualizarTipoCombustible(int Id, string Combustible)
+        {
+            ModeloTipoCombustible TipoCombustible = new();
+            TipoCombustible.ActualizarTipoCombustible(Id, Combustible);
+            return RedirectToAction("GestionarTipoCombustible", "Administrador");
+        }
     }
 }

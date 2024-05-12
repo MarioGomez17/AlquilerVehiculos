@@ -101,6 +101,35 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivFormularioGestion">
+                                <form asp-action="AccionAgregarTipoCombustible" asp-controller="Administrador"
+                                    class="FormularioAgregar">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" name="Combustible" class="InputFormularioAgregar" id="Combustible">
+                                        <label for="Combustible" class="EtiquetaFormulario">
+                                            Tipo de Combustible
+                                        </label>
+                                    </div>
+                                    <input type="submit" value="Agregar Tipo de Combustible" class="BotonFormularioAgregar">
+                                </form>
+                            </div>
+                            <div class="DivInformacionGestion">
+                                <h3 class="TituloLista">Tipos de Combustible</h3>
+                                @foreach (var Combustible in Model)
+                                {
+                                    <ul class="ListaExistentes">
+                                        <li class="NombreExistentes">
+                                            <form asp-action="AccionActualizarTipoCombustible" asp-controller="Administrador"
+                                                class="FormularioActualizar">
+                                                <input type="hidden" name="Id" value="@Combustible.Id">
+                                                <input type="text" name="Combustible" value="@Combustible.Nombre"
+                                                    class="InputFormularioActualizar">
+                                                <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                }
+                            </div>
                         </div>
                     </main>
                 </div>
