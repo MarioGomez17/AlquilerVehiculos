@@ -26,7 +26,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarTipoVehiculo()
         {
-            return View();
+            ModeloTipoVehiculo TipoVehiculo = new();
+            return View(TipoVehiculo.TraerTodosTipoVehiculo());
         }
         public IActionResult GestionarClasificacionVehiculo()
         {
@@ -45,7 +46,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarTipoCombustible()
         {
-            return View();
+            ModeloTipoCombustible TipoCombustible = new();
+            return View(TipoCombustible.TraerTodosTiposComustible());
         }
         public IActionResult GestionarCiudad()
         {
@@ -93,7 +95,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarTipoIdentificacion()
         {
-            return View();
+            ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
+            return View(TipoIdentificacion.TraerTodosTiposdeIdentificacion());
         }
         private ModeloUsuario DatosUsuarioSesion()
         {
@@ -231,8 +234,20 @@ namespace ALQUILER_VEHICULOS.Controllers
         public IActionResult AccionActualizarMetodoPago(int Id, string MetodoPago)
         {
             ModeloMetodoPagoAlquiler MetodoPagoAlquiler = new();
-            MetodoPagoAlquiler.ActualizarMetodoPago(Id, MetodoPago); 
+            MetodoPagoAlquiler.ActualizarMetodoPago(Id, MetodoPago);
             return RedirectToAction("GestionarMetodoPago", "Administrador");
+        }
+        public IActionResult AccionAgregarTipoVehiculo(string TipoVehiculo)
+        {
+            ModeloTipoVehiculo ModeloTipoVehiculo = new();
+            ModeloTipoVehiculo.AgregarTipoVehiculo(TipoVehiculo);
+            return RedirectToAction("GestionarTipoVehiculo", "Administrador");
+        }
+        public IActionResult AccionActualizarTipoVehiculo(int Id, string TipoVehiculo)
+        {
+            ModeloTipoVehiculo ModeloTipoVehiculo = new();
+            ModeloTipoVehiculo.ActualizarTipoVehiculo(Id, TipoVehiculo);
+            return RedirectToAction("GestionarTipoVehiculo", "Administrador");
         }
     }
 }

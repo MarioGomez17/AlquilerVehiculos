@@ -43,5 +43,26 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return TiposdeIdentificacion;
         }
+        public bool ActualizarTipoIdentificacion(int Id, string TipoIdentificacion, string Simbolo){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.tipo_identificacion_usuario " + 
+            "SET " + 
+            "alquiler_vehiculos.tipo_identificacion_usuario.Nombre_TipoIdentificacionUsuario = '" + 
+            TipoIdentificacion + "', " + 
+            "alquiler_vehiculos.tipo_identificacion_usuario.Simbolo_TipoIdentificacionUsuario = '" + 
+            Simbolo + "' " + 
+            "WHERE (alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool AgregarTipoIdentificacion(string TipoIdentificacion, string Simbolo){
+            string ConsultaSQL = "INSERT INTO " + 
+            "alquiler_vehiculos.tipo_identificacion_usuario (" + 
+            "alquiler_vehiculos.tipo_identificacion_usuario.Nombre_TipoIdentificacionUsuario, " + 
+            "alquiler_vehiculos.tipo_identificacion_usuario.Simbolo_TipoIdentificacionUsuario) " + 
+            "VALUES ('" + 
+            TipoIdentificacion + "', '" + 
+            TipoIdentificacion + "') ";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }

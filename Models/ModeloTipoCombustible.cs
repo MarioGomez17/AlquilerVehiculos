@@ -40,5 +40,22 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return TiposCombustible;
         }
+        public bool ActualizarTipoCombustible(int Id, string TipoCombustible){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.tipo_combustible " + 
+            "SET " + 
+            "alquiler_vehiculos.tipo_combustible.Nombre_TipoCombustible = '" + 
+            TipoCombustible + "' " + 
+            "WHERE (alquiler_vehiculos.tipo_combustible.Id_TipoCombustible = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool AgregarTipoCombustible(string TipoCombustible){
+            string ConsultaSQL = "INSERT INTO " + 
+            "alquiler_vehiculos.tipo_combustible (" + 
+            "alquiler_vehiculos.tipo_combustible.Nombre_TipoCombustible) " + 
+            "VALUES ('" + 
+            TipoCombustible + "') ";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }
