@@ -101,6 +101,49 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivFormularioGestion">
+                                <form asp-action="AccionAgregarTipoIdentificacion" asp-controller="Administrador"
+                                    class="FormularioAgregar">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" name="TipoIdentificacion" class="InputFormularioAgregar"
+                                            id="TipoIdentificacion">
+                                        <label for="TipoIdentificacion" class="EtiquetaFormulario">
+                                            Tipo de Identificación
+                                        </label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" name="Simbolo" class="InputFormularioAgregar"
+                                            id="Simbolo">
+                                        <label for="Simbolo" class="EtiquetaFormulario">
+                                            Simbolo
+                                        </label>
+                                    </div>
+                                    <input type="submit" value="Agregar Tipo" class="BotonFormularioAgregar">
+                                </form>
+                            </div>
+                            <div class="DivInformacionGestion">
+                                <h3 class="TituloLista">Tipos de Identificación</h3>
+                                @foreach (var TipoIdentificacion in Model)
+                                {
+                                    <ul class="ListaExistentes">
+                                        <li class="NombreExistentes">
+                                            <form asp-action="AccionActualizarTipoIdentificacion" asp-controller="Administrador"
+                                                class="FormularioActualizar">
+                                                <input type="hidden" name="Id" value="@TipoIdentificacion.Id">
+                                                <div class="DivParaDosInputs">
+                                                    <input type="text" name="TipoIdentificacion"
+                                                        value="@TipoIdentificacion.NombreTipoIdentificacionUsuario"
+                                                        class="InputFormularioActualizar">
+                                                    <input type="text" name="Simbolo"
+                                                        value="@TipoIdentificacion.SimboloTipoIdentificacionUsuario"
+                                                        class="InputFormularioActualizar">
+                                                </div>
+                                                <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                }
+                            </div>
                         </div>
                     </main>
                 </div>

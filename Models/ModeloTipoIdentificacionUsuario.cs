@@ -61,7 +61,7 @@ namespace ALQUILER_VEHICULOS.Models
             "alquiler_vehiculos.tipo_identificacion_usuario.Simbolo_TipoIdentificacionUsuario) " + 
             "VALUES ('" + 
             TipoIdentificacion + "', '" + 
-            TipoIdentificacion + "') ";
+            Simbolo + "') ";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
     }
