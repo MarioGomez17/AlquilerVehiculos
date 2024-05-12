@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Security.Claims;
 using ALQUILER_VEHICULOS.Models;
+using System.Drawing;
 
 namespace ALQUILER_VEHICULOS.Controllers
 {
     [Authorize(Policy = "SoloAdministrador")]
     public class AdministradorController : Controller
     {
-        
+
         public IActionResult GestionarTodosUsuarios()
         {
             return View();
@@ -39,7 +40,7 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarLineaVehiculo()
         {
-            ModeloMarca Marca= new();
+            ModeloMarca Marca = new();
             return View(Marca.TraerTodosMetodasMarcas());
         }
         public IActionResult GestionarTipoCombustible()
@@ -53,19 +54,23 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarColores()
         {
-            return View();
+            ModeloColor Color = new();
+            return View(Color.TraerColores());
         }
         public IActionResult GestionarCantidadPasajeros()
         {
-            return View();
+            ModeloCantidadPasajeros CantidadPasajeros = new();
+            return View(CantidadPasajeros.TraerCantidadesPasajeros());
         }
         public IActionResult GestionarCilindradas()
         {
-            return View();
+            ModeloCilindrada Cilindrada = new();
+            return View(Cilindrada.TraerCilindradas());
         }
         public IActionResult GestionarModelos()
         {
-            return View();
+            ModeloModelo Modelo = new();
+            return View(Modelo.TraerModelos());
         }
         public IActionResult GestionarSeguroAlquiler()
         {
@@ -94,56 +99,114 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-        public IActionResult AccionAgregarCiudad(int Departamento, string Ciudad){
+        public IActionResult AccionAgregarCiudad(int Departamento, string Ciudad)
+        {
             ModeloCiudad ModeloCiudad = new();
             ModeloCiudad.AgregarCiudad(Departamento, Ciudad);
             return RedirectToAction("GestionarCiudad", "Administrador");
         }
-        
-        public IActionResult AccionActualizarCiudad(int Id, string Ciudad){
+
+        public IActionResult AccionActualizarCiudad(int Id, string Ciudad)
+        {
             ModeloCiudad ModeloCiudad = new();
             ModeloCiudad.ActualizarCiudad(Id, Ciudad);
             return RedirectToAction("GestionarCiudad", "Administrador");
         }
-        public IActionResult AccionAgregarLugar(string Lugar){
+        public IActionResult AccionAgregarLugar(string Lugar)
+        {
             ModeloLugarAlquiler ModeloLugar = new();
             ModeloLugar.AgregarLugarRecogidaEntrega(Lugar);
             return RedirectToAction("GestionarLugarRecogidaEntrega", "Administrador");
         }
-        public IActionResult AccionActualizarLugar(int Id, string Lugar){
+        public IActionResult AccionActualizarLugar(int Id, string Lugar)
+        {
             ModeloLugarAlquiler ModeloLugar = new();
             ModeloLugar.ActualizarLugarRecogidaEntrega(Id, Lugar);
             return RedirectToAction("GestionarLugarRecogidaEntrega", "Administrador");
         }
-        public IActionResult AccionAgregarClasificacion(int TipoVehiculo, string Clasificacion){
+        public IActionResult AccionAgregarClasificacion(int TipoVehiculo, string Clasificacion)
+        {
             ModeloClasificacionVehículo ClasificacionVehículo = new();
             ClasificacionVehículo.AgregarClasificacion(TipoVehiculo, Clasificacion);
             return RedirectToAction("GestionarClasificacionVehiculo", "Administrador");
         }
-        public IActionResult AccionActualizarClasificacion(int Id, string Clasificacion){
+        public IActionResult AccionActualizarClasificacion(int Id, string Clasificacion)
+        {
             ModeloClasificacionVehículo ClasificacionVehículo = new();
             ClasificacionVehículo.ActualizarClasificacion(Id, Clasificacion);
             return RedirectToAction("GestionarClasificacionVehiculo", "Administrador");
         }
-        public IActionResult AccionAgregarLinea(int Marca, string Linea){
+        public IActionResult AccionAgregarLinea(int Marca, string Linea)
+        {
             ModeloLinea ModeloLinea = new();
             ModeloLinea.AgregarLinea(Marca, Linea);
             return RedirectToAction("GestionarLineaVehiculo", "Administrador");
         }
-        public IActionResult AccionActualizarLinea(int Id, string Linea){
+        public IActionResult AccionActualizarLinea(int Id, string Linea)
+        {
             ModeloLinea ModeloLinea = new();
             ModeloLinea.ActualizarLinea(Id, Linea);
             return RedirectToAction("GestionarLineaVehiculo", "Administrador");
         }
-        public IActionResult AccionAgregarMarca(int Tipo, string Marca){
+        public IActionResult AccionAgregarMarca(int Tipo, string Marca)
+        {
             ModeloMarca ModeloMarca = new();
             ModeloMarca.AgregarMarca(Tipo, Marca);
             return RedirectToAction("GestionarMarcaVehiculo", "Administrador");
         }
-        public IActionResult AccionActualizarMarca(int Id, string Marca){
+        public IActionResult AccionActualizarMarca(int Id, string Marca)
+        {
             ModeloMarca ModeloMarca = new();
             ModeloMarca.ActualizarMarca(Id, Marca);
             return RedirectToAction("GestionarMarcaVehiculo", "Administrador");
+        }
+        public IActionResult AccionAgregarCantidadPasajeros(int CantidadPasajeros)
+        {
+            ModeloCantidadPasajeros ModeloCantidadPasajeros = new();
+            ModeloCantidadPasajeros.AgregarCantidadPasajeros(CantidadPasajeros);
+            return RedirectToAction("GestionarCantidadPasajeros", "Administrador");
+        }
+        public IActionResult AccionActualizarCantidadPasajeros(int Id, int CantidadPasajeros)
+        {
+            ModeloCantidadPasajeros ModeloCantidadPasajeros = new();
+            ModeloCantidadPasajeros.ActualizarCantidadPasajeros(Id, CantidadPasajeros);
+            return RedirectToAction("GestionarCantidadPasajeros", "Administrador");
+        }
+        public IActionResult AccionAgregarCilindrada(int Cilindrada)
+        {
+            ModeloCilindrada ModeloCilindrada = new();
+            ModeloCilindrada.AgregarCilindrada(Cilindrada);
+            return RedirectToAction("GestionarCilindradas", "Administrador");
+        }
+        public IActionResult AccionActualizarCilindrada(int Id, int Cilindrada)
+        {
+            ModeloCilindrada ModeloCilindrada = new();
+            ModeloCilindrada.ActualizarCilindrada(Id, Cilindrada);
+            return RedirectToAction("GestionarCilindradas", "Administrador");
+        }
+        public IActionResult AccionAgregarColor(string Color)
+        {
+            ModeloColor ModeloColor = new();
+            ModeloColor.AgregarColor(Color);
+            return RedirectToAction("GestionarColores", "Administrador");
+        }
+        public IActionResult AccionActualizarColor(int Id, string Color)
+        {
+            ModeloColor ModeloColor = new();
+            ModeloColor.ActualizarColor(Id, Color);
+            return RedirectToAction("GestionarColores", "Administrador");
+        }
+        public IActionResult AccionAgregarModelo(int Modelo)
+        {
+            ModeloModelo ModeloModelo = new();
+            ModeloModelo.AgregarModelo(Modelo);
+            return RedirectToAction("GestionarModelos", "Administrador");
+        }
+        public IActionResult AccionActualizarModelo(int Id, int Modelo)
+        {
+            ModeloModelo ModeloModelo = new();
+            ModeloModelo.ActualizarModelo(Id, Modelo);
+            return RedirectToAction("GestionarModelos", "Administrador");
         }
     }
 }

@@ -39,5 +39,22 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Modelos;
         }
+        public bool ActualizarModelo(int Id, int Modelo){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.modelo " + 
+            "SET " + 
+            "alquiler_vehiculos.modelo.Valor_Modelo = " + 
+            Modelo + " " + 
+            "WHERE (alquiler_vehiculos.modelo.Id_Modelo = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool AgregarModelo(int Modelo){
+            string ConsultaSQL = "INSERT INTO " + 
+            "alquiler_vehiculos.modelo (" + 
+            "alquiler_vehiculos.modelo.Valor_Modelo) " + 
+            "VALUES (" + 
+            Modelo + ") ";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }

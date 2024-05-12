@@ -39,5 +39,22 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return CantidadesPasajeros;
         }
+        public bool ActualizarCantidadPasajeros(int Id, int CantidadPasajeros){
+            string ConsultaSQL = "UPDATE " + 
+            "alquiler_vehiculos.cantidad_pasajeros " + 
+            "SET " + 
+            "alquiler_vehiculos.cantidad_pasajeros.Valor_CantidadPasajeros = " + 
+            CantidadPasajeros + " " + 
+            "WHERE (alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool AgregarCantidadPasajeros(int CantidadPasajeros){
+            string ConsultaSQL = "INSERT INTO " + 
+            "alquiler_vehiculos.cantidad_pasajeros (" + 
+            "alquiler_vehiculos.cantidad_pasajeros.Valor_CantidadPasajeros) " + 
+            "VALUES (" + 
+            CantidadPasajeros + ") ";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }
