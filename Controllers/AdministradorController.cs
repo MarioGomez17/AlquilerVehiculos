@@ -51,6 +51,22 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloDepartamento ModeloDepartamento = new();
             return View(ModeloDepartamento.TraerDepartamentos());
         }
+        public IActionResult GestionarColores()
+        {
+            return View();
+        }
+        public IActionResult GestionarCantidadPasajeros()
+        {
+            return View();
+        }
+        public IActionResult GestionarCilindradas()
+        {
+            return View();
+        }
+        public IActionResult GestionarModelos()
+        {
+            return View();
+        }
         public IActionResult GestionarSeguroAlquiler()
         {
             return View();

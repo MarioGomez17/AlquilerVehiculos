@@ -41,7 +41,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-        public IActionResult AccionActualizarVehiculo(int IdVehiculo, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad, IFormFile FotoVehiculo)
+        public IActionResult AccionActualizarVehiculo(int IdVehiculo, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, int Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad, IFormFile FotoVehiculo)
         {
             if (FotoVehiculo != null)
             {
@@ -98,7 +98,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloTipoVehiculo TipoVehiculo = new();
             return Json(new { TiposVehiculo = TipoVehiculo.TraerTodosTipoVehiculo() });
         }
-        public IActionResult AccionRegistrarVehiculo(string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, string Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroCertificadoCDA, string NumeroSeguro, int TipoCombustible, int Ciudad, IFormFile FotoVehiculo)
+        public IActionResult AccionRegistrarVehiculo(string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, int Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroCertificadoCDA, string NumeroSeguro, int TipoCombustible, int Ciudad, IFormFile FotoVehiculo)
         {
             if (FotoVehiculo != null)
             {

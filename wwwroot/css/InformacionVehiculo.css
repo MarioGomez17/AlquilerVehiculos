@@ -230,10 +230,6 @@ body {
     text-align: center;
 }
 
-.InputCorto {
-    width: 202px;
-}
-
 .SelectFormulario {
     width: 365px;
     font: var(--Font);
@@ -263,6 +259,10 @@ body {
 .SelectFormulario:focus~label {
     color: var(--SecondColor);
     font-size: 18px;
+}
+
+.InputCorto {
+    width: 252px;
 }
 
 .OptionSelect {

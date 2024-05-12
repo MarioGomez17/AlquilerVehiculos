@@ -102,7 +102,7 @@
                     <main role="main" class="PrincipalInformacionVehiculo">
                         <div class="ContenidoPrincipalInformacionVehiculo">
                             <form method="post" class="FormularioVehiculo" asp-controller="Vehiculo"
-                                asp-action="AccionActualizarVehiculo"  enctype="multipart/form-data">
+                                asp-action="AccionActualizarVehiculo" enctype="multipart/form-data">
                                 <input type="hidden" name="IdVehiculo" id="IdVehiculo" value="@Model.Vehiculo.Id">
                                 <input type="hidden" id="TextoClasificacion"
                                     value="@Model.Vehiculo.ClasificacionVehiculo">
@@ -117,14 +117,45 @@
                                                 <label class="EtiquetaFormulario" for="Placa">Placa</label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                <input class="InputFormulario InputCorto" type="text" name="Cilindrada"
-                                                    value="@Model.Vehiculo.Cilindrada" id="Cilindrada" />
+                                                <select class="SelectFormulario InputCorto" id="Cilindrada"
+                                                    name="Cilindrada">
+                                                    @foreach (var Cilindrada in Model.Cilindradas)
+                                                    {
+                                                        if (Model.Vehiculo.Cilindrada == Cilindrada.Cilindrada)
+                                                        {
+                                                            <option selected value=@Cilindrada.Id class="OptionSelect">
+                                                                @Cilindrada.Cilindrada
+                                                            </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value=@Cilindrada.Id class="OptionSelect">
+                                                                @Cilindrada.Cilindrada
+                                                            </option>
+                                                        }
+                                                    }
+                                                </select>
                                                 <label class="EtiquetaFormulario" for="Cilindrada">Cilindrada
                                                     (CC)</label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                <input class="InputFormulario InputCorto" type="text" name="Modelo"
-                                                    value="@Model.Vehiculo.Modelo" id="Modelo" />
+                                                <select class="SelectFormulario InputCorto" id="Modelo" name="Modelo">
+                                                    @foreach (var Modelo in Model.Modelos)
+                                                    {
+                                                        if (Model.Vehiculo.Modelo == Modelo.Modelo)
+                                                        {
+                                                            <option selected value=@Modelo.Id class="OptionSelect">
+                                                                @Modelo.Modelo
+                                                            </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value=@Modelo.Id class="OptionSelect">
+                                                                @Modelo.Modelo
+                                                            </option>
+                                                        }
+                                                    }
+                                                </select>
                                                 <label class="EtiquetaFormulario" for="Modelo">Modelo</label>
                                             </div>
                                         </div>
@@ -138,14 +169,46 @@
                                                 </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                <input class="InputFormulario InputCorto" type="text" name="Color"
-                                                    value="@Model.Vehiculo.Color" id="Color" />
+                                                <select class="SelectFormulario InputCorto" id="Color" name="Color">
+                                                    @foreach (var Color in Model.Colores)
+                                                    {
+                                                        if (Model.Vehiculo.Color ==
+                                                        Color.Color)
+                                                        {
+                                                            <option selected value=@Color.Id class="OptionSelect">
+                                                                @Color.Color
+                                                            </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value=@Color.Id class="OptionSelect">
+                                                                @Color.Color
+                                                            </option>
+                                                        }
+                                                    }
+                                                </select>
                                                 <label class="EtiquetaFormulario" for="Color">Color</label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                <input class="InputFormulario InputCorto" type="text"
-                                                    name="CantidadPasajeros"
-                                                    value="@Model.Vehiculo.CantidadPasajeros" />
+                                                <select class="SelectFormulario InputCorto" id="CantidadPasajeros"
+                                                    name="CantidadPasajeros">
+                                                    @foreach (var CantidadPasajeros in Model.CantidadesPasajeros)
+                                                    {
+                                                        if (Model.Vehiculo.CantidadPasajeros ==
+                                                        CantidadPasajeros.CantidadPasajeros)
+                                                        {
+                                                            <option selected value=@CantidadPasajeros.Id class="OptionSelect">
+                                                                @CantidadPasajeros.CantidadPasajeros
+                                                            </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value=@CantidadPasajeros.Id class="OptionSelect">
+                                                                @CantidadPasajeros.CantidadPasajeros
+                                                            </option>
+                                                        }
+                                                    }
+                                                </select>
                                                 <label class="EtiquetaFormulario" for="CantidadPasajeros"># de
                                                     Pasajeros</label>
                                             </div>
@@ -304,10 +367,12 @@
                                         </div>
                                     </div>
                                     <div class="DivFotoVehiculo">
-                                        <img class="FotoVehiculo" src="~/FotoVehiculos/@Model.Vehiculo.RutaFoto" id="EspacioFotoVehiculo"
+                                        <img class="FotoVehiculo" src="~/FotoVehiculos/@Model.Vehiculo.RutaFoto"
+                                            id="EspacioFotoVehiculo"
                                             alt="Foto de @Model.Vehiculo.TipoVehiculo @Model.Vehiculo.Marca @Model.Vehiculo.Linea" />
                                         <div class="DivInputFoto">
-                                            <input class="InputFotoVehiculo" name="FotoVehiculo" type="file" id="FotoVehiculo">
+                                            <input class="InputFotoVehiculo" name="FotoVehiculo" type="file"
+                                                id="FotoVehiculo">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="IconoSubirFoto" width="45"
                                                 height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">

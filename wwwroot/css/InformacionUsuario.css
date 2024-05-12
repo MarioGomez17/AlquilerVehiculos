@@ -348,7 +348,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-evenly;
     align-items: center;
-    gap: 15px;
+    gap: 8px;
 }
 
 .DivSeccionMenuUsuario{
@@ -368,7 +368,7 @@ body {
     color: var(--Black);
     font-weight: bold;
     transition: 0.5s;
-    padding: 3px 5px;
+    padding: .5px 5px;
     background-color: var(--FifthColor);
     border-radius: 10px;
     border: 3px solid var(--Black);
