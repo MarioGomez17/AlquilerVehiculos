@@ -74,7 +74,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarSeguroAlquiler()
         {
-            return View();
+            ModeloSeguroAlquiler SeguroAlquiler = new();
+            return View(SeguroAlquiler.TraerTodosSegurosAlquiler());
         }
         public IActionResult GestionarMetodoPago()
         {
@@ -207,6 +208,18 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloModelo ModeloModelo = new();
             ModeloModelo.ActualizarModelo(Id, Modelo);
             return RedirectToAction("GestionarModelos", "Administrador");
+        }
+        public IActionResult AccionAgregarSeguroAlquiler(string NombreSeguro, float PrecioSeguro)
+        {
+            ModeloSeguroAlquiler Seguro = new();
+            Seguro.AgregarSeguroAlquiler(NombreSeguro, PrecioSeguro);
+            return RedirectToAction("GestionarSeguroAlquiler", "Administrador");
+        }
+        public IActionResult AccionActualizarSeguroAlquiler(int Id, string NombreSeguro, float PrecioSeguro)
+        {
+            ModeloSeguroAlquiler Seguro = new();
+            Seguro.ActualizarSeguroAlquiler(Id, NombreSeguro, PrecioSeguro);
+            return RedirectToAction("GestionarSeguroAlquiler", "Administrador");
         }
     }
 }

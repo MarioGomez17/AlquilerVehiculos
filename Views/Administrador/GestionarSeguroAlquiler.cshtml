@@ -1,4 +1,4 @@
-﻿@model ModeloInicio;
+﻿@model List<ModeloSeguroAlquiler>;
 @{
     Layout = null;
 }
@@ -101,6 +101,49 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivFormularioGestion">
+                                <form asp-action="AccionAgregarSeguroAlquiler" asp-controller="Administrador"
+                                    class="FormularioAgregar">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" name="NombreSeguro" class="InputFormularioAgregar"
+                                            id="NombreSeguro">
+                                        <label for="NombreSeguro" class="EtiquetaFormulario">
+                                            Nombre Seguro
+                                        </label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="number" name="PrecioSeguro" class="InputFormularioAgregar"
+                                            id="PrecioSeguro">
+                                        <label for="PrecioSeguro" class="EtiquetaFormulario">
+                                            Precio Seguro
+                                        </label>
+                                    </div>
+                                    <input type="submit" value="Agregar Seguro" class="BotonFormularioAgregar">
+                                </form>
+                            </div>
+                            <div class="DivInformacionGestion">
+                                <h3 class="TituloLista">Seguros</h3>
+                                @foreach (var Seguro in Model)
+                                {
+                                    <ul class="ListaExistentes">
+                                        <li class="NombreExistentes">
+                                            <form asp-action="AccionActualizarSeguroAlquiler" asp-controller="Administrador"
+                                                class="FormularioActualizar">
+                                                <input type="hidden" name="Id" value="@Seguro.Id">
+                                                <div class="DivParaDosInputs">
+                                                    <input type="text" name="NombreSeguro"
+                                                        value="@Seguro.NombreSeguroAlquiler"
+                                                        class="InputFormularioActualizar">
+                                                    <input type="text" name="PrecioSeguro"
+                                                        value="@Seguro.PrecioSeguroAlquiler"
+                                                        class="InputFormularioActualizar">
+                                                </div>
+                                                <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                }
+                            </div>
                         </div>
                     </main>
                 </div>
