@@ -85,3 +85,17 @@ document.addEventListener("DOMContentLoaded", function () {
         FiltroFechaFin.disabled = false;
     });
 });
+
+function ValidarHoraExacta(timeInput) {
+    timeInput.addEventListener('change', function () {
+        var ValorHora = this.value;
+        var [Horas, Minutos] = ValorHora.split(':').map(Number);
+        console.log(Horas);
+        console.log(Minutos);
+        if (Minutos >= 30) {
+            Horas += 1;
+        }
+        this.value = (Horas + ":00")
+    });
+}
+ValidarHoraExacta(FiltroHoraInicio);
