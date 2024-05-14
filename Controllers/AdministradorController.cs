@@ -3,13 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Security.Claims;
 using ALQUILER_VEHICULOS.Models;
-using System.Drawing;
-
 namespace ALQUILER_VEHICULOS.Controllers
 {
     [Authorize(Policy = "SoloAdministrador")]
     public class AdministradorController : Controller
     {
+        //---------------------------------------------- VISTAS ----------------------------------------------
         public IActionResult GestionarTodosUsuarios()
         {
             ModeloUsuario Usuario = new();
@@ -108,6 +107,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
             return View(TipoIdentificacion.TraerTodosTiposdeIdentificacion());
         }
+        //---------------------------------------------- ACCIONES ----------------------------------------------
         private ModeloUsuario DatosUsuarioSesion()
         {
             var Identity = HttpContext.User.Identity as ClaimsIdentity;
@@ -120,7 +120,6 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloCiudad.AgregarCiudad(Departamento, Ciudad);
             return RedirectToAction("GestionarCiudad", "Administrador");
         }
-
         public IActionResult AccionActualizarCiudad(int Id, string Ciudad)
         {
             ModeloCiudad ModeloCiudad = new();

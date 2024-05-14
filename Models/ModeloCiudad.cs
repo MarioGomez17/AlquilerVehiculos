@@ -1,5 +1,4 @@
 using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloCiudad
@@ -50,7 +49,7 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.ciudad.Id_Ciudad, " +
                 "alquiler_vehiculos.ciudad.Nombre_Ciudad " +
                 "FROM alquiler_vehiculos.ciudad " +
-                "WHERE alquiler_vehiculos.ciudad.Departamento_Ciudad = " + IdDepartamento + " " +  
+                "WHERE alquiler_vehiculos.ciudad.Departamento_Ciudad = " + IdDepartamento + " " +
                 "ORDER BY alquiler_vehiculos.ciudad.Nombre_Ciudad ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
@@ -71,28 +70,30 @@ namespace ALQUILER_VEHICULOS.Models
                     }
                 }
             }
-            catch (Exception e) { Console.WriteLine(e);}
+            catch (Exception e) { Console.WriteLine(e); }
             finally
             {
                 ConexionBD.Close();
             }
             return Ciudades;
         }
-        public bool ActualizarCiudad(int Id, string Ciudad){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.ciudad " + 
-            "SET " + 
-            "alquiler_vehiculos.ciudad.Nombre_Ciudad = '" + 
-            Ciudad + "' " + 
+        public bool ActualizarCiudad(int Id, string Ciudad)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.ciudad " +
+            "SET " +
+            "alquiler_vehiculos.ciudad.Nombre_Ciudad = '" +
+            Ciudad + "' " +
             "WHERE (alquiler_vehiculos.ciudad.Id_Ciudad = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool AgregarCiudad(int Departamento, string Ciudad){
-            string ConsultaSQL = "INSERT INTO " + 
-            "alquiler_vehiculos.ciudad (" + 
-            "alquiler_vehiculos.ciudad.Departamento_Ciudad, " + 
-            "alquiler_vehiculos.ciudad.Nombre_Ciudad) " + 
-            "VALUES (" + 
+        public bool AgregarCiudad(int Departamento, string Ciudad)
+        {
+            string ConsultaSQL = "INSERT INTO " +
+            "alquiler_vehiculos.ciudad (" +
+            "alquiler_vehiculos.ciudad.Departamento_Ciudad, " +
+            "alquiler_vehiculos.ciudad.Nombre_Ciudad) " +
+            "VALUES (" +
             Departamento + ", '" +
             Ciudad + "') ";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);

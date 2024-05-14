@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloAlquiler
@@ -158,7 +157,6 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return IdAlquiler;
         }
-
         public List<ModeloAlquiler> TraerAlquileres()
         {
             List<ModeloAlquiler> Alquileres = [];

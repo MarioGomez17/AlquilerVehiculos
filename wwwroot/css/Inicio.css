@@ -381,7 +381,7 @@ body {
     opacity: 0;
 }
 
-.DivNoVehiculos{
+.DivNoVehiculos {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -389,13 +389,13 @@ body {
     grid-column: 1/4;
 }
 
-.TituloNoVehiculos{
+.TituloNoVehiculos {
     margin: 0;
     text-align: center;
     font-size: 70px;
 }
 
-.DivSinPermiso{
+.DivSinPermiso {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -407,7 +407,7 @@ body {
     padding: 20px 10px;
 }
 
-.TituloSinPermiso{
+.TituloSinPermiso {
     text-align: center;
     font-size: 100px;
     font-weight: bold;

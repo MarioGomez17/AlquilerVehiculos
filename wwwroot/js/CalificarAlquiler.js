@@ -1,8 +1,8 @@
 import Swal from 'https://cdn.skypack.dev/sweetalert2';
 
-function ValidarCalificacion(event){
+function ValidarCalificacion(event) {
     const InputCalificacion = document.getElementById("InputCalificacion");
-    if(InputCalificacion.value == ""){
+    if (InputCalificacion.value == "") {
         event.preventDefault();
         Swal.fire({
             title: 'ERROR',

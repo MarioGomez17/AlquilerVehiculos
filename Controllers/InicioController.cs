@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Security.Claims;
 using ALQUILER_VEHICULOS.Models;
-
 namespace ALQUILER_VEHICULOS.Controllers
 {
     public class InicioController : Controller

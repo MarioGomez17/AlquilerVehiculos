@@ -105,12 +105,14 @@
                                 <form asp-action="AccionAgregarTipoCombustible" asp-controller="Administrador"
                                     class="FormularioAgregar">
                                     <div class="DivEtiquetaInput">
-                                        <input type="text" name="Combustible" class="InputFormularioAgregar" id="Combustible">
+                                        <input type="text" name="Combustible" class="InputFormularioAgregar"
+                                            id="Combustible">
                                         <label for="Combustible" class="EtiquetaFormulario">
                                             Tipo de Combustible
                                         </label>
                                     </div>
-                                    <input type="submit" value="Agregar Tipo de Combustible" class="BotonFormularioAgregar">
+                                    <input type="submit" value="Agregar Tipo de Combustible"
+                                        class="BotonFormularioAgregar">
                                 </form>
                             </div>
                             <div class="DivInformacionGestion">
@@ -119,8 +121,8 @@
                                 {
                                     <ul class="ListaExistentes">
                                         <li class="NombreExistentes">
-                                            <form asp-action="AccionActualizarTipoCombustible" asp-controller="Administrador"
-                                                class="FormularioActualizar">
+                                            <form asp-action="AccionActualizarTipoCombustible"
+                                                asp-controller="Administrador" class="FormularioActualizar">
                                                 <input type="hidden" name="Id" value="@Combustible.Id">
                                                 <input type="text" name="Combustible" value="@Combustible.Nombre"
                                                     class="InputFormularioActualizar">

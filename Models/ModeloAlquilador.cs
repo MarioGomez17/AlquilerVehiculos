@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloAlquilador

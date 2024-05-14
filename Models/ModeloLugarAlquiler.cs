@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloLugarAlquiler
@@ -40,19 +39,21 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return LugaresAlquiler;
         }
-        public bool AgregarLugarRecogidaEntrega(string Lugar){
-            string ConsultaSQL ="INSERT INTO " + 
-            "alquiler_vehiculos.lugar_alquiler (" + 
-            "alquiler_vehiculos.lugar_alquiler.Nombre_LugarAlquiler) " + 
-            "VALUES ('" + 
+        public bool AgregarLugarRecogidaEntrega(string Lugar)
+        {
+            string ConsultaSQL = "INSERT INTO " +
+            "alquiler_vehiculos.lugar_alquiler (" +
+            "alquiler_vehiculos.lugar_alquiler.Nombre_LugarAlquiler) " +
+            "VALUES ('" +
             Lugar + "')";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool ActualizarLugarRecogidaEntrega(int Id, string Lugar){
-            string ConsultaSQL ="UPDATE " + 
-            "alquiler_vehiculos.lugar_alquiler " + 
-            "SET alquiler_vehiculos.lugar_alquiler.Nombre_LugarAlquiler = '" + 
-            Lugar + "' " + 
+        public bool ActualizarLugarRecogidaEntrega(int Id, string Lugar)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.lugar_alquiler " +
+            "SET alquiler_vehiculos.lugar_alquiler.Nombre_LugarAlquiler = '" +
+            Lugar + "' " +
             "WHERE (alquiler_vehiculos.lugar_alquiler.Id_LugarAlquiler = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }

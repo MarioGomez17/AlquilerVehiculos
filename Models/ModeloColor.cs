@@ -1,12 +1,12 @@
 using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloColor
     {
         public int Id { get; set; }
         public string Color { get; set; }
-        public List<ModeloColor> TraerColores(){
+        public List<ModeloColor> TraerColores()
+        {
             List<ModeloColor> Colores = [];
             string ConsultaSQL = "SELECT " +
                 "alquiler_vehiculos.color.Id_Color, " +
@@ -39,20 +39,22 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Colores;
         }
-        public bool ActualizarColor(int Id, string Color){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.color " + 
-            "SET " + 
-            "alquiler_vehiculos.color.Nombre_Color = '" + 
-            Color + "' " + 
+        public bool ActualizarColor(int Id, string Color)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.color " +
+            "SET " +
+            "alquiler_vehiculos.color.Nombre_Color = '" +
+            Color + "' " +
             "WHERE (alquiler_vehiculos.color.Id_Color = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool AgregarColor(string Color){
-            string ConsultaSQL = "INSERT INTO " + 
-            "alquiler_vehiculos.color (" + 
-            "alquiler_vehiculos.color.Nombre_Color) " + 
-            "VALUES ('" + 
+        public bool AgregarColor(string Color)
+        {
+            string ConsultaSQL = "INSERT INTO " +
+            "alquiler_vehiculos.color (" +
+            "alquiler_vehiculos.color.Nombre_Color) " +
+            "VALUES ('" +
             Color + "') ";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }

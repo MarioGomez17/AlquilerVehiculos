@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloVehiculo
@@ -63,14 +62,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo != 2 " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
@@ -157,14 +156,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
@@ -250,14 +249,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo != 2 " +
                 "AND alquiler_vehiculos.vehiculo.Ciudad_Vehiculo = " + Ciudad + " " +
                 "AND alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = " + Tipo + " " +
@@ -347,14 +346,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo != 2 " +
                 "AND alquiler_vehiculos.vehiculo.Ciudad_Vehiculo = " + Ciudad + " " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
@@ -442,14 +441,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo != 2 " +
                 "AND alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = " + Tipo + " " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
@@ -537,14 +536,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo != 2 " +
                 "AND alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = " + Marca + " " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
@@ -632,14 +631,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo != 2 " +
                 "AND alquiler_vehiculos.vehiculo.Ciudad_Vehiculo = " + Ciudad + " " +
                 "AND alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = " + Tipo + " " +
@@ -728,14 +727,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo != 2 " +
                 "AND alquiler_vehiculos.vehiculo.Ciudad_Vehiculo = " + Ciudad + " " +
                 "AND alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = " + Marca + " " +
@@ -823,30 +822,30 @@ namespace ALQUILER_VEHICULOS.Models
                 "INNER JOIN alquiler_vehiculos.marca_vehiculo " +
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
                 "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + "WHERE alquiler_vehiculos.vehiculo.Estado_Vehiculo != 2 " +
                 "AND alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = " + Tipo + " " +
                 "AND alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = " + Marca + " " +
@@ -895,7 +894,6 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ListaVehiculos;
         }
-
         public List<ModeloVehiculo> TraerTodosVehiculosPropietario(int IdUsuario)
         {
             List<ModeloVehiculo> ListaVehiculos = [];
@@ -940,14 +938,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Propietario_Vehiculo = " + ModeloPropietario.Id + " " +
                 "ORDER BY alquiler_vehiculos.vehiculo.Id_Vehiculo ASC";
                 MySqlConnection ConexionDB = ModeloConexion.Conect();
@@ -1035,14 +1033,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Id_Vehiculo = " + IdVehiculo + " ";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
@@ -1087,7 +1085,6 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Vehiculo;
         }
-
         public bool ValidarVehiculo(string Placa)
         {
             ModeloVehiculo Vehiculo = null;
@@ -1128,14 +1125,14 @@ namespace ALQUILER_VEHICULOS.Models
                 "ON alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = alquiler_vehiculos.linea_vehiculo.MarcaVehiculo_LineaVehiculo " +
                 "INNER JOIN alquiler_vehiculos.tipo_vehiculo " +
                 "ON alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo " +
-                "INNER JOIN alquiler_vehiculos.modelo " + 
-                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cilindrada " + 
-                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " + 
-                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " + 
-                "INNER JOIN alquiler_vehiculos.color " + 
-                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " + 
+                "INNER JOIN alquiler_vehiculos.modelo " +
+                "ON alquiler_vehiculos.modelo.Id_Modelo = alquiler_vehiculos.vehiculo.Modelo_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cilindrada " +
+                "ON alquiler_vehiculos.cilindrada.Id_Cilindrada = alquiler_vehiculos.vehiculo.Cilindrada_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.cantidad_pasajeros " +
+                "ON alquiler_vehiculos.cantidad_pasajeros.Id_CantidadPasajeros = alquiler_vehiculos.vehiculo.CantidadPasajeros_Vehiculo " +
+                "INNER JOIN alquiler_vehiculos.color " +
+                "ON alquiler_vehiculos.color.Id_Color = alquiler_vehiculos.vehiculo.Color_Vehiculo " +
                 "WHERE alquiler_vehiculos.vehiculo.Placa_Vehiculo = '" + Placa + "' ";
             MySqlConnection ConexionBD = ModeloConexion.Conect();
             try
@@ -1180,7 +1177,6 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Vehiculo == null;
         }
-
         public bool ActualizarVehiculo(int Id, string Placa, int Cilindrada, int Modelo, float PrecioAlquilerDia, int Color, int CantidadPasajeros, int ClasificacionVehiculo, int Linea, string NumeroSeguro, string NumeroCertificadoCDA, int TipoCombustible, int Ciudad)
         {
             string ConsultaSQL = "UPDATE " +

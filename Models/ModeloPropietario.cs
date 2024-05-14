@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloPropietario
@@ -43,7 +42,6 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return ModeloPropietario;
         }
-
         public ModeloPropietario TraerPropietario(int IdPropietario)
         {
             ModeloPropietario ModeloPropietario = null;

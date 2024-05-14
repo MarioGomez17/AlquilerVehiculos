@@ -163,7 +163,7 @@ body {
     align-items: center;
 }
 
-.DivFormularioGestion{
+.DivFormularioGestion {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,7 +175,7 @@ body {
     border-radius: 15px;
 }
 
-.DivEtiquetaInput{
+.DivEtiquetaInput {
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
@@ -184,7 +184,7 @@ body {
     gap: 20px;
 }
 
-.FormularioAgregar{
+.FormularioAgregar {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -225,7 +225,7 @@ body {
     border-radius: 20px;
     border: solid 4px var(--FifthColor);
     width: 350px;
-    height: 48px;    
+    height: 48px;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
@@ -266,7 +266,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .BotonFormularioAgregar:hover {
@@ -278,7 +278,7 @@ body {
     transform: scale(0.9);
 }
 
-.DivInformacionGestion{
+.DivInformacionGestion {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -292,21 +292,21 @@ body {
     border-radius: 15px;
 }
 
-.TituloLista{
+.TituloLista {
     font-size: 25px;
 }
 
-.ListaExistentes{
+.ListaExistentes {
     list-style: none;
     width: 95%;
     padding: 0;
 }
 
-.NombreExistentes{
+.NombreExistentes {
     width: 95%;
 }
 
-.FormularioActualizar{
+.FormularioActualizar {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -348,7 +348,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .BotonFormularioActualizar:hover {
@@ -368,7 +368,7 @@ body {
     align-items: center;
 }
 
-.DivParaDosInputs{
+.DivParaDosInputs {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

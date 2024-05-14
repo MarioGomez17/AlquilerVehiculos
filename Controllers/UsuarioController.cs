@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using System.Security.Claims;
 using ALQUILER_VEHICULOS.Models;
 using Microsoft.AspNetCore.Authorization;
-
 namespace ALQUILER_VEHICULOS.Controllers
 {
     public class UsuarioController : Controller

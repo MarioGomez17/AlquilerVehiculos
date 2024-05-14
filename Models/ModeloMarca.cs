@@ -1,5 +1,4 @@
 using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloMarca
@@ -85,23 +84,25 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return MarcasVehiculo;
         }
-        public bool ActualizarMarca(int Id, string Marca){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.marca_vehiculo " + 
-            "SET " + 
-            "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo = '" + 
-            Marca + "' " + 
+        public bool ActualizarMarca(int Id, string Marca)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.marca_vehiculo " +
+            "SET " +
+            "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo = '" +
+            Marca + "' " +
             "WHERE (alquiler_vehiculos.marca_vehiculo.Id_MarcaVehiculo = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool AgregarMarca(int Tipo, string Marca){
-            string ConsultaSQL = "INSERT INTO " + 
-            "alquiler_vehiculos.marca_vehiculo (" + 
-            "alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo, " + 
-            "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo) " + 
-            "VALUES (" + 
+        public bool AgregarMarca(int Tipo, string Marca)
+        {
+            string ConsultaSQL = "INSERT INTO " +
+            "alquiler_vehiculos.marca_vehiculo (" +
+            "alquiler_vehiculos.marca_vehiculo.TipoVehiculo_MarcaVehiculo, " +
+            "alquiler_vehiculos.marca_vehiculo.Nombre_MarcaVehiculo) " +
+            "VALUES (" +
             Tipo + ", '" +
-            Marca + "') "; 
+            Marca + "') ";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
     }

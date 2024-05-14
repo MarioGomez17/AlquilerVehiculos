@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloSeguroAlquiler
@@ -79,24 +78,26 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return SeguroAlquiler;
         }
-        public bool ActualizarSeguroAlquiler(int Id, string NombreSeguro, float PrecioSeguro){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.seguro_alquiler " + 
-            "SET " + 
-            "alquiler_vehiculos.seguro_alquiler.Nombre_SeguroAlquiler = '" + 
+        public bool ActualizarSeguroAlquiler(int Id, string NombreSeguro, float PrecioSeguro)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.seguro_alquiler " +
+            "SET " +
+            "alquiler_vehiculos.seguro_alquiler.Nombre_SeguroAlquiler = '" +
             NombreSeguro + "', " +
-            "alquiler_vehiculos.seguro_alquiler.Precio_SeguroAlquiler = " + 
-            PrecioSeguro + " "  +
+            "alquiler_vehiculos.seguro_alquiler.Precio_SeguroAlquiler = " +
+            PrecioSeguro + " " +
             "WHERE (alquiler_vehiculos.seguro_alquiler.Id_SeguroAlquiler = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool AgregarSeguroAlquiler(string NombreSeguro, float PrecioSeguro){
-            string ConsultaSQL = "INSERT INTO " + 
-            "alquiler_vehiculos.seguro_alquiler (" + 
+        public bool AgregarSeguroAlquiler(string NombreSeguro, float PrecioSeguro)
+        {
+            string ConsultaSQL = "INSERT INTO " +
+            "alquiler_vehiculos.seguro_alquiler (" +
             "alquiler_vehiculos.seguro_alquiler.Nombre_SeguroAlquiler, " +
-            "alquiler_vehiculos.seguro_alquiler.Precio_SeguroAlquiler) " + 
-            "VALUES ('" + 
-            NombreSeguro + "', " + 
+            "alquiler_vehiculos.seguro_alquiler.Precio_SeguroAlquiler) " +
+            "VALUES ('" +
+            NombreSeguro + "', " +
             PrecioSeguro + ") ";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }

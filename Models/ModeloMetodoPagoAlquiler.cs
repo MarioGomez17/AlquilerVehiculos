@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloMetodoPagoAlquiler
@@ -40,20 +39,22 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return MetodosPagoAlquiler;
         }
-        public bool ActualizarMetodoPago(int Id, string MetodoPago){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.metodo_pago " + 
-            "SET " + 
-            "alquiler_vehiculos.metodo_pago.Nombre_MetodoPago = '" + 
-            MetodoPago + "' " + 
+        public bool ActualizarMetodoPago(int Id, string MetodoPago)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.metodo_pago " +
+            "SET " +
+            "alquiler_vehiculos.metodo_pago.Nombre_MetodoPago = '" +
+            MetodoPago + "' " +
             "WHERE (alquiler_vehiculos.metodo_pago.Id_MetodoPago = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool AgregarMetodoPago(string MetodoPago){
-            string ConsultaSQL = "INSERT INTO " + 
-            "alquiler_vehiculos.metodo_pago (" + 
-            "alquiler_vehiculos.metodo_pago.Nombre_MetodoPago) " + 
-            "VALUES ('" + 
+        public bool AgregarMetodoPago(string MetodoPago)
+        {
+            string ConsultaSQL = "INSERT INTO " +
+            "alquiler_vehiculos.metodo_pago (" +
+            "alquiler_vehiculos.metodo_pago.Nombre_MetodoPago) " +
+            "VALUES ('" +
             MetodoPago + "') ";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }

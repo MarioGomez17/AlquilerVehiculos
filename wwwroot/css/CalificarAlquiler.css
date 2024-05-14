@@ -167,7 +167,7 @@ body {
     border-radius: 15px;
 }
 
-.InformacionAlquiler{
+.InformacionAlquiler {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -175,7 +175,7 @@ body {
     height: 100%;
 }
 
-.DivEtiquetaInput{
+.DivEtiquetaInput {
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
@@ -184,7 +184,7 @@ body {
     margin: 5px 0;
 }
 
-.FormularioCalificacion{
+.FormularioCalificacion {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -199,7 +199,7 @@ body {
     font-family: var(--Font);
 }
 
-.GrupoComponentes{
+.GrupoComponentes {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -229,7 +229,7 @@ body {
     font-size: 18px;
 }
 
-.FormularioCalificacion{
+.FormularioCalificacion {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -290,7 +290,7 @@ body {
     font-size: 18px;
 }
 
-.EtiquetaFormularioCalificacion{
+.EtiquetaFormularioCalificacion {
     font-weight: bold;
 }
 

@@ -1,18 +1,19 @@
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloRegistrarVehiculo
-    { 
-        public List<ModeloTipoVehiculo> TipoVehiculos {get; set;}
-        public List<ModeloClasificacionVehículo> ClasificacionesVehículo {get; set;}
-        public List<ModeloMarca> Marcas {get; set;}
-        public List<ModeloLinea> Lineas {get; set;}
-        public List<ModeloTipoCombustible> Combustibles {get; set;}
-        public List<ModeloCiudad> Ciudades {get; set;}
-        public List<ModeloCilindrada> Cilindradas {get; set;}
-        public List<ModeloModelo> Modelos {get; set;}
-        public List<ModeloColor> Colores {get; set;}
-        public List<ModeloCantidadPasajeros> CantidadesPasajeros {get; set;}
-        public ModeloRegistrarVehiculo(){
+    {
+        public List<ModeloTipoVehiculo> TipoVehiculos { get; set; }
+        public List<ModeloClasificacionVehículo> ClasificacionesVehículo { get; set; }
+        public List<ModeloMarca> Marcas { get; set; }
+        public List<ModeloLinea> Lineas { get; set; }
+        public List<ModeloTipoCombustible> Combustibles { get; set; }
+        public List<ModeloCiudad> Ciudades { get; set; }
+        public List<ModeloCilindrada> Cilindradas { get; set; }
+        public List<ModeloModelo> Modelos { get; set; }
+        public List<ModeloColor> Colores { get; set; }
+        public List<ModeloCantidadPasajeros> CantidadesPasajeros { get; set; }
+        public ModeloRegistrarVehiculo()
+        {
             ModeloTipoVehiculo ModeloTipoVehiculo = new();
             ModeloClasificacionVehículo ModeloClasificacionVehículo = new();
             ModeloMarca ModeloMarca = new();

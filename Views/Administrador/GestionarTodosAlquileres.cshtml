@@ -2,7 +2,8 @@
 @{
     Layout = null;
     float GananciasTotales = 0;
-    foreach (var Alquiler in Model){
+    foreach (var Alquiler in Model)
+    {
         GananciasTotales += Alquiler.Ganancia;
     }
 }
@@ -109,7 +110,8 @@
                             <div class="DivContenedorHistoriales">
                                 <div class="DivContenidoHistoriales">
                                     <div class="DivTituloHistoriales DivTituloHistorialesAlquileresRealizados">
-                                        <h2 class="TituloHistoriales">Alquileres Realizados ($@GananciasTotales Pesos)</h2>
+                                        <h2 class="TituloHistoriales">Alquileres Realizados ($@GananciasTotales Pesos)
+                                        </h2>
                                     </div>
                                     <div class="ContenidoHistoriales">
                                         @if (Model.Count() > 0)
