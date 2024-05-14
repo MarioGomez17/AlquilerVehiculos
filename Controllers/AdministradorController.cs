@@ -10,10 +10,10 @@ namespace ALQUILER_VEHICULOS.Controllers
     [Authorize(Policy = "SoloAdministrador")]
     public class AdministradorController : Controller
     {
-
         public IActionResult GestionarTodosUsuarios()
         {
-            return View();
+            ModeloUsuario Usuario = new();
+            return View(Usuario.TraerUsuariosAdministrador(DatosUsuarioSesion().Id));
         }
         public IActionResult GestionarTodosVehiculos()
         {
@@ -90,9 +90,18 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloLugarAlquiler LugaresAlquiler = new();
             return View(LugaresAlquiler.TraerTodosLugaresAlquiler());
         }
-        public IActionResult VerUsuarioAdministrador()
+        public IActionResult VerUsuarioAdministrador(int IdUsuario)
         {
-            return View();
+            ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
+            ModeloUsuario ModeloUsuario = new();
+            ModeloRol Roles = new();
+            ModeloEditarUsuario ModeloEditarUsuario = new()
+            {
+                Usuario = ModeloUsuario.TraerUsuario(IdUsuario),
+                TiposIdentificacion = TipoIdentificacion.TraerTodosTiposdeIdentificacion(),
+                Roles = Roles.TraerRoles()
+            };
+            return View(ModeloEditarUsuario);
         }
         public IActionResult GestionarTipoIdentificacion()
         {
@@ -273,6 +282,19 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloTipoIdentificacionUsuario TIpoIdentificacion = new();
             TIpoIdentificacion.ActualizarTipoIdentificacion(Id, TipoIdentificacion, Simbolo);
             return RedirectToAction("GestionarTipoIdentificacion", "Administrador");
+        }
+        public IActionResult AccionActualizarUsuarioAdministrador(int IdUsuario, string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena, int Rol)
+        {
+            ModeloUsuario ModeloUsuario = new();
+            if (Contrasena == null)
+            {
+                ModeloUsuario.AccionActualizarUsuarioAdministrador(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Rol);
+            }
+            else
+            {
+                ModeloUsuario.AccionActualizarUsuarioAdministrador(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena, Rol);
+            }
+            return RedirectToAction("VerUsuarioAdministrador", "Administrador", new { IdUsuario });
         }
     }
 }

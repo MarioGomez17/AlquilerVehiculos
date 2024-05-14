@@ -103,6 +103,7 @@
                         <div class="ContenidoPrincipalInformacionUsuario">
                             <form class="FormularioActualizarUsuario" asp-controller="Usuario"
                                 asp-action="AccionActualizarUsuario" method="post">
+                                <input type="hidden" name="Id" value="@Model.Usuario.Id">
                                 <div class="Grupo2Elementos">
                                     <input type="text" name="Nombre" id="Nombre" value="@Model.Usuario.Nombre"
                                         class="InputFormulario" />
@@ -171,14 +172,6 @@
                                         class="BotonFormularioActualizar BotonHabilitado" id="BotonActualizarDatos" />
                                 </div>
                             </form>
-                            <div class="GrupoLinks">
-                                <div class="Grupo2Elementos">
-                                    <a asp-controller="Vehiculo" asp-action="InformacionVehiculos" class="Link">Ver Mis
-                                        vehiculos</a>
-                                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="Link">Ver Mis
-                                        Alquileres</a>
-                                </div>
-                            </div>
                         </div>
                         @if (Model.Usuario.Rol == "Usuario")
                         {

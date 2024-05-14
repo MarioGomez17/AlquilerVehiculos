@@ -147,18 +147,16 @@ namespace ALQUILER_VEHICULOS.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("IniciarSesion", "Usuario");
         }
-        public IActionResult AccionActualizarUsuario(string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
+        public IActionResult AccionActualizarUsuario(int Id, string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
         {
             ModeloUsuario ModeloUsuario = new();
-            ModeloUsuario = ModeloUsuario.TraerUsuario(DatosUsuarioSesion().Id);
-            int IdUsuario = ModeloUsuario.Id;
             if (Contrasena == null)
             {
-                ModeloUsuario.ActualizarUsuario(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo);
+                ModeloUsuario.ActualizarUsuario(Id, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo);
             }
             else
             {
-                ModeloUsuario.ActualizarUsuario(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena);
+                ModeloUsuario.ActualizarUsuario(Id, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena);
             }
             return RedirectToAction("InformacionUsuario", "Usuario");
         }

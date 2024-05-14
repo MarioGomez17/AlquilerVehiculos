@@ -1,4 +1,4 @@
-﻿@model ModeloInicio;
+﻿@model List<ModeloUsuario>;
 @{
     Layout = null;
 }
@@ -11,23 +11,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/GestionarAplicacion.css">
-    <title>VER TODOS LOS USUARIOS</title>
+    <link rel="stylesheet" href="~/css/InformacionUsuarios.css">
+    <title>INFORMACIÓN USUARIOS</title>
 </head>
 
-<body class="BodyGestionarAplicacion">
-    <div class="ContenidoBodyGestionarAplicacion">
-        <div class="DivBarraNavegacionGestionarAplicacion">
-            <nav class="BarraNavegacionGestionarAplicacion">
-                <div class="DivLinkLogoGestionarAplicacion">
-                    <a asp-controller="Inicio" asp-action="Inicio">
-                        <img class="ImagenLogo" src="~/imagenes/Logo.webp" alt="Logotipo" />
-                    </a>
+<body class="BodyInformacionUsuarios">
+    <div class="ContenidoBodyInformacionUsuarios">
+        <div class="DivBarraNavegacionInformacionUsuarios">
+            <nav class="BarraNavegacionInformacionUsuarios">
+                <div class="LinkLogoInformacionUsuarios">
+                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo" src="~/imagenes/Logo.webp"
+                            alt="Logotipo" /></a>
                 </div>
-                <div class="DivLinkGestionarAplicacion">
-                    <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkGestionarAplicacion">
+                <div class="DivLinkInformacionUsuarios">
+                    <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkInformacionUsuarios">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-login-2 IconoSVGLink" width="35" height="35"
+                            class="icon icon-tabler icon-tabler-login-2 IconoLinkSVG" width="35" height="35"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="#1f9102" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -35,24 +34,24 @@
                             <path d="M3 12h13l-3 -3" />
                             <path d="M13 15l3 -3" />
                         </svg>
-                        <span class="TextoLinkGestionarAplicacion">Iniciar Sesión</span>
+                        <span class="TextoLinkInformacionUsuarios">Iniciar Sesión</span>
                     </a>
                 </div>
-                <div class="DivLinkGestionarAplicacion">
-                    <a asp-controller="Usuario" asp-action="InformacionUsuario" class="LinkGestionarAplicacion">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user IconoSVGLink"
+                <div class="DivLinkInformacionUsuarios">
+                    <a asp-controller="Usuario" asp-action="InformacionUsuario" class="LinkInformacionUsuarios">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user IconoLinkSVG"
                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#020291" fill="none"
                             stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                         </svg>
-                        <span class="TextoLinkGestionarAplicacion">Ver Mi Perfil</span>
+                        <span class="TextoLinkInformacionUsuarios">Ver Mi Perfil</span>
                     </a>
                 </div>
-                <div class="DivLinkGestionarAplicacion">
-                    <a asp-controller="Vehiculo" asp-action="InformacionVehiculos" class="LinkGestionarAplicacion">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car IconoSVGLink"
+                <div class="DivLinkInformacionUsuarios">
+                    <a asp-controller="Vehiculo" asp-action="InformacionUsuarios" class="LinkInformacionUsuarios">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car IconoLinkSVG"
                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#beac0d" fill="none"
                             stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -60,25 +59,25 @@
                             <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                             <path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
                         </svg>
-                        <span class="TextoLinkGestionarAplicacion">Ver Mis Vehiculos</span>
+                        <span class="TextoLinkInformacionUsuarios">Ver Mis Usuarios</span>
                     </a>
                 </div>
-                <div class="DivLinkGestionarAplicacion">
-                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
+                <div class="DivLinkInformacionUsuarios">
+                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInformacionUsuarios">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
+                            class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 8l0 4l2 2" />
                             <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
                         </svg>
-                        <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
+                        <span class="TextoLinkInformacionUsuarios">Ver Mis Alquileres</span>
                     </a>
                 </div>
-                <div class="DivLinkGestionarAplicacion">
-                    <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkGestionarAplicacion">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login IconoSVGLink"
+                <div class="DivLinkInformacionUsuarios">
+                    <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkInformacionUsuarios">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login IconoLinkSVG"
                             width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#be0d0d" fill="none"
                             stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -86,36 +85,74 @@
                             <path d="M21 12h-13l3 -3" />
                             <path d="M11 15l-3 -3" />
                         </svg>
-                        <span class="TextoLinkGestionarAplicacion">Cerrar Sesión</span>
+                        <span class="TextoLinkInformacionUsuarios">Cerrar Sesión</span>
                     </a>
                 </div>
             </nav>
         </div>
-        <div class="DivContenidoGestionarAplicacion">
-            <div class="DivEncabezadoGestionarAplicacion">
-                <header class="EncabezadoGestionarAplicacion">
-                    <h1 class="TituloPrincipalGestionarAplicacion">Alquiler de Vehículos</h1>
+        <div class="DivContenidoInformacionUsuarios">
+            <div class="DivEncabezadoInformacionUsuarios">
+                <header class="EncabezadoInformacionUsuarios">
+                    <h1 class="PrincipalTitlelInformacionUsuarios">Alquiler de Vehículos</h1>
                 </header>
             </div>
-            <div class="DivContenidoPrincipalGestionarAplicacion">
-                <div class="DivPrincipalGestionarAplicacion">
-                    <main role="main" class="PrincipalGestionarAplicacion">
-                        <div class="ContenidoPrincipalGestionarAplicacion">
+            <div class="DivContenidoPrincipalInformacionUsuarios">
+                <div class="DivPrincipalInformacionUsuarios">
+                    <main role="main" class="PrincipalInformacionUsuarios">
+                        <div class="ContenidoPrincipalInformacionUsuarios">
+                            <div class="TarjetasUsuariosInformacionUsuarios">
+                                @if (Model.Count() > 0)
+                                {
+                                    @foreach (var Usuario in Model)
+                                    {
+                                        if (Usuario.Estado == "Activo")
+                                        {
+                                            <div class="InformacionModeloUsuarioActivo">
+                                                <a class="LinkInformacionModeloUsuario" asp-controller="Administrador"
+                                                    asp-action="VerUsuarioAdministrador" asp-route-IdUsuario=@Usuario.Id>
+                                                    <h3 class="TextoLinkInformacionModeloUsuario">
+                                                        Usuario: @Usuario.Nombre @Usuario.Apellido
+                                                    </h3>
+                                                </a>
+                                                <p class="TituloInformacionModeloUsuario">Identificación:
+                                                    <span class="ValorInformacionModeloUsuario">
+                                                        @Usuario.NumeroIdentificacion
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="InformacionModeloUsuarioInactivo">
+                                                <a class="LinkInformacionModeloUsuario" asp-controller="Administrador"
+                                                    asp-action="VerUsuarioAdministrador" asp-route-IdUsuario=@Usuario.Id>
+                                                    <h3 class="TextoLinkInformacionModeloUsuario">
+                                                        Usuario: @Usuario.Nombre @Usuario.Apellido
+                                                    </h3>
+                                                </a>
+                                                <p class="TituloInformacionModeloUsuario">Identificación:
+                                                    <span class="ValorInformacionModeloUsuario">
+                                                        @Usuario.NumeroIdentificacion
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            </div>
                         </div>
                     </main>
                 </div>
             </div>
-            <div class="DivFooterGestionarAplicacion">
-                <footer class="FooterGestionarAplicacion">
-                    <span class="TextoFooterGestionarAplicacion">
+            <div class="DivFooterInformacionUsuarios">
+                <footer class="FooterInformacionUsuarios">
+                    <span class="TextoFooterInformacionUsuarios">
                         &copy; 2024 - Alquiler de Vehículos por Mario Gómez y Juan Diego Claros
                     </span>
                 </footer>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/GestionarAplicacion.js" type="module"></script>
 </body>
 
 </html>

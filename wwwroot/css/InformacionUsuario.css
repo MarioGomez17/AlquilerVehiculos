@@ -169,7 +169,7 @@ body {
 }
 
 .FormularioActualizarUsuario {
-    height: 90%;
+    height: 95%;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -183,12 +183,6 @@ body {
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-}
-
-.GrupoLinks {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
 }
 
 .EtiquetaFormulario {
@@ -249,19 +243,6 @@ body {
     font-weight: bold;
     font-size: 15px;
     text-transform: uppercase;
-}
-
-.Link {
-    text-decoration: none;
-    color: var(--Black);
-    font-weight: bold;
-    font-size: 15px;
-    transition: .5s;
-}
-
-.Link:hover {
-    font-size: 20px;
-    color: var(--Wihte);
 }
 
 .BotonFormularioEliminar {
