@@ -17,7 +17,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarTodosVehiculos()
         {
-            return View();
+            ModeloVehiculo Vehiculos = new();
+            return View(Vehiculos.TraerTodosVehiculosAdministrador());
         }
         public IActionResult GestionarTodosAlquileres()
         {
