@@ -1,0 +1,115 @@
+html{
+    scrollbar-width: none;
+}
+.ContenidoBodyReporteAlquileresAlquilador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.TablaReporte {
+    margin-top: 20px;
+    width: 99%;
+}
+
+.EncabezadoTabla {
+    color: white;
+    background-color: black;
+}
+
+.CeldaTabla {
+    text-align: center;
+    font-size: 12px;
+}
+
+.DivLinksExportar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin: 50px;
+}
+
+.LinkReporte {
+    width: 400px;
+    height: 70px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    border-radius: 50px;
+}
+
+.LinkReporteCorreo{
+    background: blue;
+    background: #2f22e6;
+}
+
+.LinkReportePDF{
+    background: red;
+    background: #e62222;
+}
+
+.LinkReporteExcel{
+    background: green;
+    background: #2ce622;
+}
+
+.LinkReporte,
+.LinkReporte .TextoLink {
+    transition: .2s;
+}
+
+.LinkReporte .TextoLink {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.LinkReporte .Icono {
+    position: absolute;
+    border-left: 2px solid black;
+    transform: translateX(325px);
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.LinkReporteCorreo:hover{
+    background: #368aff;
+}
+
+.LinkReportePDF:hover{
+    background: #ff3636;
+}
+
+.LinkReporteExcel:hover{
+    background: #36ff83;
+}
+
+
+.LinkReporte:hover .TextoLink {
+    color: transparent;
+}
+
+.LinkReporte:hover .Icono {
+    width: 400px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+.LinkReporte:focus {
+    outline: none;
+}
+
+.LinkReporte:active .Icono svg {
+    transform: scale(1.2);
+}
