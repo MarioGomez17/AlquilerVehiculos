@@ -47,16 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function ConvertirFecha(StringFecha) {
-    let [ParteFecha, ParteHora, ParteMeridiano] = StringFecha.split(' ');
-    let [Dia, Mes, Anio] = ParteFecha.split('-').map(Number);
-    let [Hora, Minuto] = ParteHora.split(':').map(Number);
-    if (ParteMeridiano.toUpperCase() === 'P.M.' && Hora !== 12) {
-        Hora += 12;
-    } else if (ParteMeridiano.toUpperCase() === 'A.M.' && Hora === 12) {
-        Hora = 0;
-    }
+    let [Dia, Mes, Anio] = StringFecha.split('-').map(Number);
     Mes -= 1;
-    return new Date(Anio, Mes, Dia, Hora, Minuto);
+    return new Date(Anio, Mes, Dia);
 }
 
 async function CalcularPrecioAlquiler() {

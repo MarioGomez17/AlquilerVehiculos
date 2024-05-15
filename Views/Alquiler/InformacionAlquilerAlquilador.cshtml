@@ -1,7 +1,7 @@
 ﻿@model ModeloAlquiler;
 @{
     Layout = null;
-    int DiasAlquiler = Model.FechaIncio.Subtract(DateTime.Now).Days;
+    int DiasAlquiler = (DateTime.Parse(Model.FechaIncio.ToString()) - DateTime.Today).Days;
 }
 <!DOCTYPE html>
 <html lang="es">

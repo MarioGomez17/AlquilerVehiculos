@@ -8,12 +8,12 @@ namespace ALQUILER_VEHICULOS.Controllers
     public class AlquilerController : Controller
     {
         //---------------------------------------------- VISTAS ----------------------------------------------
-        public static DateTime FechaInicio;
-        public static DateTime FechaFin;
+        public static DateOnly FechaInicio;
+        public static DateOnly FechaFin;
         [Authorize]
         public IActionResult CrearAlquiler(int IdVehiculo)
         {
-            DateTime[] Fechas = [FechaInicio, FechaFin];
+            DateOnly[] Fechas = [FechaInicio, FechaFin];
             ModeloCrearAlquiler ModeloCrearAlquiler = new(IdVehiculo);
             ViewBag.Message = Fechas;
             return View(ModeloCrearAlquiler);
@@ -52,8 +52,8 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult AccionCrearAlquiler(string FechaInicio, string FechaFin, float Precio, string SiLavada, int Vehiculo, int Lugar, int MetodoPago, int Seguro)
         {
-            DateTime ValorFiltroFechaInicio = DateTime.Parse(FechaInicio);
-            DateTime ValorFiltroFechaFin = DateTime.Parse(FechaFin);
+            DateOnly ValorFiltroFechaInicio = DateOnly.Parse(FechaInicio);
+            DateOnly ValorFiltroFechaFin = DateOnly.Parse(FechaFin);
             ModeloAlquiler ModeloAlquiler = new();
             int Lavada = SiLavada == "on" ? 1 : 0;
             ModeloAlquilador ModeloAlquilador = new();

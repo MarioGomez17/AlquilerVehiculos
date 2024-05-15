@@ -4,8 +4,8 @@ namespace ALQUILER_VEHICULOS.Models
     public class ModeloAlquiler
     {
         public int Id { get; set; }
-        public DateTime FechaIncio { get; set; }
-        public DateTime FechaFin { get; set; }
+        public DateOnly FechaIncio { get; set; }
+        public DateOnly FechaFin { get; set; }
         public float Precio { get; set; }
         public float Ganancia { get; set; }
         public bool Lavada { get; set; }
@@ -19,7 +19,7 @@ namespace ALQUILER_VEHICULOS.Models
         public float Calificacion { get; set; }
         public string ComentarioCalificacion { get; set; }
         public string Estado { get; set; }
-        public bool CrearAquiler(DateTime FechaInicio, DateTime FechaFin, float Precio, int Lavada, int Alquilador, int Vehiculo, int Lugar, int MetodoPago, int Seguro, float Ganancia)
+        public bool CrearAquiler(DateOnly FechaInicio, DateOnly FechaFin, float Precio, int Lavada, int Alquilador, int Vehiculo, int Lugar, int MetodoPago, int Seguro, float Ganancia)
         {
             string ConsultaSQL = "INSERT INTO " +
                 "alquiler_vehiculos.alquiler (" +
@@ -35,8 +35,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "Seguro_Alquiler, " +
                 " Estado_Alquiler) " +
                 "VALUES ('" +
-                FechaInicio.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
-                "'" + FechaFin.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
+                FechaInicio.ToString("yyyy-MM-dd") + "', " +
+                "'" + FechaFin.ToString("yyyy-MM-dd") + "', " +
                 Precio + ", " +
                 Ganancia + ", " +
                 Lavada + ", " +
@@ -102,8 +102,8 @@ namespace ALQUILER_VEHICULOS.Models
                         ModeloALquiler = new()
                         {
                             Id = Lector.GetInt32(0),
-                            FechaIncio = Lector.GetDateTime(1),
-                            FechaFin = Lector.GetDateTime(2),
+                            FechaIncio = new DateOnly(Lector.GetDateTime(1).Year, Lector.GetDateTime(1).Month, Lector.GetDateTime(1).Day),
+                            FechaFin = new DateOnly(Lector.GetDateTime(2).Year, Lector.GetDateTime(2).Month, Lector.GetDateTime(2).Day),
                             Precio = Lector.GetFloat(3),
                             Ganancia = Lector.GetFloat(4),
                             Lavada = Lector.GetInt32(5) == 1,
@@ -204,8 +204,8 @@ namespace ALQUILER_VEHICULOS.Models
                         ModeloAlquiler Alquiler = new()
                         {
                             Id = Lector.GetInt32(0),
-                            FechaIncio = Lector.GetDateTime(1),
-                            FechaFin = Lector.GetDateTime(2),
+                            FechaIncio = new DateOnly(Lector.GetDateTime(1).Year, Lector.GetDateTime(1).Month, Lector.GetDateTime(1).Day),
+                            FechaFin = new DateOnly(Lector.GetDateTime(2).Year, Lector.GetDateTime(2).Month, Lector.GetDateTime(2).Day),
                             Precio = Lector.GetFloat(3),
                             Ganancia = Lector.GetFloat(4),
                             Lavada = Lector.GetInt32(5) == 1,

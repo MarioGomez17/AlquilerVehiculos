@@ -10,7 +10,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }
-        public IActionResult InicioFiltrado(int FiltroCiudad, int FiltroTipoVehiculo, int FiltroMarca, string FiltroFechaInicio, string FiltroHoraInicio, string FiltroFechaFin, string FiltroHoraFin)
+        public IActionResult InicioFiltrado(int FiltroCiudad, int FiltroTipoVehiculo, int FiltroMarca, string FiltroFechaInicio, string FiltroFechaFin)
         {
             ModeloVehiculo ModeloVehiculo = new();
             List<ModeloVehiculo> Vehiculos = [];
@@ -49,10 +49,8 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloInicio ModeloInicio = new(Vehiculos);
             ModeloAlquiler ModeloAlquiler = new();
             List<ModeloAlquiler> Alquileres = ModeloAlquiler.TraerAlquileres();
-            DateTime ValorFiltroFechaInicio = DateTime.Parse(FiltroFechaInicio);
-            ValorFiltroFechaInicio = ValorFiltroFechaInicio.Add(TimeSpan.Parse(FiltroHoraInicio));
-            DateTime ValorFiltroFechaFin = DateTime.Parse(FiltroFechaFin);
-            ValorFiltroFechaFin = ValorFiltroFechaFin.Add(TimeSpan.Parse(FiltroHoraFin));
+            DateOnly ValorFiltroFechaInicio = DateOnly.Parse(FiltroFechaInicio);
+            DateOnly ValorFiltroFechaFin = DateOnly.Parse(FiltroFechaFin);
             foreach (var Alquiler in Alquileres)
             {
                 if ((ValorFiltroFechaInicio >= Alquiler.FechaIncio && ValorFiltroFechaInicio <= Alquiler.FechaFin) || (ValorFiltroFechaFin >= Alquiler.FechaIncio && ValorFiltroFechaFin <= Alquiler.FechaFin))
@@ -70,9 +68,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 FiltroTipoVehiculo,
                 FiltroMarca,
                 FiltroFechaInicio,
-                FiltroHoraInicio,
-                FiltroFechaFin,
-                FiltroHoraFin
+                FiltroFechaFin
             ];
             ViewBag.Message = Datos;
             return View(ModeloInicio);

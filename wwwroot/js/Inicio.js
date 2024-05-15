@@ -30,45 +30,20 @@ function TraerTodasMarcasPorTIpo() {
 document.getElementById('FiltroTipoVehiculo').addEventListener('change', TraerTodasMarcasPorTIpo);
 
 document.addEventListener("DOMContentLoaded", function () {
-    const FiltroHoraInicio = document.getElementById('FiltroHoraInicio');
-    const FiltroHoraFin = document.getElementById('FiltroHoraFin');
     const FiltroFechaInicio = document.getElementById('FiltroFechaInicio');
     const FiltroFechaFin = document.getElementById('FiltroFechaFin');
     const BotonFiltros = document.getElementById('BotonFiltros');
     BotonFiltros.addEventListener('click', function (event) {
-        if (FiltroHoraInicio.value == '' || FiltroHoraFin.value == '' || FiltroFechaInicio.value == '' || FiltroFechaFin.value == '') {
+        if (FiltroFechaInicio.value == '' || FiltroFechaFin.value == '') {
             event.preventDefault();
             Swal.fire({
                 title: 'ERROR',
-                text: 'COMPLETE AL MENOS LOS FILTROS DE FECHA Y HORA DE INICIO Y FIN DEL ALQUILER',
+                text: 'COMPLETE AL MENOS LOS FILTROS DE FECHA DE INICIO Y FIN DEL ALQUILER',
                 icon: 'error',
                 confirmButtonText: 'OK'
             });
         }
     });
-    //------------------------- VALIDACIÓN HORAS -------------------------
-    function ValidarHora(timeInput) {
-        timeInput.addEventListener('change', function () {
-            const ValorHora = this.value;
-            const [Horas, Minutos] = ValorHora.split(':').map(Number);
-            if (Horas < 9 || Horas > 17 || (Horas === 17 && Minutos > 0)) {
-                Swal.fire({
-                    title: 'ERROR',
-                    text: 'LA HORA DEBE ESTAR ENTRE LAS 9:00 AM Y LAS 5:00 PM',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-                this.value = '';
-            } else {
-                if (FiltroHoraInicio.id === 'FiltroHoraInicio') {
-                    FiltroHoraFin.value = ValorHora;
-                    FiltroHoraFin.disabled = false;
-                }
-            }
-        });
-    }
-    ValidarHora(FiltroHoraInicio);
-    ValidarHora(FiltroHoraFin);
     //------------------------- VALIDACIÓN FECHAS -------------------------
     function FormatearFecha(date) {
         return date.toISOString().split('T')[0];
@@ -85,17 +60,3 @@ document.addEventListener("DOMContentLoaded", function () {
         FiltroFechaFin.disabled = false;
     });
 });
-
-function ValidarHoraExacta(timeInput) {
-    timeInput.addEventListener('change', function () {
-        var ValorHora = this.value;
-        var [Horas, Minutos] = ValorHora.split(':').map(Number);
-        console.log(Horas);
-        console.log(Minutos);
-        if (Minutos >= 30) {
-            Horas += 1;
-        }
-        this.value = (Horas + ":00")
-    });
-}
-ValidarHoraExacta(FiltroHoraInicio);
