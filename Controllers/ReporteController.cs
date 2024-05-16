@@ -19,8 +19,20 @@ namespace ALQUILER_VEHICULOS.Controllers
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
         public IActionResult GenerarReportePDF(){
-            ReporteAlquileresAlquilador Reporte = new();
-            Reporte.GenerarReporteAlquileresAlquilador(DatosUsuarioSesion().Id);
+            ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteAlquileresAlquiladorPDF();
+            return RedirectToAction("ReporteAlquileresAlquilador", "Reporte");
+        }
+        public IActionResult GenerarReporteEXCEL()
+        {
+            ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteAlquileresAlquiladorEXCEL();
+            return RedirectToAction("ReporteAlquileresAlquilador", "Reporte");
+        }
+        public IActionResult EnviarReportesCorreo(string Correo)
+        {
+            ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.EnviarReportesPorCorreo(Correo);
             return RedirectToAction("ReporteAlquileresAlquilador", "Reporte");
         }
     }
