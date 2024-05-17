@@ -4,16 +4,7 @@ using OfficeOpenXml.Style;
 using OfficeOpenXml;
 using System.Net.Mail;
 using System.Net;
-using iText.Kernel.Pdf;
-using iText.Html2pdf;
-using iText.Kernel.Geom;
-using iText.Layout;
-using iText.StyledXmlParser.Css.Media;
-using iText.Kernel.Font;
-using iText.IO.Font.Constants;
-using iText.Layout.Font;
-using iText.Commons.Utils;
-using NPOI.SS.Formula;
+using SelectPdf;
 
 namespace ALQUILER_VEHICULOS.Reports
 {
@@ -21,6 +12,7 @@ namespace ALQUILER_VEHICULOS.Reports
     {
         public ModeloUsuario Usuario { get; set; }
         public ModeloAlquilador Alquilador { get; set; }
+        public ModeloEmpresa Empresa { get; set; }
         public string ConsultaSQL { get; set; }
         public ReporteAlquileresAlquilador(int IdUsuario)
         {
@@ -28,6 +20,7 @@ namespace ALQUILER_VEHICULOS.Reports
             ModeloAlquilador ModeloAlquilador = new();
             this.Usuario = ModeloUsuario.TraerUsuario(IdUsuario);
             this.Alquilador = ModeloAlquilador.TraerAlquiladorUsuario(IdUsuario);
+            this.Empresa = new();
             this.ConsultaSQL = "SELECT " +
                                 "alquiler_vehiculos.alquiler.FechaIncio_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.FechaFin_Alquiler, " +
@@ -70,95 +63,91 @@ namespace ALQUILER_VEHICULOS.Reports
         }
         public void GenerarReporteAlquileresAlquiladorPDF()
         {
-            string PlantillaHTML = "./Templates/ReporteAlquileresAlquilador.html";
-            String RutaPDF = "./wwwroot/Reportes/ReporteAlquileresAlquilador.pdf";
-            using PdfWriter EscritorPDF = new(RutaPDF);
-            using (EscritorPDF)
+            HtmlToPdf Convertidor = new();
+            PdfDocument DocumentoPDF;
+            Convertidor.Options.PdfPageOrientation = PdfPageOrientation.Landscape;
+            Convertidor.Options.MarginLeft = 0;
+            Convertidor.Options.MarginRight = 0;
+            Convertidor.Options.MarginTop = 0;
+            Convertidor.Options.MarginBottom = 0;
+            string HTMLString = File.ReadAllText("./Templates/ReporteAlquileresAlquilador.html").ToString();
+            string FilasTabla = "";
+            int Indice = 1;
+            float PrecioTotal = 0;
+            string RutaImagen = Directory.GetCurrentDirectory();
+            RutaImagen = RutaImagen.Replace(@"\", "/");
+            RutaImagen += "/wwwroot/imagenes/";
+            MySqlConnection ConexionBD = ModeloConexion.Conect();
+
+            try
             {
-                PdfDocument DocumentoPDF = new(EscritorPDF);
-                DocumentoPDF.SetDefaultPageSize(new(1500, 700));
-                PdfFont Fuente = PdfFontFactory.CreateFont(StandardFonts.COURIER_BOLD);
-                ConverterProperties Propiedades = new();
-                Propiedades.SetMediaDeviceDescription(new MediaDeviceDescription(MediaType.SCREEN));
-                FontSet Fuentep = new();
-                Fuentep.AddFont("C:/Windows/Fonts/ARLRDBD.TTF");
-                Propiedades.SetFontProvider(new(Fuentep));
-                string HTMLString = File.ReadAllText("./Templates/ReporteAlquileresAlquilador.html").ToString();
-                string FilasTabla = "";
-                string Total = "";
-                MySqlConnection ConexionBD = ModeloConexion.Conect();
-                try
+                ConexionBD.Open();
+                MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
+                MySqlDataReader Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
                 {
-                    ConexionBD.Open();
-                    MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
-                    MySqlDataReader Lector = Comando.ExecuteReader();
-                    if (Lector.HasRows)
+                    while (Lector.Read())
                     {
-                        int Indice = 1;
-                        float PrecioTotal = 0;
-                        while (Lector.Read())
-                        {
-                            if (Indice % 2 == 0)
-                            {
-                                FilasTabla += " <tr style='background-color: rgba(105, 170, 224, .7);'> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Indice.ToString() + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + new DateOnly(Lector.GetDateTime(0).Year, Lector.GetDateTime(0).Month, Lector.GetDateTime(0).Day).ToString() + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + new DateOnly(Lector.GetDateTime(1).Year, Lector.GetDateTime(1).Month, Lector.GetDateTime(1).Day).ToString() + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(2) + " " + Lector.GetString(3) + " " + Lector.GetString(4) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(5) + ", " + Lector.GetString(6) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(7) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(8) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(9) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(10) + "(" + Lector.GetFloat(11).ToString() + ")</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetFloat(12).ToString() + "</td></tr> ";
-                            }
-                            else
-                            {
-                                FilasTabla += " <tr style='background-color: rgba(31, 224, 108, .7);'> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Indice.ToString() + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + new DateOnly(Lector.GetDateTime(0).Year, Lector.GetDateTime(0).Month, Lector.GetDateTime(0).Day).ToString() + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + new DateOnly(Lector.GetDateTime(1).Year, Lector.GetDateTime(1).Month, Lector.GetDateTime(1).Day).ToString() + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(2) + " " + Lector.GetString(3) + " " + Lector.GetString(4) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(5) + ", " + Lector.GetString(6) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(7) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(8) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(9) + "</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetString(10) + "(" + Lector.GetFloat(11).ToString() + ")</td> " +
-                                        "<td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + Lector.GetFloat(12).ToString() + "</td></tr> ";
-                            }
-                            Indice++;
-                            PrecioTotal += Lector.GetFloat(12);
-                        }
                         if (Indice % 2 == 0)
                         {
-                            Total += "<tr style='background-color: rgba(105, 170, 224, .7);'><td colspan='9' style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>Total Precio Alquileres</td><td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + PrecioTotal + "</td></tr>";
+                            FilasTabla += "<tr>" +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + Indice.ToString() + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + new DateOnly(Lector.GetDateTime(0).Year, Lector.GetDateTime(0).Month, Lector.GetDateTime(0).Day).ToString() + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + new DateOnly(Lector.GetDateTime(1).Year, Lector.GetDateTime(1).Month, Lector.GetDateTime(1).Day).ToString() + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetString(2) + " " + Lector.GetString(3) + "<br>" + Lector.GetString(4) + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetString(5) + "<br>(" + Lector.GetString(6) + ")</td> " +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetString(7) + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetString(8) + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetString(9) + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetString(10) + "<br>(" + Lector.GetFloat(11).ToString() + ")</td> " +
+                                                "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetFloat(12).ToString() + "</td>" +
+                                            "</tr> ";
                         }
                         else
                         {
-                            Total += "<tr style='background-color: rgba(31, 224, 108, .7);'><td colspan='9' style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>Total Precio Alquileres</td><td style='font-size: 15px;border: solid 4px #000000;padding: 10px;font-weight: bold;'>" + PrecioTotal + "</td></tr>";
+                            FilasTabla += "<tr>" +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + Indice.ToString() + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + new DateOnly(Lector.GetDateTime(0).Year, Lector.GetDateTime(0).Month, Lector.GetDateTime(0).Day).ToString() + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + new DateOnly(Lector.GetDateTime(1).Year, Lector.GetDateTime(1).Month, Lector.GetDateTime(1).Day).ToString() + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetString(2) + " " + Lector.GetString(3) + "<br>" + Lector.GetString(4) + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetString(5) + "<br>(" + Lector.GetString(6) + ")</td> " +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetString(7) + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetString(8) + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetString(9) + "</td> " +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetString(10) + "<br>(" + Lector.GetFloat(11).ToString() + ")</td> " +
+                                                "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetFloat(12).ToString() + "</td>" +
+                                            "</tr> ";
                         }
+                        Indice++;
+                        PrecioTotal += Lector.GetFloat(12);
                     }
                 }
-                catch (Exception ex) { Console.WriteLine(ex.Message); }
-                finally
-                {
-                    ConexionBD.Close();
-                }
-                HTMLString = HTMLString.Replace("@TOTAL", Total);
-                HTMLString = HTMLString.Replace("@TABLA_REPORTE", FilasTabla);
-                HTMLString = HTMLString.Replace("@USUARIO", (this.Usuario.Nombre + " " + this.Usuario.Apellido));
-                HTMLString = HTMLString.Replace("@IDENTIFICACION", (this.Usuario.SimboloTipoIdentificacion + " " + this.Usuario.NumeroIdentificacion));
-                HTMLString = HTMLString.Replace("@FECHA", DateTime.Now.ToString("dddd dd-MMMM-yyyy hh:mm:ss tt"));
-                using (FileStream ContenidoHTML = new(PlantillaHTML, FileMode.Open))
-                {
-                    HtmlConverter.ConvertToPdf(HTMLString, DocumentoPDF, Propiedades);
-                }
-                DocumentoPDF.Close();
             }
+            catch (Exception) { }
+            finally
+            {
+                ConexionBD.Close();
+            }
+            HTMLString = HTMLString.Replace("@RAZONSOCIAL", this.Empresa.Nombre);
+            HTMLString = HTMLString.Replace("@CIUDAD", this.Empresa.Ciudad);
+            HTMLString = HTMLString.Replace("@DIRECCION", this.Empresa.Direccion);
+            HTMLString = HTMLString.Replace("@BARRIO", this.Empresa.Barrio);
+            HTMLString = HTMLString.Replace("@NIT", this.Empresa.NIT);
+            HTMLString = HTMLString.Replace("@TELEFONO", this.Empresa.Telefono);
+            HTMLString = HTMLString.Replace("@CORREO", this.Empresa.Correo);
+            HTMLString = HTMLString.Replace("@FOTO", RutaImagen + this.Empresa.RutaFoto);
+            HTMLString = HTMLString.Replace("@TABLAINFORME", FilasTabla);
+            HTMLString = HTMLString.Replace("@TOTAL", PrecioTotal.ToString());
+            HTMLString = HTMLString.Replace("@USUARIO", this.Usuario.Nombre + " " + this.Usuario.Apellido);
+            HTMLString = HTMLString.Replace("@IDENTIFICACION", this.Usuario.SimboloTipoIdentificacion + " " + this.Usuario.NumeroIdentificacion);
+            HTMLString = HTMLString.Replace("@FECHAINFORME", DateTime.Now.ToString("dddd dd-MMMM-yyyy hh:mm:ss tt"));
+            DocumentoPDF = Convertidor.ConvertHtmlString(HTMLString);
+            DocumentoPDF.Save("./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".pdf");
+            DocumentoPDF.Close();
         }
         public void GenerarReporteAlquileresAlquiladorEXCEL()
         {
-            string RutaArchivo = "./wwwroot/Reportes/ReporteAlquileresAlquilador.xlsx";
+            string RutaArchivo = "./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".xlsx";
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using ExcelPackage PaqueteExcel = new();
             PaqueteExcel.Workbook.Properties.Author = Usuario.Nombre + " " + Usuario.Apellido;
@@ -226,8 +215,8 @@ namespace ALQUILER_VEHICULOS.Reports
         {
             GenerarReporteAlquileresAlquiladorEXCEL();
             GenerarReporteAlquileresAlquiladorPDF();
-            string ReporteExcel = "./wwwroot/Reportes/ReporteAlquileresAlquilador.xlsx";
-            string ReportePDF = "./wwwroot/Reportes/ReporteAlquileresAlquilador.pdf";
+            string ReporteExcel = "./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".xlsx";
+            string ReportePDF = "./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".pdf";
             string CorreoEmisor = "mariog.101200@hotmail.com";
             string Asunto = "Reportes de Alquileres Realizados por " + this.Usuario.Nombre + " " + this.Usuario.Apellido;
             string Mensaje = "Adjunto encontrarás los reportes en Excel y PDF";

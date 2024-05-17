@@ -8,12 +8,9 @@
 
 	<ItemGroup>
 		<PackageReference Include="EPPlus" Version="7.1.2" />
-		<PackageReference Include="itext7" Version="8.0.4" />
-		<PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.4" />
-		<PackageReference Include="itext7.pdfhtml" Version="5.0.4" />
 		<PackageReference Include="MySql.Data" Version="8.4.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="NPOI" Version="2.7.0" />
+		<PackageReference Include="Select.HtmlToPdf.NetCore" Version="23.2.0" />
 	</ItemGroup>
 
 </Project>

@@ -1,146 +1,260 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
     <title>Document</title>
+    <style>
+        html {
+            height: 1074px;
+            width: 1520px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Geologica", sans-serif;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            background: #0cebeb;
+            background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
+            background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
+        }
+
+        header {
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .Logo {
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            height: 180px;
+            width: 180px;
+            border: 7px solid black;
+            border-radius: 50%;
+        }
+
+        .InfoEmpresa {
+            width: 75%;
+            height: 70%;
+            background-color: #1649E0;
+            border-radius: 50px;
+            border: 7px solid black;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .Titulo {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .NombreEmpresa {
+            width: 95%;
+            height: 40%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .DivDatosEmpresa {
+            width: 95%;
+            height: 60%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .DatosEmpresa {
+            height: 100%;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .TituloInfo {
+            width: 100%;
+            height: 30%;
+            display: flex;
+            align-items: center;
+            color: black;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .ValorInfo {
+            margin: 0;
+            margin-left: 15px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .Izquierda {
+            margin-left: 10px;
+        }
+
+        .Derecha {
+            margin-right: 10px;
+        }
+
+        main {
+            width: 100%;
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 80px;
+        }
+
+        .TablaInforme {
+            width: 95%;
+            text-align: center;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .EncabezadoTabla {
+            background-color: #206a00;
+            color: white;
+            border: solid 5px black;
+            padding: 10px;
+            font-size: 15px;
+        }
+
+        .CeldaDatoTabla {
+            border: solid 5px black;
+            padding: 10px 0;
+            font-size: 12px;
+            color: black;
+        }
+
+        .CeldaPar {
+            background-color: #94F2FE;
+        }
+
+        .CeldaImpar {
+            background-color: #94feb9;
+        }
+
+        .DatoTabla {
+            margin: 0 7px;
+        }
+
+        .FilaTotal {
+            background-color: #0d00ff;
+            border: solid 5px black;
+            padding: 10px 0;
+            font-size: 12px;
+            color: white;
+        }
+
+        .TituloTotal {
+            font-size: 20px;
+        }
+
+        footer {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .TextoFooter {
+            color: black;
+            font-size: 20px;
+            margin: 0 50px;
+        }
+    </style>
 </head>
 
-<body
-    style="height: 100%;width: 100%;margin: 0;display: flex;flex-direction: column;justify-content: space-between;align-items: center;background: #00C9FF;background: -webkit-linear-gradient(to right, rgba(146, 254, 157, .5), rgba(0, 201, 255, .5));background: linear-gradient(to right, rgba(146, 254, 157, .5), rgba(0, 201, 255, .5));">
-    <table style="width: 100%;margin-top: 20px; padding-top: 50px;">
-        <tbody>
-            <tr>
-                <td style="width: 40%;">
-                    <table style="width: 100%; height: 100%;text-align: center;">
-                        <td style="text-align: center;">
-                            <img src="D:/Logo.jpg" alt=""
-                                style="width: 200px;height: 200px;border-radius: 50%;border: solid 7px black;">
-                        </td>
-                        <td>
-                    </table>
-                </td>
-                <td style="width: 60%; justify-content: center;">
-                    <div
-                        style="width: 85%; height: 30%; background-color: #1F8DE0; border-radius: 20px; border: solid 7px #000;">
-                        <table
-                            style="width: 100%; height: 100%;text-align: center;padding: 20px;text-transform: uppercase;">
-                            <tbody>
-                                <tr>
-                                    <td colspan="2" style="padding: 20px;">
-                                        <h1 style="margin: 0;">
-                                            Alquiler de Vehículos
-                                        </h1>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 30%;padding: 20px;">
-                                        <span
-                                            style="text-align: center;font-size: 15px;font-weight: bold;color: #000000;margin-left: 50px;">
-                                            NIT :123456789
-                                        </span>
-                                    </td>
-                                    <td style="text-align: left;padding: 20px;">
-                                        <span
-                                            style="text-align: center;font-size: 15px;font-weight: bold;color: #000000;">
-                                            Dirección : Calle 17 Diagonal 17 con Carrera 3F - Barrio Porvenir
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;width: 30%;padding: 20px;">
-                                        <span
-                                            style="text-align: center;font-size: 15px;font-weight: bold;color: #000000;margin-left: 50px;">
-                                            Télefono : 310222333
-                                        </span>
-                                    </td>
-                                    <td style="text-align: left;padding: 20px;">
-                                        <span
-                                            style="text-align: center;font-size: 15px;font-weight: bold;color: #000000;">
-                                            Ciudad : Florencia - Caquetá
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table
-        style="width: 100%;text-align: center;border-collapse: collapse;border-spacing: 0;text-transform: uppercase; position: absolute; bottom: 100%; margin-top: 60px;position: fixed;">
-        <tbody>
-            <tr>
-                <td style="width: 33%;">
-                    <span style="text-align: center; font-size: 20px; font-weight: bold;">
-                        @USUARIO
+<body>
+    <header>
+        <div class="Logo">
+            <img src="@FOTO" alt="LOGOTIPO">
+        </div>
+        <div class="InfoEmpresa">
+            <div class="NombreEmpresa">
+                <h2 class="Titulo">@RAZONSOCIAL</h2>
+            </div>
+            <div class="DivDatosEmpresa">
+                <div class="DatosEmpresa">
+                    <span class="TituloInfo Izquierda">Ciudad :<p class="ValorInfo">@CIUDAD</p></span>
+                    <span class="TituloInfo Izquierda">Dirección :<p class="ValorInfo">@DIRECCION</p></span>
+                    <span class="TituloInfo Izquierda">Barrio :<p class="ValorInfo">@BARRIO</p></span>
+                </div>
+                <div class="DatosEmpresa">
+                    <span class="TituloInfo Derecha">NIT :<p class="ValorInfo">@NIT</p></span>
+                    <span class="TituloInfo Derecha">Teléfono :<p class="ValorInfo">@TELEFONO</p></span>
+                    <span class="TituloInfo Derecha">Correo :<p class="ValorInfo">@CORREO</p>
                     </span>
-                </td>
-                <td rowspan="2" style="width: 33%;">
-                    <span style="text-align: center; font-size: 20px; font-weight: bold;">
-                        @IDENTIFICACION
-                    </span>
-                </td>
-                <td rowspan="2" style="width: 33%;">
-                    <span style="text-align: center; font-size: 20px; font-weight: bold;">
-                        @FECHA
-                    </span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table
-        style="width: 100%;text-align: center;border-collapse: collapse;border-spacing: 0;text-transform: uppercase; margin: 50px 20px 20px 20px;">
-        <thead>
-            <tr>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    #
-                </th>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    Fecha Inicio
-                </th>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    Fecha Fin
-                </th>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    Vehículo
-                </th>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    Ciudad
-                </th>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    Lugar
-                </th>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    Estado del Pago
-                </th>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    Estado Alquiler
-                </th>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    Seguro
-                </th>
-                <th
-                    style="font-weight: bold;font-size: 17px;border: solid 4px #000000;padding: 10px;background-color: #1649E0;color: #FFFFFF;">
-                    Precio
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @TABLA_REPORTE
-            @TOTAL
-        </tbody>
-    </table>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <table class="TablaInforme">
+            <thead>
+                <tr>
+                    <th class="EncabezadoTabla">#</th>
+                    <th class="EncabezadoTabla">Fecha Inicio</th>
+                    <th class="EncabezadoTabla">Fecha Fin</th>
+                    <th class="EncabezadoTabla">Vehículo</th>
+                    <th class="EncabezadoTabla">Ciudad</th>
+                    <th class="EncabezadoTabla">Lugar</th>
+                    <th class="EncabezadoTabla">Estado del Pago</th>
+                    <th class="EncabezadoTabla">Estado Alquiler</th>
+                    <th class="EncabezadoTabla">Seguro</th>
+                    <th class="EncabezadoTabla">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                @TABLAINFORME
+                <tr>
+                    <td colspan='9' class="FilaTotal TituloTotal">Total Precio Alquileres</td>
+                    <td class="FilaTotal">@TOTAL</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <span class="TextoFooter">@USUARIO</span>
+        <span class="TextoFooter">@IDENTIFICACION</span>
+        <span class="TextoFooter">@FECHAINFORME</span>
+    </footer>
 </body>
 
 </html>
