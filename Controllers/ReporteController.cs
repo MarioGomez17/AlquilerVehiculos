@@ -21,19 +21,19 @@ namespace ALQUILER_VEHICULOS.Controllers
         public IActionResult GenerarReportePDF(){
             ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAlquiladorPDF();
-            return RedirectToAction("ReporteAlquileresAlquilador", "Reporte");
+            return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
         public IActionResult GenerarReporteEXCEL()
         {
             ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAlquiladorEXCEL();
-            return RedirectToAction("ReporteAlquileresAlquilador", "Reporte");
+            return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
         public IActionResult EnviarReportesCorreo(string Correo)
         {
             ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.EnviarReportesPorCorreo(Correo);
-            return RedirectToAction("ReporteAlquileresAlquilador", "Reporte");
+            return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
     }
 }

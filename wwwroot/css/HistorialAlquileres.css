@@ -369,21 +369,173 @@ body {
     font-weight: bold;
 }
 
-.LinkReporte{
-    text-decoration: none;
-    font-size: 40px;
-    color: var(--Black);
-    transition: .5s;
-    font-weight: bold;
-    width: 75%;
-    background-color: var(--SecondColor);
-    text-align: center;
-    border-radius: 50px;
-    padding: 5px 0;
-    margin: 20px 0;
+.DivLinksExportar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
 }
 
-.LinkReporte:hover{
-    font-size: 45px;
+.LinkReporte {
+    width: 300px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: var(--Font);
+    color: white;
+    font-weight: bold;
+}
+
+.LinkReporteCorreo{
+    background-color: blue;
+}
+.LinkReportePDF{
+    background-color: red;
+}
+.LinkReporteExcel{
+    background-color: green;
+}
+
+.DivEnviarCorreo {
+    position: absolute;
+    width: 500px;
+    height: 350px;
+    border-radius: 20px;
+    background-color: black;
+    top: 25%;
+    display: none;
+}
+
+.FormularioCorreo {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.form-group {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.Etiqueta {
+    color: white;
+}
+
+.BotonCerrar {
+    position: absolute;
+    width: 3em;
+    height: 2em;
+    border: none;
+    background: none;
+    top: 5%;
+    left: 88%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.X {
+    content: '';
+    position: absolute;
+    width: 2em;
+    height: 1.5px;
+    background-color: #fff;
+    transform: rotate(45deg);
+}
+
+.Y {
+    content: '';
+    position: absolute;
+    width: 2em;
+    height: 1.5px;
+    background-color: #fff;
+    transform: rotate(-45deg);
+}
+
+.BotonCerrar:hover {
+    background-color: rgb(210, 0, 0);
+}
+
+.BotonCerrar:active {
+    background-color: rgb(130, 0, 0);
+}
+
+@keyframes close {
+    100% {
+        opacity: 1;
+    }
+}
+
+.InputTextoFormulario {
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    width: 95%;
+    padding: 0;
+    text-indent: 20px;
+    height: 40px;
+    font-weight: bold;
+    font-family: var(--Font);
+    text-transform: uppercase;
+}
+
+.EtiquetaFormulario {
+    font-weight: bold;
     color: var(--Wihte);
+}
+
+.BotonFormulario {
+    height: 50px;
+    width: 95%;
+    font-family: var(--Font);
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.8s;
+    border: 2px solid var(--SecondColor);
+    border-radius: 15px;
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+    color: var(--Wihte);
+}
+
+.BotonFormulario:hover {
+    color: var(--Black);
+    box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+}
+
+.BotonFormulario:active {
+    transform: scale(0.9);
+}
+
+.InputTextoFormulario:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+.InputTextoFormulario:focus~label {
+    color: var(--SecondColor);
+    font-size: 35px;
+}
+
+.DivFormulario{
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    align-items: center;
 }
