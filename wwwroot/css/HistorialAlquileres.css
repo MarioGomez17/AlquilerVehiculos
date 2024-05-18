@@ -496,6 +496,7 @@ body {
 .EtiquetaFormulario {
     font-weight: bold;
     color: var(--Wihte);
+    transition: .5s;
 }
 
 .BotonFormulario {

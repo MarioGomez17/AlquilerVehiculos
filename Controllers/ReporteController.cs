@@ -18,21 +18,38 @@ namespace ALQUILER_VEHICULOS.Controllers
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-        public IActionResult GenerarReportePDF(){
+        public IActionResult GenerarReporteAlquileresAlquiladorPDF(){
             ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAlquiladorPDF();
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
-        public IActionResult GenerarReporteEXCEL()
+        public IActionResult GenerarReporteAlquileresAlquiladorEXCEL()
         {
             ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAlquiladorEXCEL();
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
-        public IActionResult EnviarReportesCorreo(string Correo)
+        public IActionResult EnviarReportesAlquileresAlquiladorPorCorreo(string Correo)
         {
             ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
-            Reporte.EnviarReportesPorCorreo(Correo);
+            Reporte.EnviarReportesAlquileresAlquiladorPorCorreo(Correo);
+            return RedirectToAction("HistorialAlquileres", "Alquiler");
+        }
+        public IActionResult GenerarReporteAlquileresPropietarioPDF(){
+            ReporteAlquileresPropietario Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteAlquileresPropietarioPDF();
+            return RedirectToAction("HistorialAlquileres", "Alquiler");
+        }
+        public IActionResult GenerarReporteAlquileresPropietarioEXCEL()
+        {
+            ReporteAlquileresPropietario Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteAlquileresPropietarioEXCEL();
+            return RedirectToAction("HistorialAlquileres", "Alquiler");
+        }
+        public IActionResult EnviarReportesAlquileresPropietarioPorCorreo(string Correo)
+        {
+            ReporteAlquileresPropietario Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.EnviarReportesAlquileresPropietarioPorCorreo(Correo);
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
     }

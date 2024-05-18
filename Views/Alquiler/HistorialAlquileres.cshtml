@@ -256,24 +256,24 @@
                                                 }
                                             }
                                             <div class="DivLinksExportar" id="DivLinksExportar">
-                                                <button class="LinkReporte LinkReporteCorreo" id="BotonEnviarCorreo">
+                                                <button class="LinkReporte LinkReporteCorreo" id="BotonEnviarReportesAlquileresAlquiladorPorCorreo">
                                                     Eviar Reporte Por Correo
                                                 </button>
                                                 <a class="LinkReporte LinkReportePDF" asp-controller="Reporte"
-                                                    asp-action="GenerarReportePDF">
+                                                    asp-action="GenerarReporteAlquileresAlquiladorPDF">
                                                     Generar Reporte en PDF
                                                 </a>
                                                 <a class="LinkReporte LinkReporteExcel" asp-controller="Reporte"
-                                                    asp-action="GenerarReporteEXCEL">
+                                                    asp-action="GenerarReporteAlquileresAlquiladorEXCEL">
                                                     Generar Reporte en Excel
                                                 </a>
                                             </div>
-                                            <div class="DivEnviarCorreo" id="DivEnviarCorreo">
-                                                <button class="BotonCerrar" id="BotonCerrarCorreo">
+                                            <div class="DivEnviarCorreo" id="EnviarReportesAlquileresAlquiladorPorCorreo">
+                                                <button class="BotonCerrar" id="BotonCerrarReportesAlquileresAlquiladorPorCorreo">
                                                     <span class="X"></span>
                                                     <span class="Y"></span>
                                                 </button>
-                                                <form asp-controller="Reporte" asp-action="EnviarReportesCorreo"
+                                                <form asp-controller="Reporte" asp-action="EnviarReportesAlquileresAlquiladorPorCorreo"
                                                     method="post" class="FormularioCorreo">
                                                     <div class="DivFormulario">
                                                         <button type="submit" class="BotonFormulario">Enviar</button>
@@ -482,10 +482,33 @@
                                                     </a>
                                                 }
                                             }
-                                            <a class="LinkReporte" asp-controller="Reporte"
-                                                asp-action="ReporteAlquileresAlquilador" target="_blank">
-                                                Generar Reporte
-                                            </a>
+                                            <div class="DivLinksExportar" id="DivLinksExportar">
+                                                <button class="LinkReporte LinkReporteCorreo" id="BotonEnviarReportesAlquileresPropietarioPorCorreo">
+                                                    Eviar Reporte Por Correo
+                                                </button>
+                                                <a class="LinkReporte LinkReportePDF" asp-controller="Reporte"
+                                                    asp-action="GenerarReporteAlquileresPropietarioPDF">
+                                                    Generar Reporte en PDF
+                                                </a>
+                                                <a class="LinkReporte LinkReporteExcel" asp-controller="Reporte"
+                                                    asp-action="GenerarReporteAlquileresPropietarioEXCEL">
+                                                    Generar Reporte en Excel
+                                                </a>
+                                            </div>
+                                            <div class="DivEnviarCorreo" id="EnviarReportesAlquileresPropietarioPorCorreo">
+                                                <button class="BotonCerrar" id="BotonCerrarReportesAlquileresPropietarioPorCorreo">
+                                                    <span class="X"></span>
+                                                    <span class="Y"></span>
+                                                </button>
+                                                <form asp-controller="Reporte" asp-action="EnviarReportesAlquileresPropietarioPorCorreo"
+                                                    method="post" class="FormularioCorreo">
+                                                    <div class="DivFormulario">
+                                                        <button type="submit" class="BotonFormulario">Enviar</button>
+                                                        <input type="email" class="InputTextoFormulario" id="Correo"
+                                                            placeholder="Correo" name="Correo">
+                                                        <label for="Correo" class="EtiquetaFormulario">Correo</label>
+                                                </form>
+                                            </div>
                                         }
                                         else
                                         {
