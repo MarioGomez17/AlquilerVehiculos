@@ -63,22 +63,20 @@ namespace ALQUILER_VEHICULOS.Reports
         }
         public void GenerarReporteAlquileresAlquiladorPDF()
         {
+            string FilasTabla = "";
+            int Indice = 0;
+            float PrecioTotal = 0;
+            string RutaImagen = Directory.GetCurrentDirectory() + "/wwwroot/imagenes/".Replace(@"\", "/");
+            string HTMLString = File.ReadAllText("./Templates/ReporteAlquileresAlquilador.html").ToString();
             HtmlToPdf Convertidor = new();
-            PdfDocument DocumentoPDF;
+            PdfDocument DocumentoFinal = new();
             Convertidor.Options.PdfPageOrientation = PdfPageOrientation.Landscape;
             Convertidor.Options.MarginLeft = 0;
             Convertidor.Options.MarginRight = 0;
             Convertidor.Options.MarginTop = 0;
             Convertidor.Options.MarginBottom = 0;
-            string HTMLString = File.ReadAllText("./Templates/ReporteAlquileresAlquilador.html").ToString();
-            string FilasTabla = "";
-            int Indice = 1;
-            float PrecioTotal = 0;
-            string RutaImagen = Directory.GetCurrentDirectory();
-            RutaImagen = RutaImagen.Replace(@"\", "/");
-            RutaImagen += "/wwwroot/imagenes/";
+            List<List<string>> ListaListas = [];
             MySqlConnection ConexionBD = ModeloConexion.Conect();
-
             try
             {
                 ConexionBD.Open();
@@ -88,9 +86,15 @@ namespace ALQUILER_VEHICULOS.Reports
                 {
                     while (Lector.Read())
                     {
+                        if (Indice % 8 == 0)
+                        {
+                            ListaListas.Add([]);
+                        }
+                        Indice++;
                         if (Indice % 2 == 0)
                         {
-                            FilasTabla += "<tr>" +
+                            ListaListas.Last().Add(
+                            "<tr>" +
                                                 "<td class='CeldaDatoTabla CeldaImpar'>" + Indice.ToString() + "</td> " +
                                                 "<td class='CeldaDatoTabla CeldaImpar'>" + new DateOnly(Lector.GetDateTime(0).Year, Lector.GetDateTime(0).Month, Lector.GetDateTime(0).Day).ToString() + "</td> " +
                                                 "<td class='CeldaDatoTabla CeldaImpar'>" + new DateOnly(Lector.GetDateTime(1).Year, Lector.GetDateTime(1).Month, Lector.GetDateTime(1).Day).ToString() + "</td> " +
@@ -101,11 +105,12 @@ namespace ALQUILER_VEHICULOS.Reports
                                                 "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetString(9) + "</td> " +
                                                 "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetString(10) + "<br>(" + Lector.GetFloat(11).ToString() + ")</td> " +
                                                 "<td class='CeldaDatoTabla CeldaImpar'>" + Lector.GetFloat(12).ToString() + "</td>" +
-                                            "</tr> ";
+                                            "</tr> ");
                         }
                         else
                         {
-                            FilasTabla += "<tr>" +
+                            ListaListas.Last().Add(
+                            "<tr>" +
                                                 "<td class='CeldaDatoTabla CeldaPar'>" + Indice.ToString() + "</td> " +
                                                 "<td class='CeldaDatoTabla CeldaPar'>" + new DateOnly(Lector.GetDateTime(0).Year, Lector.GetDateTime(0).Month, Lector.GetDateTime(0).Day).ToString() + "</td> " +
                                                 "<td class='CeldaDatoTabla CeldaPar'>" + new DateOnly(Lector.GetDateTime(1).Year, Lector.GetDateTime(1).Month, Lector.GetDateTime(1).Day).ToString() + "</td> " +
@@ -116,9 +121,8 @@ namespace ALQUILER_VEHICULOS.Reports
                                                 "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetString(9) + "</td> " +
                                                 "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetString(10) + "<br>(" + Lector.GetFloat(11).ToString() + ")</td> " +
                                                 "<td class='CeldaDatoTabla CeldaPar'>" + Lector.GetFloat(12).ToString() + "</td>" +
-                                            "</tr> ";
+                                            "</tr> ");
                         }
-                        Indice++;
                         PrecioTotal += Lector.GetFloat(12);
                     }
                 }
@@ -128,6 +132,44 @@ namespace ALQUILER_VEHICULOS.Reports
             {
                 ConexionBD.Close();
             }
+            int IndicePagina = 0;
+            foreach (var Lista in ListaListas)
+            {
+                IndicePagina++;
+                FilasTabla = "";
+                foreach (var ListaAux in Lista)
+                {
+                    FilasTabla += ListaAux;
+                }
+                string CopiaHTMLString = HTMLString;
+                if (Lista == ListaListas.Last())
+                {
+                    CopiaHTMLString = CopiaHTMLString.Replace("@FILATOTAL", "<tr><td colspan='9' class='FilaTotal TituloTotal'>Total Precio Alquileres</td><td class='FilaTotal'>" + PrecioTotal.ToString() + "</td></tr>");
+                }
+                else
+                {
+                    CopiaHTMLString = CopiaHTMLString.Replace("@FILATOTAL", "");
+                }
+                CopiaHTMLString = CopiaHTMLString.Replace("@USUARIO", this.Usuario.Nombre + " " + this.Usuario.Apellido);
+                CopiaHTMLString = CopiaHTMLString.Replace("@IDENTIFICACION", this.Usuario.SimboloTipoIdentificacion + " " + this.Usuario.NumeroIdentificacion);
+                CopiaHTMLString = CopiaHTMLString.Replace("@FECHAINFORME", DateTime.Now.ToString("dddd dd-MMMM-yyyy hh:mm:ss tt"));
+                CopiaHTMLString = CopiaHTMLString.Replace("@RAZONSOCIAL", this.Empresa.Nombre);
+                CopiaHTMLString = CopiaHTMLString.Replace("@CIUDAD", this.Empresa.Ciudad);
+                CopiaHTMLString = CopiaHTMLString.Replace("@DIRECCION", this.Empresa.Direccion);
+                CopiaHTMLString = CopiaHTMLString.Replace("@BARRIO", this.Empresa.Barrio);
+                CopiaHTMLString = CopiaHTMLString.Replace("@NIT", this.Empresa.NIT);
+                CopiaHTMLString = CopiaHTMLString.Replace("@TELEFONO", this.Empresa.Telefono);
+                CopiaHTMLString = CopiaHTMLString.Replace("@CORREO", this.Empresa.Correo);
+                CopiaHTMLString = CopiaHTMLString.Replace("@FOTO", RutaImagen + this.Empresa.RutaFoto);
+                CopiaHTMLString = CopiaHTMLString.Replace("@TABLAINFORME", FilasTabla);
+                CopiaHTMLString = CopiaHTMLString.Replace("@PAGINAS", "PAGINA " + IndicePagina + " DE " + ListaListas.Count);
+                PdfDocument DocumentoPDFAux = Convertidor.ConvertHtmlString(CopiaHTMLString);
+                DocumentoFinal.Append(DocumentoPDFAux);
+            }
+            DocumentoFinal.Save("./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".pdf");
+            /*HTMLString = HTMLString.Replace("@USUARIO", this.Usuario.Nombre + " " + this.Usuario.Apellido);
+            HTMLString = HTMLString.Replace("@IDENTIFICACION", this.Usuario.SimboloTipoIdentificacion + " " + this.Usuario.NumeroIdentificacion);
+            HTMLString = HTMLString.Replace("@FECHAINFORME", DateTime.Now.ToString("dddd dd-MMMM-yyyy hh:mm:ss tt"));
             HTMLString = HTMLString.Replace("@RAZONSOCIAL", this.Empresa.Nombre);
             HTMLString = HTMLString.Replace("@CIUDAD", this.Empresa.Ciudad);
             HTMLString = HTMLString.Replace("@DIRECCION", this.Empresa.Direccion);
@@ -137,13 +179,10 @@ namespace ALQUILER_VEHICULOS.Reports
             HTMLString = HTMLString.Replace("@CORREO", this.Empresa.Correo);
             HTMLString = HTMLString.Replace("@FOTO", RutaImagen + this.Empresa.RutaFoto);
             HTMLString = HTMLString.Replace("@TABLAINFORME", FilasTabla);
-            HTMLString = HTMLString.Replace("@TOTAL", PrecioTotal.ToString());
-            HTMLString = HTMLString.Replace("@USUARIO", this.Usuario.Nombre + " " + this.Usuario.Apellido);
-            HTMLString = HTMLString.Replace("@IDENTIFICACION", this.Usuario.SimboloTipoIdentificacion + " " + this.Usuario.NumeroIdentificacion);
-            HTMLString = HTMLString.Replace("@FECHAINFORME", DateTime.Now.ToString("dddd dd-MMMM-yyyy hh:mm:ss tt"));
+            HTMLString = HTMLString.Replace("@FILATOTAL", "<tr><td colspan='9' class='FilaTotal TituloTotal'>Total Precio Alquileres</td><td class='FilaTotal'>" + PrecioTotal.ToString() + "</td></tr>");
             DocumentoPDF = Convertidor.ConvertHtmlString(HTMLString);
             DocumentoPDF.Save("./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".pdf");
-            DocumentoPDF.Close();
+            DocumentoPDF.Close();*/
         }
         public void GenerarReporteAlquileresAlquiladorEXCEL()
         {
@@ -234,6 +273,3 @@ namespace ALQUILER_VEHICULOS.Reports
         }
     }
 }
-/*
-
-*/
