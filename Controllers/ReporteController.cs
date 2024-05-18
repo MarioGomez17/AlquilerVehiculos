@@ -3,6 +3,7 @@ using ALQUILER_VEHICULOS.Models;
 using ALQUILER_VEHICULOS.Reports;
 using Newtonsoft.Json;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 namespace ALQUILER_VEHICULOS.Controllers
 {
     public class ReporteController : Controller
@@ -51,6 +52,26 @@ namespace ALQUILER_VEHICULOS.Controllers
             ReporteAlquileresPropietario Reporte = new(DatosUsuarioSesion().Id);
             Reporte.EnviarReportesAlquileresPropietarioPorCorreo(Correo);
             return RedirectToAction("HistorialAlquileres", "Alquiler");
+        }
+        [Authorize(Policy = "SoloAdministrador")]
+        public IActionResult GenerarReporteAlquileresAdministradorPDF(){
+            ReporteAlquileresAdministrador Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteAlquileresAdministradorPDF();
+            return RedirectToAction("GestionarTodosAlquileres", "Administrador");
+        }
+        [Authorize(Policy = "SoloAdministrador")]
+        public IActionResult GenerarReporteAlquileresAdministradorEXCEL()
+        {
+            ReporteAlquileresAdministrador Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteAlquileresAdministradorEXCEL();
+            return RedirectToAction("GestionarTodosAlquileres", "Administrador");
+        }
+        [Authorize(Policy = "SoloAdministrador")]
+        public IActionResult EnviarReportesAlquileresAdministradorPorCorreo(string Correo)
+        {
+            ReporteAlquileresAdministrador Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.EnviarReportesAlquileresAdministradorPorCorreo(Correo);
+            return RedirectToAction("GestionarTodosAlquileres", "Administrador");
         }
     }
 }

@@ -48,3 +48,22 @@ document.getElementById('Tipo').addEventListener('change', TraerTodasMarcasPorTI
 document.addEventListener('DOMContentLoaded', function () {
     TraerTodosTIposInicial();
 });
+
+
+function ActivarDivCorreoReportesAlquileresAdministrador(){
+    const DivEnviarCorreo = document.getElementById("EnviarReportesAlquileresAdministradorPorCorreo");
+    DivEnviarCorreo.style.display = "flex";
+    DivEnviarCorreo.style.justifyContent = "center";
+    DivEnviarCorreo.style.alignItems = "center";
+}
+
+function DesactivarDivCorreoAlquileresAdministrador(){
+    const DivEnviarCorreo = document.getElementById("EnviarReportesAlquileresAdministradorPorCorreo");
+    DivEnviarCorreo.style.display = "none";
+}
+
+const BotonEnviarCorreoAlquileresAdministrador = document.getElementById("BotonEnviarReportesAlquileresAdministradorPorCorreo");
+BotonEnviarCorreoAlquileresAdministrador.addEventListener("click", ActivarDivCorreoReportesAlquileresAdministrador);
+
+const BotonCerrarCorreoAlquileresAdministrador = document.getElementById("BotonCerrarReportesAlquileresAdministradorPorCorreo");
+BotonCerrarCorreoAlquileresAdministrador.addEventListener("click", DesactivarDivCorreoAlquileresAdministrador);

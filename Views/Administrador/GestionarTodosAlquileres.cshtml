@@ -199,6 +199,33 @@
                                                     </div>
                                                 </div>
                                             }
+                                            <div class="DivLinksExportar" id="DivLinksExportar">
+                                                <button class="LinkReporte LinkReporteCorreo" id="BotonEnviarReportesAlquileresAdministradorPorCorreo">
+                                                    Eviar Reporte Por Correo
+                                                </button>
+                                                <a class="LinkReporte LinkReportePDF" asp-controller="Reporte"
+                                                    asp-action="GenerarReporteAlquileresAdministradorPDF">
+                                                    Generar Reporte en PDF
+                                                </a>
+                                                <a class="LinkReporte LinkReporteExcel" asp-controller="Reporte"
+                                                    asp-action="GenerarReporteAlquileresAdministradorEXCEL">
+                                                    Generar Reporte en Excel
+                                                </a>
+                                            </div>
+                                            <div class="DivEnviarCorreo" id="EnviarReportesAlquileresAdministradorPorCorreo">
+                                                <button class="BotonCerrar" id="BotonCerrarReportesAlquileresAdministradorPorCorreo">
+                                                    <span class="X"></span>
+                                                    <span class="Y"></span>
+                                                </button>
+                                                <form asp-controller="Reporte" asp-action="EnviarReportesAlquileresAdministradorPorCorreo"
+                                                    method="post" class="FormularioCorreo">
+                                                    <div class="DivFormulario">
+                                                        <button type="submit" class="BotonFormulario">Enviar</button>
+                                                        <input type="email" class="InputTextoFormulario" id="Correo"
+                                                            placeholder="Correo" name="Correo">
+                                                        <label for="Correo" class="EtiquetaFormulario">Correo</label>
+                                                </form>
+                                            </div>
                                         }
                                         else
                                         {
