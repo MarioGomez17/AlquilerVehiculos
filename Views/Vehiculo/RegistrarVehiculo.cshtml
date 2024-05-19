@@ -64,17 +64,31 @@
                     </a>
                 </div>
                 <div class="DivLinkRegistrarVehiculo">
-                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkRegistrarVehiculo">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 8l0 4l2 2" />
-                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
-                        </svg>
-                        <span class="TextoLinkRegistrarVehiculo">Ver Mis Alquileres</span>
-                    </a>
+                    @if (ViewBag.AlquileresPendientes > 0)
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkRegistrarVehiculo">
+                            <div class="DivAlquieleresPendientes">
+                                <p class="AlquieleresPendientes">
+                                    @ViewBag.AlquileresPendientes
+                                </p>
+                            </div>
+                            <span class="TextoLinkRegistrarVehiculo">Ver Mis Alquileres</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkRegistrarVehiculo">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 8l0 4l2 2" />
+                                <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                            </svg>
+                            <span class="TextoLinkRegistrarVehiculo">Ver Mis Alquileres</span>
+                        </a>
+                    }
                 </div>
                 <div class="DivLinkRegistrarVehiculo">
                     <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkRegistrarVehiculo">
@@ -102,9 +116,9 @@
                     <main role="main" class="PrincipalRegistrarVehiculo">
                         <div class="ContenidoPrincipalRegistrarVehiculo">
                             <div class="DivErrorViewBag">
-                                @if (ViewBag.Message.Length > 0)
+                                @if (ViewBag.Mensaje.Length > 0)
                                 {
-                                    <h3 class="ErroViewBag">@ViewBag.Message[0]</h3>
+                                    <h3 class="ErroViewBag">@ViewBag.Mensaje[0]</h3>
                                 }
                             </div>
                             <form method="post" class="FormularioVehiculo" asp-controller="Vehiculo"
@@ -113,10 +127,10 @@
                                     <div class="ComponentesFormulario">
                                         <div class="GrupoComponentes">
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
                                                     <input class="InputFormulario InputCorto" type="text" name="Placa"
-                                                        id="Placa" value="@ViewBag.Message[1]" />
+                                                        id="Placa" value="@ViewBag.Mensaje[1]" />
                                                 }
                                                 else
                                                 {
@@ -126,11 +140,12 @@
                                                 <label class="EtiquetaFormulario" for="Placa">Placa</label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
-                                                    if (int.Parse(ViewBag.Message[2]) == 0)
+                                                    if (int.Parse(ViewBag.Mensaje[2]) == 0)
                                                     {
-                                                        <select name="Cilindrada" id="Cilindrada" class="SelectFormulario InputCorto">
+                                                        <select name="Cilindrada" id="Cilindrada"
+                                                            class="SelectFormulario InputCorto">
                                                             <option selected value=0 class="OptionSelect">
                                                                 Seleccione una Cilindrada
                                                             </option>
@@ -144,10 +159,11 @@
                                                     }
                                                     else
                                                     {
-                                                        <select name="Cilindrada" id="Cilindrada" class="SelectFormulario  InputCorto">
+                                                        <select name="Cilindrada" id="Cilindrada"
+                                                            class="SelectFormulario  InputCorto">
                                                             @foreach (var Cilindrada in Model.Cilindradas)
                                                             {
-                                                                if (int.Parse(ViewBag.Message[2]) == Cilindrada.Id)
+                                                                if (int.Parse(ViewBag.Mensaje[2]) == Cilindrada.Id)
                                                                 {
                                                                     <option value=@Cilindrada.Id class="OptionSelect" selected>
                                                                         @Cilindrada.Cilindrada
@@ -165,7 +181,8 @@
                                                 }
                                                 else
                                                 {
-                                                    <select name="Cilindrada" id="Cilindrada" class="SelectFormulario InputCorto">
+                                                    <select name="Cilindrada" id="Cilindrada"
+                                                        class="SelectFormulario InputCorto">
                                                         <option selected value=0 class="OptionSelect">
                                                             Seleccione una Cilindrada
                                                         </option>
@@ -181,9 +198,9 @@
                                                     (CC)</label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
-                                                    if (int.Parse(ViewBag.Message[3]) == 0)
+                                                    if (int.Parse(ViewBag.Mensaje[3]) == 0)
                                                     {
                                                         <select name="Modelo" id="Modelo" class="SelectFormulario InputCorto">
                                                             <option selected value=0 class="OptionSelect">
@@ -202,7 +219,7 @@
                                                         <select name="Modelo" id="Modelo" class="SelectFormulario InputCorto">
                                                             @foreach (var Modelo in Model.Modelos)
                                                             {
-                                                                if (int.Parse(ViewBag.Message[3]) == Modelo.Id)
+                                                                if (int.Parse(ViewBag.Mensaje[3]) == Modelo.Id)
                                                                 {
                                                                     <option value=@Modelo.Id class="OptionSelect" selected>
                                                                         @Modelo.Modelo
@@ -237,11 +254,11 @@
                                         </div>
                                         <div class="GrupoComponentes">
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
                                                     <input class="InputFormulario InputCorto" type="text"
                                                         name="PrecioAlquilerDia" id="PrecioAlquilerDia"
-                                                        value="@int.Parse(ViewBag.Message[4])" />
+                                                        value="@int.Parse(ViewBag.Mensaje[4])" />
                                                 }
                                                 else
                                                 {
@@ -253,9 +270,9 @@
                                                 </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
-                                                    if (int.Parse(ViewBag.Message[5]) == 0)
+                                                    if (int.Parse(ViewBag.Mensaje[5]) == 0)
                                                     {
                                                         <select name="Color" id="Color" class="SelectFormulario InputCorto">
                                                             <option selected value=0 class="OptionSelect">
@@ -274,7 +291,7 @@
                                                         <select name="Color" id="Color" class="SelectFormulario InputCorto">
                                                             @foreach (var Color in Model.Colores)
                                                             {
-                                                                if (int.Parse(ViewBag.Message[5]) == Color.Id)
+                                                                if (int.Parse(ViewBag.Mensaje[5]) == Color.Id)
                                                                 {
                                                                     <option value=@Color.Id class="OptionSelect" selected>
                                                                         @Color.Color
@@ -307,9 +324,9 @@
                                                 <label class="EtiquetaFormulario" for="Color">Color</label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
-                                                    if (int.Parse(ViewBag.Message[6]) == 0)
+                                                    if (int.Parse(ViewBag.Mensaje[6]) == 0)
                                                     {
                                                         <select name="CantidadPasajeros" id="CantidadPasajeros"
                                                             class="SelectFormulario InputCorto">
@@ -330,7 +347,7 @@
                                                             class="SelectFormulario InputCorto">
                                                             @foreach (var CantidadPasajeros in Model.CantidadesPasajeros)
                                                             {
-                                                                if (int.Parse(ViewBag.Message[6]) == CantidadPasajeros.Id)
+                                                                if (int.Parse(ViewBag.Mensaje[6]) == CantidadPasajeros.Id)
                                                                 {
                                                                     <option value=@CantidadPasajeros.Id class="OptionSelect" selected>
                                                                         @CantidadPasajeros.CantidadPasajeros
@@ -431,10 +448,10 @@
                                         </div>
                                         <div class="GrupoComponentes">
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
                                                     <input class="InputFormulario" type="text" name="NumeroCertificadoCDA"
-                                                        id="NumeroCertificadoCDA" value="@ViewBag.Message[7]" />
+                                                        id="NumeroCertificadoCDA" value="@ViewBag.Mensaje[7]" />
                                                 }
                                                 else
                                                 {
@@ -445,10 +462,10 @@
                                                     Certificado CDA</label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
                                                     <input class="InputFormulario" type="text" name="NumeroSeguro"
-                                                        id="NumeroPolizaSeguro" value="@ViewBag.Message[8]" />
+                                                        id="NumeroPolizaSeguro" value="@ViewBag.Mensaje[8]" />
                                                 }
                                                 else
                                                 {
@@ -462,9 +479,9 @@
                                         </div>
                                         <div class="GrupoComponentes">
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
-                                                    if (int.Parse(ViewBag.Message[9]) == 0)
+                                                    if (int.Parse(ViewBag.Mensaje[9]) == 0)
                                                     {
                                                         <select class="SelectFormulario" id="TipoCombustible"
                                                             name="TipoCombustible">
@@ -485,7 +502,7 @@
                                                             name="TipoCombustible">
                                                             @foreach (var TipoCombustible in Model.Combustibles)
                                                             {
-                                                                if (int.Parse(ViewBag.Message[9]) == TipoCombustible.Id)
+                                                                if (int.Parse(ViewBag.Mensaje[9]) == TipoCombustible.Id)
                                                                 {
                                                                     <option value=@TipoCombustible.Id class="OptionSelect" selected>
                                                                         @TipoCombustible.Nombre
@@ -520,9 +537,9 @@
                                                     Combustible</label>
                                             </div>
                                             <div class="DivEtiquetaInput">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
-                                                    if (int.Parse(ViewBag.Message[10]) == 0)
+                                                    if (int.Parse(ViewBag.Mensaje[10]) == 0)
                                                     {
                                                         <select class="SelectFormulario" id="Ciudad" name="Ciudad">
                                                             <option selected value=0 class="OptionSelect">
@@ -541,7 +558,7 @@
                                                         <select class="SelectFormulario" id="Ciudad" name="Ciudad">
                                                             @foreach (var Ciudad in Model.Ciudades)
                                                             {
-                                                                if (int.Parse(ViewBag.Message[10]) == Ciudad.Id)
+                                                                if (int.Parse(ViewBag.Mensaje[10]) == Ciudad.Id)
                                                                 {
                                                                     <option value=@Ciudad.Id class="OptionSelect" selected>
                                                                         @Ciudad.Nombre

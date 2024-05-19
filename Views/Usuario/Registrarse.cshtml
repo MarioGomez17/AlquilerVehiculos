@@ -64,17 +64,31 @@
                     </a>
                 </div>
                 <div class="DivLinkRegistrarse">
-                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkRegistrarse">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 8l0 4l2 2" />
-                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
-                        </svg>
-                        <span class="TextoLinkRegistrarse">Ver Mis Alquileres</span>
-                    </a>
+                    @if (ViewBag.AlquileresPendientes > 0)
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkRegistrarse">
+                            <div class="DivAlquieleresPendientes">
+                                <p class="AlquieleresPendientes">
+                                    @ViewBag.AlquileresPendientes
+                                </p>
+                            </div>
+                            <span class="TextoLinkRegistrarse">Ver Mis Alquileres</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkRegistrarse">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 8l0 4l2 2" />
+                                <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                            </svg>
+                            <span class="TextoLinkRegistrarse">Ver Mis Alquileres</span>
+                        </a>
+                    }
                 </div>
                 <div class="DivLinkRegistrarse">
                     <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkRegistrarse">
@@ -105,9 +119,9 @@
                                 <h2 class="TituloFormulario">Crear Cuenta</h2>
                             </div>
                             <div class="DivErrorViewBag">
-                                @if (ViewBag.Message.Length > 0)
+                                @if (ViewBag.Mensaje.Length > 0)
                                 {
-                                    <h3 class="ErroViewBag">@ViewBag.Message[0]</h3>
+                                    <h3 class="ErroViewBag">@ViewBag.Mensaje[0]</h3>
                                 }
                             </div>
                             <div class="DivFormularioRegistrarse">
@@ -115,10 +129,10 @@
                                     class="FormularioRegistrarse">
                                     <div class="DivParaDosComponentees">
                                         <div class="Componente">
-                                            @if (ViewBag.Message.Length > 0)
+                                            @if (ViewBag.Mensaje.Length > 0)
                                             {
                                                 <input class="InputTexto" type="text" placeholder="Nombre" name="Nombre"
-                                                    id="Nombre" required value="@ViewBag.Message[1]" />
+                                                    id="Nombre" required value="@ViewBag.Mensaje[1]" />
                                             }
                                             else
                                             {
@@ -128,10 +142,10 @@
                                             <label for="Nombre" class="EtiquetaFormulario">Nombre</label>
                                         </div>
                                         <div class="Componente">
-                                            @if (ViewBag.Message.Length > 0)
+                                            @if (ViewBag.Mensaje.Length > 0)
                                             {
                                                 <input class="InputTexto" type="text" placeholder="Apellido" name="Apellido"
-                                                    id="Apellido" value="@ViewBag.Message[2]" required />
+                                                    id="Apellido" value="@ViewBag.Mensaje[2]" required />
                                             }
                                             else
                                             {
@@ -145,13 +159,13 @@
                                         <div class="Componente">
                                             <select id="TipoIdentificacion" name="TipoIdentificacion"
                                                 class="SelectFormulario">
-                                                @if (ViewBag.Message.Length > 0)
+                                                @if (ViewBag.Mensaje.Length > 0)
                                                 {
-                                                    if (int.Parse(ViewBag.Message[3]) != 0)
+                                                    if (int.Parse(ViewBag.Mensaje[3]) != 0)
                                                     {
                                                         @foreach (var TipoIdentificacion in Model)
                                                         {
-                                                            if (TipoIdentificacion.Id == int.Parse(ViewBag.Message[3]))
+                                                            if (TipoIdentificacion.Id == int.Parse(ViewBag.Mensaje[3]))
                                                             {
                                                                 <option value=@TipoIdentificacion.Id class="OptionSelectFormulario"
                                                                     selected>
@@ -198,11 +212,11 @@
                                                 Identificación</label>
                                         </div>
                                         <div class="Componente">
-                                            @if (ViewBag.Message.Length > 0)
+                                            @if (ViewBag.Mensaje.Length > 0)
                                             {
                                                 <input class="InputTexto" type="number"
                                                     placeholder="Número de Identificación" name="NumeroIdentificacion"
-                                                    id="NumeroIdentificacion" required value="@ViewBag.Message[4]" />
+                                                    id="NumeroIdentificacion" required value="@ViewBag.Mensaje[4]" />
                                             }
                                             else
                                             {
@@ -216,10 +230,10 @@
                                     </div>
                                     <div class="DivParaDosComponentees">
                                         <div class="Componente">
-                                            @if (ViewBag.Message.Length > 0)
+                                            @if (ViewBag.Mensaje.Length > 0)
                                             {
                                                 <input class="InputTexto" type="number" placeholder="Teléfono"
-                                                    name="Telefono" id="Telefono" required value="@ViewBag.Message[5]" />
+                                                    name="Telefono" id="Telefono" required value="@ViewBag.Mensaje[5]" />
                                             }
                                             else
                                             {
@@ -229,10 +243,10 @@
                                             <label for="Telefono" class="EtiquetaFormulario">Teléfono</label>
                                         </div>
                                         <div class="Componente">
-                                            @if (ViewBag.Message.Length > 0)
+                                            @if (ViewBag.Mensaje.Length > 0)
                                             {
                                                 <input class="InputTexto" type="email" placeholder="Correo" name="Correo"
-                                                    id="Correo" required value="@ViewBag.Message[6]" />
+                                                    id="Correo" required value="@ViewBag.Mensaje[6]" />
                                             }
                                             else
                                             {

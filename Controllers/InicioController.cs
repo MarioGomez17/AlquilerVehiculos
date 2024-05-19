@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using ALQUILER_VEHICULOS.Models;
+using System.Security.Claims;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 namespace ALQUILER_VEHICULOS.Controllers
 {
     public class InicioController : Controller
@@ -7,6 +11,11 @@ namespace ALQUILER_VEHICULOS.Controllers
         //---------------------------------------------- VISTAS ----------------------------------------------
         public IActionResult Inicio()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }
@@ -62,21 +71,57 @@ namespace ALQUILER_VEHICULOS.Controllers
             }
             AlquilerController.FechaInicio = ValorFiltroFechaInicio;
             AlquilerController.FechaFin = ValorFiltroFechaFin;
-            object[] Datos =
-            [
-                FiltroCiudad,
-                FiltroTipoVehiculo,
-                FiltroMarca,
-                FiltroFechaInicio,
-                FiltroFechaFin
-            ];
-            ViewBag.Message = Datos;
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
+            ViewBag.FiltroCiudad = FiltroCiudad;
+            ViewBag.FiltroTipoVehiculo = FiltroTipoVehiculo;
+            ViewBag.FiltroMarca = FiltroMarca;
+            ViewBag.FiltroFechaInicio = FiltroFechaInicio;
+            ViewBag.FiltroFechaFin = FiltroFechaFin;
             return View(ModeloInicio);
         }
         public IActionResult SinPermisos()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
+        }
+        private ModeloUsuario DatosUsuarioSesion()
+        {
+            var Identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (Identity.FindFirst(ClaimTypes.UserData) != null)
+            {
+                var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
+                return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
+            }
+            else
+            {
+                return null;
+            }
+        }
+        private async Task ActualizarDatosUsuarioSesion()
+        {
+            if (DatosUsuarioSesion() != null)
+            {
+                int IdUsuario = DatosUsuarioSesion().Id;
+                ModeloUsuario ModeloUsuario = new();
+                var ClaimPrincipal = (ClaimsIdentity)User.Identity;
+                var ClaimUsuarioActual = ClaimPrincipal.FindFirst(ClaimTypes.UserData);
+                if (ClaimUsuarioActual != null)
+                {
+                    ClaimPrincipal.RemoveClaim(ClaimUsuarioActual);
+                }
+                Claim nuevoClaimUsuario = new(ClaimTypes.UserData, JsonConvert.SerializeObject(ModeloUsuario.TraerUsuario(IdUsuario)));
+                ClaimPrincipal.AddClaim(nuevoClaimUsuario);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(ClaimPrincipal));
+            }
         }
     }
 }

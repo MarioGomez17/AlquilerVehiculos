@@ -8,18 +8,14 @@ namespace ALQUILER_VEHICULOS.Controllers
 {
     public class ReporteController : Controller
     {
-        public IActionResult ReporteAlquileresAlquilador()
-        {
-            ModeloAlquileresUsuario ModeloAlquileresUsuario = new(DatosUsuarioSesion().Id);
-            return View(ModeloAlquileresUsuario.HistorialAlquileresAlquilador);
-        }
         private ModeloUsuario DatosUsuarioSesion()
         {
             var Identity = HttpContext.User.Identity as ClaimsIdentity;
             var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
             return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
         }
-        public IActionResult GenerarReporteAlquileresAlquiladorPDF(){
+        public IActionResult GenerarReporteAlquileresAlquiladorPDF()
+        {
             ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAlquiladorPDF();
             return RedirectToAction("HistorialAlquileres", "Alquiler");
@@ -30,13 +26,14 @@ namespace ALQUILER_VEHICULOS.Controllers
             Reporte.GenerarReporteAlquileresAlquiladorEXCEL();
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
-        public IActionResult EnviarReportesAlquileresAlquiladorPorCorreo(string Correo)
+        public IActionResult EnviarReportesAlquileresAlquiladorPorCorreo()
         {
             ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
-            Reporte.EnviarReportesAlquileresAlquiladorPorCorreo(Correo);
+            Reporte.EnviarReportesAlquileresAlquiladorPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
-        public IActionResult GenerarReporteAlquileresPropietarioPDF(){
+        public IActionResult GenerarReporteAlquileresPropietarioPDF()
+        {
             ReporteAlquileresPropietario Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresPropietarioPDF();
             return RedirectToAction("HistorialAlquileres", "Alquiler");
@@ -47,14 +44,15 @@ namespace ALQUILER_VEHICULOS.Controllers
             Reporte.GenerarReporteAlquileresPropietarioEXCEL();
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
-        public IActionResult EnviarReportesAlquileresPropietarioPorCorreo(string Correo)
+        public IActionResult EnviarReportesAlquileresPropietarioPorCorreo()
         {
             ReporteAlquileresPropietario Reporte = new(DatosUsuarioSesion().Id);
-            Reporte.EnviarReportesAlquileresPropietarioPorCorreo(Correo);
+            Reporte.EnviarReportesAlquileresPropietarioPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
         [Authorize(Policy = "SoloAdministrador")]
-        public IActionResult GenerarReporteAlquileresAdministradorPDF(){
+        public IActionResult GenerarReporteAlquileresAdministradorPDF()
+        {
             ReporteAlquileresAdministrador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAdministradorPDF();
             return RedirectToAction("GestionarTodosAlquileres", "Administrador");
@@ -67,10 +65,10 @@ namespace ALQUILER_VEHICULOS.Controllers
             return RedirectToAction("GestionarTodosAlquileres", "Administrador");
         }
         [Authorize(Policy = "SoloAdministrador")]
-        public IActionResult EnviarReportesAlquileresAdministradorPorCorreo(string Correo)
+        public IActionResult EnviarReportesAlquileresAdministradorPorCorreo()
         {
             ReporteAlquileresAdministrador Reporte = new(DatosUsuarioSesion().Id);
-            Reporte.EnviarReportesAlquileresAdministradorPorCorreo(Correo);
+            Reporte.EnviarReportesAlquileresAdministradorPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("GestionarTodosAlquileres", "Administrador");
         }
     }

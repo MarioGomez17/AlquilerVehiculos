@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Net;
+using System.Net.Mail;
+using MySql.Data.MySqlClient;
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloAlquiler
@@ -46,14 +48,17 @@ namespace ALQUILER_VEHICULOS.Models
                 MetodoPago + ", " +
                 Seguro + ", " +
                 3 + ")";
-            ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+            //ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
             int IdAlquiler = TraerIdUltimoAlquilerPorVehiculo(Vehiculo);
             ModeloAlquilador ModeloAlquilador = new();
             ModeloPropietario ModeloPropietario = new();
             ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo = ModeloVehiculo.TraerVehiculo(Vehiculo);
-            ModeloAlquilador.AgregarAlquilerHistorialAlquilador(Alquilador, IdAlquiler);
-            return ModeloPropietario.AgregarAlquilerHistorialPropietario(ModeloVehiculo.Propietario, IdAlquiler);
+            ModeloVehiculo.UsuarioPropietario.AumentarAlquileresPendientes(ModeloVehiculo.UsuarioPropietario.Id);
+            //ModeloAlquilador.AgregarAlquilerHistorialAlquilador(Alquilador, IdAlquiler);
+            ModeloAlquilador = ModeloAlquilador.TraerAlquilador(Alquilador);
+            ReportarNuevoAlquilerPorCorreo(ModeloVehiculo, ModeloAlquilador.Usuario, FechaInicio.ToString("dddd dd-MM-yyyy"), FechaFin.ToString("dddd dd-MM-yyyy"), Precio);
+            return true;//ModeloPropietario.AgregarAlquilerHistorialPropietario(ModeloVehiculo.Propietario, IdAlquiler);
         }
         public ModeloAlquiler TraerAlquiler(int IdAlquiler)
         {
@@ -285,6 +290,23 @@ namespace ALQUILER_VEHICULOS.Models
             "WHERE " +
             "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler + "))";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public void ReportarNuevoAlquilerPorCorreo(ModeloVehiculo Vehiculo, ModeloUsuario Usuario, string FechaInicio, string FechaFin, float Precio)
+        {
+            string Asunto = "Nuevo Alquiler de " + Vehiculo.TipoVehiculo + " " + Vehiculo.Marca + " " + Vehiculo.Linea;
+            string Mensaje = "Hola Sr(a) " + Vehiculo.UsuarioPropietario.Nombre + " " + Vehiculo.UsuarioPropietario.Apellido + ".\n" +
+            "Le informamos que su vehículo " + Vehiculo.TipoVehiculo + " " + Vehiculo.Marca + " " + Vehiculo.Linea + " " +
+            "identificado con la placa " + Vehiculo.Placa + " fue solicitado en alquiler por " + Usuario.Nombre + " " + Usuario.Apellido + " " +
+            "desde la fecha de " + FechaInicio + " hasta la fecha de " + FechaFin + " por un costo de " + Precio + ".\n" +
+            "Por favor ponerse en contacto con el Sr(a). " + Usuario.Nombre + " " + Usuario.Apellido + ". Sus datos de contacto son:\n" +
+            "Teléfono: " + Usuario.Telefono + "\nCorreo: " + Usuario.Correo + "\nGracias por usar nuestra plataforma.";
+            SmtpClient ClienteAMTP = new("smtp-mail.outlook.com", 587)
+            {
+                EnableSsl = true,
+                Credentials = new NetworkCredential("mariog.101200@hotmail.com", "M@rio112358")
+            };
+            MailMessage MensajeCorreo = new("mariog.101200@hotmail.com", Vehiculo.UsuarioPropietario.Correo, Asunto, Mensaje.ToUpper());
+            ClienteAMTP.Send(MensajeCorreo);
         }
     }
 }

@@ -70,17 +70,31 @@
                     </a>
                 </div>
                 <div class="DivLinkGestionarAplicacion">
-                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 8l0 4l2 2" />
-                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
-                        </svg>
-                        <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
-                    </a>
+                    @if (ViewBag.AlquileresPendientes > 0)
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
+                            <div class="DivAlquieleresPendientes">
+                                <p class="AlquieleresPendientes">
+                                    @ViewBag.AlquileresPendientes
+                                </p>
+                            </div>
+                            <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 8l0 4l2 2" />
+                                <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                            </svg>
+                            <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
+                        </a>
+                    }
                 </div>
                 <div class="DivLinkGestionarAplicacion">
                     <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkGestionarAplicacion">
@@ -200,9 +214,10 @@
                                                 </div>
                                             }
                                             <div class="DivLinksExportar" id="DivLinksExportar">
-                                                <button class="LinkReporte LinkReporteCorreo" id="BotonEnviarReportesAlquileresAdministradorPorCorreo">
+                                                <a class="LinkReporte LinkReporteCorreo" asp-controller="Reporte"
+                                                    asp-action="EnviarReportesAlquileresAdministradorPorCorreo">
                                                     Eviar Reporte Por Correo
-                                                </button>
+                                                </a>
                                                 <a class="LinkReporte LinkReportePDF" asp-controller="Reporte"
                                                     asp-action="GenerarReporteAlquileresAdministradorPDF">
                                                     Generar Reporte en PDF
@@ -211,20 +226,6 @@
                                                     asp-action="GenerarReporteAlquileresAdministradorEXCEL">
                                                     Generar Reporte en Excel
                                                 </a>
-                                            </div>
-                                            <div class="DivEnviarCorreo" id="EnviarReportesAlquileresAdministradorPorCorreo">
-                                                <button class="BotonCerrar" id="BotonCerrarReportesAlquileresAdministradorPorCorreo">
-                                                    <span class="X"></span>
-                                                    <span class="Y"></span>
-                                                </button>
-                                                <form asp-controller="Reporte" asp-action="EnviarReportesAlquileresAdministradorPorCorreo"
-                                                    method="post" class="FormularioCorreo">
-                                                    <div class="DivFormulario">
-                                                        <button type="submit" class="BotonFormulario">Enviar</button>
-                                                        <input type="email" class="InputTextoFormulario" id="Correo"
-                                                            placeholder="Correo" name="Correo">
-                                                        <label for="Correo" class="EtiquetaFormulario">Correo</label>
-                                                </form>
                                             </div>
                                         }
                                         else

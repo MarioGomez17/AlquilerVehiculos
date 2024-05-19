@@ -80,6 +80,7 @@ body {
     border-radius: 15px;
     transition: background-color 0.5s ease;
     font-weight: bold;
+    padding: 7px;
 }
 
 .IconoLinkSVG {
@@ -363,4 +364,23 @@ body {
 
 .swal2-height-auto .ContenidoBodyRegistrarse {
     opacity: 0;
+}
+
+.DivAlquieleresPendientes{
+    background-color: red;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AlquieleresPendientes{
+    margin: 0;
+    text-align: center;
+    font-size: 15px;
+    font-family: var(--Font);
+    font-weight: bold;
+    color: var(--Black);
 }

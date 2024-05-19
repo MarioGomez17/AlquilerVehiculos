@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/InformacionVehiculo.css">
-    <title>INFORMACIÓN VEHÍCULOS</title>
+    <title>INFORMACIÓN VEHÍCULO</title>
 </head>
 
 <body class="BodyInformacionVehiculo">
@@ -64,6 +64,19 @@
                     </a>
                 </div>
                 <div class="DivLinkInformacionVehiculo">
+                    @if (ViewBag.AlquileresPendientes > 0)
+                    {
+                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInformacionVehiculo">
+                        <div class="DivAlquieleresPendientes">
+                            <p class="AlquieleresPendientes">
+                                @ViewBag.AlquileresPendientes
+                            </p>
+                        </div>
+                        <span class="TextoLinkInformacionVehiculo">Ver Mis Alquileres</span>
+                    </a>
+                    }
+                    else
+                    {
                     <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInformacionVehiculo">
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
@@ -75,6 +88,7 @@
                         </svg>
                         <span class="TextoLinkInformacionVehiculo">Ver Mis Alquileres</span>
                     </a>
+                    }
                 </div>
                 <div class="DivLinkInformacionVehiculo">
                     <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkInformacionVehiculo">

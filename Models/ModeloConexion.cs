@@ -31,10 +31,9 @@ namespace ALQUILER_VEHICULOS.Models
                 Comando.ExecuteNonQuery();
                 Bandera = true;
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
                 Bandera = false;
-                Console.WriteLine(e);
             }
             finally
             {

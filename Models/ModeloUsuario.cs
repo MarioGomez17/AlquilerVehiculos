@@ -14,6 +14,7 @@ namespace ALQUILER_VEHICULOS.Models
         public string Contrasena { get; set; }
         public string Estado { get; set; }
         public string Rol { get; set; }
+        public int AlquileresPendientes { get; set; }
         public List<ModeloPermiso> Permisos { get; set; }
         public ModeloUsuario TraerUsuario(string Correo, string Contrasena)
         {
@@ -28,7 +29,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario, " +
-                "alquiler_vehiculos.rol.Nombre_Rol " +
+                "alquiler_vehiculos.rol.Nombre_Rol, " +
+                "alquiler_vehiculos.usuario.AlquileresPendientes_Usuario " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
@@ -60,7 +62,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Correo = Lector.GetString(7),
                             Contrasena = "",
                             Estado = Lector.GetString(8),
-                            Rol = Lector.GetString(9)
+                            Rol = Lector.GetString(9),
+                            AlquileresPendientes = Lector.GetInt32(10)
                         };
                         ModeloPermiso Permiso = new();
                         Usuario.Permisos = Permiso.TraerPermisosUsuario(Usuario.Rol);
@@ -87,7 +90,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario, " +
-                "alquiler_vehiculos.rol.Nombre_Rol " +
+                "alquiler_vehiculos.rol.Nombre_Rol, " +
+                "alquiler_vehiculos.usuario.AlquileresPendientes_Usuario " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
@@ -118,7 +122,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Correo = Lector.GetString(7),
                             Contrasena = "",
                             Estado = Lector.GetString(8),
-                            Rol = Lector.GetString(9)
+                            Rol = Lector.GetString(9),
+                            AlquileresPendientes = Lector.GetInt32(10)
                         };
                         ModeloPermiso Permiso = new();
                         Usuario.Permisos = Permiso.TraerPermisosUsuario(Usuario.Rol);
@@ -145,7 +150,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario, " +
-                "alquiler_vehiculos.rol.Nombre_Rol " +
+                "alquiler_vehiculos.rol.Nombre_Rol, " +
+                "alquiler_vehiculos.usuario.AlquileresPendientes_Usuario " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
@@ -176,7 +182,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Correo = Lector.GetString(7),
                             Contrasena = "",
                             Estado = Lector.GetString(8),
-                            Rol = Lector.GetString(9)
+                            Rol = Lector.GetString(9),
+                            AlquileresPendientes = Lector.GetInt32(10)
                         };
                         ModeloPermiso Permiso = new();
                         Usuario.Permisos = Permiso.TraerPermisosUsuario(Usuario.Rol);
@@ -204,7 +211,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario, " +
-                "alquiler_vehiculos.rol.Nombre_Rol " +
+                "alquiler_vehiculos.rol.Nombre_Rol, " +
+                "alquiler_vehiculos.usuario.AlquileresPendientes_Usuario " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
@@ -237,7 +245,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Correo = Lector.GetString(7),
                             Contrasena = "",
                             Estado = Lector.GetString(8),
-                            Rol = Lector.GetString(9)
+                            Rol = Lector.GetString(9),
+                            AlquileresPendientes = Lector.GetInt32(10)
                         };
                         ModeloPermiso Permiso = new();
                         Usuario.Permisos = Permiso.TraerPermisosUsuario(Usuario.Rol);
@@ -264,7 +273,8 @@ namespace ALQUILER_VEHICULOS.Models
                 "alquiler_vehiculos.usuario.Telefono_Usuario, " +
                 "alquiler_vehiculos.usuario.Correo_Usuario, " +
                 "alquiler_vehiculos.estado_usuario.Nombre_EstadoUsuario, " +
-                "alquiler_vehiculos.rol.Nombre_Rol " +
+                "alquiler_vehiculos.rol.Nombre_Rol, " +
+                "alquiler_vehiculos.usuario.AlquileresPendientes_Usuario " +
                 "FROM alquiler_vehiculos.usuario " +
                 "INNER JOIN alquiler_vehiculos.tipo_identificacion_usuario " +
                 "ON alquiler_vehiculos.usuario.TipoIdentificacion_Usuario = alquiler_vehiculos.tipo_identificacion_usuario.Id_TipoIdentificacionUsuario " +
@@ -295,7 +305,8 @@ namespace ALQUILER_VEHICULOS.Models
                             Correo = Lector.GetString(7),
                             Contrasena = "",
                             Estado = Lector.GetString(8),
-                            Rol = Lector.GetString(9)
+                            Rol = Lector.GetString(9),
+                            AlquileresPendientes = Lector.GetInt32(10)
                         };
                         ModeloPermiso Permiso = new();
                         Usuario.Permisos = Permiso.TraerPermisosUsuario(Usuario.Rol);
@@ -392,6 +403,52 @@ namespace ALQUILER_VEHICULOS.Models
             "Telefono_Usuario = '" + Telefono + "', " +
             "Correo_Usuario = '" + Correo + "', " +
             "Rol_Usuario = " + Rol + " " +
+            " WHERE (Id_Usuario = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool EliminarAlquileresPendientesUsuario(int Id)
+        {
+            string ConsultaSQL = "UPDATE alquiler_vehiculos.usuario " +
+            "SET " +
+            "AlquileresPendientes_Usuario = 0 " +
+            " WHERE (Id_Usuario = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public int TraerAlquileresPendientesUsuario(int IdUsuario)
+        {
+            int AlquileresPendientes = 0;
+            string ConsultaSQL = "SELECT " +
+                "alquiler_vehiculos.usuario.AlquileresPendientes_Usuario " +
+                "FROM alquiler_vehiculos.usuario " +
+                "WHERE alquiler_vehiculos.usuario.Id_Usuario = " + IdUsuario;
+            MySqlConnection ConexionBD = ModeloConexion.Conect();
+            try
+            {
+                ConexionBD.Open();
+                MySqlCommand Comando = new(ConsultaSQL, ConexionBD);
+                MySqlDataReader Lector = Comando.ExecuteReader();
+                if (Lector.HasRows)
+                {
+                    while (Lector.Read())
+                    {
+                        AlquileresPendientes = Lector.GetInt32(0);
+                    }
+                }
+            }
+            catch (Exception) { }
+            finally
+            {
+                ConexionBD.Close();
+            }
+            return AlquileresPendientes;
+        }
+        public bool AumentarAlquileresPendientes(int IdUsuario)
+        {
+            int AlquileresPendientes = TraerAlquileresPendientesUsuario(IdUsuario);
+            int NuevosAlquileresPendientes = AlquileresPendientes + 1;
+            string ConsultaSQL = "UPDATE alquiler_vehiculos.usuario " +
+            "SET " +
+            "AlquileresPendientes_Usuario = " + NuevosAlquileresPendientes + " " +
             " WHERE (Id_Usuario = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }

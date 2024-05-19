@@ -20,19 +20,29 @@ namespace ALQUILER_VEHICULOS.Controllers
                     return RedirectToAction("Inicio", "Inicio");
                 }
             }
-            ViewBag.Message = Mensaje;
+            ViewBag.Mensaje = Mensaje;
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
         public IActionResult Registrarse(string[] Mensaje)
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloTipoIdentificacionUsuario TipoIdentificacionUsuario = new();
-            ViewBag.Message = Mensaje;
+            ViewBag.Mensaje = Mensaje;
             return View(TipoIdentificacionUsuario.TraerTodosTiposdeIdentificacion());
         }
         [Authorize]
         public IActionResult InformacionUsuario()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
             List<ModeloTipoIdentificacionUsuario> TiposIdentificacion = TipoIdentificacion.TraerTodosTiposdeIdentificacion();
             ModeloUsuario ModeloUsuario = new();
@@ -146,7 +156,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("IniciarSesion", "Usuario");
         }
-        public IActionResult AccionActualizarUsuario(int Id, string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
+        public async Task<IActionResult> AccionActualizarUsuarioAsync(int Id, string Nombre, string Apellido, int TipoIdentificacion, string NumeroIdentificacion, string Telefono, string Correo, string Contrasena)
         {
             ModeloUsuario ModeloUsuario = new();
             if (Contrasena == null)
@@ -157,6 +167,15 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 ModeloUsuario.ActualizarUsuario(Id, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena);
             }
+            var ClaimPrincipal = (ClaimsIdentity)User.Identity;
+            var ClaimUsuarioActual = ClaimPrincipal.FindFirst(ClaimTypes.UserData);
+            if (ClaimUsuarioActual != null)
+            {
+                ClaimPrincipal.RemoveClaim(ClaimUsuarioActual);
+            }
+            Claim nuevoClaimUsuario = new(ClaimTypes.UserData, JsonConvert.SerializeObject(ModeloUsuario.TraerUsuario(Id)));
+            ClaimPrincipal.AddClaim(nuevoClaimUsuario);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(ClaimPrincipal));
             return RedirectToAction("InformacionUsuario", "Usuario");
         }
         public async Task<IActionResult> AccionEliminarUsuario(int IdUsuario)
@@ -165,6 +184,20 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloUsuario.EliminarUsuario(IdUsuario);
             await CerrarSesion();
             return RedirectToAction("IniciarSesion", "Usuario");
+        }
+        private async Task ActualizarDatosUsuarioSesion()
+        {
+            int IdUsuario = DatosUsuarioSesion().Id;
+            ModeloUsuario ModeloUsuario = new();
+            var ClaimPrincipal = (ClaimsIdentity)User.Identity;
+            var ClaimUsuarioActual = ClaimPrincipal.FindFirst(ClaimTypes.UserData);
+            if (ClaimUsuarioActual != null)
+            {
+                ClaimPrincipal.RemoveClaim(ClaimUsuarioActual);
+            }
+            Claim nuevoClaimUsuario = new(ClaimTypes.UserData, JsonConvert.SerializeObject(ModeloUsuario.TraerUsuario(IdUsuario)));
+            ClaimPrincipal.AddClaim(nuevoClaimUsuario);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(ClaimPrincipal));
         }
     }
 }

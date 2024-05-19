@@ -63,17 +63,32 @@
                     </a>
                 </div>
                 <div class="DivLinkInicio">
-                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInicio">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 8l0 4l2 2" />
-                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
-                        </svg>
-                        <span class="TextoLinkInicio">Ver Mis Alquileres</span>
-                    </a>
+                    @if (ViewBag.AlquileresPendientes > 0)
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInicio">
+                            <div class="DivAlquieleresPendientes">
+                                <p class="AlquieleresPendientes">
+                                    @ViewBag.AlquileresPendientes
+                                </p>
+                            </div>
+                            <span class="TextoLinkInicio">Ver Mis Alquileres</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInicio">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 8l0 4l2 2" />
+                                <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                            </svg>
+                            <span class="TextoLinkInicio">Ver Mis Alquileres</span>
+                        </a>
+                    }
+
                 </div>
                 <div class="DivLinkInicio">
                     <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkInicio">
@@ -106,7 +121,7 @@
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario EtiquetaFiltrosFormularioCiudad"
                                                 id="FiltroCiudad" name="FiltroCiudad">
-                                                @if (ViewBag.Message[0] == 0)
+                                                @if (ViewBag.FiltroCiudad == 0)
                                                 {
                                                     <option class="OptionSelectFormulario" value="0" disabled selected>
                                                         Seleccione Una Ciudad
@@ -122,7 +137,7 @@
                                                 {
                                                     @foreach (var Ciudad in Model.Ciudades)
                                                     {
-                                                        if (ViewBag.Message[0] == Ciudad.Id)
+                                                        if (ViewBag.FiltroCiudad == Ciudad.Id)
                                                         {
                                                             <option class="OptionSelectFormulario" value=@Ciudad.Id selected>
                                                                 @Ciudad.Nombre
@@ -142,7 +157,7 @@
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario" id="FiltroTipoVehiculo"
                                                 name="FiltroTipoVehiculo">
-                                                @if (ViewBag.Message[1] == 0)
+                                                @if (ViewBag.FiltroTipoVehiculo == 0)
                                                 {
                                                     <option class="OptionSelectFormulario" value="0" disabled selected>
                                                         Seleccione Un Tipo de Vehículo
@@ -158,7 +173,7 @@
                                                 {
                                                     @foreach (var TipoVehiculo in Model.TiposVehiculos)
                                                     {
-                                                        if (ViewBag.Message[1] == TipoVehiculo.Id)
+                                                        if (ViewBag.FiltroTipoVehiculo == TipoVehiculo.Id)
                                                         {
                                                             <option class="OptionSelectFormulario" value=@TipoVehiculo.Id selected>
                                                                 @TipoVehiculo.Nombre
@@ -178,7 +193,7 @@
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
                                             <select class="SelectFiltrosFormulario" id="FiltroMarca" name="FiltroMarca">
-                                                @if (ViewBag.Message[2] == 0)
+                                                @if (ViewBag.FiltroMarca == 0)
                                                 {
                                                     <option class="OptionSelectFormulario" value=0 disabled selected>
                                                         Seleccione Una Marca
@@ -194,7 +209,7 @@
                                                 {
                                                     @foreach (var Marca in Model.Marcas)
                                                     {
-                                                        if (ViewBag.Message[2] == Marca.Id)
+                                                        if (ViewBag.FiltroMarca == Marca.Id)
                                                         {
                                                             <option class="OptionSelectFormulario" value=@Marca.Id selected>
                                                                 @Marca.Nombre
@@ -213,14 +228,14 @@
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
                                             <input type="date" class="FechaFiltrosFormulario" id="FiltroFechaInicio"
-                                                name="FiltroFechaInicio" value="@ViewBag.Message[3]">
+                                                name="FiltroFechaInicio" value="@ViewBag.FiltroFechaInicio">
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroFechaInicio">
                                                 Fecha Inicio
                                             </label>
                                         </div>
                                         <div class="DivEtiquetaInputFiltro">
                                             <input type="date" class="FechaFiltrosFormulario" id="FiltroFechaFin"
-                                                name="FiltroFechaFin" value="@ViewBag.Message[4]">
+                                                name="FiltroFechaFin" value="@ViewBag.FiltroFechaFin">
                                             <label class="EtiquetaFiltrosFormulario" for="FiltroFechaFin">
                                                 Fecha Fin
                                             </label>

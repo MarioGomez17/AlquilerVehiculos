@@ -244,7 +244,7 @@ namespace ALQUILER_VEHICULOS.Reports
             string ReporteExcel = "./wwwroot/Reportes/ReporteAlquileresAdministrador" + this.Usuario.NumeroIdentificacion + ".xlsx";
             string ReportePDF = "./wwwroot/Reportes/ReporteAlquileresAdministrador" + this.Usuario.NumeroIdentificacion + ".pdf";
             string CorreoEmisor = "mariog.101200@hotmail.com";
-            string Asunto = "Reportes de Alquileres Ofrecidos por " + this.Usuario.Nombre + " " + this.Usuario.Apellido;
+            string Asunto = "Reportes Todos los Alquileres";
             string Mensaje = "Adjunto encontrarás los reportes en Excel y PDF";
             SmtpClient ClienteAMTP = new("smtp-mail.outlook.com", 587)
             {

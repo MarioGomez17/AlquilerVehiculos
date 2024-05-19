@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Security.Claims;
 using ALQUILER_VEHICULOS.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 namespace ALQUILER_VEHICULOS.Controllers
 {
     [Authorize(Policy = "SoloAdministrador")]
@@ -11,86 +13,171 @@ namespace ALQUILER_VEHICULOS.Controllers
         //---------------------------------------------- VISTAS ----------------------------------------------
         public IActionResult GestionarTodosUsuarios()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloUsuario Usuario = new();
             return View(Usuario.TraerUsuariosAdministrador(DatosUsuarioSesion().Id));
         }
         public IActionResult GestionarTodosVehiculos()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloVehiculo Vehiculos = new();
             return View(Vehiculos.TraerTodosVehiculosAdministrador());
         }
         public IActionResult GestionarTodosAlquileres()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloAlquiler ModeloAlquiler = new();
             return View(ModeloAlquiler.TraerAlquileres());
         }
         public IActionResult GestionarTipoVehiculo()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloTipoVehiculo TipoVehiculo = new();
             return View(TipoVehiculo.TraerTodosTipoVehiculo());
         }
         public IActionResult GestionarClasificacionVehiculo()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloTipoVehiculo TiModeloTipoVehiculo = new();
             return View(TiModeloTipoVehiculo.TraerTodosTipoVehiculo());
         }
         public IActionResult GestionarMarcaVehiculo()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloTipoVehiculo TipoVehiculo = new();
             return View(TipoVehiculo.TraerTodosTipoVehiculo());
         }
         public IActionResult GestionarLineaVehiculo()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloMarca Marca = new();
             return View(Marca.TraerTodosMetodasMarcas());
         }
         public IActionResult GestionarTipoCombustible()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloTipoCombustible TipoCombustible = new();
             return View(TipoCombustible.TraerTodosTiposComustible());
         }
         public IActionResult GestionarCiudad()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloDepartamento ModeloDepartamento = new();
             return View(ModeloDepartamento.TraerDepartamentos());
         }
         public IActionResult GestionarColores()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloColor Color = new();
             return View(Color.TraerColores());
         }
         public IActionResult GestionarCantidadPasajeros()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloCantidadPasajeros CantidadPasajeros = new();
             return View(CantidadPasajeros.TraerCantidadesPasajeros());
         }
         public IActionResult GestionarCilindradas()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloCilindrada Cilindrada = new();
             return View(Cilindrada.TraerCilindradas());
         }
         public IActionResult GestionarModelos()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloModelo Modelo = new();
             return View(Modelo.TraerModelos());
         }
         public IActionResult GestionarSeguroAlquiler()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloSeguroAlquiler SeguroAlquiler = new();
             return View(SeguroAlquiler.TraerTodosSegurosAlquiler());
         }
         public IActionResult GestionarMetodoPago()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloMetodoPagoAlquiler MetodoPago = new();
             return View(MetodoPago.TraerTodosMetodosPagoAlquiler());
         }
         public IActionResult GestionarLugarRecogidaEntrega()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloLugarAlquiler LugaresAlquiler = new();
             return View(LugaresAlquiler.TraerTodosLugaresAlquiler());
         }
         public IActionResult VerUsuarioAdministrador(int IdUsuario)
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
             ModeloUsuario ModeloUsuario = new();
             ModeloRol Roles = new();
@@ -104,6 +191,11 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GestionarTipoIdentificacion()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
             return View(TipoIdentificacion.TraerTodosTiposdeIdentificacion());
         }
@@ -294,6 +386,23 @@ namespace ALQUILER_VEHICULOS.Controllers
                 ModeloUsuario.AccionActualizarUsuarioAdministrador(IdUsuario, Nombre, Apellido, TipoIdentificacion, NumeroIdentificacion, Telefono, Correo, Contrasena, Rol);
             }
             return RedirectToAction("VerUsuarioAdministrador", "Administrador", new { IdUsuario });
+        }
+        private async Task ActualizarDatosUsuarioSesion()
+        {
+            if (DatosUsuarioSesion() != null)
+            {
+                int IdUsuario = DatosUsuarioSesion().Id;
+                ModeloUsuario ModeloUsuario = new();
+                var ClaimPrincipal = (ClaimsIdentity)User.Identity;
+                var ClaimUsuarioActual = ClaimPrincipal.FindFirst(ClaimTypes.UserData);
+                if (ClaimUsuarioActual != null)
+                {
+                    ClaimPrincipal.RemoveClaim(ClaimUsuarioActual);
+                }
+                Claim nuevoClaimUsuario = new(ClaimTypes.UserData, JsonConvert.SerializeObject(ModeloUsuario.TraerUsuario(IdUsuario)));
+                ClaimPrincipal.AddClaim(nuevoClaimUsuario);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(ClaimPrincipal));
+            }
         }
     }
 }

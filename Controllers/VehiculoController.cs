@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Security.Claims;
 using ALQUILER_VEHICULOS.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 namespace ALQUILER_VEHICULOS.Controllers
 {
     public class VehiculoController : Controller
@@ -11,13 +13,23 @@ namespace ALQUILER_VEHICULOS.Controllers
         [Authorize]
         public IActionResult RegistrarVehiculo(string[] Mensaje)
         {
-            ViewBag.Message = Mensaje;
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
+            ViewBag.Mensaje = Mensaje;
             ModeloRegistrarVehiculo ModeloRegistrarVehiculo = new();
             return View(ModeloRegistrarVehiculo);
         }
         [Authorize]
         public IActionResult InformacionVehiculos()
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloVehiculo ModeloVehiculo = new();
             List<ModeloVehiculo> Vehiculos = ModeloVehiculo.TraerTodosVehiculosPropietario(DatosUsuarioSesion().Id);
             return View(Vehiculos);
@@ -25,11 +37,21 @@ namespace ALQUILER_VEHICULOS.Controllers
         [Authorize]
         public IActionResult InformacionVehiculo(int IdVehiculo)
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloVerVehiculo ModeloVerVehiculo = new(IdVehiculo);
             return View(ModeloVerVehiculo);
         }
         public IActionResult InformacionVehiculoCrearAlquiler(int IdVehiculo)
         {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
             ModeloVehiculo ModeloVehiculo = new();
             return View(ModeloVehiculo.TraerVehiculo(IdVehiculo));
         }
@@ -173,6 +195,20 @@ namespace ALQUILER_VEHICULOS.Controllers
                         ];
                 return RedirectToAction("RegistrarVehiculo", "Vehiculo", new { Mensaje });
             }
+        }
+        private async Task ActualizarDatosUsuarioSesion()
+        {
+            int IdUsuario = DatosUsuarioSesion().Id;
+            ModeloUsuario ModeloUsuario = new();
+            var ClaimPrincipal = (ClaimsIdentity)User.Identity;
+            var ClaimUsuarioActual = ClaimPrincipal.FindFirst(ClaimTypes.UserData);
+            if (ClaimUsuarioActual != null)
+            {
+                ClaimPrincipal.RemoveClaim(ClaimUsuarioActual);
+            }
+            Claim nuevoClaimUsuario = new(ClaimTypes.UserData, JsonConvert.SerializeObject(ModeloUsuario.TraerUsuario(IdUsuario)));
+            ClaimPrincipal.AddClaim(nuevoClaimUsuario);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(ClaimPrincipal));
         }
     }
 }

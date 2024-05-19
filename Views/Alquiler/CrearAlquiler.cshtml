@@ -1,8 +1,8 @@
 ﻿@model ModeloCrearAlquiler;
 @{
     Layout = null;
-    string FechaInicioFormateada = ViewBag.Message[0].ToString("dd-MM-yyyy");
-    string FechaFinFormateada = ViewBag.Message[1].ToString("dd-MM-yyyy");
+    string FechaInicioFormateada = ViewBag.FechaInicio.ToString("dd-MM-yyyy");
+    string FechaFinFormateada = ViewBag.FechaFin.ToString("dd-MM-yyyy");
 }
 <!DOCTYPE html>
 <html lang="es">
@@ -65,17 +65,31 @@
                     </a>
                 </div>
                 <div class="DivLinkCrearAlquiler">
-                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkCrearAlquiler">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 8l0 4l2 2" />
-                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
-                        </svg>
-                        <span class="TextoLinkCrearAlquiler">Ver Mis Alquileres</span>
-                    </a>
+                    @if (ViewBag.AlquileresPendientes > 0)
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkCrearAlquiler">
+                            <div class="DivAlquieleresPendientes">
+                                <p class="AlquieleresPendientes">
+                                    @ViewBag.AlquileresPendientes
+                                </p>
+                            </div>
+                            <span class="TextoLinkCrearAlquiler">Ver Mis Alquileres</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkCrearAlquiler">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 8l0 4l2 2" />
+                                <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                            </svg>
+                            <span class="TextoLinkCrearAlquiler">Ver Mis Alquileres</span>
+                        </a>
+                    }
                 </div>
                 <div class="DivLinkCrearAlquiler">
                     <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkCrearAlquiler">
