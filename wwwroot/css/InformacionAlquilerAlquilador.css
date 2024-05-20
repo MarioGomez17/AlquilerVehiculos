@@ -210,9 +210,9 @@ body {
 
 .InformacionAlquilerParte3 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    width: 98%;
+    width: 100%;
 }
 
 .DivComponentesInformacionAlquiler {
@@ -290,7 +290,7 @@ body {
     border-radius: 20px;
     cursor: pointer;
     height: 40px;
-    font-size: 15px;
+    font-size: 11.5px;
     font-weight: bold;
     background: transparent;
     transition: ease-out 0.8s;
@@ -298,10 +298,11 @@ body {
     box-shadow: inset 0 0 0 0 green;
     text-decoration: none;
     color: var(--Black);
-    width: 24%;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .LinkInformacionAlquilerIniciar:hover {
@@ -317,7 +318,7 @@ body {
     border-radius: 20px;
     cursor: pointer;
     height: 40px;
-    font-size: 15px;
+    font-size: 11.5px;
     font-weight: bold;
     background: transparent;
     transition: ease-out 0.8s;
@@ -325,10 +326,11 @@ body {
     box-shadow: inset 0 0 0 0 red;
     text-decoration: none;
     color: var(--Black);
-    width: 24%;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .LinkInformacionAlquilerCancelar:hover {
@@ -344,7 +346,7 @@ body {
     border-radius: 20px;
     cursor: pointer;
     height: 40px;
-    font-size: 15px;
+    font-size: 11.5px;
     font-weight: bold;
     background: transparent;
     transition: ease-out 0.8s;
@@ -352,10 +354,11 @@ body {
     box-shadow: inset 0 0 0 0 var(--SecondColor);
     text-decoration: none;
     color: var(--Black);
-    width: 24%;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .LinkInformacionAlquilerPagar:hover {
@@ -371,7 +374,7 @@ body {
     border-radius: 20px;
     cursor: pointer;
     height: 40px;
-    font-size: 15px;
+    font-size: 11.5px;
     font-weight: bold;
     background: transparent;
     transition: ease-out 0.8s;
@@ -379,10 +382,11 @@ body {
     box-shadow: inset 0 0 0 0 #C8C800;
     text-decoration: none;
     color: var(--Black);
-    width: 24%;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .LinkInformacionAlquilerCalificar:hover {
@@ -391,6 +395,62 @@ body {
 }
 
 .LinkInformacionAlquilerCalificar:active {
+    transform: scale(0.9);
+}
+
+.LinkInformacionAlquilerPDF{
+    border-radius: 20px;
+    cursor: pointer;
+    height: 40px;
+    font-size: 11.5px;
+    font-weight: bold;
+    background: transparent;
+    transition: ease-out 0.8s;
+    border: 4px solid red;
+    box-shadow: inset 0 0 0 0 red;
+    text-decoration: none;
+    color: var(--Black);
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.LinkInformacionAlquilerPDF:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 red;
+}
+
+.LinkInformacionAlquilerPDF:active {
+    transform: scale(0.9);
+}
+
+.LinkInformacionAlquilerCorreo{
+    border-radius: 20px;
+    cursor: pointer;
+    height: 40px;
+    font-size: 11.5px;
+    font-weight: bold;
+    background: transparent;
+    transition: ease-out 0.8s;
+    border: 4px solid blue;
+    box-shadow: inset 0 0 0 0 blue;
+    text-decoration: none;
+    color: var(--Black);
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.LinkInformacionAlquilerCorreo:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 blue;
+}
+
+.LinkInformacionAlquilerCorreo:active {
     transform: scale(0.9);
 }
 

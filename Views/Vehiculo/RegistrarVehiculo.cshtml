@@ -21,8 +21,9 @@
         <div class="DivBarraNavegacionRegistrarVehiculo">
             <nav class="BarraNavegacionRegistrarVehiculo">
                 <div class="LinkLogoRegistrarVehiculo">
-                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo" src="~/imagenes/Logo.webp"
-                            alt="Logotipo" /></a>
+                    <a asp-controller="Inicio" asp-action="Inicio">
+                        <img class="ImagenLogo" src="~/imagenes/Logo.webp" alt="Logotipo" />
+                    </a>
                 </div>
                 <div class="DivLinkRegistrarVehiculo">
                     <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkRegistrarVehiculo">
@@ -194,8 +195,10 @@
                                                         }
                                                     </select>
                                                 }
-                                                <label class="EtiquetaFormulario" for="Cilindrada">Cilindrada
-                                                    (CC)</label>
+                                                <label class="EtiquetaFormulario" for="Cilindrada">
+                                                    Cilindrada
+                                                    (CC)
+                                                </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
                                                 @if (ViewBag.Mensaje.Length > 0)
@@ -378,8 +381,10 @@
                                                         }
                                                     </select>
                                                 }
-                                                <label class="EtiquetaFormulario" for="CantidadPasajeros"># de
-                                                    Pasajeros</label>
+                                                <label class="EtiquetaFormulario" for="CantidadPasajeros">
+                                                    # de
+                                                    Pasajeros
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="GrupoComponentes">
@@ -395,8 +400,10 @@
                                                         </option>
                                                     }
                                                 </select>
-                                                <label class="EtiquetaFormulario" for="TipoVehiculo">Tipo de
-                                                    Vehículo</label>
+                                                <label class="EtiquetaFormulario" for="TipoVehiculo">
+                                                    Tipo de
+                                                    Vehículo
+                                                </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
                                                 <select class="SelectFormulario" id="ClasificacionVehiculo"
@@ -458,8 +465,10 @@
                                                     <input class="InputFormulario" type="text" name="NumeroCertificadoCDA"
                                                         id="NumeroCertificadoCDA" />
                                                 }
-                                                <label class="EtiquetaFormulario" for="NumeroCertificadoCDA">Número de
-                                                    Certificado CDA</label>
+                                                <label class="EtiquetaFormulario" for="NumeroCertificadoCDA">
+                                                    Número de
+                                                    Certificado CDA
+                                                </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
                                                 @if (ViewBag.Mensaje.Length > 0)
@@ -472,9 +481,11 @@
                                                     <input class="InputFormulario" type="text" name="NumeroSeguro"
                                                         id="NumeroPolizaSeguro" />
                                                 }
-                                                <label class="EtiquetaFormulario" for="NumeroPolizaSeguro">Número de
+                                                <label class="EtiquetaFormulario" for="NumeroPolizaSeguro">
+                                                    Número de
                                                     Póliza
-                                                    de Seguro</label>
+                                                    de Seguro
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="GrupoComponentes">
@@ -533,8 +544,10 @@
                                                         }
                                                     </select>
                                                 }
-                                                <label class="EtiquetaFormulario" for="TipoCombustible">Tipo de
-                                                    Combustible</label>
+                                                <label class="EtiquetaFormulario" for="TipoCombustible">
+                                                    Tipo de
+                                                    Combustible
+                                                </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
                                                 @if (ViewBag.Mensaje.Length > 0)
@@ -597,7 +610,7 @@
                                             id="EspacioFotoVehiculo" />
                                         <div class="DivInputFoto">
                                             <input class="InputFotoVehiculo" type="file" id="FotoVehiculo"
-                                                name="FotoVehiculo" accept="image/*">
+                                                name="FotoVehiculo" accept=".png, .jpg, .jpeg">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="IconoSubirFoto" width="45"
                                                 height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">

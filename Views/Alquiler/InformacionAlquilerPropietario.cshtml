@@ -241,6 +241,14 @@
                                         Finalizar Alquiler
                                     </a>
                                 }
+                                <a asp-controller="Reporte" asp-action="GenerarReporteAlquilerPropietarioPDF" asp-route-IdAlquiler=@Model.Id
+                                        class="LinkInformacionAlquiler LinkInformacionAlquilerPDF">
+                                    Generar PDF
+                                </a>
+                                <a asp-controller="Reporte" asp-action="EnviarReportesAlquilerPropietarioPorCorreo" asp-route-IdAlquiler=@Model.Id
+                                        class="LinkInformacionAlquiler LinkInformacionAlquilerCorreo">
+                                    Enviar reporte al Correo
+                                </a>
                             </div>
                         </div>
                     </main>

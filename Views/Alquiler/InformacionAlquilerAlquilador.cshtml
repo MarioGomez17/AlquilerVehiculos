@@ -277,6 +277,14 @@
                                         Calificar Alquiler
                                     </a>
                                 }
+                                <a asp-controller="Reporte" asp-action="GenerarReporteAlquilerAlquiladorPDF" asp-route-IdAlquiler=@Model.Id
+                                        class="LinkInformacionAlquiler LinkInformacionAlquilerPDF">
+                                    Generar PDF
+                                </a>
+                                <a asp-controller="Reporte" asp-action="EnviarReportesAlquilerAlquiladorPorCorreo" asp-route-IdAlquiler=@Model.Id
+                                        class="LinkInformacionAlquiler LinkInformacionAlquilerCorreo">
+                                    Enviar reporte al Correo
+                                </a>
                             </div>
                         </div>
                     </main>

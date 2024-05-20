@@ -60,11 +60,11 @@ namespace ALQUILER_VEHICULOS.Reports
         }
         public void GenerarReporteAlquileresAdministradorPDF()
         {
-            string FilasTabla = "";
+            string FilasTabla;
             int Indice = 0;
             float PrecioTotal = 0;
             float ComisionesPlataforma = 0;
-            string RutaImagen = Directory.GetCurrentDirectory() + "/wwwroot/imagenes/".Replace(@"\", "/");
+            string RutaImagen = Directory.GetCurrentDirectory() + "/wwwroot/imagenes/";
             string HTMLString = File.ReadAllText("./Templates/ReporteAlquileresAdministrador.html").ToString();
             HtmlToPdf Convertidor = new();
             PdfDocument DocumentoFinal = new();

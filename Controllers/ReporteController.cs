@@ -71,5 +71,29 @@ namespace ALQUILER_VEHICULOS.Controllers
             Reporte.EnviarReportesAlquileresAdministradorPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("GestionarTodosAlquileres", "Administrador");
         }
+        public IActionResult GenerarReporteAlquilerPropietarioPDF(int IdAlquiler)
+        {
+            ReporteAlquilerPropietario Reporte = new(DatosUsuarioSesion().Id, IdAlquiler);
+            Reporte.GenerarReporteAlquilerPropietarioPDF();
+            return RedirectToAction("InformacionAlquilerPropietario", "Alquiler", new { IdAlquiler });
+        }
+        public IActionResult EnviarReportesAlquilerPropietarioPorCorreo(int IdAlquiler)
+        {
+            ReporteAlquilerPropietario Reporte = new(DatosUsuarioSesion().Id, IdAlquiler);
+            Reporte.EnviarReportesAlquilerPropietarioPorCorreo(DatosUsuarioSesion().Correo);
+            return RedirectToAction("InformacionAlquilerPropietario", "Alquiler", new { IdAlquiler });
+        }
+        public IActionResult GenerarReporteAlquilerAlquiladorPDF(int IdAlquiler)
+        {
+            ReporteAlquilerAlquilador Reporte = new(DatosUsuarioSesion().Id, IdAlquiler);
+            Reporte.GenerarReporteAlquilerAlquiladorPDF();
+            return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler", new { IdAlquiler });
+        }
+        public IActionResult EnviarReportesAlquilerAlquiladorPorCorreo(int IdAlquiler)
+        {
+            ReporteAlquilerAlquilador Reporte = new(DatosUsuarioSesion().Id, IdAlquiler);
+            Reporte.EnviarReportesAlquilerAlquiladorPorCorreo(DatosUsuarioSesion().Correo);
+            return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler", new { IdAlquiler });
+        }
     }
 }

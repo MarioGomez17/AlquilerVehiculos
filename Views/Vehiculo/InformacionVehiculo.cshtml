@@ -66,28 +66,28 @@
                 <div class="DivLinkInformacionVehiculo">
                     @if (ViewBag.AlquileresPendientes > 0)
                     {
-                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInformacionVehiculo">
-                        <div class="DivAlquieleresPendientes">
-                            <p class="AlquieleresPendientes">
-                                @ViewBag.AlquileresPendientes
-                            </p>
-                        </div>
-                        <span class="TextoLinkInformacionVehiculo">Ver Mis Alquileres</span>
-                    </a>
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInformacionVehiculo">
+                            <div class="DivAlquieleresPendientes">
+                                <p class="AlquieleresPendientes">
+                                    @ViewBag.AlquileresPendientes
+                                </p>
+                            </div>
+                            <span class="TextoLinkInformacionVehiculo">Ver Mis Alquileres</span>
+                        </a>
                     }
                     else
                     {
-                    <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInformacionVehiculo">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 8l0 4l2 2" />
-                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
-                        </svg>
-                        <span class="TextoLinkInformacionVehiculo">Ver Mis Alquileres</span>
-                    </a>
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInformacionVehiculo">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 8l0 4l2 2" />
+                                <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                            </svg>
+                            <span class="TextoLinkInformacionVehiculo">Ver Mis Alquileres</span>
+                        </a>
                     }
                 </div>
                 <div class="DivLinkInformacionVehiculo">
@@ -149,8 +149,10 @@
                                                         }
                                                     }
                                                 </select>
-                                                <label class="EtiquetaFormulario" for="Cilindrada">Cilindrada
-                                                    (CC)</label>
+                                                <label class="EtiquetaFormulario" for="Cilindrada">
+                                                    Cilindrada
+                                                    (CC)
+                                                </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
                                                 <select class="SelectFormulario InputCorto" id="Modelo" name="Modelo">
@@ -223,8 +225,10 @@
                                                         }
                                                     }
                                                 </select>
-                                                <label class="EtiquetaFormulario" for="CantidadPasajeros"># de
-                                                    Pasajeros</label>
+                                                <label class="EtiquetaFormulario" for="CantidadPasajeros">
+                                                    # de
+                                                    Pasajeros
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="GrupoComponentes">
@@ -246,8 +250,10 @@
                                                         }
                                                     }
                                                 </select>
-                                                <label class="EtiquetaFormulario" for="TipoVehiculo">Tipo de
-                                                    Vehículo</label>
+                                                <label class="EtiquetaFormulario" for="TipoVehiculo">
+                                                    Tipo de
+                                                    Vehículo
+                                                </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
                                                 <select class="SelectFormulario" id="ClasificacionVehiculo"
@@ -268,9 +274,10 @@
                                                         }
                                                     }
                                                 </select>
-                                                <label class="EtiquetaFormulario"
-                                                    for="ClasificacionVehiculo">Clasificación
-                                                    del Vehículo</label>
+                                                <label class="EtiquetaFormulario" for="ClasificacionVehiculo">
+                                                    Clasificación
+                                                    del Vehículo
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="GrupoComponentes">
@@ -324,15 +331,19 @@
                                                 <input class="InputFormulario" type="text" name="NumeroCertificadoCDA"
                                                     value="@Model.Vehiculo.NumeroCertificadoCDA"
                                                     id="NumeroCertificadoCDA" />
-                                                <label class="EtiquetaFormulario" for="NumeroCertificadoCDA">Número de
-                                                    Certificado CDA</label>
+                                                <label class="EtiquetaFormulario" for="NumeroCertificadoCDA">
+                                                    Número de
+                                                    Certificado CDA
+                                                </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
                                                 <input class="InputFormulario" type="text" name="NumeroSeguro"
                                                     value="@Model.Vehiculo.NumeroSeguro" id="NumeroPolizaSeguro" />
-                                                <label class="EtiquetaFormulario" for="NumeroPolizaSeguro">Número de
+                                                <label class="EtiquetaFormulario" for="NumeroPolizaSeguro">
+                                                    Número de
                                                     Póliza
-                                                    de Seguro</label>
+                                                    de Seguro
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="GrupoComponentes">
@@ -355,8 +366,10 @@
                                                         }
                                                     }
                                                 </select>
-                                                <label class="EtiquetaFormulario" for="TipoCombustible">Tipo de
-                                                    Combustible</label>
+                                                <label class="EtiquetaFormulario" for="TipoCombustible">
+                                                    Tipo de
+                                                    Combustible
+                                                </label>
                                             </div>
                                             <div class="DivEtiquetaInput">
                                                 <select class="SelectFormulario" id="Ciudad" name="Ciudad">
@@ -386,7 +399,7 @@
                                             alt="Foto de @Model.Vehiculo.TipoVehiculo @Model.Vehiculo.Marca @Model.Vehiculo.Linea" />
                                         <div class="DivInputFoto">
                                             <input class="InputFotoVehiculo" name="FotoVehiculo" type="file"
-                                                id="FotoVehiculo">
+                                                id="FotoVehiculo" accept=".png, .jpg, .jpeg">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="IconoSubirFoto" width="45"
                                                 height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
