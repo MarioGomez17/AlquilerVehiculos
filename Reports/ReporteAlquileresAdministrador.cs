@@ -18,7 +18,7 @@ namespace ALQUILER_VEHICULOS.Reports
             ModeloUsuario ModeloUsuario = new();
             this.Usuario = ModeloUsuario.TraerUsuario(IdUsuario);
             this.Empresa = new();
-            this.ConsultaSQL =  "SELECT " +
+            this.ConsultaSQL = "SELECT " +
                                 "alquiler_vehiculos.alquiler.FechaIncio_Alquiler, " +
                                 "alquiler_vehiculos.alquiler.FechaFin_Alquiler, " +
                                 "alquiler_vehiculos.upropietario.Nombre_Usuario, " +
@@ -89,7 +89,7 @@ namespace ALQUILER_VEHICULOS.Reports
                             ListaListas.Add([]);
                         }
                         Indice++;
-                        if (Indice % 2 == 0)
+                        if (Indice % 2 != 0)
                         {
                             ListaListas.Last().Add(
                                             "<tr>" +
@@ -126,7 +126,7 @@ namespace ALQUILER_VEHICULOS.Reports
                     }
                 }
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message);}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();

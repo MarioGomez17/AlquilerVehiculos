@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        html {
+            height: 1074px;
+            width: 1520px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Geologica", sans-serif;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            background: #0cebeb;
+            background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
+            background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
+        }
+
+        header {
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .Logo {
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            height: 180px;
+            width: 180px;
+            border: 7px solid black;
+            border-radius: 50%;
+        }
+
+        .InfoEmpresa {
+            width: 75%;
+            height: 70%;
+            background-color: #1649E0;
+            border-radius: 50px;
+            border: 7px solid black;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .Titulo {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .NombreEmpresa {
+            width: 95%;
+            height: 40%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .DivDatosEmpresa {
+            width: 95%;
+            height: 60%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .DatosEmpresa {
+            height: 100%;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .TituloInfo {
+            width: 100%;
+            height: 30%;
+            display: flex;
+            align-items: center;
+            color: black;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .ValorInfo {
+            margin: 0;
+            margin-left: 15px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .Izquierda {
+            margin-left: 10px;
+        }
+
+        .Derecha {
+            margin-right: 10px;
+        }
+
+        main {
+            width: 100%;
+            height: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .TituloInforme {
+            width: 100%;
+            text-align: center;
+            font-size: 50px;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        .TablaInforme {
+            width: 95%;
+            text-align: center;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .EncabezadoTabla {
+            background-color: #206a00;
+            color: white;
+            border: solid 5px black;
+            padding: 10px;
+            font-size: 10px;
+        }
+
+        .CeldaDatoTabla {
+            border: solid 5px black;
+            padding: 10px 0;
+            font-size: 9px;
+            color: black;
+        }
+
+        .CeldaPar {
+            background-color: #94F2FE;
+        }
+
+        .CeldaImpar {
+            background-color: #94feb9;
+        }
+
+        .DatoTabla {
+            margin: 0 7px;
+        }
+
+        .FilaTotal {
+            background-color: #0d00ff;
+            border: solid 5px black;
+            padding: 10px 0;
+            font-size: 12px;
+            color: white;
+        }
+
+        .TituloTotal {
+            font-size: 20px;
+        }
+
+        footer {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .TextoFooter {
+            color: black;
+            font-size: 20px;
+            margin: 0 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="Logo">
+            <img src="@FOTO" alt="LOGOTIPO">
+        </div>
+        <div class="InfoEmpresa">
+            <div class="NombreEmpresa">
+                <h2 class="Titulo">@RAZONSOCIAL</h2>
+            </div>
+            <div class="DivDatosEmpresa">
+                <div class="DatosEmpresa">
+                    <span class="TituloInfo Izquierda">Ciudad :<p class="ValorInfo">@CIUDAD</p></span>
+                    <span class="TituloInfo Izquierda">Dirección :<p class="ValorInfo">@DIRECCION</p></span>
+                    <span class="TituloInfo Izquierda">Barrio :<p class="ValorInfo">@BARRIO</p></span>
+                </div>
+                <div class="DatosEmpresa">
+                    <span class="TituloInfo Derecha">NIT :<p class="ValorInfo">@NIT</p></span>
+                    <span class="TituloInfo Derecha">Teléfono :<p class="ValorInfo">@TELEFONO</p></span>
+                    <span class="TituloInfo Derecha">Correo :<p class="ValorInfo">@CORREO</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1 class="TituloInforme">REPORTE DE USUARIOS</h1>
+        <table class="TablaInforme">
+            <thead>
+                <th class="EncabezadoTabla">#</th>
+                <th class="EncabezadoTabla">Tipo de<br>Identificación</th>
+                <th class="EncabezadoTabla">Identificación</th>
+                <th class="EncabezadoTabla">Nombre</th>
+                <th class="EncabezadoTabla">Apellido</th>
+                <th class="EncabezadoTabla">Teléfono</th>
+                <th class="EncabezadoTabla">Correo</th>
+                <th class="EncabezadoTabla">Estado</th>
+                <th class="EncabezadoTabla">Rol</th>
+                <th class="EncabezadoTabla">Cantidad de<br>Vehiculos</th>
+                <th class="EncabezadoTabla">Alquileres<br>Realizados</th>
+                <th class="EncabezadoTabla">Alquileres<br>Ofrecidos</th>
+                <th class="EncabezadoTabla">Precio Total<br>Alquileres<br>Realizados</th>
+                <th class="EncabezadoTabla">Precio Total<br>Alquileres<br>Ofrecidos</th>
+                <th class="EncabezadoTabla">Ganancias<br>Alquileres<br>Realizados</th>
+                <th class="EncabezadoTabla">Ganancias<br>Alquileres<br>Ofrecidos</th>
+            </thead>
+            <tbody>
+                @TABLAINFORME
+                @FILATOTAL
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <span class="TextoFooter">@USUARIO</span>
+        <span class="TextoFooter">@IDENTIFICACION</span>
+        <span class="TextoFooter">@FECHAINFORME</span>
+        <span class="TextoFooter">@PAGINAS</span>
+    </footer>
+</body>
+
+</html>

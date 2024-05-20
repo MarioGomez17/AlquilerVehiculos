@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        html {
+            height: 1074px;
+            width: 1520px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Geologica", sans-serif;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            background: #0cebeb;
+            background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
+            background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
+        }
+
+        header {
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .Logo {
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            height: 180px;
+            width: 180px;
+            border: 7px solid black;
+            border-radius: 50%;
+        }
+
+        .InfoEmpresa {
+            width: 75%;
+            height: 70%;
+            background-color: #1649E0;
+            border-radius: 50px;
+            border: 7px solid black;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .Titulo {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .NombreEmpresa {
+            width: 95%;
+            height: 40%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .DivDatosEmpresa {
+            width: 95%;
+            height: 60%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .DatosEmpresa {
+            height: 100%;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .TituloInfo {
+            width: 100%;
+            height: 30%;
+            display: flex;
+            align-items: center;
+            color: black;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .ValorInfo {
+            margin: 0;
+            margin-left: 15px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .Izquierda {
+            margin-left: 10px;
+        }
+
+        .Derecha {
+            margin-right: 10px;
+        }
+
+        main {
+            width: 100%;
+            height: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .TituloInforme {
+            width: 100%;
+            text-align: center;
+            font-size: 50px;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        .InformacionUsuario {
+            width: 95%;
+            height: 60%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+        }
+        
+        .InformacionUsuarioIzquierda,
+        .InformacionUsuarioDerecha {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-left: 120px;
+        }
+        
+        .TituloDato {
+            font-size: 18px;
+            color: #1649E0;
+            width: 90%;
+        }
+        .ValorDato{
+            font-size: 18px;
+            color: black;
+            margin-left: 10px;
+        }
+        footer {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .TextoFooter {
+            color: black;
+            font-size: 20px;
+            margin: 0 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="Logo">
+            <img src="@FOTO" alt="LOGOTIPO">
+        </div>
+        <div class="InfoEmpresa">
+            <div class="NombreEmpresa">
+                <h2 class="Titulo">@RAZONSOCIAL</h2>
+            </div>
+            <div class="DivDatosEmpresa">
+                <div class="DatosEmpresa">
+                    <span class="TituloInfo Izquierda">Ciudad :<p class="ValorInfo">@CIUDAD</p></span>
+                    <span class="TituloInfo Izquierda">Dirección :<p class="ValorInfo">@DIRECCION</p></span>
+                    <span class="TituloInfo Izquierda">Barrio :<p class="ValorInfo">@BARRIO</p></span>
+                </div>
+                <div class="DatosEmpresa">
+                    <span class="TituloInfo Derecha">NIT :<p class="ValorInfo">@NIT</p></span>
+                    <span class="TituloInfo Derecha">Teléfono :<p class="ValorInfo">@TELEFONO</p></span>
+                    <span class="TituloInfo Derecha">Correo :<p class="ValorInfo">@CORREO</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1 class="TituloInforme">REPORTE DE USUARIO @USUARIOREPORTE</h1>
+        <div class="InformacionUsuario">
+            <div class="InformacionUsuarioIzquierda">
+                <span class="TituloDato">
+                    Nombre:
+                    <span class="ValorDato">
+                        @USUARIOREPORTE
+                    </span>
+                </span>
+                <span class="TituloDato">
+                    Tipo de Identificación:
+                    <span class="ValorDato">
+                        @TIPOIDENTIFICACION
+                    </span>
+                </span>
+                <span class="TituloDato">
+                    Identificación:
+                    <span class="ValorDato">
+                        @NUMEROIDENTIFICACION
+                    </span>
+                </span>
+                <span class="TituloDato">
+                    Teléfono:
+                    <span class="ValorDato">
+                        @TELEFONO
+                    </span>
+                </span>
+                <span class="TituloDato">
+                    Correo:
+                    <span class="ValorDato">
+                        @CORREO
+                    </span>
+                </span>
+            </div>
+            <div class="InformacionUsuarioDerecha">
+                <span class="TituloDato">
+                    Cantidad de Vehiculos:
+                    <span class="ValorDato">
+                        @CANTIDADVEHICULOS
+                    </span>
+                </span>
+                <span class="TituloDato">
+                    Alquileres Realizados:
+                    <span class="ValorDato">
+                        @CANTIDADALQUILERESREALIZADOS
+                    </span>
+                </span>
+                <span class="TituloDato">
+                    Alquileres Ofrecidos:
+                    <span class="ValorDato">
+                        @CANTIDADALQUILERESOFRECIDOS
+                    </span>
+                </span>
+                <span class="TituloDato">
+                    Precio Total Alquileres Realizados:
+                    <span class="ValorDato">
+                        @TOTALALQUILERESREALIZADOS
+                    </span>
+                </span>
+                <span class="TituloDato">
+                    Precio Total Alquileres Ofrecidos:
+                    <span class="ValorDato">
+                        @TOTALQUILERESOFRECIDOS
+                    </span>
+                </span>
+            </div>
+        </div>
+
+
+    </main>
+    <footer>
+        <span class="TextoFooter">@USUARIO</span>
+        <span class="TextoFooter">@IDENTIFICACION</span>
+        <span class="TextoFooter">@FECHAINFORME</span>
+        <span class="TextoFooter">@PAGINAS</span>
+    </footer>
+</body>
+
+</html>

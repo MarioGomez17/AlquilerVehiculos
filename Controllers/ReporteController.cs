@@ -83,6 +83,18 @@ namespace ALQUILER_VEHICULOS.Controllers
             Reporte.EnviarReportesAlquilerPropietarioPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("InformacionAlquilerPropietario", "Alquiler", new { IdAlquiler });
         }
+        public IActionResult GenerarReporteAlquilerAdministradorPDF(int IdAlquiler)
+        {
+            ReporteAlquilerAdministrador Reporte = new(DatosUsuarioSesion().Id, IdAlquiler);
+            Reporte.GenerarReporteAlquilerAdministradorPDF();
+            return RedirectToAction("VerAlquilerAdministrador", "Administrador", new { IdAlquiler });
+        }
+        public IActionResult EnviarReportesAlquilerAdministradorPorCorreo(int IdAlquiler)
+        {
+            ReporteAlquilerAdministrador Reporte = new(DatosUsuarioSesion().Id, IdAlquiler);
+            Reporte.EnviarReportesAlquilerAdministradorPorCorreo(DatosUsuarioSesion().Correo);
+            return RedirectToAction("VerAlquilerAdministrador", "Administrador", new { IdAlquiler });
+        }
         public IActionResult GenerarReporteAlquilerAlquiladorPDF(int IdAlquiler)
         {
             ReporteAlquilerAlquilador Reporte = new(DatosUsuarioSesion().Id, IdAlquiler);
@@ -97,28 +109,45 @@ namespace ALQUILER_VEHICULOS.Controllers
         }
         public IActionResult GenerarReporteUsuarioPDF()
         {
+            ReporteUsuario Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteUsuarioPDF();
             return RedirectToAction("InformacionUsuario", "Usuario");
         }
         public IActionResult EnviarReportesUsuarioPorCorreo()
         {
+            ReporteUsuario Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.EnviarReportesUsuarioPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("InformacionUsuario", "Usuario");
         }
         public IActionResult GenerarReporteUsuariosAdministradorPDF()
         {
+            ReporteUsuarios Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteUsuariosPDF();
+            return RedirectToAction("GestionarTodosUsuarios", "Administrador");
+        }
+        public IActionResult GenerarReporteUsuariosAdministradorExcel()
+        {
+            ReporteUsuarios Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteUsuariosEXCEL();
             return RedirectToAction("GestionarTodosUsuarios", "Administrador");
         }
         public IActionResult EnviarReportesUsuariosAdministradorPorCorreo()
         {
+            ReporteUsuarios Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.EnviarReportesUsuariosPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("GestionarTodosUsuarios", "Administrador");
         }
         public IActionResult GenerarReporteUsuarioAdministradorPDF(int IdUsuario)
         {
+            ReporteUsuarioAdministrador Reporte = new(DatosUsuarioSesion().Id, IdUsuario);
+            Reporte.GenerarReporteUsuarioAdministradorPDF();
             return RedirectToAction("VerUsuarioAdministrador", "Administrador", new { IdUsuario });
         }
         public IActionResult EnviarReportesUsuarioAdministradorPorCorreo(int IdUsuario)
         {
+            ReporteUsuarioAdministrador Reporte = new(DatosUsuarioSesion().Id, IdUsuario);
+            Reporte.EnviarReportesUsuarioAdministradorPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("VerUsuarioAdministrador", "Administrador", new { IdUsuario });
         }
-
     }
 }

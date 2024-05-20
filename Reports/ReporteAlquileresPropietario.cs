@@ -96,7 +96,7 @@ namespace ALQUILER_VEHICULOS.Reports
                             ListaListas.Add([]);
                         }
                         Indice++;
-                        if (Indice % 2 == 0)
+                        if (Indice % 2 != 0)
                         {
                             ListaListas.Last().Add(
                                             "<tr>" +

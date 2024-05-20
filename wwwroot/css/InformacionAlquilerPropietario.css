@@ -294,7 +294,7 @@ body {
     gap: 10px;
 }
 
-.DivEstadoAlquilador {
+.DivEstadoAlquiler {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -358,4 +358,9 @@ body {
     font-family: var(--Font);
     font-weight: bold;
     color: var(--Black);
+}
+
+.DivEstadoAlquilerAdministrador{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }

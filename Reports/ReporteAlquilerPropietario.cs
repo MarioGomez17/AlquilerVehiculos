@@ -141,7 +141,7 @@ namespace ALQUILER_VEHICULOS.Reports
             GenerarReporteAlquilerPropietarioPDF();
             string ReportePDF = "./wwwroot/Reportes/ReporteAlquilerPropietario" + this.Usuario.NumeroIdentificacion + ".pdf";
             string CorreoEmisor = "mariog.101200@hotmail.com";
-            string Asunto = "Reportes de Alquiler Ofrecidos por " + this.Usuario.Nombre + " " + this.Usuario.Apellido;
+            string Asunto = "Reporte de Alquiler Ofrecido por " + this.Usuario.Nombre + " " + this.Usuario.Apellido;
             string Mensaje = "Documento del alquiler solicitado";
             SmtpClient ClienteAMTP = new("smtp-mail.outlook.com", 587)
             {

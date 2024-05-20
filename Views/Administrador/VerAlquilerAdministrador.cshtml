@@ -1,4 +1,4 @@
-﻿@model ModeloAlquiler;
+@model ModeloAlquiler;
 @{
     Layout = null;
 }
@@ -65,9 +65,10 @@
                     </a>
                 </div>
                 <div class="DivLinkInformacionAlquilerPropietario">
-                    @if(ViewBag.AlquileresPendientes > 0){
+                    @if (ViewBag.AlquileresPendientes > 0)
+                    {
                         <a asp-controller="Alquiler" asp-action="HistorialAlquileres"
-                        class="LinkInformacionAlquilerPropietario">
+                            class="LinkInformacionAlquilerPropietario">
                             <div class="DivAlquieleresPendientes">
                                 <p class="AlquieleresPendientes">
                                     @ViewBag.AlquileresPendientes
@@ -75,19 +76,21 @@
                             </div>
                             <span class="TextoLinkInformacionAlquilerPropietario">Ver Mis Alquileres</span>
                         </a>
-                    }else{
+                    }
+                    else
+                    {
                         <a asp-controller="Alquiler" asp-action="HistorialAlquileres"
-                        class="LinkInformacionAlquilerPropietario">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 8l0 4l2 2" />
-                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
-                        </svg>
-                        <span class="TextoLinkInformacionAlquilerPropietario">Ver Mis Alquileres</span>
-                    </a>
+                            class="LinkInformacionAlquilerPropietario">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 8l0 4l2 2" />
+                                <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                            </svg>
+                            <span class="TextoLinkInformacionAlquilerPropietario">Ver Mis Alquileres</span>
+                        </a>
                     }
                 </div>
                 <div class="DivLinkInformacionAlquilerPropietario">
@@ -132,10 +135,10 @@
                                         </label>
                                     </div>
                                     <div class="DivEtiquetaInput">
-                                        <input type="text" class="InputTextoInformacionAlquiler" id="PrecioAlquiler"
-                                            value="@Model.Precio" readonly>
-                                        <label for="PrecioAlquiler" class="EtiquetaInformacionAlquiler">
-                                            Precio del Alquiler
+                                        <input type="text" class="InputTextoInformacionAlquiler" id="Alquilador"
+                                            value="@Model.Alquilador.Usuario.Nombre @Model.Alquilador.Usuario.Apellido">
+                                        <label for="Alquilador" class="EtiquetaInformacionAlquiler" readonly>
+                                            Alquilador
                                         </label>
                                     </div>
                                 </div>
@@ -155,10 +158,11 @@
                                         </label>
                                     </div>
                                     <div class="DivEtiquetaInput">
-                                        <input type="text" class="InputTextoInformacionAlquiler" id="LugarAlquiler"
-                                            value="@Model.Lugar" readonly>
-                                        <label for="LugarAlquiler" class="EtiquetaInformacionAlquiler">
-                                            Lugar de REcogida y Entrega
+                                        <input type="text" class="InputTextoInformacionAlquiler" id="Propietario"
+                                            value="@Model.Vehiculo.UsuarioPropietario.Nombre @Model.Vehiculo.UsuarioPropietario.Apellido"
+                                            readonly>
+                                        <label for="Propietario" class="EtiquetaInformacionAlquiler">
+                                            Propietario
                                         </label>
                                     </div>
                                 </div>
@@ -168,6 +172,38 @@
                                             value="@Model.Seguro (@Model.PrecioSeguro)" readonly>
                                         <label for="Seguro" class="EtiquetaInformacionAlquiler">
                                             Seguro
+                                        </label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTextoInformacionAlquiler" id="PrecioAlquiler"
+                                            value="@Model.Precio" readonly>
+                                        <label for="PrecioAlquiler" class="EtiquetaInformacionAlquiler">
+                                            Precio del Alquiler
+                                        </label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTextoInformacionAlquiler" id="Ganancias"
+                                            value="@Model.Ganancia" readonly>
+                                        <label for="Ganancias" class="EtiquetaInformacionAlquiler">
+                                            Ganancias
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="InformacionAlquilerParte2">
+                                <div class="DivEstadoAlquilerAdministrador">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTextoInformacionAlquiler" id="LugarAlquiler"
+                                            value="@Model.Lugar" readonly>
+                                        <label for="LugarAlquiler" class="EtiquetaInformacionAlquiler">
+                                            Lugar de REcogida y Entrega
+                                        </label>
+                                    </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTextoInformacionAlquiler" id="EstadoAlquiler"
+                                            value="@Model.Estado" readonly>
+                                        <label for="EstadoAlquiler" class="EtiquetaInformacionAlquiler">
+                                            Estado del Alquiler
                                         </label>
                                     </div>
                                     <div class="DivEtiquetaInput">
@@ -184,42 +220,20 @@
                                             Estado del Pago
                                         </label>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="InformacionAlquilerParte2">
-                                <div class="InformacionAlquiler">
-                                    <div class="DivEstadoAlquiler">
-                                        <div class="DivEtiquetaInput">
-                                            <input type="text" class="InputTextoInformacionAlquiler" id="EstadoAlquiler"
-                                                value="@Model.Estado" readonly>
-                                            <label for="EstadoAlquiler" class="EtiquetaInformacionAlquiler">
-                                                Estado del Alquiler
-                                            </label>
-                                        </div>
-                                        <div class="DivEtiquetaInput">
-                                            <input type="text" class="InputTextoInformacionAlquiler" id="Alquilador"
-                                                value="@Model.Alquilador.Usuario.Nombre @Model.Alquilador.Usuario.Apellido">
-                                            <label for="Alquilador" class="EtiquetaInformacionAlquiler" readonly>
-                                                Alquilador
-                                            </label>
-                                        </div>
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" class="InputTextoInformacionAlquiler Calificacion"
+                                            id="Calificacion" value="@Model.Calificacion" readonly>
+                                        <label for="Calificacion" class="EtiquetaInformacionAlquiler">
+                                            Calificacion
+                                        </label>
                                     </div>
-                                    <div class="DivCalificacionComentario">
-                                        <div class="DivEtiquetaInput">
-                                            <input type="text" class="InputTextoInformacionAlquiler Calificacion"
-                                                id="Calificacion" value="@Model.Calificacion" readonly>
-                                            <label for="Calificacion" class="EtiquetaInformacionAlquiler">
-                                                Calificacion
-                                            </label>
-                                        </div>
-                                        <div class="DivEtiquetaInput">
-                                            <p class="InputTextoInformacionAlquiler AreaComentario" readonly>
-                                                @Model.ComentarioCalificacion
-                                            </p>
-                                            <label for="Comentario" class="EtiquetaInformacionAlquiler">
-                                                Comentario
-                                            </label>
-                                        </div>
+                                    <div class="DivEtiquetaInput">
+                                        <p class="InputTextoInformacionAlquiler AreaComentario" readonly>
+                                            @Model.ComentarioCalificacion
+                                        </p>
+                                        <label for="Comentario" class="EtiquetaInformacionAlquiler">
+                                            Comentario
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="DivFotoVehiculo">
@@ -228,29 +242,17 @@
                                 </div>
                             </div>
                             <div class="InformacionAlquilerParte3">
-                                @if (Model.Estado == "Iniciado")
-                                {
-                                    <a asp-controller="Alquiler" asp-action="AccionFinalizarAlquiler" asp-route-IdAlquiler=@Model.Id
-                                        class="LinkInformacionAlquiler">
-                                        Finalizar Alquiler
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a class="LinkInformacionAlquiler">
-                                        Finalizar Alquiler
-                                    </a>
-                                }
-                                <a asp-controller="Reporte" asp-action="GenerarReporteAlquilerPropietarioPDF" asp-route-IdAlquiler=@Model.Id
-                                        class="LinkInformacionAlquiler LinkInformacionAlquilerPDF">
+                                <a asp-controller="Reporte" asp-action="GenerarReporteAlquilerAdministradorPDF"
+                                    asp-route-IdAlquiler=@Model.Id
+                                    class="LinkInformacionAlquiler LinkInformacionAlquilerPDF">
                                     Generar PDF
                                 </a>
-                                <a asp-controller="Reporte" asp-action="EnviarReportesAlquilerPropietarioPorCorreo" asp-route-IdAlquiler=@Model.Id
-                                        class="LinkInformacionAlquiler LinkInformacionAlquilerCorreo">
+                                <a asp-controller="Reporte" asp-action="EnviarReportesAlquilerAdministradorPorCorreo"
+                                    asp-route-IdAlquiler=@Model.Id
+                                    class="LinkInformacionAlquiler LinkInformacionAlquilerCorreo">
                                     Enviar reporte al Correo
                                 </a>
                             </div>
-                        </div>
                     </main>
                 </div>
             </div>

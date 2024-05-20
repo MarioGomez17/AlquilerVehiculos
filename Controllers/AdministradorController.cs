@@ -41,6 +41,16 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloAlquiler ModeloAlquiler = new();
             return View(ModeloAlquiler.TraerAlquileres());
         }
+        public IActionResult VerAlquilerAdministrador(int IdAlquiler)
+        {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
+            ModeloAlquiler ModeloAlquiler = new();
+            return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
+        }
         public IActionResult GestionarTipoVehiculo()
         {
             if (DatosUsuarioSesion() != null)
