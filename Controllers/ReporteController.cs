@@ -95,5 +95,30 @@ namespace ALQUILER_VEHICULOS.Controllers
             Reporte.EnviarReportesAlquilerAlquiladorPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler", new { IdAlquiler });
         }
+        public IActionResult GenerarReporteUsuarioPDF()
+        {
+            return RedirectToAction("InformacionUsuario", "Usuario");
+        }
+        public IActionResult EnviarReportesUsuarioPorCorreo()
+        {
+            return RedirectToAction("InformacionUsuario", "Usuario");
+        }
+        public IActionResult GenerarReporteUsuariosAdministradorPDF()
+        {
+            return RedirectToAction("GestionarTodosUsuarios", "Administrador");
+        }
+        public IActionResult EnviarReportesUsuariosAdministradorPorCorreo()
+        {
+            return RedirectToAction("GestionarTodosUsuarios", "Administrador");
+        }
+        public IActionResult GenerarReporteUsuarioAdministradorPDF(int IdUsuario)
+        {
+            return RedirectToAction("VerUsuarioAdministrador", "Administrador", new { IdUsuario });
+        }
+        public IActionResult EnviarReportesUsuarioAdministradorPorCorreo(int IdUsuario)
+        {
+            return RedirectToAction("VerUsuarioAdministrador", "Administrador", new { IdUsuario });
+        }
+
     }
 }

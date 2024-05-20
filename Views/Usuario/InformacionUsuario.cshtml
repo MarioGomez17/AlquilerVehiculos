@@ -178,6 +178,14 @@
                                         Contraseña</label>
                                 </div>
                                 <div class="Grupo2Elementos DivBotones">
+                                    <a class="BotonFormularioCorreo" asp-controller="Reporte"
+                                        asp-action="EnviarReportesUsuarioPorCorreo">
+                                        Enviar por correo
+                                    </a>
+                                    <a class="BotonFormularioPDF" asp-controller="Reporte"
+                                        asp-action="GenerarReporteUsuarioPDF">
+                                        Generar PDF
+                                    </a>
                                     <a class="BotonFormularioEliminar" asp-controller="Usuario"
                                         asp-action="AccionEliminarUsuario" asp-route-IdUsuario=@Model.Usuario.Id>
                                         Eliminar Cuenta
@@ -187,32 +195,16 @@
                                 </div>
                             </form>
                         </div>
-                        @if (Model.Usuario.Rol == "Usuario")
-                        {
-                            <div class="DivMenuUsuario">
-                                <h4 class="TituloMenuUsuario">Menú de Usuario</h4>
-                                <div class="DivSeccionMenuUsuario">
-                                    @foreach (var Permiso in Model.Usuario.Permisos)
-                                    {
-                                        <a asp-controller="@Permiso.Controlador" asp-action="@Permiso.Accion"
-                                            class="LinkMenuUsuario">@Permiso.Nombre</a>
-                                    }
-                                </div>
+                        <div class="DivMenuUsuario">
+                            <h4 class="TituloMenuUsuario">Menú de Usuario</h4>
+                            <div class="DivSeccionMenuUsuario">
+                                @foreach (var Permiso in Model.Usuario.Permisos)
+                                {
+                                    <a asp-controller="@Permiso.Controlador" asp-action="@Permiso.Accion"
+                                        class="LinkMenuUsuario">@Permiso.Nombre</a>
+                                }
                             </div>
-                        }
-                        else
-                        {
-                            <div class="DivMenuAdministrador">
-                                <h4 class="TituloMenuUsuario">Menú de Administrador</h4>
-                                <div class="DivSeccionMenuAdministrador">
-                                    @foreach (var Permiso in Model.Usuario.Permisos)
-                                    {
-                                        <a asp-controller="@Permiso.Controlador" asp-action="@Permiso.Accion"
-                                            class="LinkMenuUsuario">@Permiso.Nombre</a>
-                                    }
-                                </div>
-                            </div>
-                        }
+                        </div>
                     </main>
                 </div>
             </div>

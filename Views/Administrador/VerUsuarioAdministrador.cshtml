@@ -198,6 +198,14 @@
                                     <label class="EtiquetaFormulario" for="Rol">Rol</label>
                                 </div>
                                 <div class="Grupo2Elementos DivBotones">
+                                    <a class="BotonFormularioCorreo" asp-controller="Reporte"
+                                        asp-action="EnviarReportesUsuarioAdministradorPorCorreo" asp-route-IdUsuario=@Model.Usuario.Id>
+                                        Enviar por correo
+                                    </a>
+                                    <a class="BotonFormularioPDF" asp-controller="Reporte"
+                                        asp-action="GenerarReporteUsuarioAdministradorPDF" asp-route-IdUsuario=@Model.Usuario.Id>
+                                        Generar PDF
+                                    </a>
                                     <a class="BotonFormularioEliminar" asp-controller="Usuario"
                                         asp-action="AccionEliminarUsuario" asp-route-IdUsuario=@Model.Usuario.Id>
                                         Eliminar Cuenta

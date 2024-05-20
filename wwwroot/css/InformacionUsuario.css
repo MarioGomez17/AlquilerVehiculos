@@ -159,7 +159,7 @@ body {
 
 .ContenidoPrincipalInformacionUsuario {
     height: 98%;
-    width: 55%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -171,7 +171,7 @@ body {
 
 .FormularioActualizarUsuario {
     height: 95%;
-    width: 90%;
+    width: 96%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -248,10 +248,10 @@ body {
 
 .BotonFormularioEliminar {
     font-family: var(--Font);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
-    width: 40%;
+    width: 23%;
     padding: 5px 0;
     background: transparent;
     cursor: pointer;
@@ -275,10 +275,10 @@ body {
 
 .BotonFormularioActualizar {
     font-family: var(--Font);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
-    width: 40%;
+    width: 23%;
     padding: 5px 0;
     background: transparent;
     cursor: pointer;
@@ -297,39 +297,18 @@ body {
     transform: scale(0.9);
 }
 
-.DivMenuAdministrador {
-    width: 42%;
-    height: 98%;
-    background-color: red;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: var(--ThirdColor);
-    border: 5px solid var(--SixthColor);
-    border-radius: 15px;
-}
-
 .DivMenuUsuario {
     width: 20%;
     height: 98%;
     background-color: red;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
     background-color: var(--ThirdColor);
     border: 5px solid var(--SixthColor);
     border-radius: 15px;
-}
-
-.DivSeccionMenuAdministrador {
-    width: 95%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 8px;
+    overflow: auto;
+    scrollbar-width: none;
 }
 
 .DivSeccionMenuUsuario {
@@ -338,13 +317,14 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 80%;
+    margin: 20px 0;
+    gap: 15px;
 }
 
 .LinkMenuUsuario {
     text-decoration: none;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 10px;
     text-align: center;
     color: var(--Black);
     font-weight: bold;
@@ -357,11 +337,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 90%;
 }
 
 .LinkMenuUsuario:hover {
     color: var(--Black);
-    font-size: 12.5px;
+    font-size: 11px;
     background-color: var(--FirstColor);
 }
 
@@ -369,7 +350,7 @@ body {
     width: 100%;
     font-size: 20px;
     text-align: center;
-    margin: 0;
+    margin: 20px 0;
     color: var(--Wihte);
 }
 
@@ -390,4 +371,58 @@ body {
     font-family: var(--Font);
     font-weight: bold;
     color: var(--Black);
+}
+
+.BotonFormularioPDF {
+    font-family: var(--Font);
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 23%;
+    padding: 5px 0;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.8s;
+    border: 2px solid red;
+    border-radius: 15px;
+    box-shadow: inset 0 0 0 0 red;
+    text-decoration: none;
+    text-align: center;
+    color: var(--Black);
+}
+
+.BotonFormularioPDF:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 red;
+}
+
+.BotonFormularioPDF:active {
+    transform: scale(0.9);
+}
+
+.BotonFormularioCorreo {
+    font-family: var(--Font);
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 23%;
+    padding: 5px 0;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.8s;
+    border: 2px solid var(--SecondColor);
+    border-radius: 15px;
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+    text-decoration: none;
+    text-align: center;
+    color: var(--Black);
+}
+
+.BotonFormularioCorreo:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+}
+
+.BotonFormularioCorreo:active {
+    transform: scale(0.9);
 }
