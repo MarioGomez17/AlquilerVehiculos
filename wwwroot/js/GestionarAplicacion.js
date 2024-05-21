@@ -64,4 +64,134 @@ function CargarImagen() {
         Lector.readAsDataURL(FotoEmpresa);
     }
 }
-document.getElementById('FotoEmpresa').addEventListener('change', CargarImagen);
+
+const InputFotoEmpresa = document.querySelector('#FotoEmpresa');
+if (InputFotoEmpresa) {
+    document.getElementById('FotoEmpresa').addEventListener('change', CargarImagen);
+}
+
+function EnviarRolPermisoEliminar(IdRol, IdPermiso) {
+    fetch('/Administrador/EliminarPermiso?IdRol=' + IdRol + "&IdPermiso=" + IdPermiso)
+        .catch(error => console.error('Error:', error));
+
+}
+
+function EnviarRolPermisoAgregar(IdRol, IdPermiso) {
+    fetch('/Administrador/AgregarPermiso?IdRol=' + IdRol + "&IdPermiso=" + IdPermiso)
+        .catch(error => console.error('Error:', error));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function TraerPermisos() {
+    const IdRol = document.getElementById("IdRol").value;
+    const TotalPermisos = document.querySelectorAll('.InputTextoFormularioPermisos');
+    const ArregloPermisos = [];
+    for (var i = 0; i < TotalPermisos.length; i++) {
+        ArregloPermisos.push(TotalPermisos[i].value);
+    }
+    const BotonesFormulario = document.querySelectorAll(".BotonFormularioEliminarPermiso, .BotonFormularioAgregarPermiso");
+    let Indices = [];
+    if (IdRol != 0) {
+        fetch('/Administrador/TraerPermisosRol?IdRol=' + IdRol)
+            .then(response => response.json())
+            .then(Data => {
+                Data.Permisos.forEach(function (PermisoRol) {
+                    if (ArregloPermisos.includes(PermisoRol.Nombre)) {
+                        const Indice = ArregloPermisos.indexOf(PermisoRol.Nombre);
+                        Indices.push((Indice - 1));
+                    }
+                });
+                for (var k = 0; k < BotonesFormulario.length; k++) {
+                    BotonesFormulario[k].classList.add("BotonFormularioEliminarPermiso");
+                    BotonesFormulario[k].classList.add("BotonFormularioAgregarPermiso");
+                    BotonesFormulario[k].textContent = 'Agregar Permiso';
+                }
+                for (var j = 0; j < Indices.length; j++) {
+                    BotonesFormulario[Indices[j]].classList.remove("BotonFormularioAgregarPermiso");
+                    BotonesFormulario[Indices[j]].textContent = 'Eliminar Permiso';
+                }
+                AgregarAccionesBoton();
+            })
+            .catch(error => console.error('Error:', error));
+    }
+}
+
+function AgregarAccionesBoton() {
+    const IdRol = document.getElementById("IdRol").value;
+    const BotonesFormulario = document.querySelectorAll(".BotonFormularioEliminarPermiso, .BotonFormularioAgregarPermiso");
+    const IdPermisos = document.querySelectorAll('.IdPermiso');
+    if (IdRol != 0) {
+        for (var i = 0; i < BotonesFormulario.length; i++) {
+            (function (IdPermiso) {
+                if (BotonesFormulario[i].textContent == "Agregar Permiso") {
+                    BotonesFormulario[i].setAttribute('href', 'AgregarPermiso?IdRol=' + IdRol + '&IdPermiso=' + IdPermiso);
+                    //BotonesFormulario[i].setAttribute('asp-action', 'AgregarPermiso');
+                    //BotonesFormulario[i].setAttribute('asp-route-IdRol', IdPermiso);
+                    //BotonesFormulario[i].setAttribute('asp-route-IdPermiso', IdPermiso);
+                } else {
+                    //BotonesFormulario[i].setAttribute('asp-controller', 'Administrador');
+                    BotonesFormulario[i].setAttribute('href', 'EliminarPermiso?IdRol=' + IdRol + '&IdPermiso=' + IdPermiso);
+                    //BotonesFormulario[i].setAttribute('asp-action', 'EliminarPermiso');
+                    //BotonesFormulario[i].setAttribute('asp-route-IdRol', IdPermiso);
+                    //BotonesFormulario[i].setAttribute('asp-route-IdPermiso', IdPermiso);
+                }
+            })(IdPermisos[i].value);
+        }
+    }
+}
+
+const InputRol = document.querySelector('#IdRol');
+if (InputRol) {
+    document.getElementById('IdRol').addEventListener('change', TraerPermisos);
+}

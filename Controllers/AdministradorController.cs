@@ -266,9 +266,10 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloGestionarPermisos RolesPermisos = new();
             ModeloEmpresa Empresa = new();
             ViewBag.RutaFoto = Empresa.RutaFoto;
-            return View(Empresa);
+            return View(RolesPermisos);
         }
         //---------------------------------------------- ACCIONES ----------------------------------------------
         private ModeloUsuario DatosUsuarioSesion()
@@ -492,6 +493,29 @@ namespace ALQUILER_VEHICULOS.Controllers
                 Empresa.AccionActualizarEmpresa(Id, Nombre, NIT, Direccion, Ciudad, Barrio, Telefono, Correo);
             }
             return RedirectToAction("GestionarEmpresa", "Administrador");
+        }
+        public IActionResult TraerPermisosRol(int IdRol)
+        {
+            ModeloPermiso Permiso = new();
+            return Json(new { Permisos = Permiso.TraerPermisosRol(IdRol) });
+        }
+        public IActionResult EliminarPermiso(int IdRol, int IdPermiso)
+        {
+            ModeloPermiso Permiso = new();
+            Permiso.EliminarPermiso(IdRol, IdPermiso);
+            return RedirectToAction("GestionarRolesPermisos", "Administrador");
+        }
+        public IActionResult AgregarPermiso(int IdRol, int IdPermiso)
+        {
+            ModeloPermiso Permiso = new();
+            Permiso.AgregarPermiso(IdRol, IdPermiso);
+            return RedirectToAction("GestionarRolesPermisos", "Administrador");
+        }
+        public IActionResult AgregarRol(string NuevoRol)
+        {
+            ModeloRol Rol = new();
+            Rol.AgregarRol(NuevoRol);
+            return RedirectToAction("GestionarRolesPermisos", "Administrador");
         }
     }
 }

@@ -1,4 +1,4 @@
-@model ModeloEmpresa;
+@model ModeloGestionarPermisos;
 @{
     Layout = null;
 }
@@ -117,6 +117,41 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivRoles">
+                                <div class="DivEtiquetaInput">
+                                    <select name="Rol" id="IdRol" class="SelectFormularioAgregar">
+                                        <option value="0" class="OptionSelectFormularioAgregar" disabled selected>
+                                            Seleccione un rol
+                                        </option>
+                                        @foreach (var Rol in Model.Roles)
+                                        {
+                                            <option value="@Rol.Id" class="OptionSelectFormularioAgregar">@Rol.NombreRol
+                                            </option>
+                                        }
+                                    </select>
+                                    <label for="IdRol" class="EtiquetaFormulario">Roles</label>
+                                </div>
+                                <form asp-controller="Administrador" asp-action="AgregarRol" class="FormularioNuevoRol">
+                                    <div class="DivEtiquetaInput">
+                                        <input type="text" name="NuevoRol" id="NuevoRol"
+                                            class="InputTextoFormularioPermisos">
+                                        <label for="NuevoRol" class="EtiquetaFormularioPermisos">Nombre Rol</label>
+                                    </div>
+                                    <input type="submit" class="BotonFormularioAgregarRol" value="Agregar Rol">
+                                </form>
+                            </div>
+                            <div class="DivPermisos">
+                                @foreach (var Permiso in Model.Permisos)
+                                {
+                                    <div class="FormularioPermisos">
+                                        <input type="hidden" class="IdPermiso" value="@Permiso.Id">
+                                        <input type="text" name="Permiso" id="Permiso" value="@Permiso.Nombre"
+                                            class="InputTextoFormularioPermisos" readonly>
+                                        <a class="BotonFormularioEliminarPermiso BotonFormularioAgregarPermiso"
+                                            >Agregar Permiso</a>
+                                    </div>
+                                }
+                            </div>
                         </div>
                     </main>
                 </div>

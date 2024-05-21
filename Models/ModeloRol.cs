@@ -39,5 +39,12 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return Roles;
         }
+        public bool AgregarRol(string NombreRol){
+            string ConsultaSQL = "INSERT INTO " + 
+            "alquiler_vehiculos.rol (" + 
+            "alquiler_vehiculos.rol.Nombre_Rol) " + 
+            "VALUES ('" + NombreRol +"')";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
     }
 }
