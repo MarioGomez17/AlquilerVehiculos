@@ -1,0 +1,243 @@
+@model ModeloGestionarEmpresa;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/GestionarAplicacion.css">
+    <title>GESTIONAR EMPRESA</title>
+</head>
+
+<body class="BodyGestionarAplicacion">
+    <div class="ContenidoBodyGestionarAplicacion">
+        <div class="DivBarraNavegacionGestionarAplicacion">
+            <nav class="BarraNavegacionGestionarAplicacion">
+                <div class="DivLinkLogoGestionarAplicacion">
+                    <a asp-controller="Inicio" asp-action="Inicio">
+                        <img class="ImagenLogo" src="~/imagenes/@ViewBag.RutaFoto" alt="Logotipo" />
+                    </a>
+                </div>
+                <div class="DivLinkGestionarAplicacion">
+                    <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkGestionarAplicacion">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-login-2 IconoSVGLink" width="35" height="35"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#1f9102" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                            <path d="M3 12h13l-3 -3" />
+                            <path d="M13 15l3 -3" />
+                        </svg>
+                        <span class="TextoLinkGestionarAplicacion">Iniciar Sesión</span>
+                    </a>
+                </div>
+                <div class="DivLinkGestionarAplicacion">
+                    <a asp-controller="Usuario" asp-action="InformacionUsuario" class="LinkGestionarAplicacion">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user IconoSVGLink"
+                            width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#020291" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        </svg>
+                        <span class="TextoLinkGestionarAplicacion">Ver Mi Perfil</span>
+                    </a>
+                </div>
+                <div class="DivLinkGestionarAplicacion">
+                    <a asp-controller="Vehiculo" asp-action="InformacionVehiculos" class="LinkGestionarAplicacion">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car IconoSVGLink"
+                            width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#beac0d" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
+                        </svg>
+                        <span class="TextoLinkGestionarAplicacion">Ver Mis Vehiculos</span>
+                    </a>
+                </div>
+                <div class="DivLinkGestionarAplicacion">
+                    <div class="DivLinkGestionarAplicacion">
+                        @if (ViewBag.AlquileresPendientes > 0)
+                        {
+                            <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
+                                <div class="DivAlquieleresPendientes">
+                                    <p class="AlquieleresPendientes">
+                                        @ViewBag.AlquileresPendientes
+                                    </p>
+                                </div>
+                                <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 8l0 4l2 2" />
+                                    <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                                </svg>
+                                <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="DivLinkGestionarAplicacion">
+                    <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkGestionarAplicacion">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login IconoSVGLink"
+                            width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#be0d0d" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                            <path d="M21 12h-13l3 -3" />
+                            <path d="M11 15l-3 -3" />
+                        </svg>
+                        <span class="TextoLinkGestionarAplicacion">Cerrar Sesión</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="DivContenidoGestionarAplicacion">
+            <div class="DivEncabezadoGestionarAplicacion">
+                <header class="EncabezadoGestionarAplicacion">
+                    <h1 class="TituloPrincipalGestionarAplicacion">Alquiler de Vehículos</h1>
+                </header>
+            </div>
+            <div class="DivContenidoPrincipalGestionarAplicacion">
+                <div class="DivPrincipalGestionarAplicacion">
+                    <main role="main" class="PrincipalGestionarAplicacion">
+                        <div class="ContenidoPrincipalGestionarAplicacion">
+                            <div class="DivFormularioGestion DivGestionarEmpresa">
+                                <form asp-action="AccionActualizarEmpresa" asp-controller="Administrador" method="post"
+                                    class="FormularioEmpresa" enctype="multipart/form-data">
+                                    <input type="hidden" value="@Model.Empresa.Id" name="Id">
+                                    <div class="DivInformacionEmpresa">
+                                        <div class="InformacionEmpresa">
+                                            <div class="DosComponentes">
+                                                <div class="DivEtiquetaInputEmpresa">
+                                                    <input class="InputFormulario" type="text" name="Nombre" id="Nombre"
+                                                        value="@Model.Empresa.Nombre" />
+                                                    <label class="EtiquetaFormularioEmpresa" for="Nombre">
+                                                        Nombre
+                                                    </label>
+                                                </div>
+                                                <div class="DivEtiquetaInputEmpresa">
+                                                    <input class="InputFormulario" type="text" name="NIT" id="NIT"
+                                                        value="@Model.Empresa.NIT" />
+                                                    <label class="EtiquetaFormularioEmpresa" for="NIT">
+                                                        NIT
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="DosComponentes">
+                                                <div class="DivEtiquetaInputEmpresa InputSolo">
+                                                    <input class="InputFormulario InputSolo" type="text"
+                                                        name="Direccion" id="Direccion"
+                                                        value="@Model.Empresa.Direccion" />
+                                                    <label class="EtiquetaFormularioEmpresa" for="Direccion">
+                                                        Dirección
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="DosComponentes">
+                                                <div class="DivEtiquetaInputEmpresa">
+                                                    <select class="SelectFormulario" id="Ciudad" name="Ciudad">
+                                                        @foreach (var Ciudad in Model.Ciudades)
+                                                        {
+                                                            if (Ciudad.Nombre == Model.Empresa.Ciudad)
+                                                            {
+                                                                <option value=@Ciudad.Id class="OptionSelect" selected>
+                                                                    @Ciudad.Nombre
+                                                                </option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value=@Ciudad.Id class="OptionSelect">
+                                                                    @Ciudad.Nombre
+                                                                </option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                    <label class="EtiquetaFormularioEmpresa" for="Ciudad">
+                                                        Ciudad
+                                                    </label>
+                                                </div>
+                                                <div class="DivEtiquetaInputEmpresa">
+                                                    <input class="InputFormulario" type="text" name="Barrio" id="Barrio"
+                                                        value="@Model.Empresa.Barrio" />
+                                                    <label class="EtiquetaFormularioEmpresa" for="Barrio">
+                                                        Barrio
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="DosComponentes">
+                                                <div class="DivEtiquetaInputEmpresa">
+                                                    <input class="InputFormulario" type="text" name="Telefono"
+                                                        id="Telefono" value="@Model.Empresa.Telefono" />
+                                                    <label class="EtiquetaFormularioEmpresa" for="Telefono">
+                                                        Teléfono
+                                                    </label>
+                                                </div>
+                                                <div class="DivEtiquetaInputEmpresa">
+                                                    <input class="InputFormulario" type="text" name="Correo" id="Correo"
+                                                        value="@Model.Empresa.Correo" />
+                                                    <label class="EtiquetaFormularioEmpresa" for="Correo">
+                                                        Correo
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="LogoEmpresa">
+                                            <img src="~/imagenes/@Model.Empresa.RutaFoto"
+                                                alt="Logo de @Model.Empresa.Nombre"
+                                                class="ImagenLogo ImagenLogoEmpresa" id="EspacioFotoEmpresa">
+                                            <div class="DivInputFoto">
+                                                <input class="InputFotoEmpresa" type="file" id="FotoEmpresa"
+                                                    name="FotoEmpresa" accept=".png, .jpg, .jpeg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="IconoSubirFoto"
+                                                    width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5"
+                                                    stroke="#000000" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path
+                                                        d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
+                                                    <path d="M9 15l3 -3l3 3" />
+                                                    <path d="M12 12l0 9" />
+                                                </svg>
+                                            </div>
+                                            <label class="EtiquetaFormularioEmpresa" for="FotoVehiculo">
+                                                Seleccionar Foto
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="BotonActualizarEmpresa" value="Actualizar Empresa">
+                                </form>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            <div class="DivFooterGestionarAplicacion">
+                <footer class="FooterGestionarAplicacion">
+                    <span class="TextoFooterGestionarAplicacion">
+                        &copy; 2024 - Alquiler de Vehículos por Mario Gómez y Juan Diego Claros
+                    </span>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/GestionarAplicacion.js" type="module"></script>
+</body>
+
+</html>

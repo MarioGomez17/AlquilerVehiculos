@@ -20,6 +20,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                     return RedirectToAction("Inicio", "Inicio");
                 }
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ViewBag.Mensaje = Mensaje;
             ViewData["ReturnUrl"] = returnUrl;
             return View();
@@ -31,6 +33,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloTipoIdentificacionUsuario TipoIdentificacionUsuario = new();
             ViewBag.Mensaje = Mensaje;
             return View(TipoIdentificacionUsuario.TraerTodosTiposdeIdentificacion());
@@ -43,6 +47,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
             List<ModeloTipoIdentificacionUsuario> TiposIdentificacion = TipoIdentificacion.TraerTodosTiposdeIdentificacion();
             ModeloUsuario ModeloUsuario = new();

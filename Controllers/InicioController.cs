@@ -16,6 +16,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }
@@ -76,6 +78,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ViewBag.FiltroCiudad = FiltroCiudad;
             ViewBag.FiltroTipoVehiculo = FiltroTipoVehiculo;
             ViewBag.FiltroMarca = FiltroMarca;
@@ -90,9 +94,12 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }
+        //---------------------------------------------- ACCIONES ----------------------------------------------
         private ModeloUsuario DatosUsuarioSesion()
         {
             var Identity = HttpContext.User.Identity as ClaimsIdentity;

@@ -18,6 +18,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ViewBag.Mensaje = Mensaje;
             ModeloRegistrarVehiculo ModeloRegistrarVehiculo = new();
             return View(ModeloRegistrarVehiculo);
@@ -30,6 +32,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloVehiculo ModeloVehiculo = new();
             List<ModeloVehiculo> Vehiculos = ModeloVehiculo.TraerTodosVehiculosPropietario(DatosUsuarioSesion().Id);
             return View(Vehiculos);
@@ -42,6 +46,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloVerVehiculo ModeloVerVehiculo = new(IdVehiculo);
             return View(ModeloVerVehiculo);
         }
@@ -52,6 +58,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloVehiculo ModeloVehiculo = new();
             return View(ModeloVehiculo.TraerVehiculo(IdVehiculo));
         }

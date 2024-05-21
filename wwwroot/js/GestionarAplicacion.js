@@ -44,26 +44,24 @@ function TraerTodasMarcasPorTIpo() {
     TraerTodasLineasPorMarca();
 }
 
-document.getElementById('Tipo').addEventListener('change', TraerTodasMarcasPorTIpo);
-document.addEventListener('DOMContentLoaded', function () {
-    TraerTodosTIposInicial();
-});
-
-
-function ActivarDivCorreoReportesAlquileresAdministrador(){
-    const DivEnviarCorreo = document.getElementById("EnviarReportesAlquileresAdministradorPorCorreo");
-    DivEnviarCorreo.style.display = "flex";
-    DivEnviarCorreo.style.justifyContent = "center";
-    DivEnviarCorreo.style.alignItems = "center";
+const InputTipos = document.querySelector('#Tipo');
+if (InputTipos) {
+    document.getElementById('Tipo').addEventListener('change', TraerTodasMarcasPorTIpo);
+    document.addEventListener('DOMContentLoaded', function () {
+        TraerTodosTIposInicial();
+    });
 }
 
-function DesactivarDivCorreoAlquileresAdministrador(){
-    const DivEnviarCorreo = document.getElementById("EnviarReportesAlquileresAdministradorPorCorreo");
-    DivEnviarCorreo.style.display = "none";
+function CargarImagen() {
+    const EspacioFotoEmpresa = document.getElementById('EspacioFotoEmpresa');
+    const FotoEmpresa = document.getElementById('FotoEmpresa').files[0];
+    if (FotoEmpresa) {
+        const Lector = new FileReader();
+        Lector.onload = function (event) {
+            const URL = event.target.result;
+            EspacioFotoEmpresa.src = URL;
+        };
+        Lector.readAsDataURL(FotoEmpresa);
+    }
 }
-
-const BotonEnviarCorreoAlquileresAdministrador = document.getElementById("BotonEnviarReportesAlquileresAdministradorPorCorreo");
-BotonEnviarCorreoAlquileresAdministrador.addEventListener("click", ActivarDivCorreoReportesAlquileresAdministrador);
-
-const BotonCerrarCorreoAlquileresAdministrador = document.getElementById("BotonCerrarReportesAlquileresAdministradorPorCorreo");
-BotonCerrarCorreoAlquileresAdministrador.addEventListener("click", DesactivarDivCorreoAlquileresAdministrador);
+document.getElementById('FotoEmpresa').addEventListener('change', CargarImagen);

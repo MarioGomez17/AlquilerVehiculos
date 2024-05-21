@@ -377,7 +377,7 @@ body {
     gap: 10px;
 }
 
-.DivAlquieleresPendientes{
+.DivAlquieleresPendientes {
     background-color: red;
     width: 35px;
     height: 35px;
@@ -387,11 +387,203 @@ body {
     align-items: center;
 }
 
-.AlquieleresPendientes{
+.AlquieleresPendientes {
     margin: 0;
     text-align: center;
     font-size: 15px;
     font-family: var(--Font);
     font-weight: bold;
     color: var(--Black);
+}
+
+.DivGestionarEmpresa {
+    width: 95%;
+}
+
+.FormularioEmpresa {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+}
+
+.DivInformacionEmpresa {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+}
+
+.InformacionEmpresa {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 70%;
+}
+
+.LogoEmpresa {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 25%;
+}
+
+.ImagenLogoEmpresa {
+    width: 200px;
+    height: 200px;
+    border: 7px solid var(--SecondColor);
+}
+
+.DosComponentes {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.DivEtiquetaInputEmpresa {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    width: 48%;
+}
+
+.EtiquetaFormularioEmpresa {
+    font-size: 15px;
+    font-weight: bold;
+    transition: .5s;
+    font-family: var(--Font);
+}
+
+.InputFormulario {
+    width: 342px;
+    font: var(--Font);
+    font-weight: bold;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    padding: 0;
+    height: 35px;
+    text-align: center;
+}
+
+.SelectFormulario {
+    width: 350px;
+    font: var(--Font);
+    font-weight: bold;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: solid 4px var(--FifthColor);
+    text-align: center;
+    padding: 0 10px;
+    height: 43px;
+}
+
+.InputFormulario:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+.InputFormulario:focus~label {
+    color: var(--SecondColor);
+    font-size: 18px;
+}
+
+.SelectFormulario:focus {
+    border: solid 4px var(--SecondColor);
+}
+
+.SelectFormulario:focus~label {
+    color: var(--SecondColor);
+    font-size: 18px;
+}
+
+.OptionSelect {
+    font: var(--Font);
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.InputSolo{
+    width: 95%;
+}
+
+.DivInputFoto {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid var(--SecondColor);
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+    transition: ease-out 0.8s;
+}
+
+.DivInputFoto:hover {
+    box-shadow: inset 0 -150px 0 0 var(--SecondColor);
+}
+
+.DivInputFoto:hover .IconoSubirFoto {
+    stroke: var(--Wihte);
+    stroke-width: 2;
+    scale: 1.2;
+}
+
+.IconoSubirFoto {
+    cursor: pointer;
+    transition: ease-out 0.8s;
+}
+
+.InputFotoEmpresa {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer !important;
+    z-index: 5;
+}
+
+.BotonActualizarEmpresa {
+    border-radius: 20px;
+    cursor: pointer;
+    height: 50px;
+    font-family: var(--Font);
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+    transition: ease-out 0.8s;
+    border: 4px solid var(--SecondColor);
+    box-shadow: inset 0 0 0 0 var(--SecondColor);
+    text-decoration: none;
+    color: var(--Black);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.BotonActualizarEmpresa:hover {
+    color: var(--Wihte);
+    box-shadow: inset 0 -100px 0 0 var(--SecondColor);
+}
+
+.BotonActualizarEmpresa:active {
+    transform: scale(0.9);
 }

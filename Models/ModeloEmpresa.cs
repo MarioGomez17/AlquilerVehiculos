@@ -3,6 +3,7 @@ namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloEmpresa
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Ciudad { get; set; }
         public string Direccion { get; set; }
@@ -14,6 +15,7 @@ namespace ALQUILER_VEHICULOS.Models
         public ModeloEmpresa()
         {
             string ConsultaSQL = "SELECT " +
+                                "alquiler_vehiculos.empresa.Id_Empresa, " +
                                 "alquiler_vehiculos.empresa.Nombre_Empresa, " +
                                 "alquiler_vehiculos.ciudad.Nombre_Ciudad, " +
                                 "alquiler_vehiculos.departamento.Nombre_Departamento, " +
@@ -38,14 +40,15 @@ namespace ALQUILER_VEHICULOS.Models
                 {
                     while (Lector.Read())
                     {
-                        this.Nombre = Lector.GetString(0);
-                        this.Ciudad = Lector.GetString(1) + " - " + Lector.GetString(2);
-                        this.Direccion = Lector.GetString(3);
-                        this.Barrio = Lector.GetString(4);
-                        this.NIT = Lector.GetString(5);
-                        this.Telefono = Lector.GetString(6);
-                        this.Correo = Lector.GetString(7);
-                        this.RutaFoto = Lector.GetString(8);
+                        this.Id = Lector.GetInt32(0);
+                        this.Nombre = Lector.GetString(1);
+                        this.Ciudad = Lector.GetString(2) + " - " + Lector.GetString(3);
+                        this.Direccion = Lector.GetString(4);
+                        this.Barrio = Lector.GetString(5);
+                        this.NIT = Lector.GetString(6);
+                        this.Telefono = Lector.GetString(7);
+                        this.Correo = Lector.GetString(8);
+                        this.RutaFoto = Lector.GetString(9);
                     }
                 }
             }
@@ -54,6 +57,35 @@ namespace ALQUILER_VEHICULOS.Models
             {
                 ConexionBD.Close();
             }
+        }
+        public bool AccionActualizarEmpresa(int Id, string Nombre, string NIT, string Direccion, int Ciudad, string Barrio, string Telefono, string Correo)
+        {
+            string ConsultaSQL = "UPDATE alquiler_vehiculos.empresa " +
+            "SET " +
+            "Nombre_Empresa = '" + Nombre + "', " +
+            "NIT_Empresa = '" + NIT + "', " +
+            "Direccion_Empresa = '" + Direccion + "', " +
+            "Ciudad_Empresa = " + Ciudad + ", " +
+            "Barrio_Empresa = '" + Barrio + "', " +
+            "Telefono_Empresa = '" + Telefono + "', " +
+            "Correo_Empresa = '" + Correo + "' " +
+            "WHERE (Id_Empresa = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+        }
+        public bool AccionActualizarEmpresa(int Id, string Nombre, string NIT, string Direccion, int Ciudad, string Barrio, string Telefono, string Correo, string FotoEmpresa)
+        {
+            string ConsultaSQL = "UPDATE alquiler_vehiculos.empresa " +
+            "SET " +
+            "Nombre_Empresa = '" + Nombre + "', " +
+            "NIT_Empresa = '" + NIT + "', " +
+            "Direccion_Empresa = '" + Direccion + "', " +
+            "Ciudad_Empresa = " + Ciudad + ", " +
+            "Barrio_Empresa = '" + Barrio + "', " +
+            "Telefono_Empresa = '" + Telefono + "', " +
+            "Correo_Empresa = '" + Correo + "', " +
+            "RutaFoto_Empresa = '" + FotoEmpresa + "' " +
+            "WHERE (Id_Empresa = " + Id + ")";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
     }
 }

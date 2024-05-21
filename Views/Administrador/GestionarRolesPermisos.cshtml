@@ -1,4 +1,4 @@
-﻿@model List<ModeloTipoVehiculo>;
+@model ModeloEmpresa;
 @{
     Layout = null;
 }
@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/GestionarAplicacion.css">
-    <title>GESTIONAR MARCAS</title>
+    <title>GESTIONAR ROLES Y PERMISOS</title>
 </head>
 
 <body class="BodyGestionarAplicacion">
@@ -64,31 +64,33 @@
                     </a>
                 </div>
                 <div class="DivLinkGestionarAplicacion">
-                    @if (ViewBag.AlquileresPendientes > 0)
-                    {
-                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
-                            <div class="DivAlquieleresPendientes">
-                                <p class="AlquieleresPendientes">
-                                    @ViewBag.AlquileresPendientes
-                                </p>
-                            </div>
-                            <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
-                        </a>
-                    }
-                    else
-                    {
-                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
-                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 8l0 4l2 2" />
-                                <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
-                            </svg>
-                            <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
-                        </a>
-                    }
+                    <div class="DivLinkGestionarAplicacion">
+                        @if (ViewBag.AlquileresPendientes > 0)
+                        {
+                            <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
+                                <div class="DivAlquieleresPendientes">
+                                    <p class="AlquieleresPendientes">
+                                        @ViewBag.AlquileresPendientes
+                                    </p>
+                                </div>
+                                <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkGestionarAplicacion">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-history IconoSVGLink" width="35" height="35"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 8l0 4l2 2" />
+                                    <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                                </svg>
+                                <span class="TextoLinkGestionarAplicacion">Ver Mis Alquileres</span>
+                            </a>
+                        }
+                    </div>
                 </div>
                 <div class="DivLinkGestionarAplicacion">
                     <a asp-controller="Usuario" asp-action="CerrarSesion" class="LinkGestionarAplicacion">
@@ -115,49 +117,6 @@
                 <div class="DivPrincipalGestionarAplicacion">
                     <main role="main" class="PrincipalGestionarAplicacion">
                         <div class="ContenidoPrincipalGestionarAplicacion">
-                            <div class="DivFormularioGestion">
-                                <form asp-action="AccionAgregarMarca" asp-controller="Administrador"
-                                    class="FormularioAgregar">
-                                    <div class="DivEtiquetaInput">
-                                        <select name="Tipo" id="Tipo" class="SelectFormularioAgregar">
-                                            <option value="0" class="OptionSelectFormularioAgregar" selected disabled>
-                                                Seleccione un Tipo de Vehículo
-                                            </option>
-                                            @foreach (var Tipo in Model)
-                                            {
-                                                <option value="@Tipo.Id" class="OptionSelectFormularioAgregar">
-                                                    @Tipo.Nombre</option>
-                                            }
-                                        </select>
-                                        <label for="Tipo" class="EtiquetaFormulario">Tipos de Vehículo</label>
-                                    </div>
-                                    <div class="DivEtiquetaInput">
-                                        <input type="text" name="Marca" class="InputFormularioAgregar" id="Marca">
-                                        <label for="Marca" class="EtiquetaFormulario">Marca</label>
-                                    </div>
-                                    <input type="submit" value="Agregar Marca" class="BotonFormularioAgregar">
-                                </form>
-                            </div>
-                            <div class="DivInformacionGestion">
-                                @foreach (var TipoVehiculo in Model)
-                                {
-                                    <h3 class="TituloLista">@TipoVehiculo.Nombre</h3>
-                                    @foreach (var Marca in TipoVehiculo.Marcas)
-                                    {
-                                        <ul class="ListaExistentes">
-                                            <li class="NombreExistentes">
-                                                <form asp-action="AccionActualizarMarca" asp-controller="Administrador"
-                                                    class="FormularioActualizar">
-                                                    <input type="hidden" name="Id" value="@Marca.Id">
-                                                    <input type="text" name="Marca" value="@Marca.Nombre"
-                                                        class="InputFormularioActualizar">
-                                                    <input type="submit" value="Actualizar" class="BotonFormularioActualizar">
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    }
-                                }
-                            </div>
                         </div>
                     </main>
                 </div>

@@ -21,6 +21,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ViewBag.FechaInicio = FechaInicio;
             ViewBag.FechaFin = FechaFin;
             ModeloCrearAlquiler ModeloCrearAlquiler = new(IdVehiculo);
@@ -34,6 +36,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloAlquiler ModeloAlquiler = new();
             ModeloAlquiler = ModeloAlquiler.TraerAlquiler(IdAlquiler);
             return View(ModeloAlquiler);
@@ -46,6 +50,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloAlquiler ModeloAlquiler = new();
             return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
         }
@@ -57,6 +63,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloAlquiler ModeloAlquiler = new();
             return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
         }
@@ -66,6 +74,8 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario.EliminarAlquileresPendientesUsuario(DatosUsuarioSesion().Id);
             _ = ActualizarDatosUsuarioSesion();
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloAlquileresUsuario ModeloAlquileresUsuario = new(DatosUsuarioSesion().Id);
             return View(ModeloAlquileresUsuario);
         }

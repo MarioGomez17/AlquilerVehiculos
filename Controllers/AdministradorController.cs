@@ -18,6 +18,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloUsuario Usuario = new();
             return View(Usuario.TraerUsuariosAdministrador(DatosUsuarioSesion().Id));
         }
@@ -28,6 +30,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloVehiculo Vehiculos = new();
             return View(Vehiculos.TraerTodosVehiculosAdministrador());
         }
@@ -38,6 +42,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloAlquiler ModeloAlquiler = new();
             return View(ModeloAlquiler.TraerAlquileres());
         }
@@ -48,6 +54,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloAlquiler ModeloAlquiler = new();
             return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
         }
@@ -58,6 +66,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloTipoVehiculo TipoVehiculo = new();
             return View(TipoVehiculo.TraerTodosTipoVehiculo());
         }
@@ -68,6 +78,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloTipoVehiculo TiModeloTipoVehiculo = new();
             return View(TiModeloTipoVehiculo.TraerTodosTipoVehiculo());
         }
@@ -78,6 +90,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloTipoVehiculo TipoVehiculo = new();
             return View(TipoVehiculo.TraerTodosTipoVehiculo());
         }
@@ -88,6 +102,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloMarca Marca = new();
             return View(Marca.TraerTodosMetodasMarcas());
         }
@@ -98,6 +114,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloTipoCombustible TipoCombustible = new();
             return View(TipoCombustible.TraerTodosTiposComustible());
         }
@@ -108,6 +126,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloDepartamento ModeloDepartamento = new();
             return View(ModeloDepartamento.TraerDepartamentos());
         }
@@ -118,6 +138,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloColor Color = new();
             return View(Color.TraerColores());
         }
@@ -128,6 +150,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloCantidadPasajeros CantidadPasajeros = new();
             return View(CantidadPasajeros.TraerCantidadesPasajeros());
         }
@@ -138,6 +162,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloCilindrada Cilindrada = new();
             return View(Cilindrada.TraerCilindradas());
         }
@@ -148,6 +174,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloModelo Modelo = new();
             return View(Modelo.TraerModelos());
         }
@@ -158,6 +186,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloSeguroAlquiler SeguroAlquiler = new();
             return View(SeguroAlquiler.TraerTodosSegurosAlquiler());
         }
@@ -168,6 +198,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloMetodoPagoAlquiler MetodoPago = new();
             return View(MetodoPago.TraerTodosMetodosPagoAlquiler());
         }
@@ -178,6 +210,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloLugarAlquiler LugaresAlquiler = new();
             return View(LugaresAlquiler.TraerTodosLugaresAlquiler());
         }
@@ -188,6 +222,8 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
             ModeloUsuario ModeloUsuario = new();
             ModeloRol Roles = new();
@@ -206,8 +242,33 @@ namespace ALQUILER_VEHICULOS.Controllers
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
             }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
             ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
             return View(TipoIdentificacion.TraerTodosTiposdeIdentificacion());
+        }
+        public IActionResult GestionarEmpresa()
+        {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
+
+            ModeloGestionarEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.Empresa.RutaFoto;
+            return View(Empresa);
+        }
+        public IActionResult GestionarRolesPermisos()
+        {
+            if (DatosUsuarioSesion() != null)
+            {
+                _ = ActualizarDatosUsuarioSesion();
+                ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+            }
+            ModeloEmpresa Empresa = new();
+            ViewBag.RutaFoto = Empresa.RutaFoto;
+            return View(Empresa);
         }
         //---------------------------------------------- ACCIONES ----------------------------------------------
         private ModeloUsuario DatosUsuarioSesion()
@@ -413,6 +474,24 @@ namespace ALQUILER_VEHICULOS.Controllers
                 ClaimPrincipal.AddClaim(nuevoClaimUsuario);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(ClaimPrincipal));
             }
+        }
+        public IActionResult AccionActualizarEmpresa(int Id, string Nombre, string NIT, string Direccion, int Ciudad, string Barrio, string Telefono, string Correo, IFormFile FotoEmpresa)
+        {
+            ModeloEmpresa Empresa = new();
+            if (FotoEmpresa != null)
+            {
+                string NombreFoto = FotoEmpresa.FileName;
+                var RutaArchivo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagenes", NombreFoto);
+                using var fileStream = new FileStream(RutaArchivo, FileMode.Create);
+                FotoEmpresa.CopyTo(fileStream);
+                ModeloVehiculo ModeloVehiculo = new();
+                Empresa.AccionActualizarEmpresa(Id, Nombre, NIT, Direccion, Ciudad, Barrio, Telefono, Correo, NombreFoto);
+            }
+            else
+            {
+                Empresa.AccionActualizarEmpresa(Id, Nombre, NIT, Direccion, Ciudad, Barrio, Telefono, Correo);
+            }
+            return RedirectToAction("GestionarEmpresa", "Administrador");
         }
     }
 }
