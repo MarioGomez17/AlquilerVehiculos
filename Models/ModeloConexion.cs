@@ -8,7 +8,7 @@ namespace ALQUILER_VEHICULOS.Models
             String Servidor = "localhost";
             String BaseDatos = "alquiler_vehiculos";
             String Usuario = "root";
-            String Contrasena = "juan123";
+            String Contrasena = "root";
             String CadenaConexion = "database = " + BaseDatos + "; Data Source = " + Servidor + "; User Id= " + Usuario + "; Password = " + Contrasena;
             try
             {
