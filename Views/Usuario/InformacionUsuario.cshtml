@@ -118,64 +118,67 @@
                             <form class="FormularioActualizarUsuario" asp-controller="Usuario"
                                 asp-action="AccionActualizarUsuario" method="post">
                                 <input type="hidden" name="Id" value="@Model.Usuario.Id">
-                                <div class="Grupo2Elementos">
-                                    <input type="text" name="Nombre" id="Nombre" value="@Model.Usuario.Nombre"
-                                        class="InputFormulario" />
-                                    <label class="EtiquetaFormulario" for="Nombre">Nombre</label>
-                                </div>
-                                <div class="Grupo2Elementos">
-                                    <input type="text" name="Apellido" id="Apellido" value="@Model.Usuario.Apellido"
-                                        class="InputFormulario" />
-                                    <label class="EtiquetaFormulario" for="Apellido">Apellido</label>
-                                </div>
-                                <div class="Grupo2Elementos">
-                                    <select class="SelectFormulario" id="TipoIdentificacion" name="TipoIdentificacion">
-                                        @foreach (var TipoIdentificacion in Model.TiposIdentificacion)
-                                        {
-                                            if (Model.Usuario.TipoIdentificacion ==
-                                            TipoIdentificacion.NombreTipoIdentificacionUsuario)
+                                <div class="ContenedorFormulario">
+                                    <div class="Grupo2Elementos">
+                                        <input type="text" name="Nombre" id="Nombre" value="@Model.Usuario.Nombre"
+                                            class="InputFormulario" />
+                                        <label class="EtiquetaFormulario" for="Nombre">Nombre</label>
+                                    </div>
+                                    <div class="Grupo2Elementos">
+                                        <input type="text" name="Apellido" id="Apellido" value="@Model.Usuario.Apellido"
+                                            class="InputFormulario" />
+                                        <label class="EtiquetaFormulario" for="Apellido">Apellido</label>
+                                    </div>
+                                    <div class="Grupo2Elementos">
+                                        <select class="SelectFormulario" id="TipoIdentificacion"
+                                            name="TipoIdentificacion">
+                                            @foreach (var TipoIdentificacion in Model.TiposIdentificacion)
                                             {
-                                                <option selected value="@TipoIdentificacion.Id" class="OptionSelect">
-                                                    @TipoIdentificacion.NombreTipoIdentificacionUsuario
-                                                    (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)</option>
+                                                if (Model.Usuario.TipoIdentificacion ==
+                                                TipoIdentificacion.NombreTipoIdentificacionUsuario)
+                                                {
+                                                    <option selected value="@TipoIdentificacion.Id" class="OptionSelect">
+                                                        @TipoIdentificacion.NombreTipoIdentificacionUsuario
+                                                        (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@TipoIdentificacion.Id" class="OptionSelect">
+                                                        @TipoIdentificacion.NombreTipoIdentificacionUsuario
+                                                        (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)</option>
+                                                }
                                             }
-                                            else
-                                            {
-                                                <option value="@TipoIdentificacion.Id" class="OptionSelect">
-                                                    @TipoIdentificacion.NombreTipoIdentificacionUsuario
-                                                    (@TipoIdentificacion.SimboloTipoIdentificacionUsuario)</option>
-                                            }
-                                        }
-                                    </select>
-                                    <label class="EtiquetaFormulario" for="TipoIdentificacion">Tipo de
-                                        Identificacion</label>
-                                </div>
-                                <div class="Grupo2Elementos">
-                                    <input type="text" name="NumeroIdentificacion" id="NumeroIdentificacion"
-                                        value="@Model.Usuario.NumeroIdentificacion" class="InputFormulario" />
-                                    <label class="EtiquetaFormulario" for="NumeroIdentificacion">Numero de
-                                        Identificacion</label>
-                                </div>
-                                <div class="Grupo2Elementos">
-                                    <input type="text" name="Telefono" id="Telefono" value="@Model.Usuario.Telefono"
-                                        class="InputFormulario" />
-                                    <label class="EtiquetaFormulario" for="Telefono">Telefono</label>
-                                </div>
-                                <div class="Grupo2Elementos">
-                                    <input type="text" name="Correo" id="Correo" value="@Model.Usuario.Correo"
-                                        class="InputFormulario" />
-                                    <label class="EtiquetaFormulario" for="Correo">Correo</label>
-                                </div>
-                                <div class="Grupo2Elementos">
-                                    <input type="password" name="name" id="Contraseña" value=""
-                                        class="InputFormulario" />
-                                    <label class="EtiquetaFormulario" for="Contraseña">Contraseña</label>
-                                </div>
-                                <div class="Grupo2Elementos">
-                                    <input type="password" name="Contrasena" id="ConfirmarContraseña" value=""
-                                        class="InputFormulario" />
-                                    <label class="EtiquetaFormulario" for="ConfirmarContraseña">Confirmar
-                                        Contraseña</label>
+                                        </select>
+                                        <label class="EtiquetaFormulario" for="TipoIdentificacion">Tipo de
+                                            Identificacion</label>
+                                    </div>
+                                    <div class="Grupo2Elementos">
+                                        <input type="text" name="NumeroIdentificacion" id="NumeroIdentificacion"
+                                            value="@Model.Usuario.NumeroIdentificacion" class="InputFormulario" />
+                                        <label class="EtiquetaFormulario" for="NumeroIdentificacion">Numero de
+                                            Identificacion</label>
+                                    </div>
+                                    <div class="Grupo2Elementos">
+                                        <input type="text" name="Telefono" id="Telefono" value="@Model.Usuario.Telefono"
+                                            class="InputFormulario" />
+                                        <label class="EtiquetaFormulario" for="Telefono">Telefono</label>
+                                    </div>
+                                    <div class="Grupo2Elementos">
+                                        <input type="text" name="Correo" id="Correo" value="@Model.Usuario.Correo"
+                                            class="InputFormulario" />
+                                        <label class="EtiquetaFormulario" for="Correo">Correo</label>
+                                    </div>
+                                    <div class="Grupo2Elementos">
+                                        <input type="password" name="name" id="Contraseña" value=""
+                                            class="InputFormulario" />
+                                        <label class="EtiquetaFormulario" for="Contraseña">Contraseña</label>
+                                    </div>
+                                    <div class="Grupo2Elementos">
+                                        <input type="password" name="Contrasena" id="ConfirmarContraseña" value=""
+                                            class="InputFormulario" />
+                                        <label class="EtiquetaFormulario" for="ConfirmarContraseña">Confirmar
+                                            Contraseña</label>
+                                    </div>
                                 </div>
                                 <div class="Grupo2Elementos DivBotones">
                                     <a class="BotonFormularioCorreo" asp-controller="Reporte"
@@ -195,16 +198,19 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="DivMenuUsuario">
-                            <h4 class="TituloMenuUsuario">Menú de Usuario</h4>
-                            <div class="DivSeccionMenuUsuario">
-                                @foreach (var Permiso in Model.Usuario.Permisos)
-                                {
-                                    <a asp-controller="@Permiso.Controlador" asp-action="@Permiso.Accion"
-                                        class="LinkMenuUsuario">@Permiso.Nombre</a>
-                                }
+                        @if (Model.Usuario.Permisos.Count > 0)
+                        {
+                            <div class="DivMenuUsuario">
+                                <h4 class="TituloMenuUsuario">Menú de Usuario</h4>
+                                <div class="DivSeccionMenuUsuario">
+                                    @foreach (var Permiso in Model.Usuario.Permisos)
+                                    {
+                                        <a asp-controller="@Permiso.Controlador" asp-action="@Permiso.Accion"
+                                            class="LinkMenuUsuario">@Permiso.Nombre</a>
+                                    }
+                                </div>
                             </div>
-                        </div>
+                        }
                     </main>
                 </div>
             </div>

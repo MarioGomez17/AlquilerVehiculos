@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 namespace ALQUILER_VEHICULOS.Controllers
 {
-    [Authorize(Policy = "SoloAdministrador")]
+    [Authorize]
     public class AdministradorController : Controller
     {
         //---------------------------------------------- VISTAS ----------------------------------------------
@@ -17,11 +17,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarTodosUsuarios"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloUsuario Usuario = new();
+                    return View(Usuario.TraerUsuariosAdministrador(DatosUsuarioSesion().Id));
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloUsuario Usuario = new();
-            return View(Usuario.TraerUsuariosAdministrador(DatosUsuarioSesion().Id));
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarTodosVehiculos()
         {
@@ -29,11 +41,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarTodosVehiculos"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloVehiculo Vehiculos = new();
+                    return View(Vehiculos.TraerTodosVehiculosAdministrador());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloVehiculo Vehiculos = new();
-            return View(Vehiculos.TraerTodosVehiculosAdministrador());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarTodosAlquileres()
         {
@@ -41,11 +65,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarTodosAlquileres"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloAlquiler ModeloAlquiler = new();
+                    return View(ModeloAlquiler.TraerAlquileres());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloAlquiler ModeloAlquiler = new();
-            return View(ModeloAlquiler.TraerAlquileres());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult VerAlquilerAdministrador(int IdAlquiler)
         {
@@ -53,11 +89,15 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                ModeloEmpresa Empresa = new();
+                ViewBag.RutaFoto = Empresa.RutaFoto;
+                ModeloAlquiler ModeloAlquiler = new();
+                return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloAlquiler ModeloAlquiler = new();
-            return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarTipoVehiculo()
         {
@@ -65,11 +105,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarTipoVehiculo"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloTipoVehiculo TipoVehiculo = new();
+                    return View(TipoVehiculo.TraerTodosTipoVehiculo());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloTipoVehiculo TipoVehiculo = new();
-            return View(TipoVehiculo.TraerTodosTipoVehiculo());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarClasificacionVehiculo()
         {
@@ -77,11 +129,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarClasificacionVehiculo"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloTipoVehiculo TiModeloTipoVehiculo = new();
+                    return View(TiModeloTipoVehiculo.TraerTodosTipoVehiculo());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloTipoVehiculo TiModeloTipoVehiculo = new();
-            return View(TiModeloTipoVehiculo.TraerTodosTipoVehiculo());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarMarcaVehiculo()
         {
@@ -89,11 +153,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarMarcaVehiculo"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloTipoVehiculo TipoVehiculo = new();
+                    return View(TipoVehiculo.TraerTodosTipoVehiculo());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloTipoVehiculo TipoVehiculo = new();
-            return View(TipoVehiculo.TraerTodosTipoVehiculo());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarLineaVehiculo()
         {
@@ -101,11 +177,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarLineaVehiculo"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloMarca Marca = new();
+                    return View(Marca.TraerTodosMetodasMarcas());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloMarca Marca = new();
-            return View(Marca.TraerTodosMetodasMarcas());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarTipoCombustible()
         {
@@ -113,11 +201,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarTipoCombustible"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloTipoCombustible TipoCombustible = new();
+                    return View(TipoCombustible.TraerTodosTiposComustible());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloTipoCombustible TipoCombustible = new();
-            return View(TipoCombustible.TraerTodosTiposComustible());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarCiudad()
         {
@@ -125,11 +225,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarCiudad"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloDepartamento ModeloDepartamento = new();
+                    return View(ModeloDepartamento.TraerDepartamentos());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloDepartamento ModeloDepartamento = new();
-            return View(ModeloDepartamento.TraerDepartamentos());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarColores()
         {
@@ -137,11 +249,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarColores"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloColor Color = new();
+                    return View(Color.TraerColores());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloColor Color = new();
-            return View(Color.TraerColores());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarCantidadPasajeros()
         {
@@ -149,11 +273,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarCantidadPasajeros"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloCantidadPasajeros CantidadPasajeros = new();
+                    return View(CantidadPasajeros.TraerCantidadesPasajeros());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloCantidadPasajeros CantidadPasajeros = new();
-            return View(CantidadPasajeros.TraerCantidadesPasajeros());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarCilindradas()
         {
@@ -161,11 +297,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarCilindradas"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloCilindrada Cilindrada = new();
+                    return View(Cilindrada.TraerCilindradas());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloCilindrada Cilindrada = new();
-            return View(Cilindrada.TraerCilindradas());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarModelos()
         {
@@ -173,11 +321,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarModelos"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloModelo Modelo = new();
+                    return View(Modelo.TraerModelos());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloModelo Modelo = new();
-            return View(Modelo.TraerModelos());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarSeguroAlquiler()
         {
@@ -185,11 +345,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarSeguroAlquiler"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloSeguroAlquiler SeguroAlquiler = new();
+                    return View(SeguroAlquiler.TraerTodosSegurosAlquiler());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloSeguroAlquiler SeguroAlquiler = new();
-            return View(SeguroAlquiler.TraerTodosSegurosAlquiler());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarMetodoPago()
         {
@@ -197,11 +369,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarMetodoPago"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloMetodoPagoAlquiler MetodoPago = new();
+                    return View(MetodoPago.TraerTodosMetodosPagoAlquiler());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloMetodoPagoAlquiler MetodoPago = new();
-            return View(MetodoPago.TraerTodosMetodosPagoAlquiler());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarLugarRecogidaEntrega()
         {
@@ -209,11 +393,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarLugarRecogidaEntrega"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloLugarAlquiler LugaresAlquiler = new();
+                    return View(LugaresAlquiler.TraerTodosLugaresAlquiler());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloLugarAlquiler LugaresAlquiler = new();
-            return View(LugaresAlquiler.TraerTodosLugaresAlquiler());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult VerUsuarioAdministrador(int IdUsuario)
         {
@@ -221,19 +417,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                ModeloEmpresa Empresa = new();
+                ViewBag.RutaFoto = Empresa.RutaFoto;
+                ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
+                ModeloUsuario ModeloUsuario = new();
+                ModeloRol Roles = new();
+                ModeloEditarUsuario ModeloEditarUsuario = new()
+                {
+                    Usuario = ModeloUsuario.TraerUsuario(IdUsuario),
+                    TiposIdentificacion = TipoIdentificacion.TraerTodosTiposdeIdentificacion(),
+                    Roles = Roles.TraerRoles()
+                };
+                return View(ModeloEditarUsuario);
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
-            ModeloUsuario ModeloUsuario = new();
-            ModeloRol Roles = new();
-            ModeloEditarUsuario ModeloEditarUsuario = new()
+            else
             {
-                Usuario = ModeloUsuario.TraerUsuario(IdUsuario),
-                TiposIdentificacion = TipoIdentificacion.TraerTodosTiposdeIdentificacion(),
-                Roles = Roles.TraerRoles()
-            };
-            return View(ModeloEditarUsuario);
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarTipoIdentificacion()
         {
@@ -241,11 +441,23 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarTipoIdentificacion"));
+                if (TienePermiso)
+                {
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
+                    return View(TipoIdentificacion.TraerTodosTiposdeIdentificacion());
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
-            return View(TipoIdentificacion.TraerTodosTiposdeIdentificacion());
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarEmpresa()
         {
@@ -253,11 +465,22 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarEmpresa"));
+                if (TienePermiso)
+                {
+                    ModeloGestionarEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.Empresa.RutaFoto;
+                    return View(Empresa);
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-
-            ModeloGestionarEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.Empresa.RutaFoto;
-            return View(Empresa);
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
         }
         public IActionResult GestionarRolesPermisos()
         {
@@ -265,18 +488,38 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 _ = ActualizarDatosUsuarioSesion();
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
+                bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarRolesPermisos"));
+                if (TienePermiso)
+                {
+                    ModeloGestionarPermisos RolesPermisos = new();
+                    ModeloEmpresa Empresa = new();
+                    ViewBag.RutaFoto = Empresa.RutaFoto;
+                    return View(RolesPermisos);
+                }
+                else
+                {
+                    return RedirectToAction("SinPermisos", "Inicio");
+                }
             }
-            ModeloGestionarPermisos RolesPermisos = new();
-            ModeloEmpresa Empresa = new();
-            ViewBag.RutaFoto = Empresa.RutaFoto;
-            return View(RolesPermisos);
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuario");
+            }
+
         }
         //---------------------------------------------- ACCIONES ----------------------------------------------
         private ModeloUsuario DatosUsuarioSesion()
         {
             var Identity = HttpContext.User.Identity as ClaimsIdentity;
-            var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
-            return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
+            if (Identity.FindFirst(ClaimTypes.UserData) != null)
+            {
+                var DatosUsuarioSesion = Identity.FindFirst(ClaimTypes.UserData).Value;
+                return JsonConvert.DeserializeObject<ModeloUsuario>(DatosUsuarioSesion);
+            }
+            else
+            {
+                return null;
+            }
         }
         public IActionResult AccionAgregarCiudad(int Departamento, string Ciudad)
         {
