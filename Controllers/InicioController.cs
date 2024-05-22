@@ -18,6 +18,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             }
             ModeloEmpresa Empresa = new();
             ViewBag.RutaFoto = Empresa.RutaFoto;
+            ViewBag.NombreEmpresa = Empresa.Nombre;
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }
@@ -80,6 +81,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             }
             ModeloEmpresa Empresa = new();
             ViewBag.RutaFoto = Empresa.RutaFoto;
+            ViewBag.NombreEmpresa = Empresa.Nombre;
             ViewBag.FiltroCiudad = FiltroCiudad;
             ViewBag.FiltroTipoVehiculo = FiltroTipoVehiculo;
             ViewBag.FiltroMarca = FiltroMarca;
@@ -96,6 +98,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             }
             ModeloEmpresa Empresa = new();
             ViewBag.RutaFoto = Empresa.RutaFoto;
+            ViewBag.NombreEmpresa = Empresa.Nombre;
             ModeloInicio ModeloInicio = new();
             return View(ModeloInicio);
         }

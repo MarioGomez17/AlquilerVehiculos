@@ -22,6 +22,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloUsuario Usuario = new();
                     return View(Usuario.TraerUsuariosAdministrador(DatosUsuarioSesion().Id));
                 }
@@ -46,6 +47,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloVehiculo Vehiculos = new();
                     return View(Vehiculos.TraerTodosVehiculosAdministrador());
                 }
@@ -70,6 +72,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloAlquiler ModeloAlquiler = new();
                     return View(ModeloAlquiler.TraerAlquileres());
                 }
@@ -91,6 +94,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
                 ModeloEmpresa Empresa = new();
                 ViewBag.RutaFoto = Empresa.RutaFoto;
+                ViewBag.NombreEmpresa = Empresa.Nombre;
                 ModeloAlquiler ModeloAlquiler = new();
                 return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
             }
@@ -110,6 +114,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloTipoVehiculo TipoVehiculo = new();
                     return View(TipoVehiculo.TraerTodosTipoVehiculo());
                 }
@@ -134,6 +139,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloTipoVehiculo TiModeloTipoVehiculo = new();
                     return View(TiModeloTipoVehiculo.TraerTodosTipoVehiculo());
                 }
@@ -158,6 +164,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloTipoVehiculo TipoVehiculo = new();
                     return View(TipoVehiculo.TraerTodosTipoVehiculo());
                 }
@@ -182,6 +189,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloMarca Marca = new();
                     return View(Marca.TraerTodosMetodasMarcas());
                 }
@@ -206,6 +214,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloTipoCombustible TipoCombustible = new();
                     return View(TipoCombustible.TraerTodosTiposComustible());
                 }
@@ -230,6 +239,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloDepartamento ModeloDepartamento = new();
                     return View(ModeloDepartamento.TraerDepartamentos());
                 }
@@ -254,6 +264,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloColor Color = new();
                     return View(Color.TraerColores());
                 }
@@ -278,6 +289,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloCantidadPasajeros CantidadPasajeros = new();
                     return View(CantidadPasajeros.TraerCantidadesPasajeros());
                 }
@@ -302,6 +314,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloCilindrada Cilindrada = new();
                     return View(Cilindrada.TraerCilindradas());
                 }
@@ -326,6 +339,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloModelo Modelo = new();
                     return View(Modelo.TraerModelos());
                 }
@@ -350,6 +364,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloSeguroAlquiler SeguroAlquiler = new();
                     return View(SeguroAlquiler.TraerTodosSegurosAlquiler());
                 }
@@ -374,6 +389,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloMetodoPagoAlquiler MetodoPago = new();
                     return View(MetodoPago.TraerTodosMetodosPagoAlquiler());
                 }
@@ -398,6 +414,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloLugarAlquiler LugaresAlquiler = new();
                     return View(LugaresAlquiler.TraerTodosLugaresAlquiler());
                 }
@@ -419,6 +436,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 ViewBag.AlquileresPendientes = DatosUsuarioSesion().AlquileresPendientes;
                 ModeloEmpresa Empresa = new();
                 ViewBag.RutaFoto = Empresa.RutaFoto;
+                ViewBag.NombreEmpresa = Empresa.Nombre;
                 ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
                 ModeloUsuario ModeloUsuario = new();
                 ModeloRol Roles = new();
@@ -446,6 +464,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                 {
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     ModeloTipoIdentificacionUsuario TipoIdentificacion = new();
                     return View(TipoIdentificacion.TraerTodosTiposdeIdentificacion());
                 }
@@ -468,9 +487,10 @@ namespace ALQUILER_VEHICULOS.Controllers
                 bool TienePermiso = DatosUsuarioSesion().Permisos.Any(Permiso => Permiso.Accion.Contains("GestionarEmpresa"));
                 if (TienePermiso)
                 {
-                    ModeloGestionarEmpresa Empresa = new();
-                    ViewBag.RutaFoto = Empresa.Empresa.RutaFoto;
-                    return View(Empresa);
+                    ModeloGestionarEmpresa GestorEmpresa = new();
+                    ViewBag.RutaFoto = GestorEmpresa.Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = GestorEmpresa.Empresa.Nombre;
+                    return View(GestorEmpresa);
                 }
                 else
                 {
@@ -494,6 +514,7 @@ namespace ALQUILER_VEHICULOS.Controllers
                     ModeloGestionarPermisos RolesPermisos = new();
                     ModeloEmpresa Empresa = new();
                     ViewBag.RutaFoto = Empresa.RutaFoto;
+                    ViewBag.NombreEmpresa = Empresa.Nombre;
                     return View(RolesPermisos);
                 }
                 else
