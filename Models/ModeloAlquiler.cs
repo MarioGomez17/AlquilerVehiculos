@@ -48,17 +48,17 @@ namespace ALQUILER_VEHICULOS.Models
                 MetodoPago + ", " +
                 Seguro + ", " +
                 3 + ")";
-            //ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
+            ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
             int IdAlquiler = TraerIdUltimoAlquilerPorVehiculo(Vehiculo);
             ModeloAlquilador ModeloAlquilador = new();
             ModeloPropietario ModeloPropietario = new();
             ModeloVehiculo ModeloVehiculo = new();
             ModeloVehiculo = ModeloVehiculo.TraerVehiculo(Vehiculo);
             ModeloVehiculo.UsuarioPropietario.AumentarAlquileresPendientes(ModeloVehiculo.UsuarioPropietario.Id);
-            //ModeloAlquilador.AgregarAlquilerHistorialAlquilador(Alquilador, IdAlquiler);
+            ModeloAlquilador.AgregarAlquilerHistorialAlquilador(Alquilador, IdAlquiler);
             ModeloAlquilador = ModeloAlquilador.TraerAlquilador(Alquilador);
             ReportarNuevoAlquilerPorCorreo(ModeloVehiculo, ModeloAlquilador.Usuario, FechaInicio.ToString("dddd dd-MM-yyyy"), FechaFin.ToString("dddd dd-MM-yyyy"), Precio);
-            return true;//ModeloPropietario.AgregarAlquilerHistorialPropietario(ModeloVehiculo.Propietario, IdAlquiler);
+            return ModeloPropietario.AgregarAlquilerHistorialPropietario(ModeloVehiculo.Propietario, IdAlquiler);
         }
         public ModeloAlquiler TraerAlquiler(int IdAlquiler)
         {
