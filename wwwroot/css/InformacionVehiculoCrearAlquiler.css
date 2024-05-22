@@ -316,7 +316,7 @@ body {
     align-items: center;
 }
 
-.DivAlquieleresPendientes{
+.DivAlquieleresPendientes {
     background-color: red;
     width: 35px;
     height: 35px;
@@ -326,11 +326,17 @@ body {
     align-items: center;
 }
 
-.AlquieleresPendientes{
+.AlquieleresPendientes {
     margin: 0;
     text-align: center;
     font-size: 15px;
     font-family: var(--Font);
     font-weight: bold;
     color: var(--Black);
+}
+
+.TextoFooter {
+    font-family: var(--Font);
+    font-weight: bold;
+    font-size: 23px;
 }

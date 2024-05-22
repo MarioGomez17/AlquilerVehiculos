@@ -189,3 +189,9 @@ html {
         opacity: 1;
     }
 }
+
+.TextoFooter {
+    font-family: var(--Font);
+    font-weight: bold;
+    font-size: 23px;
+}

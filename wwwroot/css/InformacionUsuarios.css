@@ -345,3 +345,9 @@ body {
 .BotonFormularioExcel:active {
     transform: scale(0.9);
 }
+
+.TextoFooter {
+    font-family: var(--Font);
+    font-weight: bold;
+    font-size: 23px;
+}

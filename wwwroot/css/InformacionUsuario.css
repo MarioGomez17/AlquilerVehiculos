@@ -178,7 +178,7 @@ body {
     align-items: center;
 }
 
-.ContenedorFormulario{
+.ContenedorFormulario {
     height: 90%;
     width: 65%;
     display: flex;
@@ -363,7 +363,7 @@ body {
     color: var(--Wihte);
 }
 
-.DivAlquieleresPendientes{
+.DivAlquieleresPendientes {
     background-color: red;
     width: 35px;
     height: 35px;
@@ -373,7 +373,7 @@ body {
     align-items: center;
 }
 
-.AlquieleresPendientes{
+.AlquieleresPendientes {
     margin: 0;
     text-align: center;
     font-size: 15px;
@@ -434,4 +434,10 @@ body {
 
 .BotonFormularioCorreo:active {
     transform: scale(0.9);
+}
+
+.TextoFooter {
+    font-family: var(--Font);
+    font-weight: bold;
+    font-size: 23px;
 }
