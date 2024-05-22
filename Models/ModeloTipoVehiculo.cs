@@ -7,7 +7,7 @@ namespace ALQUILER_VEHICULOS.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public List<ModeloClasificacionVehículo> Clasificaciones { get; set; }
-        public List<ModeloMarca> Marcas {get; set;}
+        public List<ModeloMarca> Marcas { get; set; }
         public List<ModeloTipoVehiculo> TraerTodosTipoVehiculo()
         {
             List<ModeloTipoVehiculo> TiposVehiculo = [];
@@ -46,20 +46,22 @@ namespace ALQUILER_VEHICULOS.Models
             }
             return TiposVehiculo;
         }
-        public bool ActualizarTipoVehiculo(int Id, string TipoVehiculo){
-            string ConsultaSQL = "UPDATE " + 
-            "alquiler_vehiculos.tipo_vehiculo " + 
-            "SET " + 
-            "alquiler_vehiculos.tipo_vehiculo.Nombre_TipoVehiculo = '" + 
-            TipoVehiculo + "' " + 
+        public bool ActualizarTipoVehiculo(int Id, string TipoVehiculo)
+        {
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.tipo_vehiculo " +
+            "SET " +
+            "alquiler_vehiculos.tipo_vehiculo.Nombre_TipoVehiculo = '" +
+            TipoVehiculo + "' " +
             "WHERE (alquiler_vehiculos.tipo_vehiculo.Id_TipoVehiculo = " + Id + ")";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }
-        public bool AgregarTipoVehiculo(string TipoVehiculo){
-            string ConsultaSQL = "INSERT INTO " + 
-            "alquiler_vehiculos.tipo_vehiculo (" + 
-            "alquiler_vehiculos.tipo_vehiculo.Nombre_TipoVehiculo) " + 
-            "VALUES ('" + 
+        public bool AgregarTipoVehiculo(string TipoVehiculo)
+        {
+            string ConsultaSQL = "INSERT INTO " +
+            "alquiler_vehiculos.tipo_vehiculo (" +
+            "alquiler_vehiculos.tipo_vehiculo.Nombre_TipoVehiculo) " +
+            "VALUES ('" +
             TipoVehiculo + "') ";
             return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL);
         }

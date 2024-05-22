@@ -10,25 +10,23 @@ ConfirmarContrasena.addEventListener('input', ValidarContrasena);
 function ValidarContrasena() {
     const ContrasenaVariable = Contrasena.value;
     const ConfirmarContrasenaVariable = ConfirmarContrasena.value;
-
     if ((ContrasenaVariable.length) >= 8 && (ContrasenaVariable === ConfirmarContrasenaVariable)) {
         BotonRegistrar.disabled = false;
         BotonRegistrar.classList.add("BotonRegistrarHabilitado");
-
     } else {
         BotonRegistrar.disabled = true;
         BotonRegistrar.classList.remove("BotonRegistrarHabilitado");
     }
 }
 
-function ValidarRegistro(event){
+function ValidarRegistro(event) {
     const Nombre = document.getElementById('Nombre');
     const Apellido = document.getElementById('Apellido');
     const TipoIdentificacion = document.getElementById('TipoIdentificacion');
     const NumeroIdentificacion = document.getElementById('NumeroIdentificacion');
     const Telefono = document.getElementById('Telefono');
     const Correo = document.getElementById('Correo');
-    if(Nombre.value == "" || Apellido.value == "" || TipoIdentificacion.value == 0 || NumeroIdentificacion.value == "" || Telefono.value == "" || Correo.value == "" || Contrasena.value == ""){
+    if (Nombre.value == "" || Apellido.value == "" || TipoIdentificacion.value == 0 || NumeroIdentificacion.value == "" || Telefono.value == "" || Correo.value == "" || Contrasena.value == "") {
         event.preventDefault();
         Swal.fire({
             title: 'ERROR',

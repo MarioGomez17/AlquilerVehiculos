@@ -115,7 +115,7 @@ namespace ALQUILER_VEHICULOS.Reports
                     }
                 }
             }
-            catch (Exception) {}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
@@ -135,7 +135,6 @@ namespace ALQUILER_VEHICULOS.Reports
             PdfDocument InformePDF = Convertidor.ConvertHtmlString(HTMLString);
             InformePDF.Save("./wwwroot/Reportes/ReporteAlquilerPropietario" + this.Usuario.NumeroIdentificacion + ".pdf");
         }
-
         public void EnviarReportesAlquilerPropietarioPorCorreo(string CorreoReceptor)
         {
             GenerarReporteAlquilerPropietarioPDF();

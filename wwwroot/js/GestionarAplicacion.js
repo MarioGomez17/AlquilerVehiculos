@@ -81,58 +81,6 @@ function EnviarRolPermisoAgregar(IdRol, IdPermiso) {
         .catch(error => console.error('Error:', error));
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function TraerPermisos() {
     const IdRol = document.getElementById("IdRol").value;
     const TotalPermisos = document.querySelectorAll('.InputTextoFormularioPermisos');
@@ -176,15 +124,8 @@ function AgregarAccionesBoton() {
             (function (IdPermiso) {
                 if (BotonesFormulario[i].textContent == "Agregar Permiso") {
                     BotonesFormulario[i].setAttribute('href', 'AgregarPermiso?IdRol=' + IdRol + '&IdPermiso=' + IdPermiso);
-                    //BotonesFormulario[i].setAttribute('asp-action', 'AgregarPermiso');
-                    //BotonesFormulario[i].setAttribute('asp-route-IdRol', IdPermiso);
-                    //BotonesFormulario[i].setAttribute('asp-route-IdPermiso', IdPermiso);
                 } else {
-                    //BotonesFormulario[i].setAttribute('asp-controller', 'Administrador');
                     BotonesFormulario[i].setAttribute('href', 'EliminarPermiso?IdRol=' + IdRol + '&IdPermiso=' + IdPermiso);
-                    //BotonesFormulario[i].setAttribute('asp-action', 'EliminarPermiso');
-                    //BotonesFormulario[i].setAttribute('asp-route-IdRol', IdPermiso);
-                    //BotonesFormulario[i].setAttribute('asp-route-IdPermiso', IdPermiso);
                 }
             })(IdPermisos[i].value);
         }

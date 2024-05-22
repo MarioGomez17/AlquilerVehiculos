@@ -25,8 +25,6 @@ function TraerTodasMarcasPorTIpo() {
     }
 }
 
-
-
 document.getElementById('FiltroTipoVehiculo').addEventListener('change', TraerTodasMarcasPorTIpo);
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -44,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     });
-    //------------------------- VALIDACIÓN FECHAS -------------------------
     function FormatearFecha(date) {
         return date.toISOString().split('T')[0];
     }

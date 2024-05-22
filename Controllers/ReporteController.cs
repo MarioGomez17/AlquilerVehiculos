@@ -57,21 +57,18 @@ namespace ALQUILER_VEHICULOS.Controllers
             Reporte.EnviarReportesAlquileresPropietarioPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
-        [Authorize(Policy = "SoloAdministrador")]
         public IActionResult GenerarReporteAlquileresAdministradorPDF()
         {
             ReporteAlquileresAdministrador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAdministradorPDF();
             return RedirectToAction("GestionarTodosAlquileres", "Administrador");
         }
-        [Authorize(Policy = "SoloAdministrador")]
         public IActionResult GenerarReporteAlquileresAdministradorEXCEL()
         {
             ReporteAlquileresAdministrador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAdministradorEXCEL();
             return RedirectToAction("GestionarTodosAlquileres", "Administrador");
         }
-        [Authorize(Policy = "SoloAdministrador")]
         public IActionResult EnviarReportesAlquileresAdministradorPorCorreo()
         {
             ReporteAlquileresAdministrador Reporte = new(DatosUsuarioSesion().Id);

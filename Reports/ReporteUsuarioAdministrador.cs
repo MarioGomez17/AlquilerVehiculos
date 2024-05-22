@@ -108,7 +108,6 @@ namespace ALQUILER_VEHICULOS.Reports
             DocumentoFinal = Convertidor.ConvertHtmlString(HTMLString);
             DocumentoFinal.Save("./wwwroot/Reportes/ReporteUsuarioAdministrador" + this.Usuario.NumeroIdentificacion + ".pdf");
         }
-
         public void EnviarReportesUsuarioAdministradorPorCorreo(string CorreoReceptor)
         {
             GenerarReporteUsuarioAdministradorPDF();

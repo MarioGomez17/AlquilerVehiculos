@@ -60,7 +60,6 @@ async function CalcularPrecioAlquiler() {
     var Lavada = document.getElementById("PrecioLavadaVehiculo").value;
     var FechaInicio = ConvertirFecha(document.getElementById("FechaInicio").value);
     var FechaFin = ConvertirFecha(document.getElementById("FechaFin").value);
-
     if (IdVehiculo != 0 && IdSeguro != 0 && FechaInicio != "" && FechaFin != "") {
         try {
             let Respuesta = await fetch('/Alquiler/ObtenerPrecioAlquiler?IdVehiculo=' + IdVehiculo + '&IdSeguro=' + IdSeguro);
@@ -84,4 +83,3 @@ async function CalcularPrecioAlquiler() {
         });
     }
 }
-

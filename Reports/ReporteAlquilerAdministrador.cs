@@ -112,11 +112,10 @@ namespace ALQUILER_VEHICULOS.Reports
                         HTMLString = HTMLString.Replace("@CANTIDADPASAJEROS", Lector.GetInt32(19).ToString());
                         HTMLString = HTMLString.Replace("@SEGURO", Lector.GetString(20));
                         HTMLString = HTMLString.Replace("@CDA", Lector.GetString(21));
-                        
                     }
                 }
             }
-            catch (Exception) {}
+            catch (Exception) { }
             finally
             {
                 ConexionBD.Close();
@@ -156,3 +155,4 @@ namespace ALQUILER_VEHICULOS.Reports
         }
     }
 }
+

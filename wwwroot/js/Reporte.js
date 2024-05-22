@@ -1,11 +1,11 @@
-function ActivarDivCorreoReportesAlquileresAlquilador(){
+function ActivarDivCorreoReportesAlquileresAlquilador() {
     const DivEnviarCorreo = document.getElementById("EnviarReportesAlquileresAlquiladorPorCorreo");
     DivEnviarCorreo.style.display = "flex";
     DivEnviarCorreo.style.justifyContent = "center";
     DivEnviarCorreo.style.alignItems = "center";
 }
 
-function DesactivarDivCorreoAlquileresAlquilador(){
+function DesactivarDivCorreoAlquileresAlquilador() {
     const DivEnviarCorreo = document.getElementById("EnviarReportesAlquileresAlquiladorPorCorreo");
     DivEnviarCorreo.style.display = "none";
 }
@@ -16,15 +16,14 @@ BotonEnviarCorreoAlquileresAlquilador.addEventListener("click", ActivarDivCorreo
 const BotonCerrarCorreoAlquileresAlquilador = document.getElementById("BotonCerrarReportesAlquileresAlquiladorPorCorreo");
 BotonCerrarCorreoAlquileresAlquilador.addEventListener("click", DesactivarDivCorreoAlquileresAlquilador);
 
-
-function ActivarDivCorreoReportesAlquileresPropietario(){
+function ActivarDivCorreoReportesAlquileresPropietario() {
     const DivEnviarCorreo = document.getElementById("EnviarReportesAlquileresPropietarioPorCorreo");
     DivEnviarCorreo.style.display = "flex";
     DivEnviarCorreo.style.justifyContent = "center";
     DivEnviarCorreo.style.alignItems = "center";
 }
 
-function DesactivarDivCorreoReportesAlquileresPropietario(){
+function DesactivarDivCorreoReportesAlquileresPropietario() {
     const DivEnviarCorreo = document.getElementById("EnviarReportesAlquileresPropietarioPorCorreo");
     DivEnviarCorreo.style.display = "none";
 }

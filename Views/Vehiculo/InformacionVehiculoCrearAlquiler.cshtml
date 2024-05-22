@@ -20,8 +20,8 @@
         <div class="DivBarraNavegacionInformacionVehiculoCrearAlquiler">
             <nav class="BarraNavegacionInformacionVehiculoCrearAlquiler">
                 <div class="LinkLogoInformacionVehiculoCrearAlquiler">
-                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo" src="~/imagenes/@ViewBag.RutaFoto"
-                            alt="Logotipo" /></a>
+                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo"
+                            src="~/imagenes/@ViewBag.RutaFoto" alt="Logotipo" /></a>
                 </div>
                 <div class="DivLinkInformacionVehiculoCrearAlquiler">
                     <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkInformacionVehiculoCrearAlquiler">
@@ -67,7 +67,8 @@
                 <div class="DivLinkInformacionVehiculoCrearAlquiler">
                     @if (ViewBag.AlquileresPendientes > 0)
                     {
-                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInformacionVehiculoCrearAlquiler">
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres"
+                            class="LinkInformacionVehiculoCrearAlquiler">
                             <div class="DivAlquieleresPendientes">
                                 <p class="AlquieleresPendientes">
                                     @ViewBag.AlquileresPendientes
@@ -78,7 +79,8 @@
                     }
                     else
                     {
-                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres" class="LinkInformacionVehiculoCrearAlquiler">
+                        <a asp-controller="Alquiler" asp-action="HistorialAlquileres"
+                            class="LinkInformacionVehiculoCrearAlquiler">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"

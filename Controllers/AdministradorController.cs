@@ -526,7 +526,6 @@ namespace ALQUILER_VEHICULOS.Controllers
             {
                 return RedirectToAction("IniciarSesion", "Usuario");
             }
-
         }
         //---------------------------------------------- ACCIONES ----------------------------------------------
         private ModeloUsuario DatosUsuarioSesion()
