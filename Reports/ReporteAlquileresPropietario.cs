@@ -91,7 +91,7 @@ namespace ALQUILER_VEHICULOS.Reports
                     while (Lector.Read())
                     {
                         ContadorRegistros++;
-                        if (Indice % 8 == 0)
+                        if (Indice % 7 == 0)
                         {
                             ListaListas.Add([]);
                         }

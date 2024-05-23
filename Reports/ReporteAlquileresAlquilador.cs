@@ -86,7 +86,7 @@ namespace ALQUILER_VEHICULOS.Reports
                 {
                     while (Lector.Read())
                     {
-                        if (Indice % 8 == 0)
+                        if (Indice % 7 == 0)
                         {
                             ListaListas.Add([]);
                         }

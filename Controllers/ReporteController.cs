@@ -34,6 +34,9 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             ReporteAlquileresAlquilador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAlquiladorEXCEL();
+            string RutaActual = Directory.GetCurrentDirectory();
+            string RutaArchivo = RutaActual + @"\wwwroot\Reportes\ReporteAlquileresAlquilador" + DatosUsuarioSesion().NumeroIdentificacion + ".xlsx";
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {RutaArchivo}") { CreateNoWindow = true });
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
         public IActionResult EnviarReportesAlquileresAlquiladorPorCorreo()
@@ -55,6 +58,9 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             ReporteAlquileresPropietario Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresPropietarioEXCEL();
+            string RutaActual = Directory.GetCurrentDirectory();
+            string RutaArchivo = RutaActual + @"\wwwroot\Reportes\ReporteAlquileresPropietario" + DatosUsuarioSesion().NumeroIdentificacion + ".xlsx";
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {RutaArchivo}") { CreateNoWindow = true });
             return RedirectToAction("HistorialAlquileres", "Alquiler");
         }
         public IActionResult EnviarReportesAlquileresPropietarioPorCorreo()
@@ -76,6 +82,9 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             ReporteAlquileresAdministrador Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteAlquileresAdministradorEXCEL();
+            string RutaActual = Directory.GetCurrentDirectory();
+            string RutaArchivo = RutaActual + @"\wwwroot\Reportes\ReporteAlquileresAdministrador" + DatosUsuarioSesion().NumeroIdentificacion + ".xlsx";
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {RutaArchivo}") { CreateNoWindow = true });
             return RedirectToAction("GestionarTodosAlquileres", "Administrador");
         }
         public IActionResult EnviarReportesAlquileresAdministradorPorCorreo()
@@ -157,6 +166,9 @@ namespace ALQUILER_VEHICULOS.Controllers
         {
             ReporteUsuarios Reporte = new(DatosUsuarioSesion().Id);
             Reporte.GenerarReporteUsuariosEXCEL();
+            string RutaActual = Directory.GetCurrentDirectory();
+            string RutaArchivo = RutaActual + @"\wwwroot\Reportes\ReporteUsuarios" + DatosUsuarioSesion().NumeroIdentificacion + ".xlsx";
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {RutaArchivo}") { CreateNoWindow = true });
             return RedirectToAction("GestionarTodosUsuarios", "Administrador");
         }
         public IActionResult EnviarReportesUsuariosAdministradorPorCorreo()
