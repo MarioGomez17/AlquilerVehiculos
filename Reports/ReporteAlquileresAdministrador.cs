@@ -246,7 +246,7 @@ namespace ALQUILER_VEHICULOS.Reports
             string CorreoEmisor = "mariog.101200@hotmail.com";
             string Asunto = "Reportes Todos los Alquileres";
             string Mensaje = "Adjunto encontrarás los reportes en Excel y PDF";
-            SmtpClient ClienteAMTP = new("smtp-mail.outlook.com", 587)
+            SmtpClient ClienteSMTP = new("smtp-mail.outlook.com", 587)
             {
                 EnableSsl = true,
                 Credentials = new NetworkCredential(CorreoEmisor, "M@rio112358")
@@ -256,7 +256,7 @@ namespace ALQUILER_VEHICULOS.Reports
             MensajeCorreo.Attachments.Add(ReporteAdjuntoExcel);
             Attachment ReporteAdjuntoPDF = new(ReportePDF);
             MensajeCorreo.Attachments.Add(ReporteAdjuntoPDF);
-            ClienteAMTP.Send(MensajeCorreo);
+            ClienteSMTP.Send(MensajeCorreo);
         }
     }
 }
