@@ -135,7 +135,6 @@
             height: 70%;
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
             align-items: center;
             margin-top: 40px;
         }
@@ -143,66 +142,55 @@
         .TituloInforme {
             width: 100%;
             text-align: center;
-            font-size: 50px;
+            font-size: 40px;
             margin: 0;
             margin-bottom: 20px;
         }
 
-        .Informacionlquiler {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .TablaInforme {
+            width: 95%;
+            text-align: center;
+            border-collapse: collapse;
+            border-spacing: 0;
         }
 
-        .ContenidoAlquiler {
-            margin: 40px;
-            font-size: 20px;
-            text-align: justify;
+        .EncabezadoTabla {
+            background-color: #206a00;
+            color: white;
+            border: solid 5px black;
+            padding: 10px;
+            font-size: 15px;
         }
 
-        .DivInformacionVehiculo {
-            width: 100%;
-            display: flex;
-            justify-content: space-evenly;
-        }
-
-        .FotoVehiculo {
-            width: 450px;
-            height: 300px;
-            border: 5px solid black;
-            border-radius: 15px;
-            background-color: white;
-        }
-
-        .DivFotoVehiculo {
-            width: 57%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .DivDatosVehiculo {
-            width: 40%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: flex-start;
-        }
-
-        .DatosVehiculo {
-            width: 100%;
-            text-align: left;
-            font-size: 18px;
-            color: #1649E0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .ValorDato {
+        .CeldaDatoTabla {
+            border: solid 5px black;
+            padding: 10px 0;
+            font-size: 12px;
             color: black;
-            margin-right: 110px;
+        }
+
+        .CeldaPar {
+            background-color: #94F2FE;
+        }
+
+        .CeldaImpar {
+            background-color: #94feb9;
+        }
+
+        .DatoTabla {
+            margin: 0 7px;
+        }
+
+        .FilaTotal {
+            background-color: #0d00ff;
+            border: solid 5px black;
+            padding: 10px 0;
+            font-size: 12px;
+            color: white;
+        }
+
+        .TituloTotal {
+            font-size: 20px;
         }
 
         footer {
@@ -246,42 +234,30 @@
         </div>
     </header>
     <main>
-        <h1 class="TituloInforme">REPORTE ALQUILER HECHO POR @ALQUILADOR</h1>
-        <div class="Informacionlquiler">
-            <p class="ContenidoAlquiler">
-                Hola Sr(a). @ALQUILADOR.<br>@RAZONSOCIAL le informa acerca del alquiler del vehículo @VEHICULO
-                identificado con la placa @PLACA, el cual solicitó en la ciudad de @CIUDADALQUILER para entregar y
-                recoger en el @LUGAR
-                desde la fecha de @FECHAINICIO hasta la fecha de @FECHAFIN por un costo de total de @PRECIO pesos.
-            </p>
-        </div>
-        <div class="DivInformacionVehiculo">
-            <div class="DivFotoVehiculo">
-                <img src="@FOTOVEHICULO" alt="" class="FotoVehiculo">
-            </div>
-            <div class="DivDatosVehiculo">
-                <span class="DatosVehiculo">vehículo:<span class="ValorDato">@VEHICULO</span></span>
-                <span class="DatosVehiculo">placa:<span class="ValorDato">@PLACA</span></span>
-                <span class="DatosVehiculo">modelo:<span class="ValorDato">@MODELO</span></span>
-                <span class="DatosVehiculo">cilindrada:<span class="ValorDato">@CILINDRADA</span></span>
-                <span class="DatosVehiculo">color:<span class="ValorDato">@COLOR</span></span>
-                <span class="DatosVehiculo">
-                    cantidad de pasajeros:
-                    <span class="ValorDato">
-                        @CANTIDADPASAJEROS
-                    </span>
-                </span>
-                <span class="DatosVehiculo">poliza de seguro:<span class="ValorDato">@SEGURO</span></span>
-                <span class="DatosVehiculo">certificado cda:<span class="ValorDato">@CDA</span></span>
-                <span class="DatosVehiculo">ciudad:<span class="ValorDato">@CIUDADALQUILER</span></span>
-                <span class="DatosVehiculo">lugar del alquiler:<span class="ValorDato">@LUGAR</span></span>
-                <span class="DatosVehiculo">fecha de inicio alquiler:<span class="ValorDato">@FECHAINICIO</span></span>
-                <span class="DatosVehiculo">fecha de fin alquiler:<span class="ValorDato">@FECHAFIN</span></span>
-            </div>
-        </div>
+        <h1 class="TituloInforme">REPORTE VEHICULO</h1>
+        <table class="TablaInforme">
+            <thead>
+                <tr>
+                    <th class="EncabezadoTabla">#</th>
+                    <th class="EncabezadoTabla">Fecha<br>Inicio</th>
+                    <th class="EncabezadoTabla">Fecha<br>Fin</th>
+                    <th class="EncabezadoTabla">Propietario</th>
+                    <th class="EncabezadoTabla">Vehículo</th>
+                    <th class="EncabezadoTabla">Ciudad</th>
+                    <th class="EncabezadoTabla">Lugar</th>
+                    <th class="EncabezadoTabla">Alquilador</th>
+                    <th class="EncabezadoTabla">Precio</th>
+                    <th class="EncabezadoTabla">Ganancias</th>
+                </tr>
+            </thead>
+            <tbody>
+                @TABLAINFORME
+                @FILATOTAL
+            </tbody>
+        </table>
     </main>
     <footer>
-        <span class="TextoFooter">@ALQUILADOR</span>
+        <span class="TextoFooter">@USUARIO</span>
         <span class="TextoFooter">@IDENTIFICACION</span>
         <span class="TextoFooter">@FECHAINFORME</span>
         <span class="TextoFooter">@PAGINAS</span>

@@ -192,5 +192,68 @@ namespace ALQUILER_VEHICULOS.Controllers
             Reporte.EnviarReportesUsuarioAdministradorPorCorreo(DatosUsuarioSesion().Correo);
             return RedirectToAction("VerUsuarioAdministrador", "Administrador", new { IdUsuario });
         }
+        public IActionResult GenerarReporteVehiculosAdministradorPDF()
+        {
+            ReporteVehiculosAdministrador Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteVehiculosAdministradorPDF();
+            string RutaActual = Directory.GetCurrentDirectory();
+            string RutaArchivo = RutaActual + @"\wwwroot\Reportes\ReporteVehiculosAdministrador" + DatosUsuarioSesion().NumeroIdentificacion + ".pdf";
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {RutaArchivo}") { CreateNoWindow = true });
+            return RedirectToAction("GestionarTodosVehiculos", "Administrador");
+        }
+        public IActionResult GenerarReporteVehiculosAdministradorEXCEL()
+        {
+            ReporteVehiculosAdministrador Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteVehiculosAdministradorEXCEL();
+            string RutaActual = Directory.GetCurrentDirectory();
+            string RutaArchivo = RutaActual + @"\wwwroot\Reportes\ReporteVehiculosAdministrador" + DatosUsuarioSesion().NumeroIdentificacion + ".xlsx";
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {RutaArchivo}") { CreateNoWindow = true });
+            return RedirectToAction("GestionarTodosVehiculos", "Administrador");
+        }
+        public IActionResult EnviarReportesVehiculosAdministradorPorCorreo()
+        {
+            ReporteVehiculosAdministrador Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.EnviarReportesVehiculosAdministradorPorCorreo(DatosUsuarioSesion().Correo);
+            return RedirectToAction("GestionarTodosVehiculos", "Administrador");
+        }
+        public IActionResult GenerarReporteVehiculosPropietarioPDF()
+        {
+            ReporteVehiculosPropietario Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteVehiculosPropietarioPDF();
+            string RutaActual = Directory.GetCurrentDirectory();
+            string RutaArchivo = RutaActual + @"\wwwroot\Reportes\ReporteVehiculosPropietario" + DatosUsuarioSesion().NumeroIdentificacion + ".pdf";
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {RutaArchivo}") { CreateNoWindow = true });
+            return RedirectToAction("InformacionVehiculos", "Vehiculo");
+        }
+        public IActionResult GenerarReporteVehiculosPropietarioEXCEL()
+        {
+            ReporteVehiculosPropietario Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.GenerarReporteVehiculosPropietarioEXCEL();
+            string RutaActual = Directory.GetCurrentDirectory();
+            string RutaArchivo = RutaActual + @"\wwwroot\Reportes\ReporteVehiculosPropietario" + DatosUsuarioSesion().NumeroIdentificacion + ".xlsx";
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {RutaArchivo}") { CreateNoWindow = true });
+            return RedirectToAction("InformacionVehiculos", "Vehiculo");
+        }
+        public IActionResult EnviarReportesVehiculosPropietarioPorCorreo()
+        {
+            ReporteVehiculosPropietario Reporte = new(DatosUsuarioSesion().Id);
+            Reporte.EnviarReportesVehiculosPropietarioPorCorreo(DatosUsuarioSesion().Correo);
+            return RedirectToAction("InformacionVehiculos", "Propietario");
+        }
+        public IActionResult GenerarReporteVehiculoPropietarioPDF(int IdVehiculo)
+        {
+            ReporteVehiculoPropietario Reporte = new(DatosUsuarioSesion().Id, IdVehiculo);
+            Reporte.GenerarReporteVehiculoPropietarioPDF();
+            string RutaActual = Directory.GetCurrentDirectory();
+            string RutaArchivo = RutaActual + @"\wwwroot\Reportes\ReporteVehiculoPropietario" + DatosUsuarioSesion().NumeroIdentificacion + ".pdf";
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {RutaArchivo}") { CreateNoWindow = true });
+            return RedirectToAction("InformacionVehiculo", "Vehiculo", new { IdVehiculo });
+        }
+        public IActionResult EnviarReportesVehiculoPropietarioPorCorreo(int IdVehiculo)
+        {
+            ReporteVehiculoPropietario Reporte = new(DatosUsuarioSesion().Id, IdVehiculo);
+            Reporte.EnviarReportesVehiculoPropietarioPorCorreo(DatosUsuarioSesion().Correo);
+            return RedirectToAction("InformacionVehiculo", "Vehiculo", new { IdVehiculo });
+        }
     }
 }

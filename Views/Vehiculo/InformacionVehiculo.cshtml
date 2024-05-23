@@ -436,6 +436,16 @@
                                                 Eliminar Vehículo
                                             </a>
                                         }
+                                        <a class="BotonFormularioEliminar" asp-controller="Reporte"
+                                            asp-action="GenerarReporteVehiculoPropietarioPDF"
+                                            asp-route-IdVehiculo=@Model.Vehiculo.Id>
+                                            Generar PDF
+                                        </a>
+                                        <a class="BotonFormularioEliminar EnviarCorreo" asp-controller="Reporte"
+                                            asp-action="EnviarReportesVehiculoPropietarioPorCorreo"
+                                            asp-route-IdVehiculo=@Model.Vehiculo.Id>
+                                            Enviar Por correo
+                                        </a>
                                     </div>
                                 </div>
                             </form>

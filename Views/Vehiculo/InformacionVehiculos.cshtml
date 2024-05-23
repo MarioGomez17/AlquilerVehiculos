@@ -159,6 +159,20 @@
                                         <h3 class="TituloNoVehiculos">No Tienes Vehículos Registrados</h3>
                                     </div>
                                 }
+                                <div class="DivReportes">
+                                    <a class="BotonFormularioCorreo" asp-controller="Reporte"
+                                        asp-action="EnviarReportesVehiculosPropietarioPorCorreo">
+                                        Enviar Reporte por correo
+                                    </a>
+                                    <a class="BotonFormularioExcel" asp-controller="Reporte"
+                                        asp-action="GenerarReporteVehiculosPropietarioExcel">
+                                        Generar Excel
+                                    </a>
+                                    <a class="BotonFormularioPDF" asp-controller="Reporte"
+                                        asp-action="GenerarReporteVehiculosPropietarioPDF">
+                                        Generar PDF
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </main>
