@@ -5,7 +5,8 @@ using OfficeOpenXml;
 using System.Net.Mail;
 using System.Net;
 using SelectPdf;
-
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 namespace ALQUILER_VEHICULOS.Reports
 {
     public class ReporteAlquileresAlquilador
@@ -236,24 +237,30 @@ namespace ALQUILER_VEHICULOS.Reports
         }
         public void EnviarReportesAlquileresAlquiladorPorCorreo(string CorreoReceptor)
         {
-            GenerarReporteAlquileresAlquiladorEXCEL();
-            GenerarReporteAlquileresAlquiladorPDF();
-            string ReporteExcel = "./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".xlsx";
-            string ReportePDF = "./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".pdf";
-            string CorreoEmisor = "mariog.101200@hotmail.com";
-            string Asunto = "Reportes de Alquileres Realizados por " + this.Usuario.Nombre + " " + this.Usuario.Apellido;
-            string Mensaje = "Adjunto encontrarás los reportes en Excel y PDF";
-            SmtpClient ClienteAMTP = new("smtp-mail.outlook.com", 587)
+            try
             {
-                EnableSsl = true,
-                Credentials = new NetworkCredential(CorreoEmisor, "M@rio112358")
-            };
-            MailMessage MensajeCorreo = new(CorreoEmisor, CorreoReceptor, Asunto, Mensaje);
-            Attachment ReporteAdjuntoExcel = new(ReporteExcel);
-            MensajeCorreo.Attachments.Add(ReporteAdjuntoExcel);
-            Attachment ReporteAdjuntoPDF = new(ReportePDF);
-            MensajeCorreo.Attachments.Add(ReporteAdjuntoPDF);
-            ClienteAMTP.Send(MensajeCorreo);
+                GenerarReporteAlquileresAlquiladorEXCEL();
+                GenerarReporteAlquileresAlquiladorPDF();
+                string ReporteExcel = "./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".xlsx";
+                string ReportePDF = "./wwwroot/Reportes/ReporteAlquileresAlquilador" + this.Usuario.NumeroIdentificacion + ".pdf";
+                string Asunto = "Reportes de Alquileres Realizados por " + this.Usuario.Nombre + " " + this.Usuario.Apellido;
+                string Mensaje = "Adjunto encontrarás los reportes en Excel y PDF";
+                string CorreoEmisor = "mj.rentalseasy@gmail.com";
+                string Contrasena = "wlli eqfn quyb opyb";
+                SmtpClient SMTP = new("SMTP.gmail.com", 587)
+                {
+                    EnableSsl = true
+                };
+                MailMessage MensajeCorreo = new(CorreoEmisor, CorreoReceptor, Asunto.ToUpper(), Mensaje.ToUpper());
+                SMTP.Credentials = new NetworkCredential(CorreoEmisor, Contrasena);
+                ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors) { return true; };
+                Attachment ReporteAdjuntoExcel = new(ReporteExcel);
+                MensajeCorreo.Attachments.Add(ReporteAdjuntoExcel);
+                Attachment ReporteAdjuntoPDF = new(ReportePDF);
+                MensajeCorreo.Attachments.Add(ReporteAdjuntoPDF);
+                SMTP.Send(MensajeCorreo);
+            }
+            catch { }
         }
     }
 }

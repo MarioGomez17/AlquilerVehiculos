@@ -1,6 +1,8 @@
 ﻿using System.Net;
 using System.Net.Mail;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 namespace ALQUILER_VEHICULOS.Models
 {
     public class ModeloAlquiler
@@ -293,20 +295,27 @@ namespace ALQUILER_VEHICULOS.Models
         }
         public void ReportarNuevoAlquilerPorCorreo(ModeloVehiculo Vehiculo, ModeloUsuario Usuario, string FechaInicio, string FechaFin, float Precio)
         {
-            string Asunto = "Nuevo Alquiler de " + Vehiculo.TipoVehiculo + " " + Vehiculo.Marca + " " + Vehiculo.Linea;
-            string Mensaje = "Hola Sr(a) " + Vehiculo.UsuarioPropietario.Nombre + " " + Vehiculo.UsuarioPropietario.Apellido + ".\n" +
-            "Le informamos que su vehículo " + Vehiculo.TipoVehiculo + " " + Vehiculo.Marca + " " + Vehiculo.Linea + " " +
-            "identificado con la placa " + Vehiculo.Placa + " fue solicitado en alquiler por " + Usuario.Nombre + " " + Usuario.Apellido + " " +
-            "desde la fecha de " + FechaInicio + " hasta la fecha de " + FechaFin + " por un costo de " + Precio + ".\n" +
-            "Por favor ponerse en contacto con el Sr(a). " + Usuario.Nombre + " " + Usuario.Apellido + ". Sus datos de contacto son:\n" +
-            "Teléfono: " + Usuario.Telefono + "\nCorreo: " + Usuario.Correo + "\nGracias por usar nuestra plataforma.";
-            SmtpClient ClienteAMTP = new("smtp-mail.outlook.com", 587)
+            try
             {
-                EnableSsl = true,
-                Credentials = new NetworkCredential("mariog.101200@hotmail.com", "M@rio112358")
-            };
-            MailMessage MensajeCorreo = new("mariog.101200@hotmail.com", Vehiculo.UsuarioPropietario.Correo, Asunto, Mensaje.ToUpper());
-            ClienteAMTP.Send(MensajeCorreo);
+                string Asunto = "Nuevo Alquiler de " + Vehiculo.TipoVehiculo + " " + Vehiculo.Marca + " " + Vehiculo.Linea;
+                string Mensaje = "Hola Sr(a) " + Vehiculo.UsuarioPropietario.Nombre + " " + Vehiculo.UsuarioPropietario.Apellido + ".\n" +
+                "Le informamos que su vehículo " + Vehiculo.TipoVehiculo + " " + Vehiculo.Marca + " " + Vehiculo.Linea + " " +
+                "identificado con la placa " + Vehiculo.Placa + " fue solicitado en alquiler por " + Usuario.Nombre + " " + Usuario.Apellido + " " +
+                "desde la fecha de " + FechaInicio + " hasta la fecha de " + FechaFin + " por un costo de " + Precio + ".\n" +
+                "Por favor ponerse en contacto con el Sr(a). " + Usuario.Nombre + " " + Usuario.Apellido + ". Sus datos de contacto son:\n" +
+                "Teléfono: " + Usuario.Telefono + "\nCorreo: " + Usuario.Correo + "\nGracias por usar nuestra plataforma.";
+                string CorreoEmisor = "mj.rentalseasy@gmail.com";
+                string Contrasena = "wlli eqfn quyb opyb";
+                SmtpClient SMTP = new("SMTP.gmail.com", 587)
+                {
+                    EnableSsl = true
+                };
+                MailMessage MensajeCorreo = new(CorreoEmisor, Vehiculo.UsuarioPropietario.Correo, Asunto.ToUpper(), Mensaje.ToUpper());
+                SMTP.Credentials = new NetworkCredential(CorreoEmisor, Contrasena);
+                ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors) { return true; };
+                SMTP.Send(MensajeCorreo);
+            }
+            catch { }
         }
         public bool RecalcularPrecioAlquiler(int IdAlquiler, int DiasRetraso)
         {

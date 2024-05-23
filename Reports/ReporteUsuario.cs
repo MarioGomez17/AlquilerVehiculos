@@ -1,11 +1,10 @@
 using ALQUILER_VEHICULOS.Models;
 using MySql.Data.MySqlClient;
-using OfficeOpenXml.Style;
-using OfficeOpenXml;
 using System.Net.Mail;
 using System.Net;
 using SelectPdf;
-
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 namespace ALQUILER_VEHICULOS.Reports
 {
     public class ReporteUsuario
@@ -98,20 +97,26 @@ namespace ALQUILER_VEHICULOS.Reports
         }
         public void EnviarReportesUsuarioPorCorreo(string CorreoReceptor)
         {
-            GenerarReporteUsuarioPDF();
-            string ReportePDF = "./wwwroot/Reportes/ReporteUsuario" + this.Usuario.NumeroIdentificacion + ".pdf";
-            string CorreoEmisor = "mariog.101200@hotmail.com";
-            string Asunto = "Reporte del Usuario " + this.Usuario.Nombre + " " + this.Usuario.Apellido;
-            string Mensaje = "Adjunto encontrarás el reporte en PDF";
-            SmtpClient ClienteAMTP = new("smtp-mail.outlook.com", 587)
+            try
             {
-                EnableSsl = true,
-                Credentials = new NetworkCredential(CorreoEmisor, "M@rio112358")
-            };
-            MailMessage MensajeCorreo = new(CorreoEmisor, CorreoReceptor, Asunto, Mensaje);
-            Attachment ReporteAdjuntoPDF = new(ReportePDF);
-            MensajeCorreo.Attachments.Add(ReporteAdjuntoPDF);
-            ClienteAMTP.Send(MensajeCorreo);
+                GenerarReporteUsuarioPDF();
+                string ReportePDF = "./wwwroot/Reportes/ReporteUsuario" + this.Usuario.NumeroIdentificacion + ".pdf";
+                string Asunto = "Reporte del Usuario " + this.Usuario.Nombre + " " + this.Usuario.Apellido;
+                string Mensaje = "Adjunto encontrarás el reporte en PDF";
+                string CorreoEmisor = "mj.rentalseasy@gmail.com";
+                string Contrasena = "wlli eqfn quyb opyb";
+                SmtpClient SMTP = new("SMTP.gmail.com", 587)
+                {
+                    EnableSsl = true
+                };
+                MailMessage MensajeCorreo = new(CorreoEmisor, CorreoReceptor, Asunto.ToUpper(), Mensaje.ToUpper());
+                SMTP.Credentials = new NetworkCredential(CorreoEmisor, Contrasena);
+                ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors) { return true; };
+                Attachment ReporteAdjuntoPDF = new(ReportePDF);
+                MensajeCorreo.Attachments.Add(ReporteAdjuntoPDF);
+                SMTP.Send(MensajeCorreo);
+            }
+            catch { }
         }
     }
 }
