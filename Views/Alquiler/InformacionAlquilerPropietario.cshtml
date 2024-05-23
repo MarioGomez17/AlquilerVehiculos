@@ -16,12 +16,12 @@
 </head>
 
 <body class="BodyInformacionAlquilerPropietario">
-    <div class="ContenidoBodyInformacionAlquilerPropietario">
+    <div class="ContenidoBodyInformacionAlquilerPropietario" id="ContenidoBodyInformacionAlquilerPropietario">
         <div class="DivBarraNavegacionInformacionAlquilerPropietario">
             <nav class="BarraNavegacionInformacionAlquilerPropietario">
                 <div class="LinkLogoInformacionAlquilerPropietario">
-                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo" src="~/imagenes/@ViewBag.RutaFoto"
-                            alt="Logotipo" /></a>
+                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo"
+                            src="~/imagenes/@ViewBag.RutaFoto" alt="Logotipo" /></a>
                 </div>
                 <div class="DivLinkInformacionAlquilerPropietario">
                     <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkInformacionAlquilerPropietario">
@@ -65,9 +65,10 @@
                     </a>
                 </div>
                 <div class="DivLinkInformacionAlquilerPropietario">
-                    @if(ViewBag.AlquileresPendientes > 0){
+                    @if (ViewBag.AlquileresPendientes > 0)
+                    {
                         <a asp-controller="Alquiler" asp-action="HistorialAlquileres"
-                        class="LinkInformacionAlquilerPropietario">
+                            class="LinkInformacionAlquilerPropietario">
                             <div class="DivAlquieleresPendientes">
                                 <p class="AlquieleresPendientes">
                                     @ViewBag.AlquileresPendientes
@@ -75,19 +76,21 @@
                             </div>
                             <span class="TextoLinkInformacionAlquilerPropietario">Ver Mis Alquileres</span>
                         </a>
-                    }else{
+                    }
+                    else
+                    {
                         <a asp-controller="Alquiler" asp-action="HistorialAlquileres"
-                        class="LinkInformacionAlquilerPropietario">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 8l0 4l2 2" />
-                            <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
-                        </svg>
-                        <span class="TextoLinkInformacionAlquilerPropietario">Ver Mis Alquileres</span>
-                    </a>
+                            class="LinkInformacionAlquilerPropietario">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-history IconoLinkSVG" width="35" height="35"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 8l0 4l2 2" />
+                                <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                            </svg>
+                            <span class="TextoLinkInformacionAlquilerPropietario">Ver Mis Alquileres</span>
+                        </a>
                     }
                 </div>
                 <div class="DivLinkInformacionAlquilerPropietario">
@@ -158,7 +161,7 @@
                                         <input type="text" class="InputTextoInformacionAlquiler" id="LugarAlquiler"
                                             value="@Model.Lugar" readonly>
                                         <label for="LugarAlquiler" class="EtiquetaInformacionAlquiler">
-                                            Lugar de REcogida y Entrega
+                                            Lugar de Recogida y Entrega
                                         </label>
                                     </div>
                                 </div>
@@ -230,23 +233,24 @@
                             <div class="InformacionAlquilerParte3">
                                 @if (Model.Estado == "Iniciado")
                                 {
-                                    <a asp-controller="Alquiler" asp-action="AccionFinalizarAlquiler" asp-route-IdAlquiler=@Model.Id
-                                        class="LinkInformacionAlquiler">
+                                    <button class="LinkInformacionAlquiler" id="BotonConfirmacionPropietario">
                                         Finalizar Alquiler
-                                    </a>
+                                    </button>
                                 }
                                 else
                                 {
-                                    <a class="LinkInformacionAlquiler">
+                                    <button class="LinkInformacionAlquiler">
                                         Finalizar Alquiler
-                                    </a>
+                                    </button>
                                 }
-                                <a asp-controller="Reporte" asp-action="GenerarReporteAlquilerPropietarioPDF" asp-route-IdAlquiler=@Model.Id
-                                        class="LinkInformacionAlquiler LinkInformacionAlquilerPDF">
+                                <a asp-controller="Reporte" asp-action="GenerarReporteAlquilerPropietarioPDF"
+                                    asp-route-IdAlquiler=@Model.Id
+                                    class="LinkInformacionAlquiler LinkInformacionAlquilerPDF">
                                     Generar PDF
                                 </a>
-                                <a asp-controller="Reporte" asp-action="EnviarReportesAlquilerPropietarioPorCorreo" asp-route-IdAlquiler=@Model.Id
-                                        class="LinkInformacionAlquiler LinkInformacionAlquilerCorreo">
+                                <a asp-controller="Reporte" asp-action="EnviarReportesAlquilerPropietarioPorCorreo"
+                                    asp-route-IdAlquiler=@Model.Id
+                                    class="LinkInformacionAlquiler LinkInformacionAlquilerCorreo">
                                     Enviar reporte al Correo
                                 </a>
                             </div>
@@ -263,6 +267,48 @@
             </div>
         </div>
     </div>
+    <div class="ConfirmacionEntregaVehiculoOcultoPropietario" id="ConfirmacionEntregaVehiculoPropietario">
+        <div class="CerrarConfirmacion" id="CerrarConfirmacion">
+            X
+        </div>
+        <div class="ContenedorFormularioAceptacion">
+            <form class="FormularioConfirmacion" asp-controller="Alquiler" asp-action="AccionFinalizarAlquiler">
+                <input type="hidden" name="IdAlquiler" value="@Model.Id">
+                <div class="InputEtiqueta">
+                    <span class="SpanCheckBoxOptimo EtiquetaFormulario">
+                        <div class="DivCheckBoxOptimo">
+                            <input id="BotonOptimoVehiculo" type="checkbox" name="SiOptimo">
+                            <label for="BotonOptimoVehiculo">
+                                <div class="DivMarcador"></div>
+                            </label>
+                        </div>
+                        Recibí el vehículo en optimas condiciones
+                    </span>
+                </div>
+                <div class="InputEtiqueta">
+                    <span class="SpanCheckBoxTiempo EtiquetaFormulario">
+                        <div class="DivCheckBoxTiempo">
+                            <input id="BotonTiempoVehiculo" type="checkbox" name="SiTiempo">
+                            <label for="BotonTiempoVehiculo">
+                                <div class="DivMarcador"></div>
+                            </label>
+                        </div>
+                        Recibí el vehículo a tiempo
+                    </span>
+                </div>
+                <div class="DivEtiquetaInput InputEtiqueta">
+                    <input type="number" class="InputTextoInformacionAlquiler InputDiasRetraso" id="DiasRetraso"
+                        name="DiasRetraso" value="0">
+                    <label for="DiasRetraso" class="EtiquetaInformacionAlquiler">
+                        Días de Retraso
+                    </label>
+                </div>
+                <input type="submit" class="LinkInformacionAlquiler BotonConfirmacion" value="FInalizar Alquiler"
+                    id="BotonFinalizarAlquiler" disabled>
+            </form>
+        </div>
+    </div>
+    <script src="~/js/ConfirmacionPropietario.js" type="module"></script>
 </body>
 
 </html>

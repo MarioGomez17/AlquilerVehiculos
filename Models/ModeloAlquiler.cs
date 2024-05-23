@@ -308,5 +308,23 @@ namespace ALQUILER_VEHICULOS.Models
             MailMessage MensajeCorreo = new("mariog.101200@hotmail.com", Vehiculo.UsuarioPropietario.Correo, Asunto, Mensaje.ToUpper());
             ClienteAMTP.Send(MensajeCorreo);
         }
+        public bool RecalcularPrecioAlquiler(int IdAlquiler, int DiasRetraso)
+        {
+            ModeloAlquiler Alquiler = new();
+            Alquiler = Alquiler.TraerAlquiler(IdAlquiler);
+            float PrecioAntiguo = Alquiler.Precio;
+            float PrecioAlquilerVehiculo = Alquiler.Vehiculo.PrecioAlquilerDia;
+            float AumentoPrecio = PrecioAlquilerVehiculo * DiasRetraso;
+            float NuevoPrecio = PrecioAntiguo + AumentoPrecio;
+            float NuevaGanacia = (float)(NuevoPrecio * 0.15);
+            string ConsultaSQL = "UPDATE " +
+            "alquiler_vehiculos.alquiler " +
+            "SET " +
+            "alquiler_vehiculos.alquiler.Precio_Alquiler = " + NuevoPrecio + ", " +
+            "alquiler_vehiculos.alquiler.Ganancias_Alquiler = " + NuevaGanacia + " " +
+            "WHERE " +
+            "(alquiler_vehiculos.alquiler.Id_Alquiler = (" + IdAlquiler + "))";
+            return ModeloConexion.ExecuteNonQuerySentence(ConsultaSQL); ;
+        }
     }
 }

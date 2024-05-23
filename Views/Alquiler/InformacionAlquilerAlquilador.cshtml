@@ -17,12 +17,12 @@
 </head>
 
 <body class="BodyInformacionAlquilerAlquilador">
-    <div class="ContenidoBodyInformacionAlquilerAlquilador">
+    <div class="ContenidoBodyInformacionAlquilerAlquilador" id="ContenidoBodyInformacionAlquilerAlquilador">
         <div class="DivBarraNavegacionInformacionAlquilerAlquilador">
             <nav class="BarraNavegacionInformacionAlquilerAlquilador">
                 <div class="LinkLogoInformacionAlquilerAlquilador">
-                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo" src="~/imagenes/@ViewBag.RutaFoto"
-                            alt="Logotipo" /></a>
+                    <a asp-controller="Inicio" asp-action="Inicio"><img class="ImagenLogo"
+                            src="~/imagenes/@ViewBag.RutaFoto" alt="Logotipo" /></a>
                 </div>
                 <div class="DivLinkInformacionAlquilerAlquilador">
                     <a asp-controller="Usuario" asp-action="IniciarSesion" class="LinkInformacionAlquilerAlquilador">
@@ -227,10 +227,9 @@
                             <div class="InformacionAlquilerParte3">
                                 @if (Model.Estado == "Sin Iniciar")
                                 {
-                                    <a asp-controller="Alquiler" asp-action="AccionIniciarAlquiler"
-                                        asp-route-IdAlquiler=@Model.Id class="LinkInformacionAlquilerIniciar">
+                                    <button class="LinkInformacionAlquilerIniciar" id="BotonConfirmacionAlquilador">
                                         Iniciar Alquiler
-                                    </a>
+                                    </button>
                                 }
                                 else
                                 {
@@ -277,12 +276,14 @@
                                         Calificar Alquiler
                                     </a>
                                 }
-                                <a asp-controller="Reporte" asp-action="GenerarReporteAlquilerAlquiladorPDF" asp-route-IdAlquiler=@Model.Id
-                                        class="LinkInformacionAlquiler LinkInformacionAlquilerPDF">
+                                <a asp-controller="Reporte" asp-action="GenerarReporteAlquilerAlquiladorPDF"
+                                    asp-route-IdAlquiler=@Model.Id
+                                    class="LinkInformacionAlquiler LinkInformacionAlquilerPDF">
                                     Generar PDF
                                 </a>
-                                <a asp-controller="Reporte" asp-action="EnviarReportesAlquilerAlquiladorPorCorreo" asp-route-IdAlquiler=@Model.Id
-                                        class="LinkInformacionAlquiler LinkInformacionAlquilerCorreo">
+                                <a asp-controller="Reporte" asp-action="EnviarReportesAlquilerAlquiladorPorCorreo"
+                                    asp-route-IdAlquiler=@Model.Id
+                                    class="LinkInformacionAlquiler LinkInformacionAlquilerCorreo">
                                     Enviar reporte al Correo
                                 </a>
                             </div>
@@ -299,6 +300,38 @@
             </div>
         </div>
     </div>
+    <div class="ConfirmacionEntregaVehiculoOcultoAlquilador" id="ConfirmacionEntregaVehiculoAlquilador">
+        <div class="CerrarConfirmacion" id="CerrarConfirmacion">
+            X
+        </div>
+        <div class="ContenedorFormularioAceptacion">
+            <div class="FormularioConfirmacion">
+                <input type="hidden" name="IdAlquiler" value="@Model.Id">
+                <div class="InputEtiqueta">
+                    <span class="SpanCheckBoxOptimo EtiquetaFormulario">
+                        <div class="DivCheckBoxOptimo">
+                            <input id="BotonOptimoVehiculoAlquilador" type="checkbox" name="SiOptimo">
+                            <label for="BotonOptimoVehiculoAlquilador">
+                                <div class="DivMarcador"></div>
+                            </label>
+                        </div>
+                        Recibí el vehículo en optimas condiciones
+                    </span>
+                </div>
+                <div class="InputEtiqueta">
+                    <a asp-controller="Alquiler" asp-action="AccionIniciarAlquiler" asp-route-IdAlquiler=@Model.Id
+                        class="LinkInformacionAlquilerIniciar LinkConfirmacion" id="LinkIniciarAlquiler">
+                        Iniciar Alquiler
+                    </a>
+                    <a asp-controller="Alquiler" asp-action="AccionCancelarAlquiler" asp-route-IdAlquiler=@Model.Id
+                        class="LinkInformacionAlquilerCancelar LinkConfirmacion">
+                        Cancelar Alquiler
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/ConfirmacionAlquilador.js" type="module"></script>
 </body>
 
 </html>

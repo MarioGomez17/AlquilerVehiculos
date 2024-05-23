@@ -129,10 +129,18 @@ namespace ALQUILER_VEHICULOS.Controllers
             ModeloAlquiler.IniciarAlquiler(IdAlquiler);
             return RedirectToAction("InformacionAlquilerAlquilador", "Alquiler", new { IdAlquiler });
         }
-        public IActionResult AccionFinalizarAlquiler(int IdAlquiler)
+        public IActionResult AccionFinalizarAlquiler(int IdAlquiler, int DiasRetraso)
         {
             ModeloAlquiler ModeloAlquiler = new();
-            ModeloAlquiler.FinalizarAlquiler(IdAlquiler);
+            if (DiasRetraso > 0)
+            {
+                ModeloAlquiler.RecalcularPrecioAlquiler(IdAlquiler, DiasRetraso);
+                ModeloAlquiler.FinalizarAlquiler(IdAlquiler);
+            }
+            else
+            {
+                ModeloAlquiler.FinalizarAlquiler(IdAlquiler);
+            }
             return RedirectToAction("InformacionAlquilerPropietario", "Alquiler", new { IdAlquiler });
         }
         public IActionResult AccionCancelarAlquiler(int IdAlquiler)
