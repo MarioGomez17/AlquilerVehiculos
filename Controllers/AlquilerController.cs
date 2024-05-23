@@ -73,7 +73,7 @@ namespace ALQUILER_VEHICULOS.Controllers
             return View(ModeloAlquiler.TraerAlquiler(IdAlquiler));
         }
         [Authorize]
-        public IActionResult HistorialAlquileresAsync()
+        public IActionResult HistorialAlquileres()
         {
             ModeloUsuario ModeloUsuario = new();
             ModeloUsuario.EliminarAlquileresPendientesUsuario(DatosUsuarioSesion().Id);
